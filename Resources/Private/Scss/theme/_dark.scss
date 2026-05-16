@@ -1,0 +1,14 @@
+// ─────────────────────────────────────────────
+// Dark theme
+// ─────────────────────────────────────────────
+
+[data-bs-theme="dark"] {
+    --conn-nav-bg: #12122a;
+    --conn-footer-bg: #12122a;
+    --bs-heading-color: #fafafa;
+    --bs-body-bg:  #0b0b1a;
+
+    .navbar-brand {
+        --bs-navbar-brand-color: #fafafa;
+    }
+}

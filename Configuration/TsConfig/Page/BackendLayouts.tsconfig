@@ -1,0 +1,25 @@
+mod.web_layout.BackendLayouts {
+    pagets__conn_default {
+        title = Default (1 Column)
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 1
+                rows { 1 { columns { 1 { name = Main Content; colPos = 0 } } } }
+            }
+        }
+    }
+    pagets__conn_landingpage {
+        title = Landing Page
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 2
+                rows {
+                    1 { columns { 1 { name = Hero Section; colPos = 1 } } }
+                    2 { columns { 1 { name = Main Content; colPos = 0 } } }
+                }
+            }
+        }
+    }
+}

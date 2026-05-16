@@ -1,0 +1,41 @@
+// ─────────────────────────────────────────────
+// Theme toggle button + transition rules
+// ─────────────────────────────────────────────
+
+.theme-toggle {
+    border-radius: 50rem;
+    padding: 0.25rem 0.6rem;
+    transition: var(--conn-transition);
+
+    &__icon {
+        font-size: 0.875rem;
+        line-height: 1;
+    }
+
+    [data-bs-theme="dark"] & {
+        &__icon--light { display: none; }
+        &__icon--dark  { display: inline; }
+    }
+
+    [data-bs-theme="light"] &,
+    :root:not([data-bs-theme]) & {
+        &__icon--dark  { display: none; }
+        &__icon--light { display: inline; }
+    }
+}
+
+// Smooth theme transition
+*,
+*::before,
+*::after {
+    transition: background-color var(--conn-transition),
+                border-color var(--conn-transition),
+                color var(--conn-transition);
+}
+
+// Exclude transforms from the global transition to prevent animation jank
+.hover-lift,
+img {
+    transition: transform 0.3s ease-in-out,
+                box-shadow 0.3s ease-in-out;
+}

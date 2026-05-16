@@ -1,0 +1,183 @@
+categories:
+  conn.branding:
+    label: 'Branding'
+  conn.footer:
+    label: 'Footer'
+  conn.footer.address:
+    label: 'Footer – Address'
+    parent: conn.footer
+  conn.social:
+    label: 'Social Media'
+  conn.meta:
+    label: 'Meta & Analytics'
+
+settings:
+  # ─── Branding ─────────────────────────────────────────────────────────────
+  branding.logo:
+    label: 'Logo – light mode'
+    description: 'EXT: path (e.g. EXT:conn_sitepackage/Resources/Public/Icons/logo.svg) or full URL (https://…). Leave empty to show the site title as text.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.logoDark:
+    label: 'Logo – dark mode'
+    description: 'Alternate logo for dark mode. Same format as the light logo. Falls back to the light logo when empty.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.logoAlt:
+    label: 'Logo alt text'
+    description: 'Alt text for the logo image. Defaults to the site title when empty.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.logoHeight:
+    label: 'Logo height (px)'
+    type: int
+    default: 36
+    category: conn.branding
+
+  # ─── Footer – General ─────────────────────────────────────────────────────
+  footer.tagline:
+    label: 'Footer tagline'
+    description: 'Short text below the brand name in the footer.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.copyrightName:
+    label: 'Copyright name'
+    description: 'Name used in the © copyright line. Defaults to the site title when empty.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.logo:
+    label: 'Footer logo – light mode'
+    description: 'Separate logo for the footer. Accepts EXT: paths or full URLs. Falls back to the navbar logo when empty.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.logoDark:
+    label: 'Footer logo – dark mode'
+    description: 'Dark-mode variant of the footer logo. Accepts EXT: paths or full URLs. Falls back to the light footer logo when empty.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.showNavigation:
+    label: 'Show navigation column'
+    type: bool
+    default: true
+    category: conn.footer
+
+  footer.showAddress:
+    label: 'Show address column'
+    type: bool
+    default: false
+    category: conn.footer
+
+  footer.showSocial:
+    label: 'Show social media links'
+    type: bool
+    default: false
+    category: conn.footer
+
+  # ─── Footer – Address ─────────────────────────────────────────────────────
+  footer.address.company:
+    label: 'Company name'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.street:
+    label: 'Street address'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.zip:
+    label: 'ZIP / Postal code'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.city:
+    label: 'City'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.country:
+    label: 'Country'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.phone:
+    label: 'Phone number'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.email:
+    label: 'E-mail address'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  # ─── Social Media ─────────────────────────────────────────────────────────
+  social.github:
+    label: 'GitHub URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.linkedin:
+    label: 'LinkedIn URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.x:
+    label: 'X (Twitter) URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.instagram:
+    label: 'Instagram URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.youtube:
+    label: 'YouTube URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.facebook:
+    label: 'Facebook URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  # ─── Meta & Analytics ─────────────────────────────────────────────────────
+  meta.gtmId:
+    label: 'Google Tag Manager ID'
+    description: 'GTM container ID (e.g. GTM-XXXXXXX). Leave empty to disable GTM.'
+    type: string
+    default: ''
+    category: conn.meta
+
+  meta.googleVerification:
+    label: 'Google site verification'
+    description: 'Content value for the google-site-verification meta tag.'
+    type: string
+    default: ''
+    category: conn.meta

@@ -1,0 +1,9 @@
+# ─────────────────────────────────────────────
+# Connetation Sitepackage – Main Setup
+# TYPO3 LTS 14
+# ─────────────────────────────────────────────
+
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:conn_sitepackage/Configuration/TypoScript/Base/Page.typoscript'
+@import 'EXT:conn_sitepackage/Configuration/TypoScript/Base/Lib.typoscript'
+@import 'EXT:conn_elements/Configuration/TypoScript/setup.typoscript'

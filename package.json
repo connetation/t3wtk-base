@@ -1,0 +1,24 @@
+{
+  "name": "conn-sitepackage",
+  "version": "1.0.0",
+  "description": "Connetation Sitepackage – TYPO3 LTS 14 build tooling",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:scss && npm run build:js",
+    "build:scss": "sass Resources/Private/Scss/main.scss Resources/Public/Css/main.css --style=compressed --load-path=node_modules",
+    "build:js": "esbuild Resources/Private/JavaScript/main.js --bundle --minify --outfile=Resources/Public/Js/main.js",
+    "dev": "npm run dev:scss & npm run dev:js",
+    "dev:scss": "sass Resources/Private/Scss/main.scss Resources/Public/Css/main.css --watch --load-path=node_modules",
+    "dev:js": "esbuild Resources/Private/JavaScript/main.js --bundle --outfile=Resources/Public/Js/main.js --watch",
+    "postinstall": "npm rebuild esbuild",
+    "lint:scss": "stylelint '**/*.scss' --fix",
+    "lint:js": "eslint '**/*.js' --fix"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.3.3",
+    "esbuild": "^0.21.0",
+    "sass": "^1.77.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard-scss": "^13.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:if condition="{data.tx_conn_sitepackage_header_image}">
+        <div class="page-header">
+            <div class="container py-5">
+                <h1 class="page-header__title">{data.title}</h1>
+                <f:if condition="{data.tx_conn_sitepackage_subtitle}">
+                    <p class="page-header__subtitle lead">{data.tx_conn_sitepackage_subtitle}</p>
+                </f:if>
+            </div>
+        </div>
+    </f:if>
+
+    <div class="container py-5">
+        <f:if condition="{breadcrumb} && !{data.tx_conn_sitepackage_hide_breadcrumb}">
+            <f:render partial="Page/Breadcrumb" arguments="{breadcrumb: breadcrumb}" />
+        </f:if>
+
+        <f:cObject typoscriptObjectPath="styles.content.get" />
+    </div>
+</f:section>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:conn_sitepackage/Resources/Private/Language/locallang_be.xlf">
+        <header/>
+        <body>
+            <!-- Backend layouts -->
+            <trans-unit id="backend_layout.default">
+                <source>Default (1 column)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.landingpage">
+                <source>Landing Page</source>
+            </trans-unit>
+            <!-- Pages fields -->
+            <trans-unit id="pages.tx_conn_sitepackage_subtitle">
+                <source>Page Subtitle</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_sitepackage_header_image">
+                <source>Header Image</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_sitepackage_hide_breadcrumb">
+                <source>Hide Breadcrumb</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

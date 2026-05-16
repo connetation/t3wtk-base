@@ -1,0 +1,84 @@
+# ─────────────────────────────────────────────
+# Page Object
+# ─────────────────────────────────────────────
+
+page = PAGE
+page {
+    typeNum = 0
+
+    meta {
+        viewport = width=device-width, initial-scale=1
+        charset = utf-8
+        robots = index, follow
+        theme-color = #0d6efd
+        color-scheme = light dark
+    }
+
+    includeCSS {
+        bootstrap = EXT:conn_sitepackage/Resources/Public/Css/main.css
+        bootstrap.media = all
+    }
+
+    includeJSFooter {
+        app = EXT:conn_sitepackage/Resources/Public/Js/main.js
+        app.defer = 1
+    }
+
+    10 = FLUIDTEMPLATE
+    10 {
+        templateName = TEXT
+        templateName.stdWrap.cObject = CASE
+        templateName.stdWrap.cObject {
+            key.data = levelfield:-1, backend_layout_next_level, slide
+            key.override.field = backend_layout
+
+            pagets__conn_default = TEXT
+            pagets__conn_default.value = Default
+
+            pagets__conn_landingpage = TEXT
+            pagets__conn_landingpage.value = LandingPage
+
+            default = TEXT
+            default.value = Default
+        }
+
+        templateRootPaths {
+            0 = EXT:conn_sitepackage/Resources/Private/Templates/Page/
+        }
+        partialRootPaths {
+            0 = EXT:conn_sitepackage/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            0 = EXT:conn_sitepackage/Resources/Private/Layouts/
+        }
+
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            10 {
+                levels = 3
+                expandAll = 1
+                includeSpacer = 1
+                as = mainNavigation
+            }
+
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                special = rootline
+                as = breadcrumb
+            }
+
+            30 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+            30 {
+                as = site
+            }
+
+            40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            40 {
+                levels = 1
+                expandAll = 1
+                includeSpacer = 0
+                as = footerNavigation
+            }
+        }
+    }
+}

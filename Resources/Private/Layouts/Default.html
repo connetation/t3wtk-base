@@ -1,0 +1,49 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<!DOCTYPE html>
+<html lang="{site.configuration.defaultLanguageIsoCode}"
+      data-bs-theme="auto"
+      class="h-100">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>
+        <f:if condition="{page.title}">
+            <f:then>{page.title} – {site.configuration.websiteTitle}</f:then>
+            <f:else>{site.configuration.websiteTitle}</f:else>
+        </f:if>
+    </title>
+    <f:if condition="{site.settings.meta.googleVerification}">
+        <meta name="google-site-verification" content="{site.settings.meta.googleVerification}" />
+    </f:if>
+    <f:if condition="{site.settings.meta.gtmId}">
+        <script>(function(w,d,s,l,i){ldelim}w[l]=w[l]||[];w[l].push({ldelim}'gtm.start':new Date().getTime(),event:'gtm.js'{rdelim});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);{rdelim})(window,document,'script','dataLayer','{site.settings.meta.gtmId}');</script>
+    </f:if>
+    <f:render section="MetaTags" optional="true" />
+</head>
+<body class="d-flex flex-column h-100">
+    <f:if condition="{site.settings.meta.gtmId}">
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={site.settings.meta.gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    </f:if>
+
+    <f:render partial="Navigation/MainNav" arguments="{mainNavigation: mainNavigation, site: site}" />
+
+    <main class="flex-shrink-0" id="main-content">
+        <f:render section="Main" />
+    </main>
+
+    <f:render partial="Page/Footer" arguments="{site: site, footerNavigation: footerNavigation}" />
+
+    <!-- Theme toggle script runs immediately to prevent FOUC -->
+    <script>
+        (function() {
+            const stored = localStorage.getItem('conn-theme');
+            if (stored) document.documentElement.setAttribute('data-bs-theme', stored);
+        })();
+    </script>
+</body>
+</html>
+
+</html>

@@ -1,0 +1,22 @@
+# ─────────────────────────────────────────────
+# Content Element lib base object
+# Redefines the base from fluid_styled_content,
+# keeping index 0 paths and adding sitepackage
+# at index 10. Elements add their own at index 20.
+# ─────────────────────────────────────────────
+
+lib.contentElement = FLUIDTEMPLATE
+lib.contentElement {
+    templateRootPaths {
+        0  = EXT:fluid_styled_content/Resources/Private/Templates/
+        10 = EXT:conn_sitepackage/Resources/Private/Templates/ContentElements/
+    }
+    partialRootPaths {
+        0  = EXT:fluid_styled_content/Resources/Private/Partials/
+        10 = EXT:conn_sitepackage/Resources/Private/Partials/
+    }
+    layoutRootPaths {
+        0  = EXT:fluid_styled_content/Resources/Private/Layouts/
+        10 = EXT:conn_sitepackage/Resources/Private/Layouts/
+    }
+}

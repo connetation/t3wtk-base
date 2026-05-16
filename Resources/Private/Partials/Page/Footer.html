@@ -1,0 +1,144 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<footer class="footer mt-auto py-5" id="footer">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Brand column (always visible) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer__brand fw-bold mb-2">
+                    <!-- Resolve footer logo sources with fallback chain -->
+                    <f:if condition="{site.settings.footer.logo}">
+                        <f:then><f:variable name="lightSrc">{site.settings.footer.logo}</f:variable></f:then>
+                        <f:else><f:variable name="lightSrc">{site.settings.branding.logo}</f:variable></f:else>
+                    </f:if>
+                    <f:if condition="{site.settings.footer.logoDark}">
+                        <f:then><f:variable name="darkSrc">{site.settings.footer.logoDark}</f:variable></f:then>
+                        <f:else><f:variable name="darkSrc">{site.settings.branding.logoDark}</f:variable></f:else>
+                    </f:if>
+                    <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
+
+                    <a href="/" class="footer__brand-link text-decoration-none text-reset">
+                        <f:if condition="{lightSrc}">
+                            <f:then>
+                                <f:variable name="resolvedLight">{f:uri.resource(path: lightSrc)}</f:variable>
+                                <f:if condition="{darkSrc}">
+                                    <f:then>
+                                        <f:variable name="resolvedDark">{f:uri.resource(path: darkSrc)}</f:variable>
+                                        <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--light" />
+                                        <img src="{resolvedDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--dark" />
+                                    </f:then>
+                                    <f:else>
+                                        <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo" />
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                {site.configuration.websiteTitle}
+                            </f:else>
+                        </f:if>
+                    </a>
+                </div>
+                <f:if condition="{site.settings.footer.tagline}">
+                    <p class="text-body-secondary small mb-0">{site.settings.footer.tagline}</p>
+                </f:if>
+            </div>
+
+            <!-- Navigation column (optional) -->
+            <f:if condition="{site.settings.footer.showNavigation}">
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="footer__nav-title fw-semibold text-uppercase small mb-3">Navigation</h6>
+                    <ul class="list-unstyled mb-0">
+                        <f:for each="{footerNavigation}" as="item">
+                            <li class="mb-1">
+                                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">
+                                    {item.title}
+                                </a>
+                            </li>
+                        </f:for>
+                    </ul>
+                </div>
+            </f:if>
+
+            <!-- Address column (optional) -->
+            <f:if condition="{site.settings.footer.showAddress}">
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="footer__address-title fw-semibold text-uppercase small mb-3">Contact</h6>
+                    <address class="text-body-secondary small mb-0">
+                        <f:if condition="{site.settings.footer.address.company}">
+                            <strong>{site.settings.footer.address.company}</strong><br />
+                        </f:if>
+                        <f:if condition="{site.settings.footer.address.street}">
+                            {site.settings.footer.address.street}<br />
+                        </f:if>
+                        <f:if condition="{site.settings.footer.address.zip}">
+                            {site.settings.footer.address.zip}&#32;
+                        </f:if>
+                        <f:if condition="{site.settings.footer.address.city}">
+                            {site.settings.footer.address.city}<br />
+                        </f:if>
+                        <f:if condition="{site.settings.footer.address.country}">
+                            {site.settings.footer.address.country}<br />
+                        </f:if>
+                        <f:if condition="{site.settings.footer.address.phone}">
+                            <a href="tel:{site.settings.footer.address.phone}" class="footer__link text-body-secondary text-decoration-none">
+                                {site.settings.footer.address.phone}
+                            </a><br />
+                        </f:if>
+                        <f:if condition="{site.settings.footer.address.email}">
+                            <a href="mailto:{site.settings.footer.address.email}" class="footer__link text-body-secondary text-decoration-none">
+                                {site.settings.footer.address.email}
+                            </a>
+                        </f:if>
+                    </address>
+                </div>
+            </f:if>
+
+        </div>
+
+        <hr class="mt-4" />
+
+        <div class="row align-items-center g-2">
+            <div class="col-md-6 text-body-secondary small">
+                &copy; <f:format.date format="Y" />
+                {f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}
+            </div>
+
+            <f:if condition="{site.settings.footer.showSocial}">
+                <f:then>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
+                            <f:if condition="{site.settings.social.github}">
+                                <a href="{site.settings.social.github}" class="footer__social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </f:if>
+                            <f:if condition="{site.settings.social.linkedin}">
+                                <a href="{site.settings.social.linkedin}" class="footer__social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            </f:if>
+                            <f:if condition="{site.settings.social.x}">
+                                <a href="{site.settings.social.x}" class="footer__social-link" target="_blank" rel="noopener noreferrer">X</a>
+                            </f:if>
+                            <f:if condition="{site.settings.social.instagram}">
+                                <a href="{site.settings.social.instagram}" class="footer__social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            </f:if>
+                            <f:if condition="{site.settings.social.youtube}">
+                                <a href="{site.settings.social.youtube}" class="footer__social-link" target="_blank" rel="noopener noreferrer">YouTube</a>
+                            </f:if>
+                            <f:if condition="{site.settings.social.facebook}">
+                                <a href="{site.settings.social.facebook}" class="footer__social-link" target="_blank" rel="noopener noreferrer">Facebook</a>
+                            </f:if>
+                        </div>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="col-md-6 text-md-end text-body-secondary small">
+                        Built with TYPO3 &amp; Bootstrap 5
+                    </div>
+                </f:else>
+            </f:if>
+        </div>
+
+    </div>
+</footer>
+
+</html>

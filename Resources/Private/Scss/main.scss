@@ -1,0 +1,22 @@
+// ─────────────────────────────────────────────
+// Moke Sitepackage – Main SCSS Entry
+// TYPO3 LTS 14 | Bootstrap 5
+// ─────────────────────────────────────────────
+
+// 1. Custom variables (before Bootstrap)
+@import 'variables';
+
+// 2. Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// 3. Theme
+@import 'theme/light';
+@import 'theme/dark';
+@import 'theme/toggle';
+
+// 4. Components
+@import 'components/navigation';
+@import 'components/footer';
+
+// 5. Utilities
+@import 'utilities';

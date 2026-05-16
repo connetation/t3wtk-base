@@ -1,0 +1,15 @@
+// ─────────────────────────────────────────────
+// Light theme (default)
+// ─────────────────────────────────────────────
+
+:root {
+    --conn-nav-bg: #ffffff;
+    --conn-footer-bg: #ffffff;
+    --bs-body-bg: #f4f5ff;
+    --bs-heading-color: #0a0a0a;
+    --bs-navbar-brand-color: #0a0a0a;
+}
+
+.navbar-brand {
+    --bs-navbar-brand-color: #0a0a0a;
+}
