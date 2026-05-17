@@ -38,5 +38,27 @@
             background-color: var(--conn-accent);
             border-color: var(--conn-accent);
         }
+
+        &--icon {
+            padding: 0.35rem;
+            line-height: 0;
+
+            img {
+                display: block;
+                width: 1rem;
+                height: 1rem;
+            }
+
+            &:hover img {
+                filter: brightness(0) invert(1);
+            }
+        }
     }
+
+    &__social-icon--dark { display: none; }
+}
+
+[data-bs-theme="dark"] {
+    .footer__social-icon--light { display: none; }
+    .footer__social-icon--dark  { display: block; }
 }

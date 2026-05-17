@@ -137,8 +137,36 @@ settings:
     default: ''
     category: conn.social
 
+  social.githubIcon:
+    label: 'GitHub – icon (light)'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, only the icon is shown instead of the text label.'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.githubIconDark:
+    label: 'GitHub – icon (dark)'
+    description: 'Dark-mode variant. Falls back to the light icon when empty.'
+    type: string
+    default: ''
+    category: conn.social
+
   social.linkedin:
     label: 'LinkedIn URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.linkedinIcon:
+    label: 'LinkedIn – icon (light)'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, only the icon is shown instead of the text label.'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.linkedinIconDark:
+    label: 'LinkedIn – icon (dark)'
+    description: 'Dark-mode variant. Falls back to the light icon when empty.'
     type: string
     default: ''
     category: conn.social
@@ -149,8 +177,36 @@ settings:
     default: ''
     category: conn.social
 
+  social.xIcon:
+    label: 'X (Twitter) – icon (light)'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, only the icon is shown instead of the text label.'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.xIconDark:
+    label: 'X (Twitter) – icon (dark)'
+    description: 'Dark-mode variant. Falls back to the light icon when empty.'
+    type: string
+    default: ''
+    category: conn.social
+
   social.instagram:
     label: 'Instagram URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.instagramIcon:
+    label: 'Instagram – icon (light)'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, only the icon is shown instead of the text label.'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.instagramIconDark:
+    label: 'Instagram – icon (dark)'
+    description: 'Dark-mode variant. Falls back to the light icon when empty.'
     type: string
     default: ''
     category: conn.social
@@ -161,8 +217,36 @@ settings:
     default: ''
     category: conn.social
 
+  social.youtubeIcon:
+    label: 'YouTube – icon (light)'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, only the icon is shown instead of the text label.'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.youtubeIconDark:
+    label: 'YouTube – icon (dark)'
+    description: 'Dark-mode variant. Falls back to the light icon when empty.'
+    type: string
+    default: ''
+    category: conn.social
+
   social.facebook:
     label: 'Facebook URL'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.facebookIcon:
+    label: 'Facebook – icon (light)'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, only the icon is shown instead of the text label.'
+    type: string
+    default: ''
+    category: conn.social
+
+  social.facebookIconDark:
+    label: 'Facebook – icon (dark)'
+    description: 'Dark-mode variant. Falls back to the light icon when empty.'
     type: string
     default: ''
     category: conn.social
