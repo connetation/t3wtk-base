@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Connetation Sitepackage',
-    'description' => 'TYPO3 LTS 14 sitepackage based on Bootstrap 5 with light/dark theme and project dashboard',
+    'title' => 'Conn: Sitepackage',
+    'description' => 'TYPO3 LTS 14 sitepackage based on Bootstrap 5 with light/dark theme',
     'category' => 'templates',
     'author' => 'Connetation',
     'author_email' => 'i.sapina@connetation.at',
