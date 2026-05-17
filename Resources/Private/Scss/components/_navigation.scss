@@ -60,6 +60,56 @@ body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-heigh
     }
 }
 
+// ── Offcanvas panel ────────────────────────────
+.navbar .offcanvas {
+    background-color: var(--conn-nav-bg);
+    border-color: var(--conn-border) !important;
+    color: var(--bs-navbar-color);
+
+    .offcanvas-header {
+        border-bottom: 1px solid var(--conn-border);
+        padding: 1rem 1.25rem;
+    }
+
+    .offcanvas-body {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .navbar-nav {
+            gap: 0.25rem;
+        }
+
+        // Theme toggle sits below the nav on mobile
+        .theme-toggle {
+            align-self: flex-start;
+            margin-top: 0.5rem;
+        }
+    }
+
+    // On desktop the offcanvas becomes inline — reset to row layout
+    @media (min-width: 992px) {
+        .offcanvas-body {
+            flex-direction: row;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+
+            .theme-toggle { margin-top: 0; }
+        }
+    }
+}
+
+// Close button adapts to the current theme
+.navbar-offcanvas__close {
+    filter: var(--conn-btn-close-filter, none);
+}
+
+[data-bs-theme="dark"] {
+    --conn-btn-close-filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 // ── Logo position variants (desktop only) ─────
 @media (min-width: 992px) {
     // Center: pull brand out of flow and center it absolutely
