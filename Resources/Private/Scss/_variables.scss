@@ -1,38 +1,7 @@
 // ─────────────────────────────────────────────
-// Bootstrap Variable Overrides
+// Brand Variables
+// Bootstrap overrides are configured in main.scss
 // ─────────────────────────────────────────────
 
-// Brand
-$conn-primary:   #1a1a2e;
-$conn-accent:    #e94560;
-
-// Bootstrap colours
-$primary:   #0d6efd;
-$secondary: #6c757d;
-$success:   #198754;
-$danger:    #dc3545;
-$warning:   #ffc107;
-$info:      #0dcaf0;
-
-// Typography
-$font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
-$font-size-base:    1rem;
-$line-height-base:  1.6;
-$headings-font-weight: 700;
-
-// Radius
-$border-radius:    0.5rem;
-$border-radius-lg: 0.75rem;
-$border-radius-xl: 1rem;
-
-// Shadows
-$box-shadow:    0 0.5rem 1rem rgb(0 0 0 / 8%);
-$box-shadow-sm: 0 0.125rem 0.25rem rgb(0 0 0 / 6%);
-$box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 12%);
-
-// Enable helpers
-$enable-smooth-scroll:     true;
-$enable-negative-margins:  true;
-
-// Transitions
-$transition-base: all 0.2s ease-in-out;
+$conn-primary: #1a1a2e;
+$conn-accent:  #e94560;

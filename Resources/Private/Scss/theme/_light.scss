@@ -2,6 +2,11 @@
 // Light theme (default)
 // ─────────────────────────────────────────────
 
+::selection {
+    background: rgba(99, 102, 241, 0.2);
+    color: #1e1e3f;
+}
+
 :root {
     --conn-nav-bg: #ffffff;
     --conn-footer-bg: #ffffff;

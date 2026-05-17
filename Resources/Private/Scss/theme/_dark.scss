@@ -3,6 +3,11 @@
 // ─────────────────────────────────────────────
 
 [data-bs-theme="dark"] {
+    ::selection {
+        background: rgba(99, 102, 241, 0.4);
+        color: #e2e2ff;
+    }
+
     --conn-nav-bg: #12122a;
     --conn-footer-bg: #12122a;
     --bs-heading-color: #fafafa;

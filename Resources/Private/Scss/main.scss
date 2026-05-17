@@ -1,22 +1,50 @@
 // ─────────────────────────────────────────────
-// Moke Sitepackage – Main SCSS Entry
+// Sitepackage – Main SCSS Entry
 // TYPO3 LTS 14 | Bootstrap 5
 // ─────────────────────────────────────────────
 
-// 1. Custom variables (before Bootstrap)
-@import 'variables';
+// 1. Bootstrap with variable overrides
+@use 'bootstrap/scss/bootstrap' with (
+    // Colours
+    $primary:   #0d6efd,
+    $secondary: #6c757d,
+    $success:   #198754,
+    $danger:    #dc3545,
+    $warning:   #ffc107,
+    $info:      #0dcaf0,
 
-// 2. Bootstrap
-@import 'bootstrap/scss/bootstrap';
+    // Typography
+    $font-family-sans-serif: ('Inter', system-ui, -apple-system, sans-serif),
+    $font-size-base:         1rem,
+    $line-height-base:       1.6,
+    $headings-font-weight:   700,
 
-// 3. Theme
-@import 'theme/light';
-@import 'theme/dark';
-@import 'theme/toggle';
+    // Border radius
+    $border-radius:    0.5rem,
+    $border-radius-lg: 0.75rem,
+    $border-radius-xl: 1rem,
 
-// 4. Components
-@import 'components/navigation';
-@import 'components/footer';
+    // Shadows
+    $box-shadow:    (0 0.5rem 1rem rgb(0 0 0 / 8%)),
+    $box-shadow-sm: (0 0.125rem 0.25rem rgb(0 0 0 / 6%)),
+    $box-shadow-lg: (0 1rem 3rem rgb(0 0 0 / 12%)),
 
-// 5. Utilities
-@import 'utilities';
+    // Options
+    $enable-smooth-scroll:    true,
+    $enable-negative-margins: true,
+
+    // Transitions
+    $transition-base: (all 0.2s ease-in-out)
+);
+
+// 2. Theme
+@use 'theme/light';
+@use 'theme/dark';
+@use 'theme/toggle';
+
+// 3. Components
+@use 'components/navigation';
+@use 'components/footer';
+
+// 4. Utilities
+@use 'utilities';
