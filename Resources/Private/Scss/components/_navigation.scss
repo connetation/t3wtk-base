@@ -2,6 +2,15 @@
 // Navigation
 // ─────────────────────────────────────────────
 
+// Approximate navbar height – override this custom property if your navbar is taller
+:root { --conn-navbar-height: 64px; }
+
+// fixed-top: push all page content down so it clears the navbar
+body:has(.navbar.fixed-top) { padding-top: var(--conn-navbar-height); }
+
+// fixed-bottom: push footer content above the navbar
+body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-height) !important; }
+
 // ── Logo variants ─────────────────────────────
 .navbar-logo {
     display: inline-block;
@@ -48,6 +57,34 @@
     .dropdown-menu-dark {
         border: 1px solid var(--conn-border);
         box-shadow: var(--bs-box-shadow-lg);
+    }
+}
+
+// ── Logo position variants (desktop only) ─────
+@media (min-width: 992px) {
+    // Center: pull brand out of flow and center it absolutely
+    .navbar--logo-center {
+        .container { position: relative; }
+
+        .navbar-brand {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    // Right: move brand after the collapse using flex order
+    .navbar--logo-right {
+        .navbar-brand {
+            order: 3;
+            margin-left: auto !important;
+            margin-right: 0 !important;
+        }
+
+        // Nav items should stay left-aligned inside collapse
+        .navbar-nav {
+            margin-right: auto !important;
+        }
     }
 }
 

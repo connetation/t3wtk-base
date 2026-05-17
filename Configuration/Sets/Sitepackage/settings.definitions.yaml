@@ -1,4 +1,6 @@
 categories:
+  conn.navbar:
+    label: 'Navbar'
   conn.branding:
     label: 'Branding'
   conn.footer:
@@ -12,6 +14,28 @@ categories:
     label: 'Meta & Analytics'
 
 settings:
+  # ─── Navbar ───────────────────────────────────────────────────────────────
+  navbar.position:
+    label: 'Navbar position'
+    type: string
+    default: 'sticky-top'
+    category: conn.navbar
+    enum:
+      sticky-top: 'Sticky top'
+      fixed-top: 'Fixed top'
+      fixed-bottom: 'Fixed bottom'
+      '': 'Static'
+
+  navbar.logoPosition:
+    label: 'Logo position'
+    type: string
+    default: 'left'
+    category: conn.navbar
+    enum:
+      left: 'Left'
+      center: 'Center'
+      right: 'Right'
+
   # ─── Branding ─────────────────────────────────────────────────────────────
   branding.logo:
     label: 'Logo – light mode'
