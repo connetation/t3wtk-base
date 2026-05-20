@@ -20,5 +20,8 @@
     "sass": "^1.77.0",
     "stylelint": "^16.0.0",
     "stylelint-config-standard-scss": "^13.0.0"
+  },
+  "dependencies": {
+    "glightbox": "^3.3.1"
   }
 }

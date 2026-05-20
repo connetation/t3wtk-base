@@ -16,5 +16,15 @@ lib.contentElement {
     }
     settings {
         defaultHeaderType = 2
+        media {
+            popup {
+                directImageLink = 1
+                JSwindow = 0
+                width =
+                height =
+                crop >
+                linkParams.ATagParams.dataWrap = class="glightbox" data-title="{file:current:title}" data-description="{file:current:description}"
+            }
+        }
     }
 }

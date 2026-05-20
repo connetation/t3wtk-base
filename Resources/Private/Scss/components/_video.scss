@@ -1,0 +1,65 @@
+.video-thumb {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    &-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    // Local video element: auto-width preserves intrinsic aspect ratio at the
+    // height calculated by GalleryProcessor (passed via --thumb-h custom property).
+    // aspect-ratio provides a 16:9 layout hint before metadata loads.
+    &-video {
+        width: auto;
+        height: var(--thumb-h, auto);
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    &-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(0 0 0 / 30%);
+        transition: background 0.2s ease;
+
+        &::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 18px 0 18px 32px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 6px;
+            filter: drop-shadow(0 2px 4px rgb(0 0 0 / 40%));
+        }
+    }
+
+    &:hover &-play {
+        background: rgb(0 0 0 / 50%);
+    }
+
+    &:hover &-img {
+        transform: scale(1.02);
+    }
+}
+
+// Extend fluid_styled_content border to video thumbnails.
+// Core CSS only targets img/iframe; those are clipped by overflow:hidden here,
+// so we suppress them and apply a border to the container instead.
+.ce-gallery.ce-border {
+    .video-thumb {
+        box-shadow: 0 0 0 2px #000; // matches fluid_styled_content default borderWidth/borderColor
+
+        &-img {
+            border: none;
+            padding: 0;
+        }
+    }
+}

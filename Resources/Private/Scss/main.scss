@@ -2,6 +2,7 @@
 // Sitepackage – Main SCSS Entry
 // TYPO3 LTS 14 | Bootstrap 5
 // ─────────────────────────────────────────────
+@use 'sass:meta';
 
 // 1. Bootstrap with variable overrides
 @use 'bootstrap/scss/bootstrap' with (
@@ -45,6 +46,10 @@
 // 3. Components
 @use 'components/navigation';
 @use 'components/footer';
+@use 'components/video';
 
 // 4. Utilities
 @use 'utilities';
+
+// 5. Vendor
+@include meta.load-css('glightbox/dist/css/glightbox.min');

@@ -5,6 +5,7 @@
  */
 
 import 'bootstrap';
+import GLightbox from 'glightbox';
 
 // ─────────────────────────────────────────────
 // Theme management (light / dark)
@@ -89,4 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initBootstrapComponents();
     initSmoothScroll();
     initNavbar();
+    const lightbox = GLightbox({ selector: '.glightbox', autoplayVideos: false });
+
+    lightbox.on('slide_changed', ({ current }) => {
+        if (current.trigger?.dataset.autoplay === '1' && current.player) {
+            current.player.play();
+        }
+    });
 });
