@@ -4,6 +4,7 @@
 # ─────────────────────────────────────────────
 
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/Styling/setup.typoscript'
 @import 'EXT:conn_sitepackage/Configuration/TypoScript/Base/Page.typoscript'
 @import 'EXT:conn_sitepackage/Configuration/TypoScript/Base/Lib.typoscript'
 @import 'EXT:conn_elements/Configuration/TypoScript/setup.typoscript'
