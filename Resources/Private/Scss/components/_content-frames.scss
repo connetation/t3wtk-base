@@ -1,0 +1,30 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Full-viewport breakout for Swiper content elements
+//
+// When frame_class = none in TYPO3 Appearance, these CEs render as direct
+// children of .container (no .frame div wrapper). The page template puts all
+// CEs inside <div class="container py-5">, so without a frame the CE is still
+// constrained. These rules break it out to 100vw using negative margins.
+//
+// With a frame (.frame > .conn-hero-slider) the > combinator does NOT match,
+// so framed sliders stay inside their frame as intended.
+//
+// The formula: margin = (content-width - viewport-width) / 2
+//   - 100% = container's content-box width (excludes padding)
+//   - 100vw = full viewport width (includes scrollbar)
+//   - overflow-x: hidden on main prevents the scrollbar artefact
+// ─────────────────────────────────────────────────────────────────────────────
+
+main#main-content {
+    overflow-x: hidden;
+}
+
+.container {
+    > .conn-hero-slider,
+    > .conn-slider {
+        width: 100vw;
+        max-width: none;
+        margin-left: calc((100% - 100vw) / 2);
+        margin-right: calc((100% - 100vw) / 2);
+    }
+}
