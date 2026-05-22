@@ -1,18 +1,54 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Full-viewport breakout for Swiper content elements
+// TYPO3 Content Element Frames — Bootstrap-compatible
 //
-// When frame_class = none in TYPO3 Appearance, these CEs render as direct
-// children of .container (no .frame div wrapper). The page template puts all
-// CEs inside <div class="container py-5">, so without a frame the CE is still
-// constrained. These rules break it out to 100vw using negative margins.
+// TYPO3's Default layout applies CSS classes for frame_class, space_before_class
+// and space_after_class from the Appearance tab. This file maps those classes
+// to Bootstrap-equivalent spacing and decoration so they have visual effect.
 //
-// With a frame (.frame > .conn-hero-slider) the > combinator does NOT match,
-// so framed sliders stay inside their frame as intended.
+// Frame spacing scale matches Bootstrap $spacers:
+//   extra-small = 0.5rem  (bs-2)
+//   small       = 1rem    (bs-3)
+//   medium      = 1.5rem  (bs-4)
+//   large       = 3rem    (bs-5)
+//   extra-large = 6rem
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Space before ─────────────────────────────────────────────────────────────
+.frame-space-before-extra-small { margin-top: 0.5rem; }
+.frame-space-before-small       { margin-top: 1rem;   }
+.frame-space-before-medium      { margin-top: 1.5rem; }
+.frame-space-before-large       { margin-top: 3rem;   }
+.frame-space-before-extra-large { margin-top: 6rem;   }
+
+// ── Space after ──────────────────────────────────────────────────────────────
+.frame-space-after-extra-small { margin-bottom: 0.5rem; }
+.frame-space-after-small       { margin-bottom: 1rem;   }
+.frame-space-after-medium      { margin-bottom: 1.5rem; }
+.frame-space-after-large       { margin-bottom: 3rem;   }
+.frame-space-after-extra-large { margin-bottom: 6rem;   }
+
+// ── Frame decorations ─────────────────────────────────────────────────────────
+.frame-ruler-before {
+    border-top: 1px solid var(--bs-border-color);
+    padding-top: 1.5rem;
+}
+
+.frame-ruler-after {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding-bottom: 1.5rem;
+}
+
+.frame-indent       { padding-inline: 2rem; }
+.frame-indent-left  { padding-left: 2rem;   }
+.frame-indent-right { padding-right: 2rem;  }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Full-viewport breakout for full-width content elements
 //
-// The formula: margin = (content-width - viewport-width) / 2
-//   - 100% = container's content-box width (excludes padding)
-//   - 100vw = full viewport width (includes scrollbar)
-//   - overflow-x: hidden on main prevents the scrollbar artefact
+// When frame_class = none, these CEs render as direct children of .container
+// (no .frame div wrapper). The > combinator breaks them out to 100vw.
+// With a frame (.frame > .conn-*) the combinator does NOT match,
+// so framed elements stay inside their frame as intended.
 // ─────────────────────────────────────────────────────────────────────────────
 
 main#main-content {
@@ -20,10 +56,15 @@ main#main-content {
 }
 
 .container {
+    // Swiper sliders — always full-width
     > .conn-hero-slider,
     > .conn-slider,
     > .conn-thumbs-slider,
-    > .conn-parallax-slider {
+    > .conn-parallax-slider,
+    // Bootstrap elements — full-width when frame = none
+    > .conn-bs-carousel,
+    > .conn-accordion,
+    > .conn-card-group {
         width: 100vw;
         max-width: none;
         margin-left: calc((100% - 100vw) / 2);
