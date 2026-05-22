@@ -28,7 +28,8 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={site.settings.meta.gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </f:if>
 
-    <f:render partial="Navigation/MainNav" arguments="{mainNavigation: mainNavigation, site: site}" />
+    <f:variable name="navStyle">{f:if(condition: '{site.settings.navbar.style}', then: '{site.settings.navbar.style}', else: 'dropdown-light')}</f:variable>
+    <f:render partial="Navigation/Navbar/{navStyle}" arguments="{mainNavigation: mainNavigation, site: site}" />
 
     <main class="flex-shrink-0" id="main-content">
         <f:render section="Main" />

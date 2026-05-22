@@ -1,6 +1,9 @@
 categories:
   conn.navbar:
     label: 'Navbar'
+  conn.navbar.dropdown:
+    label: 'Dropdown style options'
+    parent: conn.navbar
   conn.branding:
     label: 'Branding'
   conn.footer:
@@ -40,7 +43,7 @@ settings:
     label: 'Menu panel – slide from'
     type: string
     default: 'offcanvas-end'
-    category: conn.navbar
+    category: conn.navbar.dropdown
     enum:
       offcanvas-end: 'Right'
       offcanvas-start: 'Left'
@@ -49,20 +52,32 @@ settings:
 
   navbar.offcanvasScroll:
     label: 'Allow body scrolling'
-    description: 'Allow the page to scroll while the menu panel is open.'
+    description: 'Allow the page to scroll while the panel is open.'
     type: bool
     default: false
-    category: conn.navbar
+    category: conn.navbar.dropdown
 
   navbar.offcanvasBackdrop:
     label: 'Backdrop'
     type: string
     default: 'true'
-    category: conn.navbar
+    category: conn.navbar.dropdown
     enum:
       'true': 'Show backdrop'
       'false': 'No backdrop'
       static: 'Static (click outside does not close)'
+
+  navbar.style:
+    label: 'Navbar style'
+    type: string
+    default: 'dropdown-light'
+    category: conn.navbar
+    enum:
+      dropdown-light: 'Dropdown – Light (theme-adaptive)'
+      dropdown-dark: 'Dropdown – Dark (always dark)'
+      megamenu-columns: 'Mega Menu – Columns'
+      sidebar-left: 'Sidebar – Slide from left'
+      sidebar-right: 'Sidebar – Slide from right'
 
   # ─── Branding ─────────────────────────────────────────────────────────────
   branding.logo:
