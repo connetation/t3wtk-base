@@ -44,8 +44,10 @@
 @use 'theme/toggle';
 
 // 3. Components
+@use 'components/breadcrumb';
 @use 'components/navigation';
 @use 'components/navbar-megamenu';
+@use 'components/navbar-megamenu-twopanel';
 @use 'components/navbar-sidebar';
 @use 'components/footer';
 @use 'components/video';

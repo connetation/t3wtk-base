@@ -1,0 +1,258 @@
+// ─────────────────────────────────────────────
+// Navbar – Mega Menu Two-panel
+// Left sidebar (L2) + right content (L3 groups + L4 links)
+// ─────────────────────────────────────────────
+
+.conn-navbar-twopanel {
+    position: relative;
+}
+
+// ── Outer panel ───────────────────────────────
+.conn-twopanel-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--conn-nav-bg);
+    border-top: 1px solid var(--bs-border-color);
+    box-shadow: 0 20px 60px rgb(0 0 0 / 14%), 0 4px 16px rgb(0 0 0 / 8%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
+    // delay visibility so it hides only after the fade-out completes
+    transition: opacity 0.18s ease-in, transform 0.18s ease-in, visibility 0s 0.18s;
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition: opacity 0.22s ease-out, transform 0.22s ease-out, visibility 0s 0s;
+    }
+}
+
+// ── Two-panel layout ──────────────────────────
+.conn-twopanel {
+    display: flex;
+    align-items: stretch;
+    min-height: 280px;
+}
+
+// ── Left sidebar ──────────────────────────────
+.conn-twopanel-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--bs-border-color);
+    padding: 1.25rem 0.75rem;
+    background: var(--bs-tertiary-bg);
+    overflow-y: auto;
+
+    > ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
+// ── L2 sidebar item ───────────────────────────
+.conn-twopanel-trigger {
+    > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0.625rem 0.875rem;
+        border-radius: 0.5rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--bs-body-color);
+        text-decoration: none;
+        transition: background-color 0.12s ease, color 0.12s ease;
+        white-space: nowrap;
+
+        > span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    }
+
+    .conn-twopanel-arrow {
+        flex-shrink: 0;
+        opacity: 0;
+        transition: opacity 0.12s ease, transform 0.12s ease;
+    }
+
+    &:hover > a {
+        background-color: var(--bs-secondary-bg);
+        color: var(--bs-body-color);
+
+        .conn-twopanel-arrow { opacity: 0.35; }
+    }
+
+    &.is-active > a {
+        background-color: var(--bs-primary-bg-subtle);
+        color: var(--bs-primary);
+        font-weight: 600;
+
+        .conn-twopanel-arrow { opacity: 0.8; transform: translateX(2px); }
+    }
+}
+
+// ── Right content area ────────────────────────
+.conn-twopanel-content {
+    flex: 1;
+    padding: 1.75rem 2rem;
+    overflow: hidden;
+    min-width: 0;
+}
+
+// ── L3 sections (one per L2 item) ─────────────
+.conn-twopanel-section {
+    display: none;
+
+    &.is-active {
+        display: block;
+        animation: conn-twopanel-fadein 0.18s ease both;
+    }
+}
+
+@keyframes conn-twopanel-fadein {
+    from { opacity: 0; transform: translateX(8px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+// ── L3 group grid ─────────────────────────────
+.conn-twopanel-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0;
+
+    > .conn-twopanel-group + .conn-twopanel-group {
+        border-left: 1px solid var(--bs-border-color);
+        padding-left: 1.75rem;
+    }
+}
+
+// ── L3 group ──────────────────────────────────
+.conn-twopanel-group {
+    padding: 0 1.75rem 0 0;
+
+    &__heading {
+        display: block;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--bs-body-color);
+        opacity: 0.4;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.375rem;
+        transition: opacity 0.12s ease, background-color 0.12s ease;
+
+        &:hover { opacity: 0.7; background: var(--bs-secondary-bg); }
+        &.active { opacity: 0.8; color: var(--bs-primary); }
+    }
+
+    // L3 as standalone link (no L4 children) — shown at full size
+    &__heading:only-child,
+    &:not(:has(&__list)) &__heading {
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: 0;
+        opacity: 1;
+        margin-bottom: 0;
+
+        &:hover { color: var(--bs-primary); opacity: 1; }
+    }
+
+    // ── L4 link list ──────────────────────────
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.5rem 0.625rem;
+            border-radius: 0.5rem;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--bs-body-color);
+            text-decoration: none;
+            transition: background-color 0.12s ease, color 0.12s ease, transform 0.1s ease;
+
+            &::before {
+                content: '';
+                flex-shrink: 0;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--bs-primary);
+                opacity: 0.25;
+                transition: opacity 0.12s ease, transform 0.12s ease;
+            }
+
+            &:hover {
+                background-color: var(--bs-secondary-bg);
+                transform: translateX(2px);
+
+                &::before { opacity: 0.8; transform: scale(1.2); }
+            }
+
+            &.active {
+                color: var(--bs-primary);
+                background-color: var(--bs-primary-bg-subtle);
+                font-weight: 600;
+
+                &::before { opacity: 1; }
+            }
+        }
+    }
+}
+
+// ── Caret (shared with megamenu) ──────────────
+.conn-navbar-twopanel {
+    .conn-megamenu-caret {
+        display: inline-block;
+        margin-left: 3px;
+        vertical-align: middle;
+        transition: transform 0.2s ease;
+        transform: translateY(-1px);
+        opacity: 0.6;
+    }
+
+    .conn-megamenu-trigger.is-open .conn-megamenu-caret {
+        transform: translateY(-1px) rotate(180deg);
+        opacity: 1;
+    }
+
+    .conn-megamenu-trigger.is-open > .conn-megamenu-toggle {
+        color: var(--bs-primary, inherit) !important;
+    }
+}
+
+// ── Mobile – reuse existing caret + submenu ───
+.conn-mobile-submenu--l3 {
+    .navbar-nav {
+        border-left: 2px solid var(--bs-primary-bg-subtle);
+        margin: 0.25rem 0;
+
+        .nav-link {
+            font-size: 0.85rem;
+            padding-left: 1rem;
+            opacity: 0.75;
+
+            &:hover, &.active { opacity: 1; }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+// ─────────────────────────────────────────────
+// Breadcrumb
+// ─────────────────────────────────────────────
+
+.breadcrumb {
+    --bs-breadcrumb-divider: '›';
+
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+
+    .breadcrumb-item {
+        + .breadcrumb-item::before {
+            color: rgba(var(--bs-body-color-rgb), 0.25);
+            font-weight: 400;
+        }
+
+        a {
+            color: rgba(var(--bs-body-color-rgb), 0.45);
+            text-decoration: none;
+            transition: color 0.15s ease-in-out;
+
+            &:hover {
+                color: #e94560;
+            }
+        }
+
+        &.active {
+            color: var(--bs-body-color);
+        }
+    }
+}

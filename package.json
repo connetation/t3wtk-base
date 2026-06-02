@@ -6,10 +6,10 @@
   "scripts": {
     "build": "npm run build:scss && npm run build:js",
     "build:scss": "sass Resources/Private/Scss/main.scss Resources/Public/Css/main.css --style=compressed --load-path=node_modules",
-    "build:js": "esbuild Resources/Private/JavaScript/main.js --bundle --minify --outfile=Resources/Public/Js/main.js",
+    "build:js": "node build.mjs",
     "dev": "npm run dev:scss & npm run dev:js",
     "dev:scss": "sass Resources/Private/Scss/main.scss Resources/Public/Css/main.css --watch --load-path=node_modules",
-    "dev:js": "esbuild Resources/Private/JavaScript/main.js --bundle --outfile=Resources/Public/Js/main.js --watch",
+    "dev:js": "node build.mjs --watch",
     "postinstall": "npm rebuild esbuild",
     "lint:scss": "stylelint '**/*.scss' --fix",
     "lint:js": "eslint '**/*.js' --fix"

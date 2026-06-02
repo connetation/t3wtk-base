@@ -76,6 +76,7 @@ settings:
       dropdown-light: 'Dropdown – Light (theme-adaptive)'
       dropdown-dark: 'Dropdown – Dark (always dark)'
       megamenu-columns: 'Mega Menu – Columns'
+      megamenu-twopanel: 'Mega Menu – Two-panel'
       sidebar-left: 'Sidebar – Slide from left'
       sidebar-right: 'Sidebar – Slide from right'
 
