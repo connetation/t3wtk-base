@@ -141,6 +141,7 @@ settings:
       copyright: 'Copyright'
       social: 'Social links'
       navigation: 'Navigation (inline)'
+      brand: 'Brand logo'
       '': 'Empty'
 
   footer.bar.right:
@@ -152,6 +153,7 @@ settings:
       copyright: 'Copyright'
       social: 'Social links'
       navigation: 'Navigation (inline)'
+      brand: 'Brand logo'
       '': 'Empty'
 
   # ─── Footer – Grid columns ───────────────────────────────────────────────

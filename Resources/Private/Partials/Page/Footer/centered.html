@@ -2,6 +2,8 @@
       xmlns:conn="http://typo3.org/ns/Connetation/Sitepackage/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
+<f:variable name="currentYear"><f:format.date format="Y" date="now"/></f:variable>
+
 <footer class="footer mt-auto py-5" id="footer">
     <div class="container text-center">
 
@@ -142,7 +144,7 @@
         <hr />
 
         <p class="text-body-secondary small mb-0">
-            &copy; <f:format.date format="Y" />
+            &copy; {currentYear}
             {f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}
         </p>
 

@@ -13,6 +13,7 @@
 </f:if>
 <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 <f:variable name="copyrightName">{f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}</f:variable>
+<f:variable name="currentYear"><f:format.date format="Y" date="now"/></f:variable>
 
 <footer class="footer mt-auto py-5" id="footer">
     <div class="container">
@@ -74,25 +75,27 @@
 
                 <div class="col-md-6 text-body-secondary small">
                     <f:switch expression="{site.settings.footer.bar.left}">
-                        <f:case value="copyright">&copy; <f:format.date format="Y" /> {copyrightName}</f:case>
+                        <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                         <f:case value="social">
                             <div class="footer__social d-flex flex-wrap gap-2">
                                 <f:render section="SocialLinks" arguments="{site: site}" />
                             </div>
                         </f:case>
                         <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
                     </f:switch>
                 </div>
 
                 <div class="col-md-6 text-md-end">
                     <f:switch expression="{site.settings.footer.bar.right}">
-                        <f:case value="copyright"><span class="text-body-secondary small">&copy; <f:format.date format="Y" /> {copyrightName}</span></f:case>
+                        <f:case value="copyright"><span class="text-body-secondary small">&copy; {currentYear} {copyrightName}</span></f:case>
                         <f:case value="social">
                             <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
                                 <f:render section="SocialLinks" arguments="{site: site}" />
                             </div>
                         </f:case>
                         <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
                     </f:switch>
                 </div>
 
@@ -105,6 +108,29 @@
 <!-- ═══════════════════════════════════════════════════════════════
      Content block sections (reused across columns via f:render)
      ═══════════════════════════════════════════════════════════════ -->
+
+<f:section name="BarBrand">
+    <a href="/" class="footer__brand-link text-decoration-none text-reset fw-bold">
+        <f:if condition="{lightSrc}">
+            <f:then>
+                <f:variable name="resolvedLight">{f:uri.resource(path: lightSrc)}</f:variable>
+                <f:if condition="{darkSrc}">
+                    <f:then>
+                        <f:variable name="resolvedDark">{f:uri.resource(path: darkSrc)}</f:variable>
+                        <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--light" />
+                        <img src="{resolvedDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--dark" />
+                    </f:then>
+                    <f:else>
+                        <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo" />
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                {site.configuration.websiteTitle}
+            </f:else>
+        </f:if>
+    </a>
+</f:section>
 
 <f:section name="BarNavigation">
     <ul class="list-inline mb-0 small">
