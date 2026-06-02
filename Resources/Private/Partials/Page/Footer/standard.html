@@ -2,216 +2,289 @@
       xmlns:conn="http://typo3.org/ns/Connetation/Sitepackage/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
+<!-- Resolve logo sources once, shared across brand block below -->
+<f:if condition="{site.settings.footer.logo}">
+    <f:then><f:variable name="lightSrc">{site.settings.footer.logo}</f:variable></f:then>
+    <f:else><f:variable name="lightSrc">{site.settings.branding.logo}</f:variable></f:else>
+</f:if>
+<f:if condition="{site.settings.footer.logoDark}">
+    <f:then><f:variable name="darkSrc">{site.settings.footer.logoDark}</f:variable></f:then>
+    <f:else><f:variable name="darkSrc">{site.settings.branding.logoDark}</f:variable></f:else>
+</f:if>
+<f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
+<f:variable name="copyrightName">{f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}</f:variable>
+
 <footer class="footer mt-auto py-5" id="footer">
     <div class="container">
         <div class="row g-4">
 
-            <!-- Brand column (always visible) -->
-            <div class="col-lg-4 col-md-6">
-                <div class="footer__brand fw-bold mb-2">
-                    <!-- Resolve footer logo sources with fallback chain -->
-                    <f:if condition="{site.settings.footer.logo}">
-                        <f:then><f:variable name="lightSrc">{site.settings.footer.logo}</f:variable></f:then>
-                        <f:else><f:variable name="lightSrc">{site.settings.branding.logo}</f:variable></f:else>
-                    </f:if>
-                    <f:if condition="{site.settings.footer.logoDark}">
-                        <f:then><f:variable name="darkSrc">{site.settings.footer.logoDark}</f:variable></f:then>
-                        <f:else><f:variable name="darkSrc">{site.settings.branding.logoDark}</f:variable></f:else>
-                    </f:if>
-                    <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
-
-                    <a href="/" class="footer__brand-link text-decoration-none text-reset">
-                        <f:if condition="{lightSrc}">
-                            <f:then>
-                                <f:variable name="resolvedLight">{f:uri.resource(path: lightSrc)}</f:variable>
-                                <f:if condition="{darkSrc}">
-                                    <f:then>
-                                        <f:variable name="resolvedDark">{f:uri.resource(path: darkSrc)}</f:variable>
-                                        <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--light" />
-                                        <img src="{resolvedDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--dark" />
-                                    </f:then>
-                                    <f:else>
-                                        <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo" />
-                                    </f:else>
-                                </f:if>
-                            </f:then>
-                            <f:else>
-                                {site.configuration.websiteTitle}
-                            </f:else>
-                        </f:if>
-                    </a>
-                </div>
-                <f:if condition="{site.settings.footer.tagline}">
-                    <p class="text-body-secondary small mb-0">{site.settings.footer.tagline}</p>
-                </f:if>
-            </div>
-
-            <!-- Navigation column (optional) -->
-            <f:if condition="{site.settings.footer.showNavigation}">
-                <div class="col-lg-4 col-md-6">
-                    <h6 class="footer__nav-title fw-semibold text-uppercase small mb-3">Navigation</h6>
-                    <ul class="list-unstyled mb-0">
-                        <f:for each="{footerNavigation}" as="item">
-                            <li class="mb-1">
-                                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">
-                                    {item.title}
-                                </a>
-                            </li>
-                        </f:for>
-                    </ul>
+            <!-- Column 1 -->
+            <f:if condition="{site.settings.footer.col1.content}">
+                <div class="col-lg-{site.settings.footer.col1.size} col-md-6 {site.settings.footer.col1.mobilejustify} {site.settings.footer.col1.desktopjustify} {site.settings.footer.col1.mobilealign} {site.settings.footer.col1.desktopalign}">
+                    <f:switch expression="{site.settings.footer.col1.content}">
+                        <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
+                        <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
+                    </f:switch>
                 </div>
             </f:if>
 
-            <!-- Address column (optional) -->
-            <f:if condition="{site.settings.footer.showAddress}">
-                <div class="col-lg-4 col-md-6">
-                    <h6 class="footer__address-title fw-semibold text-uppercase small mb-3">Contact</h6>
-                    <address class="text-body-secondary small mb-0">
-                        <f:if condition="{site.settings.footer.address.company}">
-                            <strong>{site.settings.footer.address.company}</strong><br />
-                        </f:if>
-                        <f:if condition="{site.settings.footer.address.street}">
-                            {site.settings.footer.address.street}<br />
-                        </f:if>
-                        <f:if condition="{site.settings.footer.address.zip}">
-                            {site.settings.footer.address.zip}&#32;
-                        </f:if>
-                        <f:if condition="{site.settings.footer.address.city}">
-                            {site.settings.footer.address.city}<br />
-                        </f:if>
-                        <f:if condition="{site.settings.footer.address.country}">
-                            {site.settings.footer.address.country}<br />
-                        </f:if>
-                        <f:if condition="{site.settings.footer.address.phone}">
-                            <a href="tel:{site.settings.footer.address.phone}" class="footer__link text-body-secondary text-decoration-none">
-                                {site.settings.footer.address.phone}
-                            </a><br />
-                        </f:if>
-                        <f:if condition="{site.settings.footer.address.email}">
-                            <a href="mailto:{site.settings.footer.address.email}" class="footer__link text-body-secondary text-decoration-none">
-                                {site.settings.footer.address.email}
-                            </a>
-                        </f:if>
-                    </address>
+            <!-- Column 2 -->
+            <f:if condition="{site.settings.footer.col2.content}">
+                <div class="col-lg-{site.settings.footer.col2.size} col-md-6 {site.settings.footer.col2.mobilejustify} {site.settings.footer.col2.desktopjustify} {site.settings.footer.col2.mobilealign} {site.settings.footer.col2.desktopalign}">
+                    <f:switch expression="{site.settings.footer.col2.content}">
+                        <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
+                        <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
+                    </f:switch>
+                </div>
+            </f:if>
+
+            <!-- Column 3 -->
+            <f:if condition="{site.settings.footer.col3.content}">
+                <div class="col-lg-{site.settings.footer.col3.size} col-md-6 {site.settings.footer.col3.mobilejustify} {site.settings.footer.col3.desktopjustify} {site.settings.footer.col3.mobilealign} {site.settings.footer.col3.desktopalign}">
+                    <f:switch expression="{site.settings.footer.col3.content}">
+                        <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
+                        <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
+                    </f:switch>
+                </div>
+            </f:if>
+
+            <!-- Column 4 -->
+            <f:if condition="{site.settings.footer.col4.content}">
+                <div class="col-lg-{site.settings.footer.col4.size} col-md-6 {site.settings.footer.col4.mobilejustify} {site.settings.footer.col4.desktopjustify} {site.settings.footer.col4.mobilealign} {site.settings.footer.col4.desktopalign}">
+                    <f:switch expression="{site.settings.footer.col4.content}">
+                        <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
+                        <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
+                    </f:switch>
                 </div>
             </f:if>
 
         </div>
 
-        <hr class="mt-4" />
+        <f:if condition="{site.settings.footer.bar.show}">
+            <hr class="mt-4" />
+            <div class="row align-items-center g-2">
 
-        <div class="row align-items-center g-2">
-            <div class="col-md-6 text-body-secondary small">
-                &copy; <f:format.date format="Y" />
-                {f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}
+                <div class="col-md-6 text-body-secondary small">
+                    <f:switch expression="{site.settings.footer.bar.left}">
+                        <f:case value="copyright">&copy; <f:format.date format="Y" /> {copyrightName}</f:case>
+                        <f:case value="social">
+                            <div class="footer__social d-flex flex-wrap gap-2">
+                                <f:render section="SocialLinks" arguments="{site: site}" />
+                            </div>
+                        </f:case>
+                        <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                    </f:switch>
+                </div>
+
+                <div class="col-md-6 text-md-end">
+                    <f:switch expression="{site.settings.footer.bar.right}">
+                        <f:case value="copyright"><span class="text-body-secondary small">&copy; <f:format.date format="Y" /> {copyrightName}</span></f:case>
+                        <f:case value="social">
+                            <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
+                                <f:render section="SocialLinks" arguments="{site: site}" />
+                            </div>
+                        </f:case>
+                        <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                    </f:switch>
+                </div>
+
             </div>
-
-            <f:if condition="{site.settings.footer.showSocial}">
-                <f:then>
-                    <div class="col-md-6 text-md-end">
-                        <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
-                            <f:if condition="{site.settings.social.github}">
-                                <f:if condition="{site.settings.social.githubIcon}">
-                                    <f:then>
-                                        <a href="{site.settings.social.github}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                            <img src="{conn:resolvePath(path: site.settings.social.githubIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.githubIconDark, then: ' footer__social-icon--light')}" />
-                                            <f:if condition="{site.settings.social.githubIconDark}">
-                                                <img src="{conn:resolvePath(path: site.settings.social.githubIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
-                                            </f:if>
-                                        </a>
-                                    </f:then>
-                                    <f:else>
-                                        <a href="{site.settings.social.github}" class="footer__social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    </f:else>
-                                </f:if>
-                            </f:if>
-                            <f:if condition="{site.settings.social.linkedin}">
-                                <f:if condition="{site.settings.social.linkedinIcon}">
-                                    <f:then>
-                                        <a href="{site.settings.social.linkedin}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                            <img src="{conn:resolvePath(path: site.settings.social.linkedinIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.linkedinIconDark, then: ' footer__social-icon--light')}" />
-                                            <f:if condition="{site.settings.social.linkedinIconDark}">
-                                                <img src="{conn:resolvePath(path: site.settings.social.linkedinIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
-                                            </f:if>
-                                        </a>
-                                    </f:then>
-                                    <f:else>
-                                        <a href="{site.settings.social.linkedin}" class="footer__social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                                    </f:else>
-                                </f:if>
-                            </f:if>
-                            <f:if condition="{site.settings.social.x}">
-                                <f:if condition="{site.settings.social.xIcon}">
-                                    <f:then>
-                                        <a href="{site.settings.social.x}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                                            <img src="{conn:resolvePath(path: site.settings.social.xIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.xIconDark, then: ' footer__social-icon--light')}" />
-                                            <f:if condition="{site.settings.social.xIconDark}">
-                                                <img src="{conn:resolvePath(path: site.settings.social.xIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
-                                            </f:if>
-                                        </a>
-                                    </f:then>
-                                    <f:else>
-                                        <a href="{site.settings.social.x}" class="footer__social-link" target="_blank" rel="noopener noreferrer">X</a>
-                                    </f:else>
-                                </f:if>
-                            </f:if>
-                            <f:if condition="{site.settings.social.instagram}">
-                                <f:if condition="{site.settings.social.instagramIcon}">
-                                    <f:then>
-                                        <a href="{site.settings.social.instagram}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                            <img src="{conn:resolvePath(path: site.settings.social.instagramIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.instagramIconDark, then: ' footer__social-icon--light')}" />
-                                            <f:if condition="{site.settings.social.instagramIconDark}">
-                                                <img src="{conn:resolvePath(path: site.settings.social.instagramIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
-                                            </f:if>
-                                        </a>
-                                    </f:then>
-                                    <f:else>
-                                        <a href="{site.settings.social.instagram}" class="footer__social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
-                                    </f:else>
-                                </f:if>
-                            </f:if>
-                            <f:if condition="{site.settings.social.youtube}">
-                                <f:if condition="{site.settings.social.youtubeIcon}">
-                                    <f:then>
-                                        <a href="{site.settings.social.youtube}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                                            <img src="{conn:resolvePath(path: site.settings.social.youtubeIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.youtubeIconDark, then: ' footer__social-icon--light')}" />
-                                            <f:if condition="{site.settings.social.youtubeIconDark}">
-                                                <img src="{conn:resolvePath(path: site.settings.social.youtubeIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
-                                            </f:if>
-                                        </a>
-                                    </f:then>
-                                    <f:else>
-                                        <a href="{site.settings.social.youtube}" class="footer__social-link" target="_blank" rel="noopener noreferrer">YouTube</a>
-                                    </f:else>
-                                </f:if>
-                            </f:if>
-                            <f:if condition="{site.settings.social.facebook}">
-                                <f:if condition="{site.settings.social.facebookIcon}">
-                                    <f:then>
-                                        <a href="{site.settings.social.facebook}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                                            <img src="{conn:resolvePath(path: site.settings.social.facebookIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.facebookIconDark, then: ' footer__social-icon--light')}" />
-                                            <f:if condition="{site.settings.social.facebookIconDark}">
-                                                <img src="{conn:resolvePath(path: site.settings.social.facebookIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
-                                            </f:if>
-                                        </a>
-                                    </f:then>
-                                    <f:else>
-                                        <a href="{site.settings.social.facebook}" class="footer__social-link" target="_blank" rel="noopener noreferrer">Facebook</a>
-                                    </f:else>
-                                </f:if>
-                            </f:if>
-                        </div>
-                    </div>
-                </f:then>
-                <f:else>
-                    <div class="col-md-6 text-md-end text-body-secondary small">
-                        Built with TYPO3 &amp; Bootstrap 5
-                    </div>
-                </f:else>
-            </f:if>
-        </div>
+        </f:if>
 
     </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     Content block sections (reused across columns via f:render)
+     ═══════════════════════════════════════════════════════════════ -->
+
+<f:section name="BarNavigation">
+    <ul class="list-inline mb-0 small">
+        <f:for each="{footerNavigation}" as="item">
+            <li class="list-inline-item">
+                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">{item.title}</a>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+
+<f:section name="Brand">
+    <div class="footer__brand fw-bold mb-2">
+        <a href="/" class="footer__brand-link text-decoration-none text-reset">
+            <f:if condition="{lightSrc}">
+                <f:then>
+                    <f:variable name="resolvedLight">{f:uri.resource(path: lightSrc)}</f:variable>
+                    <f:if condition="{darkSrc}">
+                        <f:then>
+                            <f:variable name="resolvedDark">{f:uri.resource(path: darkSrc)}</f:variable>
+                            <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--light" />
+                            <img src="{resolvedDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--dark" />
+                        </f:then>
+                        <f:else>
+                            <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo" />
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    {site.configuration.websiteTitle}
+                </f:else>
+            </f:if>
+        </a>
+    </div>
+    <f:if condition="{site.settings.footer.tagline}">
+        <p class="text-body-secondary small mb-0">{site.settings.footer.tagline}</p>
+    </f:if>
+</f:section>
+
+<f:section name="Navigation">
+    <h6 class="footer__nav-title fw-semibold text-uppercase small mb-3">Navigation</h6>
+    <ul class="list-unstyled mb-0">
+        <f:for each="{footerNavigation}" as="item">
+            <li class="mb-1">
+                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">
+                    {item.title}
+                </a>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+
+<f:section name="Address">
+    <h6 class="footer__address-title fw-semibold text-uppercase small mb-3">Contact</h6>
+    <address class="text-body-secondary small mb-0">
+        <f:if condition="{site.settings.footer.address.company}">
+            <strong>{site.settings.footer.address.company}</strong><br />
+        </f:if>
+        <f:if condition="{site.settings.footer.address.street}">
+            {site.settings.footer.address.street}<br />
+        </f:if>
+        <f:if condition="{site.settings.footer.address.zip}">
+            {site.settings.footer.address.zip}&#32;
+        </f:if>
+        <f:if condition="{site.settings.footer.address.city}">
+            {site.settings.footer.address.city}<br />
+        </f:if>
+        <f:if condition="{site.settings.footer.address.country}">
+            {site.settings.footer.address.country}<br />
+        </f:if>
+        <f:if condition="{site.settings.footer.address.phone}">
+            <a href="tel:{site.settings.footer.address.phone}" class="footer__link text-body-secondary text-decoration-none">
+                {site.settings.footer.address.phone}
+            </a><br />
+        </f:if>
+        <f:if condition="{site.settings.footer.address.email}">
+            <a href="mailto:{site.settings.footer.address.email}" class="footer__link text-body-secondary text-decoration-none">
+                {site.settings.footer.address.email}
+            </a>
+        </f:if>
+    </address>
+</f:section>
+
+<f:section name="SocialColumn">
+    <div class="footer__social d-inline-flex flex-wrap gap-2">
+        <f:render section="SocialLinks" arguments="{site: site}" />
+    </div>
+</f:section>
+
+<f:section name="SocialLinks">
+    <f:if condition="{site.settings.social.github}">
+        <f:if condition="{site.settings.social.githubIcon}">
+            <f:then>
+                <a href="{site.settings.social.github}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <img src="{conn:resolvePath(path: site.settings.social.githubIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.githubIconDark, then: ' footer__social-icon--light')}" />
+                    <f:if condition="{site.settings.social.githubIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.githubIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                    </f:if>
+                </a>
+            </f:then>
+            <f:else>
+                <a href="{site.settings.social.github}" class="footer__social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{site.settings.social.linkedin}">
+        <f:if condition="{site.settings.social.linkedinIcon}">
+            <f:then>
+                <a href="{site.settings.social.linkedin}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="{conn:resolvePath(path: site.settings.social.linkedinIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.linkedinIconDark, then: ' footer__social-icon--light')}" />
+                    <f:if condition="{site.settings.social.linkedinIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.linkedinIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                    </f:if>
+                </a>
+            </f:then>
+            <f:else>
+                <a href="{site.settings.social.linkedin}" class="footer__social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{site.settings.social.x}">
+        <f:if condition="{site.settings.social.xIcon}">
+            <f:then>
+                <a href="{site.settings.social.x}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <img src="{conn:resolvePath(path: site.settings.social.xIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.xIconDark, then: ' footer__social-icon--light')}" />
+                    <f:if condition="{site.settings.social.xIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.xIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                    </f:if>
+                </a>
+            </f:then>
+            <f:else>
+                <a href="{site.settings.social.x}" class="footer__social-link" target="_blank" rel="noopener noreferrer">X</a>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{site.settings.social.instagram}">
+        <f:if condition="{site.settings.social.instagramIcon}">
+            <f:then>
+                <a href="{site.settings.social.instagram}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="{conn:resolvePath(path: site.settings.social.instagramIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.instagramIconDark, then: ' footer__social-icon--light')}" />
+                    <f:if condition="{site.settings.social.instagramIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.instagramIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                    </f:if>
+                </a>
+            </f:then>
+            <f:else>
+                <a href="{site.settings.social.instagram}" class="footer__social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{site.settings.social.youtube}">
+        <f:if condition="{site.settings.social.youtubeIcon}">
+            <f:then>
+                <a href="{site.settings.social.youtube}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <img src="{conn:resolvePath(path: site.settings.social.youtubeIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.youtubeIconDark, then: ' footer__social-icon--light')}" />
+                    <f:if condition="{site.settings.social.youtubeIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.youtubeIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                    </f:if>
+                </a>
+            </f:then>
+            <f:else>
+                <a href="{site.settings.social.youtube}" class="footer__social-link" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{site.settings.social.facebook}">
+        <f:if condition="{site.settings.social.facebookIcon}">
+            <f:then>
+                <a href="{site.settings.social.facebook}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="{conn:resolvePath(path: site.settings.social.facebookIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.facebookIconDark, then: ' footer__social-icon--light')}" />
+                    <f:if condition="{site.settings.social.facebookIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.facebookIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                    </f:if>
+                </a>
+            </f:then>
+            <f:else>
+                <a href="{site.settings.social.facebook}" class="footer__social-link" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:section>
 
 </html>

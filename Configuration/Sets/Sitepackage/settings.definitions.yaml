@@ -8,6 +8,12 @@ categories:
     label: 'Branding'
   conn.footer:
     label: 'Footer'
+  conn.footer.grid:
+    label: 'Footer – Grid'
+    parent: conn.footer
+  conn.footer.bar:
+    label: 'Footer – Bottom bar'
+    parent: conn.footer
   conn.footer.address:
     label: 'Footer – Address'
     parent: conn.footer
@@ -119,6 +125,309 @@ settings:
       centered: 'Centered'
       minimal: 'Minimal (bar only)'
 
+  # ─── Footer – Bottom bar ─────────────────────────────────────────────────
+  footer.bar.show:
+    label: 'Show bottom bar'
+    type: bool
+    default: true
+    category: conn.footer.bar
+
+  footer.bar.left:
+    label: 'Bottom bar – Left slot'
+    type: string
+    default: 'copyright'
+    category: conn.footer.bar
+    enum:
+      copyright: 'Copyright'
+      social: 'Social links'
+      navigation: 'Navigation (inline)'
+      '': 'Empty'
+
+  footer.bar.right:
+    label: 'Bottom bar – Right slot'
+    type: string
+    default: 'social'
+    category: conn.footer.bar
+    enum:
+      copyright: 'Copyright'
+      social: 'Social links'
+      navigation: 'Navigation (inline)'
+      '': 'Empty'
+
+  # ─── Footer – Grid columns ───────────────────────────────────────────────
+  footer.col1.content:
+    label: 'Column 1 – Content'
+    type: string
+    default: 'brand'
+    category: conn.footer.grid
+    enum:
+      brand: 'Brand & tagline'
+      navigation: 'Navigation'
+      address: 'Address'
+      social: 'Social links'
+      '': 'Empty'
+
+  footer.col1.size:
+    label: 'Column 1 – Width (of 12)'
+    type: string
+    default: '4'
+    category: conn.footer.grid
+    enum:
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col1.mobilealign:
+    label: 'Column 1 – Text alignment (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
+  footer.col1.mobilejustify:
+    label: 'Column 1 – Position in row (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-auto': 'Center'
+      'ms-auto': 'Right'
+
+  footer.col1.desktopalign:
+    label: 'Column 1 – Text alignment (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-md-center': 'Center'
+      'text-md-end': 'Right'
+
+  footer.col1.desktopjustify:
+    label: 'Column 1 – Position in row (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-md-auto': 'Center'
+      'ms-md-auto': 'Right'
+
+  footer.col2.content:
+    label: 'Column 2 – Content'
+    type: string
+    default: 'navigation'
+    category: conn.footer.grid
+    enum:
+      brand: 'Brand & tagline'
+      navigation: 'Navigation'
+      address: 'Address'
+      social: 'Social links'
+      '': 'Empty'
+
+  footer.col2.size:
+    label: 'Column 2 – Width (of 12)'
+    type: string
+    default: '4'
+    category: conn.footer.grid
+    enum:
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col2.mobilealign:
+    label: 'Column 2 – Text alignment (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
+  footer.col2.mobilejustify:
+    label: 'Column 2 – Position in row (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-auto': 'Center'
+      'ms-auto': 'Right'
+
+  footer.col2.desktopalign:
+    label: 'Column 2 – Text alignment (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-md-center': 'Center'
+      'text-md-end': 'Right'
+
+  footer.col2.desktopjustify:
+    label: 'Column 2 – Position in row (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-md-auto': 'Center'
+      'ms-md-auto': 'Right'
+
+  footer.col3.content:
+    label: 'Column 3 – Content'
+    type: string
+    default: 'address'
+    category: conn.footer.grid
+    enum:
+      brand: 'Brand & tagline'
+      navigation: 'Navigation'
+      address: 'Address'
+      social: 'Social links'
+      '': 'Empty'
+
+  footer.col3.size:
+    label: 'Column 3 – Width (of 12)'
+    type: string
+    default: '4'
+    category: conn.footer.grid
+    enum:
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col3.mobilealign:
+    label: 'Column 3 – Text alignment (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
+  footer.col3.mobilejustify:
+    label: 'Column 3 – Position in row (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-auto': 'Center'
+      'ms-auto': 'Right'
+
+  footer.col3.desktopalign:
+    label: 'Column 3 – Text alignment (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-md-center': 'Center'
+      'text-md-end': 'Right'
+
+  footer.col3.desktopjustify:
+    label: 'Column 3 – Position in row (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-md-auto': 'Center'
+      'ms-md-auto': 'Right'
+
+  footer.col4.content:
+    label: 'Column 4 – Content'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      brand: 'Brand & tagline'
+      navigation: 'Navigation'
+      address: 'Address'
+      social: 'Social links'
+      '': 'Empty'
+
+  footer.col4.size:
+    label: 'Column 4 – Width (of 12)'
+    type: string
+    default: '3'
+    category: conn.footer.grid
+    enum:
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col4.mobilealign:
+    label: 'Column 4 – Text alignment (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
+  footer.col4.mobilejustify:
+    label: 'Column 4 – Position in row (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-auto': 'Center'
+      'ms-auto': 'Right'
+
+  footer.col4.desktopalign:
+    label: 'Column 4 – Text alignment (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'text-md-center': 'Center'
+      'text-md-end': 'Right'
+
+  footer.col4.desktopjustify:
+    label: 'Column 4 – Position in row (desktop, >=768px)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Left'
+      'mx-md-auto': 'Center'
+      'ms-md-auto': 'Right'
+
+  # ─── Footer – General ─────────────────────────────────────────────────────
   footer.tagline:
     label: 'Footer tagline'
     description: 'Short text below the brand name in the footer.'
