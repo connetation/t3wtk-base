@@ -109,6 +109,16 @@ settings:
     category: conn.branding
 
   # ─── Footer – General ─────────────────────────────────────────────────────
+  footer.layout:
+    label: 'Footer layout'
+    type: string
+    default: 'standard'
+    category: conn.footer
+    enum:
+      standard: 'Standard (brand + columns)'
+      centered: 'Centered'
+      minimal: 'Minimal (bar only)'
+
   footer.tagline:
     label: 'Footer tagline'
     description: 'Short text below the brand name in the footer.'

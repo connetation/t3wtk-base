@@ -35,7 +35,8 @@
         <f:render section="Main" />
     </main>
 
-    <f:render partial="Page/Footer" arguments="{site: site, footerNavigation: footerNavigation}" />
+    <f:variable name="footerLayout">{f:if(condition: '{site.settings.footer.layout}', then: '{site.settings.footer.layout}', else: 'standard')}</f:variable>
+    <f:render partial="Page/Footer/{footerLayout}" arguments="{site: site, footerNavigation: footerNavigation}" />
 
     <!-- Theme toggle script runs immediately to prevent FOUC -->
     <script>
