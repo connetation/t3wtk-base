@@ -4,5 +4,5 @@ declare(strict_types=1);
 
 defined('TYPO3') or die();
 
-// Content element registrations have moved to EXT:conn_elements.
-// Add sitepackage-specific CE overrides here if needed.
+// Content element registrations live in EXT:conn_elements (site-level dependency).
+// Add conn_base CE overrides here if needed.

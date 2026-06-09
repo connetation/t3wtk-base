@@ -1,5 +1,5 @@
 --
--- Connetation Sitepackage – Database Schema
+-- Connetation Base – Database Schema
 -- TYPO3 LTS 14
 --
 

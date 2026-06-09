@@ -1,7 +1,7 @@
 {
-  "name": "conn-sitepackage",
+  "name": "conn-base",
   "version": "1.0.0",
-  "description": "Connetation Sitepackage – TYPO3 LTS 14 build tooling",
+  "description": "Connetation Base – TYPO3 LTS 14 build tooling",
   "private": true,
   "scripts": {
     "build": "npm run build:scss && npm run build:js",

@@ -1,7 +1,7 @@
 # ─────────────────────────────────────────────
 # Content Element lib base object
 # Extends fluid_styled_content's lib.contentElement
-# by adding sitepackage paths at index 10.
+# by adding conn_base paths at index 10.
 # Uses property assignment (no =) to preserve
 # fluid_styled_content's dataProcessing and settings.
 # Elements add their own paths at index 20.

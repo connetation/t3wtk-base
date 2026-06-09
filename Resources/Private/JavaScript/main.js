@@ -1,7 +1,6 @@
 /**
- * Connetation Sitepackage – Main JavaScript
+ * Connetation Base – Main JavaScript
  * TYPO3 LTS 14
- * Dashboard init is handled by EXT:conn_elements/elements.js
  */
 
 import 'bootstrap';

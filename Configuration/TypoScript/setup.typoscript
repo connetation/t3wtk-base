@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────
-# Connetation Sitepackage – Main Setup
+# Connetation Base – Main Setup
 # TYPO3 LTS 14
 # ─────────────────────────────────────────────
 
@@ -7,4 +7,3 @@
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/Styling/setup.typoscript'
 @import 'EXT:conn_base/Configuration/TypoScript/Base/Page.typoscript'
 @import 'EXT:conn_base/Configuration/TypoScript/Base/Lib.typoscript'
-@import 'EXT:conn_elements/Configuration/TypoScript/setup.typoscript'

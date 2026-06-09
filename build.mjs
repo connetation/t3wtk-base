@@ -28,11 +28,11 @@ if (watch) {
         esbuild.context(componentsConfig),
     ]);
     await Promise.all([mainCtx.watch(), compCtx.watch()]);
-    console.log('[sitepackage] watching…');
+    console.log('[base] watching…');
 } else {
     await Promise.all([
         esbuild.build(mainConfig),
         esbuild.build(componentsConfig),
     ]);
-    console.log('[sitepackage] built');
+    console.log('[base] built');
 }

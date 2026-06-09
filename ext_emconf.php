@@ -12,7 +12,6 @@ $EM_CONF[$_EXTKEY] = [
         'depends' => [
             'typo3'               => '14.0.0-14.99.99',
             'fluid_styled_content' => '14.0.0-14.99.99',
-            'conn_elements'        => '1.0.0-1.99.99',
         ],
     ],
 ];

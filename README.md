@@ -1,47 +1,57 @@
-# Connetation Sitepackage for TYPO3 LTS 14
+# Connetation Base for TYPO3 LTS 14
 
-Bootstrap 5 sitepackage with light/dark theme and service dashboard.
+Bootstrap 5 base extension with light/dark theme. Provides the reusable foundation for all Connetation TYPO3 projects — templates, TypoScript, TCA, SCSS, and PHP classes.
 
 ## Structure
 
 ```
-packages/sitepackage/          # TYPO3 extension (conn/sitepackage)
+conn/base/                         # TYPO3 extension (conn/base, ext key: conn_base)
 ├── Classes/
-│   └── DataProcessing/        # PHP data processors
+│   └── DataProcessing/            # PHP data processors
 ├── Configuration/
-│   ├── Sets/Sitepackage/      # TYPO3 v14 Site Sets (TypoScript, constants)
-│   ├── TCA/                   # Domain model TCA (project, projectcategory)
-│   ├── TCA/Overrides/         # tt_content & pages TCA extensions
-│   ├── TypoScript/            # Page object & content element TypoScript
-│   ├── FlexForms/             # Backend element settings (Dashboard)
-│   └── TsConfig/              # Backend layouts
+│   ├── Sets/Base/                 # TYPO3 v14 Site Sets (TypoScript, constants, settings)
+│   ├── TCA/Overrides/             # tt_content & pages TCA extensions
+│   ├── TypoScript/                # Page object & content element TypoScript
+│   └── TsConfig/                  # Backend layouts
 ├── Resources/
 │   ├── Private/
-│   │   ├── JavaScript/        # JS source (dashboard.js, main.js)
-│   │   ├── Language/          # XLF translation files (EN)
-│   │   ├── Layouts/           # Fluid page layouts
-│   │   ├── Partials/          # Fluid partials (Navigation, Dashboard, …)
-│   │   ├── Scss/              # SCSS source (Bootstrap + custom)
-│   │   └── Templates/         # Fluid page & content element templates
+│   │   ├── JavaScript/            # JS source (main.js)
+│   │   ├── Language/              # XLF translation files (EN/DE)
+│   │   ├── Layouts/               # Fluid page layouts
+│   │   ├── Partials/              # Fluid partials (Navigation, Page, Media)
+│   │   ├── Scss/                  # SCSS source (Bootstrap 5 + custom)
+│   │   └── Templates/             # Fluid page templates
 │   └── Public/
-│       ├── Css/main.css       # Compiled — committed to git
-│       ├── Icons/             # Custom SVG icons
-│       └── Js/main.js         # Compiled — committed to git
+│       ├── Css/main.css           # Compiled — committed to git
+│       ├── Icons/                 # Custom SVG icons
+│       └── Js/main.js             # Compiled — committed to git
 ├── composer.json
 ├── ext_emconf.php
 ├── ext_tables.php
 ├── ext_tables.sql
-└── package.json               # Node build tooling
+└── package.json                   # Node build tooling
 ```
 
 ## Installation
 
-1. Ensure `composer.json` at the project root has a path repository:
-   ```json
-   "repositories": [{ "type": "path", "url": "packages/*" }]
-   ```
-2. Run `composer require conn/sitepackage`
-3. Activate the extension in TYPO3 Backend → Admin Tools → Extensions
+```json
+"repositories": [
+    { "type": "composer", "url": "https://composer-v2.connetation.at/" }
+],
+"require": {
+    "conn/base": "^1.0"
+}
+```
+
+In your TYPO3 site config (`config/sites/<site>/config.yaml`):
+
+```yaml
+dependencies:
+  - conn/sitepackage
+  - conn/elements
+```
+
+`conn/sitepackage` should declare `conn/base` in its Set dependencies — TYPO3 loads them in order.
 
 ## Build Assets
 
@@ -50,7 +60,7 @@ Build output (`Resources/Public/Css/main.css` and `Resources/Public/Js/main.js`)
 To rebuild locally:
 
 ```bash
-cd packages/sitepackage
+cd vendor/conn/base  # or your local development copy
 npm install
 npm run build    # production build (CSS + JS)
 npm run dev      # watch mode
@@ -65,20 +75,14 @@ Bootstrap 5 is fully bundled into `main.js` and compiled into `main.css` via SCS
 - **Light / Dark theme** — CSS custom properties, `data-bs-theme`, persisted in `localStorage` under key `conn-theme`, respects OS `prefers-color-scheme`
 - **Backend layouts**: Default, Landing Page
 - **Custom page fields**: subtitle, header image, hide breadcrumb
-- **Content element**: Service Dashboard
+- **PHP namespace**: `Connetation\Base`
 
-### Service Dashboard
+## Extension hierarchy
 
-An interactive overview for services and tools, with a custom backend icon.
-
-- Manage services as inline records directly in the content element
-- **Dashboard Config tab** — define categories per dashboard instance inline
-- Filter by status and category via dropdowns
-- Full-text search across title, category, and tags
-- Grid / List view toggle with image thumbnails in both views
-- Detail modal with description, tags, and visit link
-- Status badges with theme-aware colours for light and dark mode
-
-**Status values:** Active · In Progress · Coming Soon · Inactive
-
-**Image handling:** TYPO3 server-side resizing per context — 800×450 card, 1200×675 modal, 80px wide list icon (aspect-ratio preserved)
+```
+TYPO3 site
+├── conn/sitepackage  (project layer — extends conn/base)
+│   └── depends on: conn/base
+├── conn/base         (this package — reusable foundation)
+└── conn/elements     (custom elements — separate site dependency)
+```
