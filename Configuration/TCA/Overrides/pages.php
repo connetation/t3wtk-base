@@ -25,16 +25,16 @@ foreach ($backendLayouts as [$value, $label]) {
 
 // Add custom page fields
 ExtensionManagementUtility::addTCAcolumns('pages', [
-    'tx_conn_sitepackage_subtitle' => [
-        'label' => 'LLL:EXT:conn_sitepackage/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_sitepackage_subtitle',
+    'tx_conn_base_subtitle' => [
+        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_base_subtitle',
         'config' => [
             'type' => 'input',
             'size' => 50,
             'max' => 255,
         ],
     ],
-    'tx_conn_sitepackage_header_image' => [
-        'label' => 'LLL:EXT:conn_sitepackage/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_sitepackage_header_image',
+    'tx_conn_base_header_image' => [
+        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_base_header_image',
         'config' => [
             'type' => 'file',
             'minitems' => 0,
@@ -43,8 +43,8 @@ ExtensionManagementUtility::addTCAcolumns('pages', [
             'appearance' => ['createNewRelationLinkTitle' => 'Add image'],
         ],
     ],
-    'tx_conn_sitepackage_hide_breadcrumb' => [
-        'label' => 'LLL:EXT:conn_sitepackage/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_sitepackage_hide_breadcrumb',
+    'tx_conn_base_hide_breadcrumb' => [
+        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_base_hide_breadcrumb',
         'config' => [
             'type' => 'check',
             'renderType' => 'checkboxToggle',
@@ -55,7 +55,7 @@ ExtensionManagementUtility::addTCAcolumns('pages', [
 
 ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
-    '--div--;Connetation,tx_conn_sitepackage_subtitle,tx_conn_sitepackage_header_image,tx_conn_sitepackage_hide_breadcrumb',
+    '--div--;Connetation,tx_conn_base_subtitle,tx_conn_base_header_image,tx_conn_base_hide_breadcrumb',
     '',
     'after:title'
 );

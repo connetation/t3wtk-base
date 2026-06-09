@@ -9,10 +9,10 @@
 
 lib.contentElement {
     templateRootPaths {
-        10 = EXT:conn_sitepackage/Resources/Private/Templates/ContentElements/
+        10 = EXT:conn_base/Resources/Private/Templates/ContentElements/
     }
     partialRootPaths {
-        10 = EXT:conn_sitepackage/Resources/Private/Partials/
+        10 = EXT:conn_base/Resources/Private/Partials/
     }
     settings {
         defaultHeaderType = 2

@@ -89,7 +89,7 @@ settings:
   # ─── Branding ─────────────────────────────────────────────────────────────
   branding.logo:
     label: 'Logo – light mode'
-    description: 'EXT: path (e.g. EXT:conn_sitepackage/Resources/Public/Icons/logo.svg) or full URL (https://…). Leave empty to show the site title as text.'
+    description: 'EXT: path (e.g. EXT:conn_base/Resources/Public/Icons/logo.svg) or full URL (https://…). Leave empty to show the site title as text.'
     type: string
     default: ''
     category: conn.branding

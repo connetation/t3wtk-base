@@ -1,10 +1,11 @@
 {
-    "name": "conn/sitepackage",
+    "name": "conn/base",
     "version": "1.0.0",
-    "description": "Connetation Sitepackage for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
+    "description": "Connetation Base for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
     "require": {
+        "conn/elements": "^1.0",
         "typo3/cms-core": "^14.0",
         "typo3/cms-fluid": "^14.0",
         "typo3/cms-frontend": "^14.0",
@@ -13,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Connetation\\Sitepackage\\": "Classes/"
+            "Connetation\\Base\\": "Classes/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "conn_sitepackage"
+            "extension-key": "conn_base"
         }
     }
 }

@@ -15,12 +15,12 @@ page {
     }
 
     includeCSS {
-        bootstrap = EXT:conn_sitepackage/Resources/Public/Css/main.css
+        bootstrap = EXT:conn_base/Resources/Public/Css/main.css
         bootstrap.media = all
     }
 
     includeJSFooter {
-        app = EXT:conn_sitepackage/Resources/Public/Js/main.js
+        app = EXT:conn_base/Resources/Public/Js/main.js
         app.defer = 1
     }
 
@@ -43,13 +43,13 @@ page {
         }
 
         templateRootPaths {
-            0 = EXT:conn_sitepackage/Resources/Private/Templates/Page/
+            0 = EXT:conn_base/Resources/Private/Templates/Page/
         }
         partialRootPaths {
-            0 = EXT:conn_sitepackage/Resources/Private/Partials/
+            0 = EXT:conn_base/Resources/Private/Partials/
         }
         layoutRootPaths {
-            0 = EXT:conn_sitepackage/Resources/Private/Layouts/
+            0 = EXT:conn_base/Resources/Private/Layouts/
         }
 
         dataProcessing {

@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Conn: Sitepackage',
-    'description' => 'TYPO3 LTS 14 sitepackage based on Bootstrap 5 with light/dark theme',
+    'title' => 'Conn: Base',
+    'description' => 'TYPO3 LTS 14 base extension with Bootstrap 5, light/dark theme, templates and default configuration',
     'category' => 'templates',
     'author' => 'Connetation',
     'author_email' => 'i.sapina@connetation.at',
@@ -11,7 +11,8 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3'               => '14.0.0-14.99.99',
-            'fluid_styled_content' => '14.0.0-14.99.99'
+            'fluid_styled_content' => '14.0.0-14.99.99',
+            'conn_elements'        => '1.0.0-1.99.99',
         ],
     ],
 ];

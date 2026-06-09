@@ -4,5 +4,5 @@ services:
     autoconfigure: true
     public: false
 
-  Connetation\Sitepackage\:
+  Connetation\Base\:
     resource: '../Classes/*'

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Sitepackage\ViewHelpers;
+namespace Connetation\Base\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
