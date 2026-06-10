@@ -54,10 +54,10 @@
     <a href="/" class="footer__brand-link text-decoration-none text-reset fw-bold">
         <f:if condition="{lightSrc}">
             <f:then>
-                <f:variable name="resolvedLight">{f:uri.resource(path: lightSrc)}</f:variable>
+                <f:variable name="resolvedLight">{conn:resolvePath(path:lightSrc)}</f:variable>
                 <f:if condition="{darkSrc}">
                     <f:then>
-                        <f:variable name="resolvedDark">{f:uri.resource(path: darkSrc)}</f:variable>
+                        <f:variable name="resolvedDark">{conn:resolvePath(path:darkSrc)}</f:variable>
                         <img src="{resolvedLight}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--light" />
                         <img src="{resolvedDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="footer-logo footer-logo--dark" />
                     </f:then>

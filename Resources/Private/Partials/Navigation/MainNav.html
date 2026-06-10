@@ -1,4 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <f:variable name="navPosition">{f:if(condition: site.settings.navbar.position, then: site.settings.navbar.position, else: 'sticky-top')}</f:variable>
@@ -15,10 +16,10 @@
         <a class="navbar-brand fw-bold" href="/">
             <f:if condition="{site.settings.branding.logo}">
                 <f:then>
-                    <f:variable name="resolvedLogo">{f:uri.resource(path: site.settings.branding.logo)}</f:variable>
+                    <f:variable name="resolvedLogo">{conn:resolvePath(path:site.settings.branding.logo)}</f:variable>
                     <f:if condition="{site.settings.branding.logoDark}">
                         <f:then>
-                            <f:variable name="resolvedLogoDark">{f:uri.resource(path: site.settings.branding.logoDark)}</f:variable>
+                            <f:variable name="resolvedLogoDark">{conn:resolvePath(path:site.settings.branding.logoDark)}</f:variable>
                             <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
                             <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
                         </f:then>
@@ -53,10 +54,10 @@
                 <a class="navbar-brand fw-bold mb-0" href="/">
                     <f:if condition="{site.settings.branding.logo}">
                         <f:then>
-                            <f:variable name="resolvedLogo">{f:uri.resource(path: site.settings.branding.logo)}</f:variable>
+                            <f:variable name="resolvedLogo">{conn:resolvePath(path:site.settings.branding.logo)}</f:variable>
                             <f:if condition="{site.settings.branding.logoDark}">
                                 <f:then>
-                                    <f:variable name="resolvedLogoDark">{f:uri.resource(path: site.settings.branding.logoDark)}</f:variable>
+                                    <f:variable name="resolvedLogoDark">{conn:resolvePath(path:site.settings.branding.logoDark)}</f:variable>
                                     <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
                                     <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
                                 </f:then>
