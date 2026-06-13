@@ -11,12 +11,6 @@
                 <source>Landing Page</source>
             </trans-unit>
             <!-- Pages fields -->
-            <trans-unit id="pages.tx_conn_base_subtitle">
-                <source>Page Subtitle</source>
-            </trans-unit>
-            <trans-unit id="pages.tx_conn_base_header_image">
-                <source>Header Image</source>
-            </trans-unit>
             <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
             </trans-unit>

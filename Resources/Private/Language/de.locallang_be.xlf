@@ -11,14 +11,6 @@
                 <source>Landing Page</source>
                 <target>Landingpage</target>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_subtitle">
-                <source>Page Subtitle</source>
-                <target>Seiten-Untertitel</target>
-            </trans-unit>
-            <trans-unit id="pages.tx_conn_base_header_image">
-                <source>Header Image</source>
-                <target>Header-Bild</target>
-            </trans-unit>
             <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
                 <target>Breadcrumb ausblenden</target>

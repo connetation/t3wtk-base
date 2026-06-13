@@ -16,8 +16,7 @@ final class PageDataProcessor implements DataProcessorInterface
         array $processedData
     ): array {
         $processedData['pageData'] = [
-            'subtitle'      => $processedData['data']['tx_conn_base_subtitle'] ?? '',
-            'hideBreadcrumb'=> (bool)($processedData['data']['tx_conn_base_hide_breadcrumb'] ?? false),
+            'hideBreadcrumb' => (bool)($processedData['data']['tx_conn_base_hide_breadcrumb'] ?? false),
         ];
 
         return $processedData;
