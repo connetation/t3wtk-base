@@ -7,14 +7,49 @@
     color: #1e1e3f;
 }
 
+// ── Theme-invariant tokens ────────────────────
 :root {
-    --conn-nav-bg: #ffffff;
+    --conn-accent:       #6366f1;
+    --conn-accent-hover: #4f52d4;
+    --conn-radius:       0.75rem;
+    --conn-transition:   0.2s ease-in-out;
+}
+
+// ── Light-mode tokens ─────────────────────────
+[data-bs-theme="light"],
+:root:not([data-bs-theme="dark"]) {
+    // Surfaces
+    --conn-bg:             #f4f5ff;
+    --conn-surface:        #ffffff;
+    --conn-surface-alt:    #f1f2ff;
+    --conn-surface-raised: #ffffff;
+    --conn-surface-hover:  rgba(99, 102, 241, 0.1);
+
+    // Navigation & footer
+    --conn-nav-bg:    #ffffff;
     --conn-footer-bg: #ffffff;
-    --bs-body-bg: #f4f5ff;
-    --bs-heading-color: #0a0a0a;
+
+    // Borders
+    --conn-border:        rgba(99, 102, 241, 0.12);
+    --conn-border-strong: rgba(99, 102, 241, 0.28);
+
+    // Text
+    --conn-text:       #1e1e3f;
+    --conn-text-muted: #6b7280;
+
+    // Accent soft variants
+    --conn-accent-soft: rgba(99, 102, 241, 0.1);
+    --conn-accent-glow: rgba(99, 102, 241, 0.2);
+
+    // Shadows
+    --conn-shadow:       0 4px 24px rgb(99 102 241 / 15%);
+    --conn-shadow-card:  0 1px 4px rgb(0 0 0 / 6%);
+    --conn-shadow-hover: 0 8px 32px rgb(99 102 241 / 22%);
+
+    // Bootstrap CSS-var overrides
+    --bs-body-bg:            #f4f5ff;
+    --bs-heading-color:      #0a0a0a;
     --bs-navbar-brand-color: #0a0a0a;
-    --conn-accent: #e94560;
-    --conn-transition: 0.2s ease-in-out;
 }
 
 .navbar-brand {

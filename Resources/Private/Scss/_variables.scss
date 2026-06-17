@@ -1,7 +1,10 @@
 // ─────────────────────────────────────────────
-// Brand Variables
-// Bootstrap overrides are configured in main.scss
+// SCSS Variables
+// Bootstrap compile-time overrides go in main.scss.
+// Runtime CSS custom properties are in theme/_light.scss
+// and theme/_dark.scss.
 // ─────────────────────────────────────────────
 
-$conn-primary: #1a1a2e;
-$conn-accent:  #e94560;
+// Brand accent — matches --conn-accent in theme/_light.scss
+$conn-primary: #6366f1;
+$conn-accent:  #6366f1;
