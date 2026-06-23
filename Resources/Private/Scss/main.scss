@@ -46,9 +46,9 @@
 // 3. Components
 @use 'components/breadcrumb';
 @use 'components/navigation';
-@use 'components/navbar-megamenu';
-@use 'components/navbar-megamenu-twopanel';
-@use 'components/navbar-sidebar';
+@use 'components/nav-offcanvas';
+@use 'components/nav-top';
+@use 'components/theme-toggle-float';
 @use 'components/footer';
 @use 'components/video';
 @use 'components/content-frames';

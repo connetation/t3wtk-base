@@ -1,0 +1,189 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:variable name="navPosition">{f:if(condition: site.settings.navbar.position, then: site.settings.navbar.position, else: 'sticky-top')}</f:variable>
+<f:variable name="offcanvasScroll">{f:if(condition: site.settings.navbar.offcanvasScroll, then: 'true', else: 'false')}</f:variable>
+<f:variable name="offcanvasBackdrop">{f:if(condition: site.settings.navbar.offcanvasBackdrop, then: site.settings.navbar.offcanvasBackdrop, else: 'true')}</f:variable>
+<f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
+<f:variable name="panelAlign">{f:if(condition: site.settings.navbar.mobilePanelAlign, then: site.settings.navbar.mobilePanelAlign, else: 'start')}</f:variable>
+<f:variable name="panelTop">{f:if(condition: site.settings.navbar.panelTopContent, then: site.settings.navbar.panelTopContent, else: '')}</f:variable>
+<f:variable name="panelBottom">{f:if(condition: site.settings.navbar.panelBottomContent, then: site.settings.navbar.panelBottomContent, else: 'social')}</f:variable>
+
+<!-- Top bar (always visible) -->
+<nav class="navbar {navPosition} conn-nav-offcanvas" id="mainNav">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            <f:if condition="{site.settings.branding.logo}">
+                <f:then>
+                    <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>
+                    <f:if condition="{site.settings.branding.logoDark}">
+                        <f:then>
+                            <f:variable name="resolvedLogoDark">{conn:resolvePath(path: site.settings.branding.logoDark)}</f:variable>
+                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
+                            <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
+                        </f:then>
+                        <f:else>
+                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo" />
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>{site.configuration.websiteTitle}</f:else>
+            </f:if>
+        </a>
+
+        <div class="ms-auto d-flex align-items-center gap-2">
+            <button class="btn btn-sm btn-outline-secondary theme-toggle"
+                    id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+                <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+            </button>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#navPanelRight"
+                    aria-controls="navPanelRight" aria-expanded="false"
+                    aria-label="Open navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Offcanvas panel – slides from right -->
+<div class="offcanvas offcanvas-end conn-nav-offcanvas__panel conn-nav-offcanvas__panel--{panelAlign}" tabindex="-1"
+     id="navPanelRight"
+     data-bs-scroll="{offcanvasScroll}"
+     data-bs-backdrop="{offcanvasBackdrop}">
+
+    <div class="offcanvas-header">
+        <a class="navbar-brand fw-bold mb-0" href="/">
+            <f:if condition="{site.settings.branding.logo}">
+                <f:then>
+                    <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>
+                    <f:if condition="{site.settings.branding.logoDark}">
+                        <f:then>
+                            <f:variable name="resolvedLogoDark">{conn:resolvePath(path: site.settings.branding.logoDark)}</f:variable>
+                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
+                            <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
+                        </f:then>
+                        <f:else>
+                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo" />
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>{site.configuration.websiteTitle}</f:else>
+            </f:if>
+        </a>
+        <button type="button" class="btn-close navbar-offcanvas__close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <!-- Top content slot -->
+    <f:if condition="{panelTop} == 'social'">
+        <f:render partial="Navigation/Panel/Social" arguments="{site: site}" />
+    </f:if>
+    <f:if condition="{panelTop} == 'contact'">
+        <f:render partial="Navigation/Panel/Contact" arguments="{site: site}" />
+    </f:if>
+    <f:if condition="{panelTop} == 'address'">
+        <f:render partial="Navigation/Panel/Address" arguments="{site: site}" />
+    </f:if>
+
+    <!-- Navigation -->
+    <div class="offcanvas-body conn-nav-offcanvas__body">
+        <ul class="conn-nav-offcanvas__nav list-unstyled m-0 p-0">
+            <f:for each="{mainNavigation}" as="item" iteration="iter">
+                <f:if condition="{item.children}">
+                    <f:then>
+                        <f:if condition="{navigationLevels} > 1">
+                            <f:then>
+                                <li class="conn-nav-offcanvas__item conn-nav-offcanvas__item--has-children">
+                                    <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
+                                       href="{item.link}"
+                                       data-bs-toggle="collapse"
+                                       data-bs-target="#navRightSub{iter.index}"
+                                       aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
+                                       aria-controls="navRightSub{iter.index}">
+                                        {item.title}
+                                        <svg class="conn-nav-offcanvas__caret" width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                    </a>
+                                    <div class="collapse{f:if(condition: item.active, then: ' show')}" id="navRightSub{iter.index}">
+                                        <ul class="conn-nav-offcanvas__subnav list-unstyled m-0">
+                                            <f:for each="{item.children}" as="child" iteration="childIter">
+                                                <f:if condition="{child.children}">
+                                                    <f:then>
+                                                        <f:if condition="{navigationLevels} > 2">
+                                                            <f:then>
+                                                                <li class="conn-nav-offcanvas__subnav-item--has-children">
+                                                                    <a href="{child.link}"
+                                                                       class="{f:if(condition: child.active, then: 'active')}"
+                                                                       data-bs-toggle="collapse"
+                                                                       data-bs-target="#navRightSub{iter.index}c{childIter.index}"
+                                                                       aria-expanded="{f:if(condition: child.active, then: 'true', else: 'false')}">
+                                                                        {child.title}
+                                                                        <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="8" height="5" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                                                    </a>
+                                                                    <div class="collapse{f:if(condition: child.active, then: ' show')}" id="navRightSub{iter.index}c{childIter.index}">
+                                                                        <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l3 list-unstyled m-0">
+                                                                            <f:for each="{child.children}" as="grandchild">
+                                                                                <li>
+                                                                                    <a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a>
+                                                                                </li>
+                                                                            </f:for>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <li>
+                                                                    <a href="{child.link}" class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
+                                                                </li>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <li>
+                                                            <a href="{child.link}" class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
+                                                        </li>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:for>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </f:then>
+                            <f:else>
+                                <li class="conn-nav-offcanvas__item">
+                                    <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
+                                       href="{item.link}">{item.title}</a>
+                                </li>
+                            </f:else>
+                        </f:if>
+                    </f:then>
+                    <f:else>
+                        <li class="conn-nav-offcanvas__item">
+                            <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
+                               href="{item.link}">{item.title}</a>
+                        </li>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </ul>
+    </div>
+
+    <!-- Bottom content slot -->
+    <div class="conn-nav-offcanvas__bottom">
+        <f:if condition="{panelBottom} == 'social'">
+            <f:render partial="Navigation/Panel/Social" arguments="{site: site}" />
+        </f:if>
+        <f:if condition="{panelBottom} == 'contact'">
+            <f:render partial="Navigation/Panel/Contact" arguments="{site: site}" />
+        </f:if>
+        <f:if condition="{panelBottom} == 'address'">
+            <f:render partial="Navigation/Panel/Address" arguments="{site: site}" />
+        </f:if>
+    </div>
+
+</div>
+
+</html>

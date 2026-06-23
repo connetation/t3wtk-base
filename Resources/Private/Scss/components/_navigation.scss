@@ -25,11 +25,10 @@ body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-heigh
 }
 
 // ── Light theme: fix navbar-dark color tokens ──
-// navbar-dark is hardcoded in the template; override its CSS vars on a light bg
+// navbar-dark overrides Bootstrap's default dark color vars on a light background
 :root:not([data-bs-theme="dark"]),
 [data-bs-theme="light"] {
-    // Exclude .conn-navbar--dropdown-dark — it forces its own dark bg and needs white text
-    .navbar-dark:not(.conn-navbar--dropdown-dark) {
+    .navbar-dark {
         --bs-navbar-color:                rgba(10, 10, 10, 0.7);
         --bs-navbar-hover-color:          #0a0a0a;
         --bs-navbar-active-color:         #0a0a0a;
@@ -137,12 +136,6 @@ body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-heigh
             margin-right: auto !important;
         }
     }
-}
-
-// ── Dropdown-dark variant (always dark regardless of page theme) ──────────
-.conn-navbar--dropdown-dark {
-    --conn-nav-bg: #0d1117;
-    .dropdown-menu { --bs-dropdown-bg: #161b22; }
 }
 
 // ── Hamburger → X animation ────────────────────

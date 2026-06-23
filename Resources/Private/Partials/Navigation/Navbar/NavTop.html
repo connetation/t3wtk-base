@@ -1,0 +1,261 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:variable name="navPosition">{f:if(condition: site.settings.navbar.position, then: site.settings.navbar.position, else: 'sticky-top')}</f:variable>
+<f:variable name="logoPos">{f:if(condition: site.settings.navbar.logoPosition, then: site.settings.navbar.logoPosition, else: 'left')}</f:variable>
+<f:variable name="breakpoint">{f:if(condition: site.settings.navbar.mobileBreakpoint, then: site.settings.navbar.mobileBreakpoint, else: 'lg')}</f:variable>
+<f:variable name="alignment">{f:if(condition: site.settings.navbar.alignment, then: site.settings.navbar.alignment, else: 'start')}</f:variable>
+<f:variable name="dropdownStyle">{f:if(condition: site.settings.navbar.topDropdownStyle, then: site.settings.navbar.topDropdownStyle, else: 'list')}</f:variable>
+<f:variable name="gridAlign">{f:if(condition: site.settings.navbar.gridDropdownAlign, then: site.settings.navbar.gridDropdownAlign, else: 'auto')}</f:variable>
+<f:variable name="offcanvasPos">{f:if(condition: site.settings.navbar.offcanvasPosition, then: site.settings.navbar.offcanvasPosition, else: 'offcanvas-end')}</f:variable>
+<f:variable name="panelAlign">{f:if(condition: site.settings.navbar.mobilePanelAlign, then: site.settings.navbar.mobilePanelAlign, else: 'start')}</f:variable>
+<f:variable name="panelTop">{f:if(condition: site.settings.navbar.panelTopContent, then: site.settings.navbar.panelTopContent, else: '')}</f:variable>
+<f:variable name="panelBottom">{f:if(condition: site.settings.navbar.panelBottomContent, then: site.settings.navbar.panelBottomContent, else: 'social')}</f:variable>
+<f:variable name="offcanvasScroll">{f:if(condition: site.settings.navbar.offcanvasScroll, then: 'true', else: 'false')}</f:variable>
+<f:variable name="offcanvasBackdrop">{f:if(condition: site.settings.navbar.offcanvasBackdrop, then: site.settings.navbar.offcanvasBackdrop, else: 'true')}</f:variable>
+<f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
+
+<nav class="navbar navbar-expand-{breakpoint} {navPosition} navbar--logo-{logoPos} conn-nav-top conn-nav-top--align-{alignment} conn-nav-top--{dropdownStyle}" id="mainNav" data-grid-align="{gridAlign}">
+    <div class="container">
+
+        <!-- Brand (always visible in top bar) -->
+        <a class="navbar-brand fw-bold" href="/">
+            <f:if condition="{site.settings.branding.logo}">
+                <f:then>
+                    <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>
+                    <f:if condition="{site.settings.branding.logoDark}">
+                        <f:then>
+                            <f:variable name="resolvedLogoDark">{conn:resolvePath(path: site.settings.branding.logoDark)}</f:variable>
+                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
+                            <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
+                        </f:then>
+                        <f:else>
+                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo" />
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>{site.configuration.websiteTitle}</f:else>
+            </f:if>
+        </a>
+
+        <!-- Mobile toggler (hidden at expansion breakpoint) -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#navTopPanel"
+                aria-controls="navTopPanel" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Offcanvas: inline nav on desktop, full-screen drawer on mobile -->
+        <div class="offcanvas {offcanvasPos} conn-nav-offcanvas__panel conn-nav-offcanvas__panel--{panelAlign}" tabindex="-1" id="navTopPanel"
+             data-bs-scroll="{offcanvasScroll}" data-bs-backdrop="{offcanvasBackdrop}">
+
+            <!-- Mobile-only header (hidden on desktop via Bootstrap) -->
+            <div class="offcanvas-header">
+                <a class="navbar-brand fw-bold mb-0" href="/">
+                    <f:if condition="{site.settings.branding.logo}">
+                        <f:then>
+                            <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>
+                            <f:if condition="{site.settings.branding.logoDark}">
+                                <f:then>
+                                    <f:variable name="resolvedLogoDark">{conn:resolvePath(path: site.settings.branding.logoDark)}</f:variable>
+                                    <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
+                                    <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
+                                </f:then>
+                                <f:else>
+                                    <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo" />
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>{site.configuration.websiteTitle}</f:else>
+                    </f:if>
+                </a>
+                <button type="button" class="btn-close navbar-offcanvas__close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <!-- Mobile-only top content slot -->
+            <div class="conn-nav-top__mobile-slot d-{breakpoint}-none">
+                <f:if condition="{panelTop} == 'social'">
+                    <f:render partial="Navigation/Panel/Social" arguments="{site: site}" />
+                </f:if>
+                <f:if condition="{panelTop} == 'contact'">
+                    <f:render partial="Navigation/Panel/Contact" arguments="{site: site}" />
+                </f:if>
+                <f:if condition="{panelTop} == 'address'">
+                    <f:render partial="Navigation/Panel/Address" arguments="{site: site}" />
+                </f:if>
+            </div>
+
+            <!-- Mobile-only collapse navigation (same style as NavLeft/NavRight) -->
+            <div class="conn-nav-top__mobile-slot d-{breakpoint}-none conn-nav-offcanvas__body">
+                <ul class="conn-nav-offcanvas__nav list-unstyled m-0 p-0">
+                    <f:for each="{mainNavigation}" as="item" iteration="iter">
+                        <f:if condition="{item.children}">
+                            <f:then>
+                                <f:if condition="{navigationLevels} > 1">
+                                    <f:then>
+                                        <li class="conn-nav-offcanvas__item conn-nav-offcanvas__item--has-children">
+                                            <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
+                                               href="{item.link}"
+                                               data-bs-toggle="collapse"
+                                               data-bs-target="#navTopMob{iter.index}"
+                                               aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
+                                               aria-controls="navTopMob{iter.index}">
+                                                {item.title}
+                                                <svg class="conn-nav-offcanvas__caret" width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                            </a>
+                                            <div class="collapse{f:if(condition: item.active, then: ' show')}" id="navTopMob{iter.index}">
+                                                <ul class="conn-nav-offcanvas__subnav list-unstyled m-0">
+                                                    <f:for each="{item.children}" as="child" iteration="childIter">
+                                                        <f:if condition="{child.children}">
+                                                            <f:then>
+                                                                <f:if condition="{navigationLevels} > 2">
+                                                                    <f:then>
+                                                                        <li class="conn-nav-offcanvas__subnav-item--has-children">
+                                                                            <a href="{child.link}"
+                                                                               class="{f:if(condition: child.active, then: 'active')}"
+                                                                               data-bs-toggle="collapse"
+                                                                               data-bs-target="#navTopMob{iter.index}c{childIter.index}"
+                                                                               aria-expanded="{f:if(condition: child.active, then: 'true', else: 'false')}">
+                                                                                {child.title}
+                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="8" height="5" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                                                            </a>
+                                                                            <div class="collapse{f:if(condition: child.active, then: ' show')}" id="navTopMob{iter.index}c{childIter.index}">
+                                                                                <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l3 list-unstyled m-0">
+                                                                                    <f:for each="{child.children}" as="grandchild">
+                                                                                        <li>
+                                                                                            <a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a>
+                                                                                        </li>
+                                                                                    </f:for>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </li>
+                                                                    </f:then>
+                                                                    <f:else>
+                                                                        <li>
+                                                                            <a href="{child.link}" class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
+                                                                        </li>
+                                                                    </f:else>
+                                                                </f:if>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <li>
+                                                                    <a href="{child.link}" class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
+                                                                </li>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:for>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </f:then>
+                                    <f:else>
+                                        <li class="conn-nav-offcanvas__item">
+                                            <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
+                                               href="{item.link}">{item.title}</a>
+                                        </li>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <li class="conn-nav-offcanvas__item">
+                                    <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
+                                       href="{item.link}">{item.title}</a>
+                                </li>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </ul>
+            </div>
+
+            <!-- Desktop-only inline nav (Bootstrap makes this display:flex via navbar-expand-*) -->
+            <div class="offcanvas-body conn-nav-top__desktop-nav">
+                <ul class="navbar-nav justify-content-{alignment} flex-grow-1 gap-1">
+                    <f:for each="{mainNavigation}" as="item">
+                        <f:if condition="{item.children}">
+                            <f:then>
+                                <f:if condition="{navigationLevels} > 1">
+                                    <f:then>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle{f:if(condition: item.active, then: ' active')}"
+                                               href="{item.link}" role="button"
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                {item.title}
+                                            </a>
+                                            <ul class="dropdown-menu conn-nav-top__dropdown">
+                                                <f:render partial="Navigation/NavTopItems" arguments="{items: item.children}" />
+                                            </ul>
+                                        </li>
+                                    </f:then>
+                                    <f:else>
+                                        <li class="nav-item">
+                                            <a class="nav-link{f:if(condition: item.active, then: ' active')}"
+                                               href="{item.link}">{item.title}</a>
+                                        </li>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <li class="nav-item">
+                                    <a class="nav-link{f:if(condition: item.active, then: ' active')}"
+                                       href="{item.link}">{item.title}</a>
+                                </li>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </ul>
+
+                <button class="btn btn-sm btn-outline-secondary theme-toggle ms-2"
+                        id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+                </button>
+            </div>
+
+            <!-- Mobile-only bottom content slot -->
+            <div class="conn-nav-offcanvas__bottom conn-nav-top__mobile-slot d-{breakpoint}-none">
+                <f:if condition="{panelBottom} == 'social'">
+                    <f:render partial="Navigation/Panel/Social" arguments="{site: site}" />
+                </f:if>
+                <f:if condition="{panelBottom} == 'contact'">
+                    <f:render partial="Navigation/Panel/Contact" arguments="{site: site}" />
+                </f:if>
+                <f:if condition="{panelBottom} == 'address'">
+                    <f:render partial="Navigation/Panel/Address" arguments="{site: site}" />
+                </f:if>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+<script>
+    (function() {
+        var nav = document.getElementById('mainNav');
+        if (!nav) return;
+        var align = nav.dataset.gridAlign || 'auto';
+        var menus = nav.querySelectorAll('.conn-nav-top__dropdown');
+        menus.forEach(function(menu) {
+            if (align !== 'auto') {
+                menu.classList.add('conn-grid-align-' + align);
+                return;
+            }
+            var applyAutoAlign = function() {
+                var trigger = menu.previousElementSibling;
+                if (!trigger) return;
+                var rect = trigger.getBoundingClientRect();
+                var triggerCenter = rect.left + rect.width / 2;
+                menu.classList.remove('conn-grid-align-left', 'conn-grid-align-right', 'conn-grid-align-center');
+                menu.classList.add(triggerCenter > window.innerWidth / 2 ? 'conn-grid-align-right' : 'conn-grid-align-left');
+            };
+            menu.closest('.nav-item').addEventListener('mouseenter', applyAutoAlign);
+            var trigger = menu.previousElementSibling;
+            if (trigger) trigger.addEventListener('click', applyAutoAlign);
+        });
+    })();
+
+</script>
+
+</html>

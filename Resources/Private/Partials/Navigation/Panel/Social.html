@@ -1,0 +1,86 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:if condition="{site.settings.social.github} || {site.settings.social.linkedin} || {site.settings.social.x} || {site.settings.social.instagram} || {site.settings.social.youtube} || {site.settings.social.facebook}">
+<div class="conn-panel-social">
+    <f:if condition="{site.settings.social.github}">
+        <a href="{site.settings.social.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <f:if condition="{site.settings.social.githubIcon}">
+                <f:then>
+                    <img src="{conn:resolvePath(path: site.settings.social.githubIcon)}" alt="" width="20" height="20" aria-hidden="true" class="{f:if(condition: site.settings.social.githubIconDark, then: 'navbar-logo--light')}" />
+                    <f:if condition="{site.settings.social.githubIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.githubIconDark)}" alt="" width="20" height="20" aria-hidden="true" class="navbar-logo--dark" />
+                    </f:if>
+                </f:then>
+                <f:else>GitHub</f:else>
+            </f:if>
+        </a>
+    </f:if>
+    <f:if condition="{site.settings.social.linkedin}">
+        <a href="{site.settings.social.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <f:if condition="{site.settings.social.linkedinIcon}">
+                <f:then>
+                    <img src="{conn:resolvePath(path: site.settings.social.linkedinIcon)}" alt="" width="20" height="20" aria-hidden="true" class="{f:if(condition: site.settings.social.linkedinIconDark, then: 'navbar-logo--light')}" />
+                    <f:if condition="{site.settings.social.linkedinIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.linkedinIconDark)}" alt="" width="20" height="20" aria-hidden="true" class="navbar-logo--dark" />
+                    </f:if>
+                </f:then>
+                <f:else>LinkedIn</f:else>
+            </f:if>
+        </a>
+    </f:if>
+    <f:if condition="{site.settings.social.x}">
+        <a href="{site.settings.social.x}" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+            <f:if condition="{site.settings.social.xIcon}">
+                <f:then>
+                    <img src="{conn:resolvePath(path: site.settings.social.xIcon)}" alt="" width="20" height="20" aria-hidden="true" class="{f:if(condition: site.settings.social.xIconDark, then: 'navbar-logo--light')}" />
+                    <f:if condition="{site.settings.social.xIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.xIconDark)}" alt="" width="20" height="20" aria-hidden="true" class="navbar-logo--dark" />
+                    </f:if>
+                </f:then>
+                <f:else>X</f:else>
+            </f:if>
+        </a>
+    </f:if>
+    <f:if condition="{site.settings.social.instagram}">
+        <a href="{site.settings.social.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <f:if condition="{site.settings.social.instagramIcon}">
+                <f:then>
+                    <img src="{conn:resolvePath(path: site.settings.social.instagramIcon)}" alt="" width="20" height="20" aria-hidden="true" class="{f:if(condition: site.settings.social.instagramIconDark, then: 'navbar-logo--light')}" />
+                    <f:if condition="{site.settings.social.instagramIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.instagramIconDark)}" alt="" width="20" height="20" aria-hidden="true" class="navbar-logo--dark" />
+                    </f:if>
+                </f:then>
+                <f:else>Instagram</f:else>
+            </f:if>
+        </a>
+    </f:if>
+    <f:if condition="{site.settings.social.youtube}">
+        <a href="{site.settings.social.youtube}" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <f:if condition="{site.settings.social.youtubeIcon}">
+                <f:then>
+                    <img src="{conn:resolvePath(path: site.settings.social.youtubeIcon)}" alt="" width="20" height="20" aria-hidden="true" class="{f:if(condition: site.settings.social.youtubeIconDark, then: 'navbar-logo--light')}" />
+                    <f:if condition="{site.settings.social.youtubeIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.youtubeIconDark)}" alt="" width="20" height="20" aria-hidden="true" class="navbar-logo--dark" />
+                    </f:if>
+                </f:then>
+                <f:else>YouTube</f:else>
+            </f:if>
+        </a>
+    </f:if>
+    <f:if condition="{site.settings.social.facebook}">
+        <a href="{site.settings.social.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <f:if condition="{site.settings.social.facebookIcon}">
+                <f:then>
+                    <img src="{conn:resolvePath(path: site.settings.social.facebookIcon)}" alt="" width="20" height="20" aria-hidden="true" class="{f:if(condition: site.settings.social.facebookIconDark, then: 'navbar-logo--light')}" />
+                    <f:if condition="{site.settings.social.facebookIconDark}">
+                        <img src="{conn:resolvePath(path: site.settings.social.facebookIconDark)}" alt="" width="20" height="20" aria-hidden="true" class="navbar-logo--dark" />
+                    </f:if>
+                </f:then>
+                <f:else>Facebook</f:else>
+            </f:if>
+        </a>
+    </f:if>
+</div>
+</f:if>
+</html>

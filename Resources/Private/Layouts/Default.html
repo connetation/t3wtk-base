@@ -23,20 +23,32 @@
     </f:if>
     <f:render section="MetaTags" optional="true" />
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100{f:if(condition: '{site.settings.themeToggle.position}', then: ' has-float-toggle')}">
     <f:if condition="{site.settings.meta.gtmId}">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={site.settings.meta.gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </f:if>
 
-    <f:variable name="navStyle">{f:if(condition: '{site.settings.navbar.style}', then: '{site.settings.navbar.style}', else: 'dropdown-light')}</f:variable>
-    <f:render partial="Navigation/Navbar/{navStyle}" arguments="{mainNavigation: mainNavigation, site: site}" />
+    <f:variable name="navStyle">{f:if(condition: '{site.settings.navbar.style}', then: '{site.settings.navbar.style}', else: 'NavTop')}</f:variable>
+    <f:if condition="{navStyle} == 'nav-left'"><f:variable name="navStyle">NavLeft</f:variable></f:if>
+    <f:if condition="{navStyle} == 'nav-right'"><f:variable name="navStyle">NavRight</f:variable></f:if>
+    <f:if condition="{navStyle} == 'nav-top'"><f:variable name="navStyle">NavTop</f:variable></f:if>
+    <f:variable name="navigationLevels">{f:if(condition: '{site.settings.navbar.navigationLevels}', then: '{site.settings.navbar.navigationLevels}', else: '2')}</f:variable>
+    <f:render partial="Navigation/Navbar/{navStyle}" arguments="{mainNavigation: mainNavigation, site: site, navigationLevels: navigationLevels}" />
 
     <main class="flex-shrink-0" id="main-content">
         <f:render section="Main" />
     </main>
 
-    <f:variable name="footerLayout">{f:if(condition: '{site.settings.footer.layout}', then: '{site.settings.footer.layout}', else: 'standard')}</f:variable>
+    <f:variable name="footerLayout">{f:if(condition: '{site.settings.footer.layout}', then: '{site.settings.footer.layout}', else: 'Standard')}</f:variable>
+    <f:if condition="{footerLayout} == 'standard'"><f:variable name="footerLayout">Standard</f:variable></f:if>
+    <f:if condition="{footerLayout} == 'centered'"><f:variable name="footerLayout">Centered</f:variable></f:if>
+    <f:if condition="{footerLayout} == 'minimal'"><f:variable name="footerLayout">Minimal</f:variable></f:if>
     <f:render partial="Page/Footer/{footerLayout}" arguments="{site: site, footerNavigation: footerNavigation}" />
+
+    <!-- Floating theme toggle (position configured via site settings) -->
+    <f:if condition="{site.settings.themeToggle.position}">
+        <f:render partial="Page/ThemeToggle" arguments="{position: site.settings.themeToggle.position, offsetX: site.settings.themeToggle.offsetX, offsetY: site.settings.themeToggle.offsetY}" />
+    </f:if>
 
     <!-- Theme toggle script runs immediately to prevent FOUC -->
     <script>

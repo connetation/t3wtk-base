@@ -1,9 +1,14 @@
 categories:
   conn.navbar:
     label: 'Navbar'
-  conn.navbar.dropdown:
-    label: 'Dropdown style options'
+  conn.navbar.top:
+    label: 'Desktop navigation'
     parent: conn.navbar
+  conn.navbar.panel:
+    label: 'Mobile panel'
+    parent: conn.navbar
+  conn.themetoggle:
+    label: 'Theme toggle'
   conn.branding:
     label: 'Branding'
   conn.footer:
@@ -23,7 +28,17 @@ categories:
     label: 'Meta & Analytics'
 
 settings:
-  # ─── Navbar ───────────────────────────────────────────────────────────────
+  # ─── Navbar – General ─────────────────────────────────────────────────────
+  navbar.style:
+    label: 'Navbar style'
+    type: string
+    default: 'NavTop'
+    category: conn.navbar
+    enum:
+      NavTop: 'Navigation – Top (horizontal)'
+      NavLeft: 'Navigation – Slide from left'
+      NavRight: 'Navigation – Slide from right'
+
   navbar.position:
     label: 'Navbar position'
     type: string
@@ -35,21 +50,77 @@ settings:
       fixed-bottom: 'Fixed bottom'
       '': 'Static'
 
+  navbar.mobileBreakpoint:
+    label: 'Mobile menu breakpoint'
+    description: 'Screen width at which the navigation switches from hamburger/drawer to inline. Applies to nav-top only.'
+    type: string
+    default: 'lg'
+    category: conn.navbar
+    enum:
+      sm: 'Small (≥ 576 px)'
+      md: 'Medium (≥ 768 px)'
+      lg: 'Large (≥ 992 px)'
+      xl: 'Extra large (≥ 1200 px)'
+      xxl: 'Extra extra large (≥ 1400 px)'
+
+  navbar.navigationLevels:
+    label: 'Navigation depth'
+    description: 'Number of navigation levels rendered. 1 = top-level only (no dropdowns/sub-items), 2 = top + sub-items (default), 3+ = full depth rendered for all navigation types.'
+    type: int
+    default: 2
+    category: conn.navbar
+
+  # ─── Navbar – Desktop navigation ──────────────────────────────────────────
   navbar.logoPosition:
     label: 'Logo position'
     type: string
     default: 'left'
-    category: conn.navbar
+    category: conn.navbar.top
     enum:
       left: 'Left'
       center: 'Center'
       right: 'Right'
 
+  navbar.alignment:
+    label: 'Navigation item alignment'
+    description: 'How navigation items are aligned within the navbar. Applies to nav-top only.'
+    type: string
+    default: 'start'
+    category: conn.navbar.top
+    enum:
+      start: 'Left'
+      center: 'Center'
+      end: 'Right'
+
+  navbar.topDropdownStyle:
+    label: 'Dropdown display style'
+    description: 'How sub-menu items are displayed on desktop. Applies to nav-top only.'
+    type: string
+    default: 'list'
+    category: conn.navbar.top
+    enum:
+      list: 'List (standard vertical dropdown)'
+      grid: 'Grid (horizontal card grid)'
+
+  navbar.gridDropdownAlign:
+    label: 'Grid dropdown alignment'
+    description: 'How the grid dropdown aligns to its trigger item. Auto detects position in viewport.'
+    type: string
+    default: 'auto'
+    category: conn.navbar.top
+    enum:
+      auto: 'Auto (by item position)'
+      left: 'Always left'
+      center: 'Always center'
+      right: 'Always right'
+
+  # ─── Navbar – Mobile panel ─────────────────────────────────────────────────
   navbar.offcanvasPosition:
     label: 'Menu panel – slide from'
+    description: 'Slide direction of the mobile navigation panel.'
     type: string
     default: 'offcanvas-end'
-    category: conn.navbar.dropdown
+    category: conn.navbar.panel
     enum:
       offcanvas-end: 'Right'
       offcanvas-start: 'Left'
@@ -61,30 +132,80 @@ settings:
     description: 'Allow the page to scroll while the panel is open.'
     type: bool
     default: false
-    category: conn.navbar.dropdown
+    category: conn.navbar.panel
 
   navbar.offcanvasBackdrop:
     label: 'Backdrop'
     type: string
     default: 'true'
-    category: conn.navbar.dropdown
+    category: conn.navbar.panel
     enum:
       'true': 'Show backdrop'
       'false': 'No backdrop'
       static: 'Static (click outside does not close)'
 
-  navbar.style:
-    label: 'Navbar style'
+  navbar.mobilePanelAlign:
+    label: 'Mobile panel – content alignment'
+    description: 'Horizontal alignment of content inside the mobile navigation panel.'
     type: string
-    default: 'dropdown-light'
-    category: conn.navbar
+    default: 'start'
+    category: conn.navbar.panel
     enum:
-      dropdown-light: 'Dropdown – Light (theme-adaptive)'
-      dropdown-dark: 'Dropdown – Dark (always dark)'
-      megamenu-columns: 'Mega Menu – Columns'
-      megamenu-twopanel: 'Mega Menu – Two-panel'
-      sidebar-left: 'Sidebar – Slide from left'
-      sidebar-right: 'Sidebar – Slide from right'
+      start: 'Left'
+      center: 'Center'
+      end: 'Right'
+
+  navbar.panelTopContent:
+    label: 'Panel – top content'
+    description: 'Content shown above the navigation list in the mobile offcanvas panel.'
+    type: string
+    default: ''
+    category: conn.navbar.panel
+    enum:
+      '': 'None'
+      social: 'Social media links'
+      contact: 'Contact (email & phone)'
+      address: 'Full address'
+
+  navbar.panelBottomContent:
+    label: 'Panel – bottom content'
+    description: 'Content shown below the navigation list in the mobile offcanvas panel.'
+    type: string
+    default: 'social'
+    category: conn.navbar.panel
+    enum:
+      '': 'None'
+      social: 'Social media links'
+      contact: 'Contact (email & phone)'
+      address: 'Full address'
+
+  # ─── Theme toggle ────────────────────────────────────────────────────────
+  themeToggle.position:
+    label: 'Theme toggle – fixed position'
+    description: 'Show a floating theme toggle button at a fixed screen position. "None" keeps only the inline button in the navbar.'
+    type: string
+    default: ''
+    category: conn.themetoggle
+    enum:
+      '': 'None (inline in navbar only)'
+      bottom-right: 'Bottom right'
+      bottom-left: 'Bottom left'
+      top-right: 'Top right'
+      top-left: 'Top left'
+
+  themeToggle.offsetX:
+    label: 'Theme toggle – horizontal offset (px)'
+    description: 'Distance in pixels from the left or right screen edge.'
+    type: int
+    default: 24
+    category: conn.themetoggle
+
+  themeToggle.offsetY:
+    label: 'Theme toggle – vertical offset (px)'
+    description: 'Distance in pixels from the top or bottom screen edge.'
+    type: int
+    default: 24
+    category: conn.themetoggle
 
   # ─── Branding ─────────────────────────────────────────────────────────────
   branding.logo:
@@ -118,12 +239,12 @@ settings:
   footer.layout:
     label: 'Footer layout'
     type: string
-    default: 'standard'
+    default: 'Standard'
     category: conn.footer
     enum:
-      standard: 'Standard (brand + columns)'
-      centered: 'Centered'
-      minimal: 'Minimal (bar only)'
+      Standard: 'Standard (brand + columns)'
+      Centered: 'Centered'
+      Minimal: 'Minimal (bar only)'
 
   # ─── Footer – Bottom bar ─────────────────────────────────────────────────
   footer.bar.show:

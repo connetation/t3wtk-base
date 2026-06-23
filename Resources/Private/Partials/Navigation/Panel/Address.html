@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:if condition="{site.settings.footer.address.company} || {site.settings.footer.address.street} || {site.settings.footer.address.city}">
+<div class="conn-panel-address">
+    <address>
+        <f:if condition="{site.settings.footer.address.company}">
+            <strong>{site.settings.footer.address.company}</strong>
+        </f:if>
+        <f:if condition="{site.settings.footer.address.street}">
+            <span>{site.settings.footer.address.street}</span>
+        </f:if>
+        <f:if condition="{site.settings.footer.address.zip} || {site.settings.footer.address.city}">
+            <span>{site.settings.footer.address.zip} {site.settings.footer.address.city}</span>
+        </f:if>
+        <f:if condition="{site.settings.footer.address.country}">
+            <span>{site.settings.footer.address.country}</span>
+        </f:if>
+        <f:if condition="{site.settings.footer.address.phone}">
+            <a href="tel:{site.settings.footer.address.phone}">{site.settings.footer.address.phone}</a>
+        </f:if>
+        <f:if condition="{site.settings.footer.address.email}">
+            <a href="mailto:{site.settings.footer.address.email}">{site.settings.footer.address.email}</a>
+        </f:if>
+    </address>
+</div>
+</f:if>
+</html>
