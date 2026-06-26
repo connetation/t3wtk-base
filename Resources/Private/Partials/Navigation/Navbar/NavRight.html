@@ -7,6 +7,7 @@
 <f:variable name="offcanvasBackdrop">{f:if(condition: site.settings.navbar.offcanvasBackdrop, then: site.settings.navbar.offcanvasBackdrop, else: 'true')}</f:variable>
 <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 <f:variable name="panelAlign">{f:if(condition: site.settings.navbar.mobilePanelAlign, then: site.settings.navbar.mobilePanelAlign, else: 'start')}</f:variable>
+<f:variable name="breakpoint">{f:if(condition: site.settings.navbar.mobileBreakpoint, then: site.settings.navbar.mobileBreakpoint, else: 'lg')}</f:variable>
 <f:variable name="panelTop">{f:if(condition: site.settings.navbar.panelTopContent, then: site.settings.navbar.panelTopContent, else: '')}</f:variable>
 <f:variable name="panelBottom">{f:if(condition: site.settings.navbar.panelBottomContent, then: site.settings.navbar.panelBottomContent, else: 'social')}</f:variable>
 
@@ -51,7 +52,7 @@
 </nav>
 
 <!-- Offcanvas panel – slides from right -->
-<div class="offcanvas offcanvas-end conn-nav-offcanvas__panel conn-nav-offcanvas__panel--{panelAlign}" tabindex="-1"
+<div class="offcanvas offcanvas-end conn-nav-offcanvas__panel conn-nav-offcanvas__panel--{panelAlign} conn-nav-offcanvas__panel--expand-{breakpoint}" tabindex="-1"
      id="navPanelRight"
      data-bs-scroll="{offcanvasScroll}"
      data-bs-backdrop="{offcanvasBackdrop}">

@@ -28,9 +28,8 @@
 }
 
 // ── Offcanvas panel ────────────────────────────
-// Full-screen mobile panel. Bootstrap's .navbar-expand-{bp} overrides
-// width/height/background with !important on desktop, so these values
-// only take effect when the offcanvas is a true drawer (mobile).
+// Full-screen on mobile; desktop width is overridden per-breakpoint via
+// conn-nav-offcanvas__panel--expand-{bp} (see below).
 .conn-nav-offcanvas__panel {
     --bs-offcanvas-width: 100vw;
     --bs-offcanvas-height: 100dvh;
@@ -78,6 +77,17 @@
         flex-shrink: 0;
 
         .btn-close { filter: var(--conn-btn-close-filter, none); }
+    }
+}
+
+// ── Desktop panel size ────────────────────────
+// On mobile the panel is full-screen (100vw × 100dvh).
+// At the configured mobileBreakpoint, shrink to a normal side-panel width.
+@each $bp, $width in (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px) {
+    .conn-nav-offcanvas__panel--expand-#{$bp} {
+        @media (min-width: $width) {
+            --bs-offcanvas-width: 320px;
+        }
     }
 }
 
