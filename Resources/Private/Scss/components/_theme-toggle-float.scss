@@ -3,10 +3,19 @@
 // Fixed-position, configurable via site settings
 // ─────────────────────────────────────────────
 
-// When a floating toggle is active, hide the inline one from the navbar.
-// The floating button uses .conn-float-toggle (not .theme-toggle) so it is unaffected.
-.has-float-toggle .theme-toggle {
+// Hide the inline toggle in the navbar/offcanvas panel on all screen sizes when
+// a floating button is active. The footer toggle lives inside <footer>, not inside
+// .navbar or .conn-nav-offcanvas, so it is intentionally unaffected by this rule.
+.has-float-toggle .navbar .theme-toggle,
+.has-float-toggle .conn-nav-offcanvas .theme-toggle {
     display: none !important;
+}
+
+// On mobile: hide the floating button — the footer toggle takes over.
+@media (max-width: 991.98px) {
+    .conn-theme-toggle-float {
+        display: none !important;
+    }
 }
 
 // Position via modifier class + CSS custom properties set inline

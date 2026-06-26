@@ -30,7 +30,7 @@ const ConnTheme = (() => {
     const init = () => {
         apply(getPreferred());
 
-        document.querySelectorAll('#themeToggle').forEach(btn => {
+        document.querySelectorAll('.theme-toggle').forEach(btn => {
             btn.addEventListener('click', toggle);
         });
 

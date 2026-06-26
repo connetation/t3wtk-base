@@ -1,4 +1,18 @@
 categories:
+  conn.theme:
+    label: 'Theme & Colors'
+  conn.theme.colors:
+    label: 'Colors'
+    parent: conn.theme
+  conn.theme.light:
+    label: 'Light mode'
+    parent: conn.theme
+  conn.theme.dark:
+    label: 'Dark mode'
+    parent: conn.theme
+  conn.theme.nav:
+    label: 'Navigation typography'
+    parent: conn.theme
   conn.navbar:
     label: 'Navbar'
   conn.navbar.top:
@@ -28,6 +42,143 @@ categories:
     label: 'Meta & Analytics'
 
 settings:
+  # ─── Theme – Mode-invariant colors ───────────────────────────────────────
+  theme.accent:
+    label: 'Accent color'
+    description: 'Primary brand/accent color. Any CSS color value (e.g. #6366f1, rgb(99,102,241)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
+  theme.accentHover:
+    label: 'Accent – hover'
+    description: 'Accent color on hover/focus. Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
+  # ─── Theme – Light mode ────────────────────────────────────────────────────
+  theme.light.bg:
+    label: 'Page background'
+    description: 'Page background color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.surface:
+    label: 'Surface color'
+    description: 'Card / panel surface color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.navBg:
+    label: 'Navbar background'
+    description: 'Navbar and offcanvas panel background for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.footerBg:
+    label: 'Footer background'
+    description: 'Footer background color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.text:
+    label: 'Text color'
+    description: 'Main body text color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.textMuted:
+    label: 'Muted text color'
+    description: 'Secondary / muted text color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.border:
+    label: 'Border color'
+    description: 'Default border color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  # ─── Theme – Dark mode ─────────────────────────────────────────────────────
+  theme.dark.bg:
+    label: 'Page background'
+    description: 'Page background color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.surface:
+    label: 'Surface color'
+    description: 'Card / panel surface color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.navBg:
+    label: 'Navbar background'
+    description: 'Navbar and offcanvas panel background for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.footerBg:
+    label: 'Footer background'
+    description: 'Footer background color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.text:
+    label: 'Text color'
+    description: 'Main body text color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.textMuted:
+    label: 'Muted text color'
+    description: 'Secondary / muted text color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.border:
+    label: 'Border color'
+    description: 'Default border color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  # ─── Theme – Navigation typography ────────────────────────────────────────
+  theme.nav.panelLinkSize:
+    label: 'Panel nav – L1 font size'
+    description: 'Font size for top-level links in NavLeft / NavRight (e.g. 1.125rem). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.nav
+
+  theme.nav.panelSubLinkSize:
+    label: 'Panel nav – L2 font size'
+    description: 'Font size for second-level links in NavLeft / NavRight.'
+    type: string
+    default: ''
+    category: conn.theme.nav
+
+  theme.nav.panelSubLinkSizeL3:
+    label: 'Panel nav – L3 font size'
+    description: 'Font size for third-level links in NavLeft / NavRight.'
+    type: string
+    default: ''
+    category: conn.theme.nav
+
   # ─── Navbar – General ─────────────────────────────────────────────────────
   navbar.style:
     label: 'Navbar style'
@@ -180,6 +331,13 @@ settings:
       address: 'Full address'
 
   # ─── Theme toggle ────────────────────────────────────────────────────────
+  themeToggle.enabled:
+    label: 'Theme toggle – show button'
+    description: 'Show the light/dark theme toggle button. Disable to remove it from the navbar and footer.'
+    type: bool
+    default: true
+    category: conn.themetoggle
+
   themeToggle.position:
     label: 'Theme toggle – fixed position'
     description: 'Show a floating theme toggle button at a fixed screen position. "None" keeps only the inline button in the navbar.'

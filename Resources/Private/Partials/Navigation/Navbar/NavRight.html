@@ -35,11 +35,13 @@
         </a>
 
         <div class="ms-auto d-flex align-items-center gap-2">
-            <button class="btn btn-sm btn-outline-secondary theme-toggle"
-                    id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-                <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-                <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
-            </button>
+            <f:if condition="{site.settings.themeToggle.enabled}">
+                <button class="btn btn-sm btn-outline-secondary theme-toggle"
+                        aria-label="Toggle theme" title="Toggle theme">
+                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+                </button>
+            </f:if>
             <button class="navbar-toggler" type="button"
                     data-bs-toggle="offcanvas" data-bs-target="#navPanelRight"
                     aria-controls="navPanelRight" aria-expanded="false"

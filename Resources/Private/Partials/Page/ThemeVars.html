@@ -1,0 +1,82 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{site.settings.theme.accent}
+    || {site.settings.theme.accentHover}
+    || {site.settings.theme.light.bg}
+    || {site.settings.theme.light.surface}
+    || {site.settings.theme.light.navBg}
+    || {site.settings.theme.light.footerBg}
+    || {site.settings.theme.light.text}
+    || {site.settings.theme.light.textMuted}
+    || {site.settings.theme.light.border}
+    || {site.settings.theme.dark.bg}
+    || {site.settings.theme.dark.surface}
+    || {site.settings.theme.dark.navBg}
+    || {site.settings.theme.dark.footerBg}
+    || {site.settings.theme.dark.text}
+    || {site.settings.theme.dark.textMuted}
+    || {site.settings.theme.dark.border}
+    || {site.settings.theme.nav.panelLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSizeL3}">
+<style>
+<f:if condition="{site.settings.theme.accent}
+    || {site.settings.theme.accentHover}
+    || {site.settings.theme.nav.panelLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSizeL3}">
+:root {
+<f:if condition="{site.settings.theme.accent}">    --conn-accent: {site.settings.theme.accent};
+</f:if><f:if condition="{site.settings.theme.accentHover}">    --conn-accent-hover: {site.settings.theme.accentHover};
+</f:if><f:if condition="{site.settings.theme.nav.panelLinkSize}">    --conn-nav-panel-link-size: {site.settings.theme.nav.panelLinkSize};
+</f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSize}">    --conn-nav-panel-sublink-size: {site.settings.theme.nav.panelSubLinkSize};
+</f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSizeL3}">    --conn-nav-panel-sublink-size-l3: {site.settings.theme.nav.panelSubLinkSizeL3};
+</f:if>}
+</f:if>
+<f:if condition="{site.settings.theme.light.bg}
+    || {site.settings.theme.light.surface}
+    || {site.settings.theme.light.navBg}
+    || {site.settings.theme.light.footerBg}
+    || {site.settings.theme.light.text}
+    || {site.settings.theme.light.textMuted}
+    || {site.settings.theme.light.border}">
+[data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
+<f:if condition="{site.settings.theme.light.bg}">    --conn-bg: {site.settings.theme.light.bg};
+    --bs-body-bg: {site.settings.theme.light.bg};
+</f:if><f:if condition="{site.settings.theme.light.surface}">    --conn-surface: {site.settings.theme.light.surface};
+    --conn-surface-alt: {site.settings.theme.light.surface};
+    --conn-surface-raised: {site.settings.theme.light.surface};
+</f:if><f:if condition="{site.settings.theme.light.navBg}">    --conn-nav-bg: {site.settings.theme.light.navBg};
+</f:if><f:if condition="{site.settings.theme.light.footerBg}">    --conn-footer-bg: {site.settings.theme.light.footerBg};
+</f:if><f:if condition="{site.settings.theme.light.text}">    --conn-text: {site.settings.theme.light.text};
+    --bs-heading-color: {site.settings.theme.light.text};
+</f:if><f:if condition="{site.settings.theme.light.textMuted}">    --conn-text-muted: {site.settings.theme.light.textMuted};
+</f:if><f:if condition="{site.settings.theme.light.border}">    --conn-border: {site.settings.theme.light.border};
+</f:if>}
+</f:if>
+<f:if condition="{site.settings.theme.dark.bg}
+    || {site.settings.theme.dark.surface}
+    || {site.settings.theme.dark.navBg}
+    || {site.settings.theme.dark.footerBg}
+    || {site.settings.theme.dark.text}
+    || {site.settings.theme.dark.textMuted}
+    || {site.settings.theme.dark.border}">
+[data-bs-theme="dark"] {
+<f:if condition="{site.settings.theme.dark.bg}">    --conn-bg: {site.settings.theme.dark.bg};
+    --bs-body-bg: {site.settings.theme.dark.bg};
+</f:if><f:if condition="{site.settings.theme.dark.surface}">    --conn-surface: {site.settings.theme.dark.surface};
+    --conn-surface-alt: {site.settings.theme.dark.surface};
+    --conn-surface-raised: {site.settings.theme.dark.surface};
+</f:if><f:if condition="{site.settings.theme.dark.navBg}">    --conn-nav-bg: {site.settings.theme.dark.navBg};
+</f:if><f:if condition="{site.settings.theme.dark.footerBg}">    --conn-footer-bg: {site.settings.theme.dark.footerBg};
+</f:if><f:if condition="{site.settings.theme.dark.text}">    --conn-text: {site.settings.theme.dark.text};
+    --bs-heading-color: {site.settings.theme.dark.text};
+</f:if><f:if condition="{site.settings.theme.dark.textMuted}">    --conn-text-muted: {site.settings.theme.dark.textMuted};
+</f:if><f:if condition="{site.settings.theme.dark.border}">    --conn-border: {site.settings.theme.dark.border};
+</f:if>}
+</f:if>
+</style>
+</f:if>
+
+</html>

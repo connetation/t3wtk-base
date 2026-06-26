@@ -206,11 +206,13 @@
                     </f:for>
                 </ul>
 
-                <button class="btn btn-sm btn-outline-secondary theme-toggle ms-2"
-                        id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
-                </button>
+                <f:if condition="{site.settings.themeToggle.enabled}">
+                    <button class="btn btn-sm btn-outline-secondary theme-toggle ms-2"
+                            aria-label="Toggle theme" title="Toggle theme">
+                        <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+                        <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+                    </button>
+                </f:if>
             </div>
 
             <!-- Mobile-only bottom content slot -->

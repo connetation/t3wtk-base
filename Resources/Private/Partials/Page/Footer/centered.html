@@ -148,6 +148,17 @@
             {f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}
         </p>
 
+        <f:variable name="break">{f:if(condition: site.settings.navbar.mobileBreakpoint, then: site.settings.navbar.mobileBreakpoint, else: 'lg')}</f:variable>
+        <f:if condition="{site.settings.themeToggle.enabled}">
+            <div class="d-flex d-{break}-none justify-content-center mt-4">
+                <button class="btn btn-sm btn-outline-secondary theme-toggle"
+                        aria-label="Toggle theme" title="Toggle theme">
+                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+                </button>
+            </div>
+        </f:if>
+
     </div>
 </footer>
 

@@ -13,6 +13,11 @@
     --conn-accent-hover: #4f52d4;
     --conn-radius:       0.75rem;
     --conn-transition:   0.2s ease-in-out;
+
+    // Navigation panel typography (NavLeft / NavRight)
+    --conn-nav-panel-link-size:       1.125rem;
+    --conn-nav-panel-sublink-size:    0.9375rem;
+    --conn-nav-panel-sublink-size-l3: 0.875rem;
 }
 
 // ── Light-mode tokens ─────────────────────────
