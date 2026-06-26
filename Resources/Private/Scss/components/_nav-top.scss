@@ -127,6 +127,11 @@
 @each $bp, $width in (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px) {
     .conn-nav-top.navbar-expand-#{$bp} {
         @media (min-width: $width) {
+            // Dropdowns extend below the panel — must not be clipped on desktop
+            .offcanvas {
+                overflow: visible;
+            }
+
             .offcanvas-body {
                 flex-direction: row;
                 align-items: center;
