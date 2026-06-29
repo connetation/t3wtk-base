@@ -1,0 +1,570 @@
+// ─────────────────────────────────────────────
+// Forms – Global overrides
+// Applies to all TYPO3 extension forms:
+// felogin, powermail, news, event manager, etc.
+// ─────────────────────────────────────────────
+
+// ── Text inputs ───────────────────────────────
+
+.form-control {
+    background-color: var(--conn-surface) !important;
+    border-color: var(--conn-border-strong) !important;
+    color: var(--conn-text) !important;
+    border-radius: var(--conn-radius) !important;
+    box-shadow: none !important;
+    transition: border-color var(--conn-transition), box-shadow var(--conn-transition);
+
+    &::placeholder {
+        color: var(--conn-text-muted);
+        opacity: 1;
+    }
+
+    &:hover:not(:focus):not(:disabled):not([readonly]) {
+        border-color: var(--conn-accent) !important;
+    }
+
+    &:focus {
+        border-color: var(--conn-accent) !important;
+        box-shadow: 0 0 0 3px var(--conn-accent-glow) !important;
+        background-color: var(--conn-surface) !important;
+        color: var(--conn-text) !important;
+    }
+
+    &:disabled,
+    &[readonly] {
+        background-color: var(--conn-surface-alt) !important;
+        color: var(--conn-text-muted) !important;
+        border-color: var(--conn-border) !important;
+        box-shadow: none !important;
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+}
+
+// ── Textarea ──────────────────────────────────
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 7rem;
+}
+
+// ── Select ────────────────────────────────────
+
+.form-select {
+    background-color: var(--conn-surface) !important;
+    border-color: var(--conn-border-strong) !important;
+    color: var(--conn-text) !important;
+    border-radius: var(--conn-radius) !important;
+    box-shadow: none !important;
+    transition: border-color var(--conn-transition), box-shadow var(--conn-transition);
+
+    &:hover:not(:focus):not(:disabled) {
+        border-color: var(--conn-accent) !important;
+    }
+
+    &:focus {
+        border-color: var(--conn-accent) !important;
+        box-shadow: 0 0 0 3px var(--conn-accent-glow) !important;
+        background-color: var(--conn-surface) !important;
+    }
+
+    &:disabled {
+        background-color: var(--conn-surface-alt) !important;
+        color: var(--conn-text-muted) !important;
+        border-color: var(--conn-border) !important;
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+}
+
+// ── Checkboxes & radios ───────────────────────
+
+.form-check-input {
+    // !important ensures the unchecked surface color wins over Bootstrap's
+    // --bs-form-check-bg cascade (Bootstrap uses same specificity, ours loads later,
+    // but !important on :checked needs a matching !important here so specificity rules apply)
+    background-color: var(--conn-surface) !important;
+    border-color: var(--conn-border-strong) !important;
+    transition: border-color var(--conn-transition), box-shadow var(--conn-transition), background-color var(--conn-transition);
+
+    &:hover:not(:disabled) {
+        border-color: var(--conn-accent) !important;
+    }
+
+    &:focus {
+        border-color: var(--conn-accent) !important;
+        box-shadow: 0 0 0 3px var(--conn-accent-glow) !important;
+    }
+
+    &:checked {
+        background-color: var(--conn-accent) !important;
+        border-color: var(--conn-accent) !important;
+    }
+
+    // :indeterminate only for checkboxes — radio buttons also match :indeterminate
+    // when no option in their group is selected, which would fill all of them
+    &[type="checkbox"]:indeterminate {
+        background-color: var(--conn-accent) !important;
+        border-color: var(--conn-accent) !important;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.form-check-label {
+    color: var(--conn-text);
+    cursor: pointer;
+}
+
+// ── Toggle switch ─────────────────────────────
+
+.form-switch .form-check-input {
+    background-color: var(--conn-border-strong) !important;
+
+    &:checked {
+        background-color: var(--conn-accent) !important;
+        border-color: var(--conn-accent) !important;
+    }
+}
+
+// ── EXT:form radio/checkbox layout fix ────────
+// EXT:form renders <input> INSIDE <label class="form-check-wrapping-label">.
+// Bootstrap's .form-check .form-check-input { float: left; margin-left: -1.5em }
+// is designed for siblings, not nested inputs — it hides the label text when nested.
+
+.form-check-wrapping-label {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    // Reset Bootstrap's float layout applied to .form-check .form-check-input
+    .form-check-input {
+        float: none !important;
+        margin: 0 !important;
+        flex-shrink: 0;
+        position: static !important;
+    }
+}
+
+// Remove Bootstrap's padding-left reserved for the float-based input offset
+.form-check:has(.form-check-wrapping-label) {
+    padding-left: 0;
+}
+
+// ── Labels & helper text ──────────────────────
+
+.form-label {
+    color: var(--conn-text);
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+}
+
+.form-text {
+    color: var(--conn-text-muted) !important;
+    font-size: 0.8125rem;
+}
+
+// ── Floating labels ───────────────────────────
+
+.form-floating {
+    > .form-control,
+    > .form-select {
+        border-radius: var(--conn-radius) !important;
+    }
+
+    > label {
+        color: var(--conn-text-muted);
+    }
+
+    > .form-control:focus ~ label,
+    > .form-control:not(:placeholder-shown) ~ label,
+    > .form-select ~ label {
+        color: var(--conn-accent);
+    }
+}
+
+// ── Fieldset / legend (powermail, event manager) ──
+
+fieldset {
+    border: 1px solid var(--conn-border);
+    border-radius: var(--conn-radius);
+    padding: 1.25rem 1.5rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    float: none;
+    width: auto;
+    padding: 0 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--conn-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0;
+}
+
+// ── Input group ───────────────────────────────
+
+.input-group-text {
+    background-color: var(--conn-surface-alt) !important;
+    border-color: var(--conn-border-strong) !important;
+    color: var(--conn-text-muted) !important;
+    border-radius: var(--conn-radius) !important;
+}
+
+// ── Range ─────────────────────────────────────
+
+.form-range {
+    &::-webkit-slider-thumb {
+        background-color: var(--conn-accent);
+        transition: background-color var(--conn-transition), box-shadow var(--conn-transition);
+
+        &:hover {
+            background-color: var(--conn-accent-hover);
+        }
+    }
+
+    &::-moz-range-thumb {
+        background-color: var(--conn-accent);
+        transition: background-color var(--conn-transition), box-shadow var(--conn-transition);
+
+        &:hover {
+            background-color: var(--conn-accent-hover);
+        }
+    }
+
+    &::-webkit-slider-runnable-track {
+        background-color: var(--conn-border-strong);
+    }
+
+    &::-moz-range-track {
+        background-color: var(--conn-border-strong);
+    }
+
+    &:focus {
+        &::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px var(--conn-accent-glow);
+        }
+
+        &::-moz-range-thumb {
+            box-shadow: 0 0 0 3px var(--conn-accent-glow);
+        }
+    }
+}
+
+// ── Buttons — base ────────────────────────────
+
+.btn {
+    border-radius: var(--conn-radius) !important;
+    font-weight: 500;
+    transition:
+        color var(--conn-transition),
+        background-color var(--conn-transition),
+        border-color var(--conn-transition),
+        box-shadow var(--conn-transition),
+        transform var(--conn-transition);
+
+    &:active:not(:disabled) {
+        transform: scale(0.97);
+    }
+
+    &:focus-visible {
+        box-shadow: 0 0 0 3px var(--conn-accent-glow) !important;
+        outline: none;
+    }
+}
+
+// ── Buttons — primary ─────────────────────────
+
+.btn-primary {
+    --bs-btn-color:              var(--conn-btn-color);
+    --bs-btn-bg:                 var(--conn-btn-bg);
+    --bs-btn-border-color:       var(--conn-btn-bg);
+    --bs-btn-hover-color:        var(--conn-btn-color);
+    --bs-btn-hover-bg:           var(--conn-btn-bg-hover);
+    --bs-btn-hover-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-active-color:       var(--conn-btn-color);
+    --bs-btn-active-bg:          var(--conn-btn-bg-hover);
+    --bs-btn-active-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-disabled-color:     var(--conn-btn-color);
+    --bs-btn-disabled-bg:        var(--conn-btn-bg);
+    --bs-btn-disabled-border-color: var(--conn-btn-bg);
+}
+
+// ── Buttons — secondary ───────────────────────
+
+.btn-secondary {
+    --bs-btn-color:              var(--conn-text);
+    --bs-btn-bg:                 var(--conn-surface-alt);
+    --bs-btn-border-color:       var(--conn-border-strong);
+    --bs-btn-hover-color:        var(--conn-btn-color);
+    --bs-btn-hover-bg:           var(--conn-btn-bg-hover);
+    --bs-btn-hover-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-active-color:       var(--conn-btn-color);
+    --bs-btn-active-bg:          var(--conn-btn-bg-hover);
+    --bs-btn-active-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-disabled-color:     var(--conn-text);
+    --bs-btn-disabled-bg:        var(--conn-surface-alt);
+    --bs-btn-disabled-border-color: var(--conn-border-strong);
+}
+
+// ── Buttons — outline-primary ─────────────────
+
+.btn-outline-primary {
+    --bs-btn-color:              var(--conn-btn-bg);
+    --bs-btn-border-color:       var(--conn-btn-bg);
+    --bs-btn-hover-color:        var(--conn-btn-color);
+    --bs-btn-hover-bg:           var(--conn-btn-bg-hover);
+    --bs-btn-hover-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-active-color:       var(--conn-btn-color);
+    --bs-btn-active-bg:          var(--conn-btn-bg-hover);
+    --bs-btn-active-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-disabled-color:     var(--conn-btn-bg);
+    --bs-btn-disabled-border-color: var(--conn-btn-bg);
+}
+
+// ── Buttons — outline-secondary ───────────────
+
+.btn-outline-secondary {
+    --bs-btn-color:              var(--conn-text);
+    --bs-btn-border-color:       var(--conn-border-strong);
+    --bs-btn-hover-color:        var(--conn-btn-color);
+    --bs-btn-hover-bg:           var(--conn-btn-bg-hover);
+    --bs-btn-hover-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-active-color:       var(--conn-btn-color);
+    --bs-btn-active-bg:          var(--conn-btn-bg-hover);
+    --bs-btn-active-border-color: var(--conn-btn-bg-hover);
+    --bs-btn-disabled-color:     var(--conn-text-muted);
+    --bs-btn-disabled-border-color: var(--conn-border-strong);
+}
+
+// ── Buttons — link ────────────────────────────
+
+.btn-link {
+    color: var(--conn-link);
+    text-decoration-color: transparent;
+    transition: color var(--conn-transition), text-decoration-color var(--conn-transition);
+
+    &:hover, &:focus-visible {
+        color: var(--conn-link-hover);
+        text-decoration-color: var(--conn-link-hover);
+    }
+}
+
+// ── Validation ────────────────────────────────
+
+.form-control,
+.form-select {
+    &.is-valid,
+    .was-validated &:valid {
+        border-color: var(--conn-success) !important;
+
+        &:focus {
+            box-shadow: 0 0 0 3px var(--conn-success-glow) !important;
+        }
+    }
+
+    &.is-invalid,
+    .was-validated &:invalid {
+        border-color: var(--conn-danger) !important;
+
+        &:focus {
+            box-shadow: 0 0 0 3px var(--conn-danger-glow) !important;
+        }
+    }
+}
+
+// Preserve accent on checked valid checkboxes — don't let Bootstrap turn them green
+.form-check-input:checked.is-valid,
+.was-validated .form-check-input:checked:valid {
+    background-color: var(--conn-accent) !important;
+    border-color: var(--conn-accent) !important;
+}
+
+.valid-feedback {
+    color: var(--conn-success);
+}
+
+.invalid-feedback {
+    color: var(--conn-danger);
+}
+
+// ── Browser autofill override ─────────────────
+// Defeats the dark background browsers inject on autofill (Chrome/Safari)
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 60px var(--conn-surface) inset !important;
+    -webkit-text-fill-color: var(--conn-text) !important;
+    caret-color: var(--conn-text);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+// ── Unclassed inputs (felogin, older extensions) ──
+// Target <input> elements that have NO Bootstrap class so they still get
+// the conn design. Extensions using .form-control already handled above.
+
+$_text-types: "text", "password", "email", "search", "number", "tel", "url", "date", "time", "datetime-local", "month", "week";
+
+@each $type in $_text-types {
+    input[type="#{$type}"]:not(.form-control) {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--conn-text);
+        background-color: var(--conn-surface);
+        border: 1px solid var(--conn-border-strong);
+        border-radius: var(--conn-radius);
+        box-shadow: none;
+        outline: none;
+        transition: border-color var(--conn-transition), box-shadow var(--conn-transition);
+        appearance: none;
+
+        &::placeholder { color: var(--conn-text-muted); opacity: 1; }
+
+        &:hover:not(:focus):not(:disabled) {
+            border-color: var(--conn-accent);
+        }
+
+        &:focus {
+            border-color: var(--conn-accent);
+            box-shadow: 0 0 0 3px var(--conn-accent-glow);
+        }
+
+        &:disabled {
+            background-color: var(--conn-surface-alt);
+            color: var(--conn-text-muted);
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+    }
+}
+
+textarea:not(.form-control) {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--conn-text);
+    background-color: var(--conn-surface);
+    border: 1px solid var(--conn-border-strong);
+    border-radius: var(--conn-radius);
+    box-shadow: none;
+    outline: none;
+    resize: vertical;
+    min-height: 7rem;
+    transition: border-color var(--conn-transition), box-shadow var(--conn-transition);
+
+    &::placeholder { color: var(--conn-text-muted); opacity: 1; }
+    &:hover:not(:focus) { border-color: var(--conn-accent); }
+    &:focus { border-color: var(--conn-accent); box-shadow: 0 0 0 3px var(--conn-accent-glow); }
+}
+
+select:not(.form-select) {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 2.25rem 0.5rem 0.75rem;
+    font-size: 1rem;
+    color: var(--conn-text);
+    background-color: var(--conn-surface);
+    border: 1px solid var(--conn-border-strong);
+    border-radius: var(--conn-radius);
+    box-shadow: none;
+    outline: none;
+    appearance: none;
+    transition: border-color var(--conn-transition), box-shadow var(--conn-transition);
+
+    &:hover:not(:focus) { border-color: var(--conn-accent); }
+    &:focus { border-color: var(--conn-accent); box-shadow: 0 0 0 3px var(--conn-accent-glow); }
+}
+
+// ── Unclassed submit / button (felogin, older extensions) ──
+
+input[type="submit"]:not(.btn),
+input[type="button"]:not(.btn),
+button:not(.btn):not([class]) {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--conn-btn-color);
+    background-color: var(--conn-btn-bg);
+    border: 1px solid var(--conn-btn-bg);
+    border-radius: var(--conn-radius);
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    appearance: none;
+    transition:
+        color var(--conn-transition),
+        background-color var(--conn-transition),
+        border-color var(--conn-transition),
+        box-shadow var(--conn-transition),
+        transform var(--conn-transition);
+
+    &:hover, &:focus {
+        color: var(--conn-btn-color);
+        background-color: var(--conn-btn-bg-hover);
+        border-color: var(--conn-btn-bg-hover);
+        outline: none;
+    }
+
+    &:focus-visible {
+        box-shadow: 0 0 0 3px var(--conn-accent-glow);
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+
+    &:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+}
+
+// ── Form alerts (powermail success/error messages) ──
+
+.alert {
+    border-radius: var(--conn-radius);
+    border-width: 0;
+    border-left: 3px solid transparent;
+
+    &-success {
+        background-color: var(--conn-success-glow);
+        border-color: var(--conn-success);
+        color: var(--conn-text);
+    }
+
+    &-danger,
+    &-error {
+        background-color: var(--conn-danger-glow);
+        border-color: var(--conn-danger);
+        color: var(--conn-text);
+    }
+
+    &-warning {
+        background-color: rgba(234, 179, 8, 0.12);
+        border-color: #eab308;
+        color: var(--conn-text);
+    }
+
+    &-info {
+        background-color: rgba(6, 182, 212, 0.12);
+        border-color: var(--conn-accent-secondary);
+        color: var(--conn-text);
+    }
+}
