@@ -57,6 +57,13 @@ settings:
     default: ''
     category: conn.theme.colors
 
+  theme.accentSecondary:
+    label: 'Accent secondary'
+    description: 'Secondary accent color used in card hover gradients and highlights (e.g. #06b6d4). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
   theme.shadowHover.color:
     label: 'Card hover shadow – color'
     description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
@@ -93,6 +100,20 @@ settings:
     category: conn.theme.colors
 
   # ─── Theme – Light mode ────────────────────────────────────────────────────
+  theme.light.accent:
+    label: 'Accent color'
+    description: 'Accent color for light mode. Overrides the global accent. Leave empty to use the global value.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.accentHover:
+    label: 'Accent – hover'
+    description: 'Accent hover color for light mode. Leave empty to use the global value.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   theme.light.bg:
     label: 'Page background'
     description: 'Page background color for light mode.'
@@ -128,6 +149,34 @@ settings:
     default: ''
     category: conn.theme.light
 
+  theme.light.heading:
+    label: 'Headers color'
+    description: 'Heading (h1–h6) color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.emphasis:
+    label: 'Emphasis color'
+    description: 'Strong/bold text and emphasis color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.link:
+    label: 'Link color'
+    description: 'Hyperlink color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.linkHover:
+    label: 'Link – hover color'
+    description: 'Hyperlink color on hover/focus for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   theme.light.textMuted:
     label: 'Muted text color'
     description: 'Secondary / muted text color for light mode.'
@@ -142,7 +191,42 @@ settings:
     default: ''
     category: conn.theme.light
 
+  theme.light.btnBg:
+    label: 'Button background'
+    description: 'Primary button background color for light mode (e.g. #6366f1). Leave empty to use the accent color.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.btnBgHover:
+    label: 'Button background – hover'
+    description: 'Primary button background color on hover/active for light mode. Leave empty to use the accent hover color.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.btnColor:
+    label: 'Button text color'
+    description: 'Text (label) color on primary buttons for light mode (e.g. #ffffff). Leave empty to keep white.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   # ─── Theme – Dark mode ─────────────────────────────────────────────────────
+  theme.dark.accent:
+    label: 'Accent color'
+    description: 'Accent color for dark mode. Overrides the global accent. Leave empty to use the global value.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.accentHover:
+    label: 'Accent – hover'
+    description: 'Accent hover color for dark mode. Leave empty to use the global value.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
   theme.dark.bg:
     label: 'Page background'
     description: 'Page background color for dark mode.'
@@ -178,6 +262,34 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  theme.dark.heading:
+    label: 'Headers color'
+    description: 'Heading (h1–h6) color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.emphasis:
+    label: 'Emphasis color'
+    description: 'Strong/bold text and emphasis color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.link:
+    label: 'Link color'
+    description: 'Hyperlink color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.linkHover:
+    label: 'Link – hover color'
+    description: 'Hyperlink color on hover/focus for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
   theme.dark.textMuted:
     label: 'Muted text color'
     description: 'Secondary / muted text color for dark mode.'
@@ -188,6 +300,27 @@ settings:
   theme.dark.border:
     label: 'Border color'
     description: 'Default border color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.btnBg:
+    label: 'Button background'
+    description: 'Primary button background color for dark mode. Leave empty to use the accent color.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.btnBgHover:
+    label: 'Button background – hover'
+    description: 'Primary button background color on hover/active for dark mode. Leave empty to use the accent hover color.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.btnColor:
+    label: 'Button text color'
+    description: 'Text (label) color on primary buttons for dark mode. Leave empty to keep white.'
     type: string
     default: ''
     category: conn.theme.dark

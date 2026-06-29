@@ -3,20 +3,39 @@
 
 <f:if condition="{site.settings.theme.accent}
     || {site.settings.theme.accentHover}
+    || {site.settings.theme.accentSecondary}
+    || {site.settings.theme.light.accent}
+    || {site.settings.theme.light.accentHover}
     || {site.settings.theme.light.bg}
     || {site.settings.theme.light.surface}
     || {site.settings.theme.light.navBg}
     || {site.settings.theme.light.footerBg}
     || {site.settings.theme.light.text}
+    || {site.settings.theme.light.heading}
+    || {site.settings.theme.light.emphasis}
     || {site.settings.theme.light.textMuted}
+    || {site.settings.theme.light.link}
+    || {site.settings.theme.light.linkHover}
     || {site.settings.theme.light.border}
+    || {site.settings.theme.light.btnBg}
+    || {site.settings.theme.light.btnBgHover}
+    || {site.settings.theme.light.btnColor}
+    || {site.settings.theme.dark.accent}
+    || {site.settings.theme.dark.accentHover}
     || {site.settings.theme.dark.bg}
     || {site.settings.theme.dark.surface}
     || {site.settings.theme.dark.navBg}
     || {site.settings.theme.dark.footerBg}
     || {site.settings.theme.dark.text}
+    || {site.settings.theme.dark.heading}
+    || {site.settings.theme.dark.emphasis}
     || {site.settings.theme.dark.textMuted}
+    || {site.settings.theme.dark.link}
+    || {site.settings.theme.dark.linkHover}
     || {site.settings.theme.dark.border}
+    || {site.settings.theme.dark.btnBg}
+    || {site.settings.theme.dark.btnBgHover}
+    || {site.settings.theme.dark.btnColor}
     || {site.settings.theme.nav.panelLinkSize}
     || {site.settings.theme.nav.panelSubLinkSize}
     || {site.settings.theme.nav.panelSubLinkSizeL3}
@@ -28,6 +47,7 @@
 <style>
 <f:if condition="{site.settings.theme.accent}
     || {site.settings.theme.accentHover}
+    || {site.settings.theme.accentSecondary}
     || {site.settings.theme.nav.panelLinkSize}
     || {site.settings.theme.nav.panelSubLinkSize}
     || {site.settings.theme.nav.panelSubLinkSizeL3}
@@ -37,7 +57,9 @@
     || {site.settings.theme.shadowHover.spread}">
 :root {
 <f:if condition="{site.settings.theme.accent}">    --conn-accent: {site.settings.theme.accent};
+    --bs-primary: {site.settings.theme.accent};
 </f:if><f:if condition="{site.settings.theme.accentHover}">    --conn-accent-hover: {site.settings.theme.accentHover};
+</f:if><f:if condition="{site.settings.theme.accentSecondary}">    --conn-accent-secondary: {site.settings.theme.accentSecondary};
 </f:if><f:if condition="{site.settings.theme.nav.panelLinkSize}">    --conn-nav-panel-link-size: {site.settings.theme.nav.panelLinkSize};
 </f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSize}">    --conn-nav-panel-sublink-size: {site.settings.theme.nav.panelSubLinkSize};
 </f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSizeL3}">    --conn-nav-panel-sublink-size-l3: {site.settings.theme.nav.panelSubLinkSizeL3};
@@ -47,16 +69,28 @@
 </f:if><f:if condition="{site.settings.theme.shadowHover.spread}">    --conn-sh-spread: {site.settings.theme.shadowHover.spread};
 </f:if>}
 </f:if>
-<f:if condition="{site.settings.theme.light.bg}
+<f:if condition="{site.settings.theme.light.accent}
+    || {site.settings.theme.light.accentHover}
+    || {site.settings.theme.light.bg}
     || {site.settings.theme.light.surface}
     || {site.settings.theme.light.navBg}
     || {site.settings.theme.light.footerBg}
     || {site.settings.theme.light.text}
+    || {site.settings.theme.light.heading}
+    || {site.settings.theme.light.emphasis}
     || {site.settings.theme.light.textMuted}
+    || {site.settings.theme.light.link}
+    || {site.settings.theme.light.linkHover}
     || {site.settings.theme.light.border}
+    || {site.settings.theme.light.btnBg}
+    || {site.settings.theme.light.btnBgHover}
+    || {site.settings.theme.light.btnColor}
     || {site.settings.theme.shadowHover.color}">
 [data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
-<f:if condition="{site.settings.theme.light.bg}">    --conn-bg: {site.settings.theme.light.bg};
+<f:if condition="{site.settings.theme.light.accent}">    --conn-accent: {site.settings.theme.light.accent};
+    --bs-primary: {site.settings.theme.light.accent};
+</f:if><f:if condition="{site.settings.theme.light.accentHover}">    --conn-accent-hover: {site.settings.theme.light.accentHover};
+</f:if><f:if condition="{site.settings.theme.light.bg}">    --conn-bg: {site.settings.theme.light.bg};
     --bs-body-bg: {site.settings.theme.light.bg};
 </f:if><f:if condition="{site.settings.theme.light.surface}">    --conn-surface: {site.settings.theme.light.surface};
     --conn-surface-alt: {site.settings.theme.light.surface};
@@ -64,22 +98,46 @@
 </f:if><f:if condition="{site.settings.theme.light.navBg}">    --conn-nav-bg: {site.settings.theme.light.navBg};
 </f:if><f:if condition="{site.settings.theme.light.footerBg}">    --conn-footer-bg: {site.settings.theme.light.footerBg};
 </f:if><f:if condition="{site.settings.theme.light.text}">    --conn-text: {site.settings.theme.light.text};
-    --bs-heading-color: {site.settings.theme.light.text};
+    --bs-body-color: {site.settings.theme.light.text};
+</f:if><f:if condition="{site.settings.theme.light.heading}">    --conn-heading: {site.settings.theme.light.heading};
+    --bs-heading-color: {site.settings.theme.light.heading};
+</f:if><f:if condition="{site.settings.theme.light.emphasis}">    --conn-emphasis: {site.settings.theme.light.emphasis};
+    --bs-emphasis-color: {site.settings.theme.light.emphasis};
 </f:if><f:if condition="{site.settings.theme.light.textMuted}">    --conn-text-muted: {site.settings.theme.light.textMuted};
+    --bs-secondary-color: {site.settings.theme.light.textMuted};
+</f:if><f:if condition="{site.settings.theme.light.link}">    --conn-link: {site.settings.theme.light.link};
+    --bs-link-color: {site.settings.theme.light.link};
+</f:if><f:if condition="{site.settings.theme.light.linkHover}">    --conn-link-hover: {site.settings.theme.light.linkHover};
+    --bs-link-hover-color: {site.settings.theme.light.linkHover};
 </f:if><f:if condition="{site.settings.theme.light.border}">    --conn-border: {site.settings.theme.light.border};
+</f:if><f:if condition="{site.settings.theme.light.btnBg}">    --conn-btn-bg: {site.settings.theme.light.btnBg};
+</f:if><f:if condition="{site.settings.theme.light.btnBgHover}">    --conn-btn-bg-hover: {site.settings.theme.light.btnBgHover};
+</f:if><f:if condition="{site.settings.theme.light.btnColor}">    --conn-btn-color: {site.settings.theme.light.btnColor};
 </f:if><f:if condition="{site.settings.theme.shadowHover.color}">    --conn-sh-color: {site.settings.theme.shadowHover.color};
 </f:if>}
 </f:if>
-<f:if condition="{site.settings.theme.dark.bg}
+<f:if condition="{site.settings.theme.dark.accent}
+    || {site.settings.theme.dark.accentHover}
+    || {site.settings.theme.dark.bg}
     || {site.settings.theme.dark.surface}
     || {site.settings.theme.dark.navBg}
     || {site.settings.theme.dark.footerBg}
     || {site.settings.theme.dark.text}
+    || {site.settings.theme.dark.heading}
+    || {site.settings.theme.dark.emphasis}
     || {site.settings.theme.dark.textMuted}
+    || {site.settings.theme.dark.link}
+    || {site.settings.theme.dark.linkHover}
     || {site.settings.theme.dark.border}
+    || {site.settings.theme.dark.btnBg}
+    || {site.settings.theme.dark.btnBgHover}
+    || {site.settings.theme.dark.btnColor}
     || {site.settings.theme.shadowHover.color}">
 [data-bs-theme="dark"] {
-<f:if condition="{site.settings.theme.dark.bg}">    --conn-bg: {site.settings.theme.dark.bg};
+<f:if condition="{site.settings.theme.dark.accent}">    --conn-accent: {site.settings.theme.dark.accent};
+    --bs-primary: {site.settings.theme.dark.accent};
+</f:if><f:if condition="{site.settings.theme.dark.accentHover}">    --conn-accent-hover: {site.settings.theme.dark.accentHover};
+</f:if><f:if condition="{site.settings.theme.dark.bg}">    --conn-bg: {site.settings.theme.dark.bg};
     --bs-body-bg: {site.settings.theme.dark.bg};
 </f:if><f:if condition="{site.settings.theme.dark.surface}">    --conn-surface: {site.settings.theme.dark.surface};
     --conn-surface-alt: {site.settings.theme.dark.surface};
@@ -87,9 +145,21 @@
 </f:if><f:if condition="{site.settings.theme.dark.navBg}">    --conn-nav-bg: {site.settings.theme.dark.navBg};
 </f:if><f:if condition="{site.settings.theme.dark.footerBg}">    --conn-footer-bg: {site.settings.theme.dark.footerBg};
 </f:if><f:if condition="{site.settings.theme.dark.text}">    --conn-text: {site.settings.theme.dark.text};
-    --bs-heading-color: {site.settings.theme.dark.text};
+    --bs-body-color: {site.settings.theme.dark.text};
+</f:if><f:if condition="{site.settings.theme.dark.heading}">    --conn-heading: {site.settings.theme.dark.heading};
+    --bs-heading-color: {site.settings.theme.dark.heading};
+</f:if><f:if condition="{site.settings.theme.dark.emphasis}">    --conn-emphasis: {site.settings.theme.dark.emphasis};
+    --bs-emphasis-color: {site.settings.theme.dark.emphasis};
 </f:if><f:if condition="{site.settings.theme.dark.textMuted}">    --conn-text-muted: {site.settings.theme.dark.textMuted};
+    --bs-secondary-color: {site.settings.theme.dark.textMuted};
+</f:if><f:if condition="{site.settings.theme.dark.link}">    --conn-link: {site.settings.theme.dark.link};
+    --bs-link-color: {site.settings.theme.dark.link};
+</f:if><f:if condition="{site.settings.theme.dark.linkHover}">    --conn-link-hover: {site.settings.theme.dark.linkHover};
+    --bs-link-hover-color: {site.settings.theme.dark.linkHover};
 </f:if><f:if condition="{site.settings.theme.dark.border}">    --conn-border: {site.settings.theme.dark.border};
+</f:if><f:if condition="{site.settings.theme.dark.btnBg}">    --conn-btn-bg: {site.settings.theme.dark.btnBg};
+</f:if><f:if condition="{site.settings.theme.dark.btnBgHover}">    --conn-btn-bg-hover: {site.settings.theme.dark.btnBgHover};
+</f:if><f:if condition="{site.settings.theme.dark.btnColor}">    --conn-btn-color: {site.settings.theme.dark.btnColor};
 </f:if><f:if condition="{site.settings.theme.shadowHover.color}">    --conn-sh-color: {site.settings.theme.shadowHover.color};
 </f:if>}
 </f:if>

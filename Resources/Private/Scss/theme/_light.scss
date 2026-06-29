@@ -14,6 +14,15 @@
     --conn-radius:       0.75rem;
     --conn-transition:   0.2s ease-in-out;
 
+    // Bootstrap primary → accent (RGB is the default accent value; update if you change the accent)
+    --bs-primary:        var(--conn-accent);
+    --bs-primary-rgb:    99, 102, 241;
+
+    // Button defaults — overridable per site via ThemeVars
+    --conn-btn-bg:       var(--conn-accent);
+    --conn-btn-bg-hover: var(--conn-accent-hover);
+    --conn-btn-color:    #fff;
+
     // Navigation panel typography (NavLeft / NavRight)
     --conn-nav-panel-link-size:       1.125rem;
     --conn-nav-panel-sublink-size:    0.9375rem;
@@ -40,7 +49,21 @@
 
     // Text
     --conn-text:       #1e1e3f;
+    --conn-heading:    #0a0a0a;
     --conn-text-muted: #6b7280;
+    --conn-emphasis:   #0a0a0a;
+    --conn-link:       #6366f1;
+    --conn-link-hover: #4f52d4;
+
+    // Secondary accent (used in gradients/highlights)
+    --conn-accent-secondary:       #06b6d4;
+    --conn-accent-secondary-hover: #0891b2;
+
+    // Validation / status
+    --conn-success:      #22c55e;
+    --conn-success-glow: rgba(34, 197, 94, 0.2);
+    --conn-danger:       #ef4444;
+    --conn-danger-glow:  rgba(239, 68, 68, 0.2);
 
     // Accent soft variants
     --conn-accent-soft: rgba(99, 102, 241, 0.1);
@@ -52,9 +75,27 @@
     --conn-shadow-hover: 0 8px 32px rgb(99 102 241 / 22%);
 
     // Bootstrap CSS-var overrides
-    --bs-body-bg:            #f4f5ff;
-    --bs-heading-color:      #0a0a0a;
-    --bs-navbar-brand-color: #0a0a0a;
+    --bs-body-bg:              #f4f5ff;
+    --bs-body-color:           var(--conn-text);
+    --bs-heading-color:        var(--conn-heading);
+    --bs-secondary-color:      var(--conn-text-muted);
+    --bs-emphasis-color:       var(--conn-emphasis);
+    --bs-link-color:           var(--conn-link);
+    --bs-link-color-rgb:       99, 102, 241;
+    --bs-link-hover-color:     var(--conn-link-hover);
+    --bs-link-hover-color-rgb: 79, 82, 212;
+    --bs-success:              var(--conn-success);
+    --bs-danger:               var(--conn-danger);
+    --bs-navbar-brand-color:   var(--conn-heading);
+}
+
+// Bootstrap styles <a> via rgba(--bs-link-color-rgb, opacity) — override directly
+// so site-setting link colors work without needing separate RGB values
+a:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item) {
+    color: var(--conn-link);
+    &:hover, &:focus-visible {
+        color: var(--conn-link-hover);
+    }
 }
 
 .navbar-brand {

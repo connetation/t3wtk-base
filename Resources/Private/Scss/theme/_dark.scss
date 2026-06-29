@@ -25,7 +25,21 @@
 
     // Text
     --conn-text:       #e2e2ff;
+    --conn-heading:    #fafafa;
     --conn-text-muted: #8b8bcd;
+    --conn-emphasis:   #ffffff;
+    --conn-link:       #a5b4fc;
+    --conn-link-hover: #c7d2fe;
+
+    // Secondary accent (used in gradients/highlights)
+    --conn-accent-secondary:       #22d3ee;
+    --conn-accent-secondary-hover: #06b6d4;
+
+    // Validation / status
+    --conn-success:      #86efac;
+    --conn-success-glow: rgba(134, 239, 172, 0.2);
+    --conn-danger:       #f87171;
+    --conn-danger-glow:  rgba(248, 113, 113, 0.2);
 
     // Accent soft variants
     --conn-accent-soft: rgba(99, 102, 241, 0.15);
@@ -37,8 +51,17 @@
     --conn-shadow-hover: 0 8px 32px rgb(99 102 241 / 28%);
 
     // Bootstrap CSS-var overrides
-    --bs-body-bg:       #0b0b1a;
-    --bs-heading-color: #fafafa;
+    --bs-body-bg:              #0b0b1a;
+    --bs-body-color:           var(--conn-text);
+    --bs-heading-color:        var(--conn-heading);
+    --bs-secondary-color:      var(--conn-text-muted);
+    --bs-emphasis-color:       var(--conn-emphasis);
+    --bs-link-color:           var(--conn-link);
+    --bs-link-color-rgb:       165, 180, 252;
+    --bs-link-hover-color:     var(--conn-link-hover);
+    --bs-link-hover-color-rgb: 199, 210, 254;
+    --bs-success:              var(--conn-success);
+    --bs-danger:               var(--conn-danger);
 
     .navbar-brand {
         --bs-navbar-brand-color: #fafafa;

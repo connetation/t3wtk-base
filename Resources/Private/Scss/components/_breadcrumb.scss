@@ -13,22 +13,22 @@
 
     .breadcrumb-item {
         + .breadcrumb-item::before {
-            color: rgba(var(--bs-body-color-rgb), 0.25);
+            color: var(--conn-border-strong);
             font-weight: 400;
         }
 
         a {
-            color: rgba(var(--bs-body-color-rgb), 0.45);
+            color: var(--conn-text-muted);
             text-decoration: none;
             transition: color 0.15s ease-in-out;
 
             &:hover {
-                color: #e94560;
+                color: var(--conn-accent);
             }
         }
 
         &.active {
-            color: var(--bs-body-color);
+            color: var(--conn-text);
         }
     }
 }
