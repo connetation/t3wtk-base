@@ -57,6 +57,41 @@ settings:
     default: ''
     category: conn.theme.colors
 
+  theme.shadowHover.color:
+    label: 'Card hover shadow – color'
+    description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
+  theme.shadowHover.blur:
+    label: 'Card hover shadow – blur radius'
+    description: 'Blur radius of the hover shadow, e.g. 32px. Leave empty to keep the built-in default (32px).'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
+  theme.shadowHover.offsetY:
+    label: 'Card hover shadow – vertical offset'
+    description: 'Vertical offset of the hover shadow, e.g. 8px. Leave empty to keep the built-in default (8px).'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
+  theme.shadowHover.offsetX:
+    label: 'Card hover shadow – horizontal offset'
+    description: 'Horizontal offset of the hover shadow, e.g. 0. Leave empty to keep the built-in default (0).'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
+  theme.shadowHover.spread:
+    label: 'Card hover shadow – spread radius'
+    description: 'Spread radius of the hover shadow, e.g. 4px. Leave empty to keep the built-in default (0).'
+    type: string
+    default: ''
+    category: conn.theme.colors
+
   # ─── Theme – Light mode ────────────────────────────────────────────────────
   theme.light.bg:
     label: 'Page background'

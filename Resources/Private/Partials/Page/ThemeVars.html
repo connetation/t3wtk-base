@@ -19,19 +19,32 @@
     || {site.settings.theme.dark.border}
     || {site.settings.theme.nav.panelLinkSize}
     || {site.settings.theme.nav.panelSubLinkSize}
-    || {site.settings.theme.nav.panelSubLinkSizeL3}">
+    || {site.settings.theme.nav.panelSubLinkSizeL3}
+    || {site.settings.theme.shadowHover.color}
+    || {site.settings.theme.shadowHover.blur}
+    || {site.settings.theme.shadowHover.offsetY}
+    || {site.settings.theme.shadowHover.offsetX}
+    || {site.settings.theme.shadowHover.spread}">
 <style>
 <f:if condition="{site.settings.theme.accent}
     || {site.settings.theme.accentHover}
     || {site.settings.theme.nav.panelLinkSize}
     || {site.settings.theme.nav.panelSubLinkSize}
-    || {site.settings.theme.nav.panelSubLinkSizeL3}">
+    || {site.settings.theme.nav.panelSubLinkSizeL3}
+    || {site.settings.theme.shadowHover.offsetX}
+    || {site.settings.theme.shadowHover.offsetY}
+    || {site.settings.theme.shadowHover.blur}
+    || {site.settings.theme.shadowHover.spread}">
 :root {
 <f:if condition="{site.settings.theme.accent}">    --conn-accent: {site.settings.theme.accent};
 </f:if><f:if condition="{site.settings.theme.accentHover}">    --conn-accent-hover: {site.settings.theme.accentHover};
 </f:if><f:if condition="{site.settings.theme.nav.panelLinkSize}">    --conn-nav-panel-link-size: {site.settings.theme.nav.panelLinkSize};
 </f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSize}">    --conn-nav-panel-sublink-size: {site.settings.theme.nav.panelSubLinkSize};
 </f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSizeL3}">    --conn-nav-panel-sublink-size-l3: {site.settings.theme.nav.panelSubLinkSizeL3};
+</f:if><f:if condition="{site.settings.theme.shadowHover.offsetX}">    --conn-sh-x: {site.settings.theme.shadowHover.offsetX};
+</f:if><f:if condition="{site.settings.theme.shadowHover.offsetY}">    --conn-sh-y: {site.settings.theme.shadowHover.offsetY};
+</f:if><f:if condition="{site.settings.theme.shadowHover.blur}">    --conn-sh-blur: {site.settings.theme.shadowHover.blur};
+</f:if><f:if condition="{site.settings.theme.shadowHover.spread}">    --conn-sh-spread: {site.settings.theme.shadowHover.spread};
 </f:if>}
 </f:if>
 <f:if condition="{site.settings.theme.light.bg}
@@ -40,7 +53,8 @@
     || {site.settings.theme.light.footerBg}
     || {site.settings.theme.light.text}
     || {site.settings.theme.light.textMuted}
-    || {site.settings.theme.light.border}">
+    || {site.settings.theme.light.border}
+    || {site.settings.theme.shadowHover.color}">
 [data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
 <f:if condition="{site.settings.theme.light.bg}">    --conn-bg: {site.settings.theme.light.bg};
     --bs-body-bg: {site.settings.theme.light.bg};
@@ -53,6 +67,7 @@
     --bs-heading-color: {site.settings.theme.light.text};
 </f:if><f:if condition="{site.settings.theme.light.textMuted}">    --conn-text-muted: {site.settings.theme.light.textMuted};
 </f:if><f:if condition="{site.settings.theme.light.border}">    --conn-border: {site.settings.theme.light.border};
+</f:if><f:if condition="{site.settings.theme.shadowHover.color}">    --conn-sh-color: {site.settings.theme.shadowHover.color};
 </f:if>}
 </f:if>
 <f:if condition="{site.settings.theme.dark.bg}
@@ -61,7 +76,8 @@
     || {site.settings.theme.dark.footerBg}
     || {site.settings.theme.dark.text}
     || {site.settings.theme.dark.textMuted}
-    || {site.settings.theme.dark.border}">
+    || {site.settings.theme.dark.border}
+    || {site.settings.theme.shadowHover.color}">
 [data-bs-theme="dark"] {
 <f:if condition="{site.settings.theme.dark.bg}">    --conn-bg: {site.settings.theme.dark.bg};
     --bs-body-bg: {site.settings.theme.dark.bg};
@@ -74,6 +90,7 @@
     --bs-heading-color: {site.settings.theme.dark.text};
 </f:if><f:if condition="{site.settings.theme.dark.textMuted}">    --conn-text-muted: {site.settings.theme.dark.textMuted};
 </f:if><f:if condition="{site.settings.theme.dark.border}">    --conn-border: {site.settings.theme.dark.border};
+</f:if><f:if condition="{site.settings.theme.shadowHover.color}">    --conn-sh-color: {site.settings.theme.shadowHover.color};
 </f:if>}
 </f:if>
 </style>
