@@ -10,16 +10,13 @@ categories:
   conn.theme.dark:
     label: 'Dark mode'
     parent: conn.theme
-  conn.theme.nav:
-    label: 'Navigation typography'
-    parent: conn.theme
   conn.navbar:
     label: 'Navbar'
   conn.navbar.top:
-    label: 'Desktop navigation'
+    label: 'NavTop – Desktop'
     parent: conn.navbar
   conn.navbar.panel:
-    label: 'Mobile panel'
+    label: 'Panel (NavLeft / NavRight / mobile)'
     parent: conn.navbar
   conn.themetoggle:
     label: 'Theme toggle'
@@ -328,24 +325,24 @@ settings:
   # ─── Theme – Navigation typography ────────────────────────────────────────
   theme.nav.panelLinkSize:
     label: 'Panel nav – L1 font size'
-    description: 'Font size for top-level links in NavLeft / NavRight (e.g. 1.125rem). Leave empty to keep the built-in default.'
+    description: 'Font size for top-level links in the navigation panel (e.g. 1.125rem). Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.nav
+    category: conn.navbar.panel
 
   theme.nav.panelSubLinkSize:
     label: 'Panel nav – L2 font size'
-    description: 'Font size for second-level links in NavLeft / NavRight.'
+    description: 'Font size for second-level links in the navigation panel.'
     type: string
     default: ''
-    category: conn.theme.nav
+    category: conn.navbar.panel
 
   theme.nav.panelSubLinkSizeL3:
     label: 'Panel nav – L3 font size'
-    description: 'Font size for third-level links in NavLeft / NavRight.'
+    description: 'Font size for third-level links in the navigation panel.'
     type: string
     default: ''
-    category: conn.theme.nav
+    category: conn.navbar.panel
 
   # ─── Navbar – General ─────────────────────────────────────────────────────
   navbar.style:
@@ -370,8 +367,8 @@ settings:
       '': 'Static'
 
   navbar.mobileBreakpoint:
-    label: 'Mobile menu breakpoint'
-    description: 'Screen width at which the navigation switches from hamburger/drawer to inline. Applies to nav-top only.'
+    label: 'Panel breakpoint'
+    description: 'For NavTop: screen width at which the nav switches from hamburger to inline. For NavLeft / NavRight: screen width at which the panel becomes a fixed-width sidebar instead of full-screen.'
     type: string
     default: 'lg'
     category: conn.navbar
@@ -394,7 +391,7 @@ settings:
     label: 'Logo position'
     type: string
     default: 'left'
-    category: conn.navbar.top
+    category: conn.navbar
     enum:
       left: 'Left'
       center: 'Center'
@@ -435,16 +432,63 @@ settings:
 
   # ─── Navbar – Mobile panel ─────────────────────────────────────────────────
   navbar.offcanvasPosition:
-    label: 'Menu panel – slide from'
-    description: 'Slide direction of the mobile navigation panel.'
+    label: 'Mobile panel – slide from'
+    description: 'Slide direction of the mobile panel on NavTop. Has no effect on NavLeft (always left) or NavRight (always right).'
     type: string
     default: 'offcanvas-end'
-    category: conn.navbar.panel
+    category: conn.navbar.top
     enum:
       offcanvas-end: 'Right'
       offcanvas-start: 'Left'
       offcanvas-top: 'Top'
       offcanvas-bottom: 'Bottom'
+
+  navbar.mobilePanelAlign:
+    label: 'Panel – alignment (mobile)'
+    description: 'Content alignment inside the panel at mobile / full-screen size.'
+    type: string
+    default: 'start'
+    category: conn.navbar.panel
+    enum:
+      start: 'Left'
+      center: 'Center'
+      end: 'Right'
+
+  navbar.desktopPanelAlign:
+    label: 'Panel – alignment (desktop)'
+    description: 'Content alignment inside the panel once it becomes a sidebar at the panel breakpoint. Leave empty to use the same alignment as mobile.'
+    type: string
+    default: ''
+    category: conn.navbar.panel
+    enum:
+      '': 'Same as mobile'
+      start: 'Left'
+      center: 'Center'
+      end: 'Right'
+
+  navbar.panelTopContent:
+    label: 'Panel – top content'
+    description: 'Content shown above the navigation list in the panel.'
+    type: string
+    default: ''
+    category: conn.navbar.panel
+    enum:
+      '': 'None'
+      social: 'Social media links'
+      contact: 'Contact (email & phone)'
+      address: 'Full address'
+
+  navbar.panelBottomContent:
+    label: 'Panel – bottom content'
+    description: 'Content shown below the navigation list in the panel.'
+    type: string
+    default: 'social'
+    category: conn.navbar.panel
+    enum:
+      '': 'None'
+      social: 'Social media links'
+      contact: 'Contact (email & phone)'
+      address: 'Full address'
 
   navbar.offcanvasScroll:
     label: 'Allow body scrolling'
@@ -462,41 +506,6 @@ settings:
       'true': 'Show backdrop'
       'false': 'No backdrop'
       static: 'Static (click outside does not close)'
-
-  navbar.mobilePanelAlign:
-    label: 'Mobile panel – content alignment'
-    description: 'Horizontal alignment of content inside the mobile navigation panel.'
-    type: string
-    default: 'start'
-    category: conn.navbar.panel
-    enum:
-      start: 'Left'
-      center: 'Center'
-      end: 'Right'
-
-  navbar.panelTopContent:
-    label: 'Panel – top content'
-    description: 'Content shown above the navigation list in the mobile offcanvas panel.'
-    type: string
-    default: ''
-    category: conn.navbar.panel
-    enum:
-      '': 'None'
-      social: 'Social media links'
-      contact: 'Contact (email & phone)'
-      address: 'Full address'
-
-  navbar.panelBottomContent:
-    label: 'Panel – bottom content'
-    description: 'Content shown below the navigation list in the mobile offcanvas panel.'
-    type: string
-    default: 'social'
-    category: conn.navbar.panel
-    enum:
-      '': 'None'
-      social: 'Social media links'
-      contact: 'Contact (email & phone)'
-      address: 'Full address'
 
   # ─── Theme toggle ────────────────────────────────────────────────────────
   themeToggle.enabled:

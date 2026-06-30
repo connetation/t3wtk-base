@@ -27,9 +27,32 @@
     }
 }
 
+// ── Logo position (top bar) ────────────────────
+// NavLeft / NavRight have no navbar-expand-* breakpoint so these apply at all sizes.
+.conn-nav-offcanvas.navbar--logo-center {
+    .container,
+    .container-fluid { position: relative; }
+
+    .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.conn-nav-offcanvas.navbar--logo-right {
+    .navbar-brand {
+        order: 3;
+        margin-left: auto !important;
+        margin-right: 0;
+    }
+
+    .conn-nav-offcanvas__actions {
+        margin-left: 0 !important;
+    }
+}
+
 // ── Offcanvas panel ────────────────────────────
-// Full-screen on mobile; desktop width is overridden per-breakpoint via
-// conn-nav-offcanvas__panel--expand-{bp} (see below).
 .conn-nav-offcanvas__panel {
     --bs-offcanvas-width: 100vw;
     --bs-offcanvas-height: 100dvh;
@@ -37,20 +60,21 @@
     --conn-panel-link-justify: space-between;
     --conn-panel-content-justify: flex-start;
     background-color: var(--conn-nav-bg) !important;
-    border-color: var(--conn-border, var(--conn-border)) !important;
-    overflow: hidden;
+    border-color: var(--conn-border) !important;
     display: flex;
     flex-direction: column;
 
-    // Content alignment variants (subnav-ps/pe = padding-start/end indent for sub-items)
-    &--start  {
+    // Content alignment variants
+    &--start {
         --conn-panel-text-align: left;
         --conn-panel-link-justify: space-between;
         --conn-panel-content-justify: flex-start;
-        --conn-panel-subnav-ps: 1.5rem;
+        --conn-panel-subnav-ps: 1.25rem;
         --conn-panel-subnav-pe: 0rem;
-        --conn-panel-subnav-l3-ps: 1rem;
+        --conn-panel-subnav-l3-ps: 0.875rem;
         --conn-panel-subnav-l3-pe: 0rem;
+        --conn-panel-subnav-l4-ps: 1.625rem;
+        --conn-panel-subnav-l4-pe: 0rem;
     }
     &--center {
         --conn-panel-text-align: center;
@@ -60,26 +84,48 @@
         --conn-panel-subnav-pe: 0rem;
         --conn-panel-subnav-l3-ps: 0rem;
         --conn-panel-subnav-l3-pe: 0rem;
+        --conn-panel-subnav-l4-ps: 0rem;
+        --conn-panel-subnav-l4-pe: 0rem;
     }
-    &--end    {
+    &--end {
         --conn-panel-text-align: right;
         --conn-panel-link-justify: flex-end;
         --conn-panel-content-justify: flex-end;
         --conn-panel-subnav-ps: 0rem;
-        --conn-panel-subnav-pe: 1.5rem;
+        --conn-panel-subnav-pe: 1.25rem;
         --conn-panel-subnav-l3-ps: 0rem;
-        --conn-panel-subnav-l3-pe: 1rem;
+        --conn-panel-subnav-l3-pe: 0.875rem;
+        --conn-panel-subnav-l4-ps: 0rem;
+        --conn-panel-subnav-l4-pe: 1.625rem;
+
+        .conn-nav-offcanvas__link {
+            border-left: none;
+            border-right: 3px solid transparent;
+            &:hover,
+            &:focus,
+            &.active         { border-right-color: var(--conn-accent); }
+            &[aria-expanded="true"]:not(.active) { border-right-color: var(--conn-border); }
+            &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
+        }
+        .conn-nav-offcanvas__subnav a {
+            border-left: none;
+            border-right: 2px solid transparent;
+            border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+            &:hover,
+            &.active { background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05)); }
+            &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
+        }
     }
 
     .offcanvas-header {
         border-bottom: 1px solid var(--conn-border);
-        padding: 1rem 1.5rem;
+        padding: 1rem 1rem;
         flex-shrink: 0;
 
         .btn-close { filter: var(--conn-btn-close-filter, none); }
 
-        // Top content slot (social/contact/address) has its own bottom border —
-        // suppress the header's border to avoid two consecutive lines.
+        // When a content block immediately follows suppress the header border
+        // to avoid two consecutive lines.
         &:has(+ .conn-panel-social),
         &:has(+ .conn-panel-contact),
         &:has(+ .conn-panel-address) {
@@ -88,13 +134,112 @@
     }
 }
 
-// ── Desktop panel size ────────────────────────
-// On mobile the panel is full-screen (100vw × 100dvh).
-// At the configured mobileBreakpoint, shrink to a normal side-panel width.
+// ── Desktop panel size + alignment overrides ──
+// --expand-{bp} is already on the panel element; use it as the breakpoint anchor
+// so desktop alignment kicks in at exactly the same point as the sidebar width.
 @each $bp, $width in (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px) {
     .conn-nav-offcanvas__panel--expand-#{$bp} {
         @media (min-width: $width) {
             --bs-offcanvas-width: 320px;
+        }
+
+        &.conn-nav-offcanvas__panel--desktop-start {
+            @media (min-width: $width) {
+                --conn-panel-text-align:       left;
+                --conn-panel-link-justify:     space-between;
+                --conn-panel-content-justify:  flex-start;
+                --conn-panel-subnav-ps:        1.25rem;
+                --conn-panel-subnav-pe:        0rem;
+                --conn-panel-subnav-l3-ps:     0.875rem;
+                --conn-panel-subnav-l3-pe:     0rem;
+                --conn-panel-subnav-l4-ps:     1.625rem;
+                --conn-panel-subnav-l4-pe:     0rem;
+
+                // Reset end-alignment structural if mobile was --end
+                .conn-nav-offcanvas__link {
+                    border-left: 3px solid transparent;
+                    border-right: none;
+                    &:hover,
+                    &:focus,
+                    &.active         { border-left-color: var(--conn-accent); }
+                    &[aria-expanded="true"]:not(.active) { border-left-color: var(--conn-border); }
+                    &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-link-justify); }
+                }
+                .conn-nav-offcanvas__subnav a {
+                    border-left: 2px solid transparent;
+                    border-right: none;
+                    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+                    &:hover,
+                    &.active { background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05)); }
+                    &[data-bs-toggle] { flex-direction: row; justify-content: space-between; }
+                }
+            }
+        }
+
+        &.conn-nav-offcanvas__panel--desktop-center {
+            @media (min-width: $width) {
+                --conn-panel-text-align:       center;
+                --conn-panel-link-justify:     center;
+                --conn-panel-content-justify:  center;
+                --conn-panel-subnav-ps:        0rem;
+                --conn-panel-subnav-pe:        0rem;
+                --conn-panel-subnav-l3-ps:     0rem;
+                --conn-panel-subnav-l3-pe:     0rem;
+                --conn-panel-subnav-l4-ps:     0rem;
+                --conn-panel-subnav-l4-pe:     0rem;
+
+                // Reset end-alignment structural if mobile was --end
+                .conn-nav-offcanvas__link {
+                    border-left: 3px solid transparent;
+                    border-right: none;
+                    &:hover,
+                    &:focus,
+                    &.active         { border-left-color: var(--conn-accent); }
+                    &[aria-expanded="true"]:not(.active) { border-left-color: var(--conn-border); }
+                    &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-link-justify); }
+                }
+                .conn-nav-offcanvas__subnav a {
+                    border-left: 2px solid transparent;
+                    border-right: none;
+                    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+                    &:hover,
+                    &.active { border-left-color: var(--conn-accent); }
+                    &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-content-justify); }
+                }
+            }
+        }
+
+        &.conn-nav-offcanvas__panel--desktop-end {
+            @media (min-width: $width) {
+                --conn-panel-text-align:       right;
+                --conn-panel-link-justify:     flex-end;
+                --conn-panel-content-justify:  flex-end;
+                --conn-panel-subnav-ps:        0rem;
+                --conn-panel-subnav-pe:        1.25rem;
+                --conn-panel-subnav-l3-ps:     0rem;
+                --conn-panel-subnav-l3-pe:     0.875rem;
+                --conn-panel-subnav-l4-ps:     0rem;
+                --conn-panel-subnav-l4-pe:     1.625rem;
+
+                // Apply end-alignment structural if mobile was not --end
+                .conn-nav-offcanvas__link {
+                    border-left: none;
+                    border-right: 3px solid transparent;
+                    &:hover,
+                    &:focus,
+                    &.active         { border-right-color: var(--conn-accent); }
+                    &[aria-expanded="true"]:not(.active) { border-right-color: var(--conn-border); }
+                    &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
+                }
+                .conn-nav-offcanvas__subnav a {
+                    border-left: none;
+                    border-right: 2px solid transparent;
+                    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+                    &:hover,
+                    &.active { background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05)); }
+                    &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
+                }
+            }
         }
     }
 }
@@ -105,7 +250,7 @@
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0.5rem 0 1.5rem;
+    padding: 0.375rem 0 1.5rem;
     scrollbar-width: thin;
     scrollbar-color: var(--conn-border) transparent;
 
@@ -113,113 +258,122 @@
     &::-webkit-scrollbar-thumb { background: var(--conn-border); border-radius: 2px; }
 }
 
-// ── Item / separator ──────────────────────────
-.conn-nav-offcanvas__item {
-    border-bottom: 1px solid var(--conn-border);
-
-    &:first-child { border-top: 1px solid var(--conn-border); }
-}
-
-// ── Top-slot content → nav body transition ────
-// When a panel content block (social/contact/address) sits in the top slot it
-// already provides a bottom border. Suppress the nav body's top padding and the
-// first item's redundant top border so only one dividing line is visible.
+// ── Top-slot → nav body transition ────────────
+// The content block already provides a border-bottom. Suppress body top padding
+// so only one dividing line appears.
 .conn-panel-social + .conn-nav-offcanvas__body,
 .conn-panel-contact + .conn-nav-offcanvas__body,
 .conn-panel-address + .conn-nav-offcanvas__body {
     padding-top: 0;
-
-    .conn-nav-offcanvas__item:first-child { border-top: none; }
 }
 
 // ── Main link ─────────────────────────────────
+// Color uses !important to win over the high-specificity global
+// a:not(.btn):not(.nav-link)… rule in _light.scss (specificity 0-4-1).
 .conn-nav-offcanvas__link {
     display: flex;
     align-items: center;
     justify-content: var(--conn-panel-link-justify, space-between);
     text-align: var(--conn-panel-text-align, left);
-    padding: 0.875rem 1.5rem;
-    font-size: var(--conn-nav-panel-link-size, 1.125rem);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--conn-text);
-    opacity: 0.25;
+    padding: 0.75rem 1rem;
+    font-size: var(--conn-nav-panel-link-size, 1rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--conn-text-muted) !important;
     text-decoration: none;
-    transition: opacity 0.2s ease, padding-left 0.18s ease;
+    border-left: 3px solid transparent;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
     &:hover,
     &:focus {
-        opacity: 0.65;
-        padding-left: 1.9rem;
-        color: var(--conn-text);
-        background: transparent;
+        color: var(--conn-text) !important;
+        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+        border-left-color: var(--conn-accent);
     }
 
     &.active {
-        opacity: 1;
-        font-weight: 700;
-        color: var(--conn-text);
-        background: transparent;
+        color: var(--conn-text) !important;
+        font-weight: 600;
+        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05));
+        border-left-color: var(--conn-accent);
     }
 
-    &[aria-expanded="true"] {
-        opacity: 0.85;
-
-        .conn-nav-offcanvas__caret { transform: rotate(180deg); }
+    &[aria-expanded="true"]:not(.active) {
+        color: var(--conn-text) !important;
+        border-left-color: var(--conn-border);
     }
+
+    &[aria-expanded="true"] .conn-nav-offcanvas__caret { transform: rotate(180deg); }
 }
 
 // ── Dropdown caret ────────────────────────────
 .conn-nav-offcanvas__caret {
     flex-shrink: 0;
-    width: 12px;
-    height: 7px;
     margin-left: 0.5rem;
-    transition: transform 0.22s ease;
+    opacity: 0.4;
+    transition: transform 0.22s ease, opacity 0.15s ease;
+
+    .conn-nav-offcanvas__link:hover &,
+    .conn-nav-offcanvas__link:focus &,
+    .conn-nav-offcanvas__link[aria-expanded="true"] & { opacity: 0.75; }
+
+    .conn-nav-offcanvas__link.active & { opacity: 0.75; }
 }
 
 // ── Sub-navigation ────────────────────────────
 .conn-nav-offcanvas__subnav {
-    padding: 0 var(--conn-panel-subnav-pe, 0rem) 0.75rem var(--conn-panel-subnav-ps, 1.5rem);
+    padding: 0.125rem var(--conn-panel-subnav-pe, 0rem) 0.5rem var(--conn-panel-subnav-ps, 1.25rem);
 
     a {
         display: flex;
         align-items: center;
         justify-content: var(--conn-panel-content-justify, flex-start);
         text-align: var(--conn-panel-text-align, left);
-        padding: 0.375rem 1rem;
-        font-size: var(--conn-nav-panel-sublink-size, 0.9375rem);
+        padding: 0.35rem 1rem;
+        font-size: var(--conn-nav-panel-sublink-size, 0.875rem);
         font-weight: 400;
-        color: var(--conn-text);
-        opacity: 0.45;
+        color: var(--conn-text-muted) !important;
         text-decoration: none;
-        border-radius: var(--bs-border-radius);
-        transition: opacity 0.15s ease;
+        border-left: 2px solid transparent;
+        border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+        transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 
-        &:hover  { opacity: 0.8; }
-        &.active { opacity: 1; font-weight: 500; }
+        &:hover {
+            color: var(--conn-text) !important;
+            background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+            border-left-color: var(--conn-accent);
+        }
+
+        &.active {
+            color: var(--conn-text) !important;
+            font-weight: 600;
+        }
     }
 
-    // Level 3: indented further, slightly smaller
     &--l3 {
-        padding: 0 var(--conn-panel-subnav-l3-pe, 0rem) 0.5rem var(--conn-panel-subnav-l3-ps, 1rem);
+        padding-left: var(--conn-panel-subnav-l3-ps, 0.875rem);
+        padding-right: var(--conn-panel-subnav-l3-pe, 0rem);
+        padding-top: 0;
+        padding-bottom: 0.25rem;
 
-        a {
-            font-size: var(--conn-nav-panel-sublink-size-l3, 0.875rem);
-            opacity: 0.35;
+        a { font-size: var(--conn-nav-panel-sublink-size-l3, 0.8125rem); }
+    }
 
-            &:hover  { opacity: 0.7; }
-            &.active { opacity: 0.9; }
-        }
+    &--l4 {
+        padding-left: var(--conn-panel-subnav-l4-ps, 1.625rem);
+        padding-right: var(--conn-panel-subnav-l4-pe, 0rem);
+        padding-top: 0;
+        padding-bottom: 0.25rem;
+
+        a { font-size: var(--conn-nav-panel-sublink-size-l3, 0.8125rem); }
     }
 }
 
 // ── Bottom content wrapper ─────────────────────
-// Top border separates it from the nav body
 .conn-nav-offcanvas__bottom {
     flex-shrink: 0;
 
@@ -232,19 +386,17 @@
 }
 
 // ── Panel content blocks ──────────────────────
-// Used for top/bottom slots in nav-left and nav-right
-
 .conn-panel-social {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
     justify-content: var(--conn-panel-content-justify, flex-start);
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem;
     border-bottom: 1px solid var(--conn-border);
 
     a {
-        color: var(--conn-text);
+        color: var(--conn-text) !important;
         opacity: 0.5;
         text-decoration: none;
         font-size: 0.875rem;
@@ -262,12 +414,12 @@
     gap: 0.25rem;
     align-items: var(--conn-panel-content-justify, flex-start);
     text-align: var(--conn-panel-text-align, left);
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem;
     font-size: 0.875rem;
     border-bottom: 1px solid var(--conn-border);
 
     a {
-        color: var(--conn-text);
+        color: var(--conn-text) !important;
         opacity: 0.55;
         text-decoration: none;
         transition: opacity 0.15s ease;
@@ -277,7 +429,7 @@
 }
 
 .conn-panel-address {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem;
     font-size: 0.875rem;
     text-align: var(--conn-panel-text-align, left);
     border-bottom: 1px solid var(--conn-border);
@@ -298,7 +450,7 @@
         }
 
         a {
-            color: inherit;
+            color: inherit !important;
             text-decoration: none;
             transition: opacity 0.15s ease;
             &:hover { opacity: 0.9; }

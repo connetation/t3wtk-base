@@ -103,7 +103,7 @@
                                                aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
                                                aria-controls="navTopMob{iter.index}">
                                                 {item.title}
-                                                <svg class="conn-nav-offcanvas__caret" width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                                <svg class="conn-nav-offcanvas__caret" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                             </a>
                                             <div class="collapse{f:if(condition: item.active, then: ' show')}" id="navTopMob{iter.index}">
                                                 <ul class="conn-nav-offcanvas__subnav list-unstyled m-0">
@@ -119,14 +119,42 @@
                                                                                data-bs-target="#navTopMob{iter.index}c{childIter.index}"
                                                                                aria-expanded="{f:if(condition: child.active, then: 'true', else: 'false')}">
                                                                                 {child.title}
-                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="8" height="5" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                                                             </a>
                                                                             <div class="collapse{f:if(condition: child.active, then: ' show')}" id="navTopMob{iter.index}c{childIter.index}">
                                                                                 <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l3 list-unstyled m-0">
-                                                                                    <f:for each="{child.children}" as="grandchild">
-                                                                                        <li>
-                                                                                            <a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a>
-                                                                                        </li>
+                                                                                    <f:for each="{child.children}" as="grandchild" iteration="grandIter">
+                                                                                        <f:if condition="{grandchild.children}">
+                                                                                            <f:then>
+                                                                                                <f:if condition="{navigationLevels} > 3">
+                                                                                                    <f:then>
+                                                                                                        <li class="conn-nav-offcanvas__subnav-item--has-children">
+                                                                                                            <a href="{grandchild.link}"
+                                                                                                               class="{f:if(condition: grandchild.active, then: 'active')}"
+                                                                                                               data-bs-toggle="collapse"
+                                                                                                               data-bs-target="#navTopMob{iter.index}c{childIter.index}g{grandIter.index}"
+                                                                                                               aria-expanded="{f:if(condition: grandchild.active, then: 'true', else: 'false')}">
+                                                                                                                {grandchild.title}
+                                                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
+                                                                                                            </a>
+                                                                                                            <div class="collapse{f:if(condition: grandchild.active, then: ' show')}" id="navTopMob{iter.index}c{childIter.index}g{grandIter.index}">
+                                                                                                                <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l4 list-unstyled m-0">
+                                                                                                                    <f:for each="{grandchild.children}" as="greatgrandchild">
+                                                                                                                        <li><a href="{greatgrandchild.link}" class="{f:if(condition: greatgrandchild.active, then: 'active')}">{greatgrandchild.title}</a></li>
+                                                                                                                    </f:for>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <li><a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
+                                                                                                    </f:else>
+                                                                                                </f:if>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                <li><a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
+                                                                                            </f:else>
+                                                                                        </f:if>
                                                                                     </f:for>
                                                                                 </ul>
                                                                             </div>

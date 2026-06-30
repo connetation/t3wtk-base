@@ -3,16 +3,18 @@
       data-namespace-typo3-fluid="true">
 
 <f:variable name="navPosition">{f:if(condition: site.settings.navbar.position, then: site.settings.navbar.position, else: 'sticky-top')}</f:variable>
+<f:variable name="logoPos">{f:if(condition: site.settings.navbar.logoPosition, then: site.settings.navbar.logoPosition, else: 'left')}</f:variable>
 <f:variable name="offcanvasScroll">{f:if(condition: site.settings.navbar.offcanvasScroll, then: 'true', else: 'false')}</f:variable>
 <f:variable name="offcanvasBackdrop">{f:if(condition: site.settings.navbar.offcanvasBackdrop, then: site.settings.navbar.offcanvasBackdrop, else: 'true')}</f:variable>
 <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 <f:variable name="panelAlign">{f:if(condition: site.settings.navbar.mobilePanelAlign, then: site.settings.navbar.mobilePanelAlign, else: 'start')}</f:variable>
+<f:variable name="desktopPanelAlign">{site.settings.navbar.desktopPanelAlign}</f:variable>
 <f:variable name="breakpoint">{f:if(condition: site.settings.navbar.mobileBreakpoint, then: site.settings.navbar.mobileBreakpoint, else: 'lg')}</f:variable>
 <f:variable name="panelTop">{f:if(condition: site.settings.navbar.panelTopContent, then: site.settings.navbar.panelTopContent, else: '')}</f:variable>
 <f:variable name="panelBottom">{f:if(condition: site.settings.navbar.panelBottomContent, then: site.settings.navbar.panelBottomContent, else: 'social')}</f:variable>
 
 <!-- Top bar (always visible) -->
-<nav class="navbar {navPosition} conn-nav-offcanvas" id="mainNav">
+<nav class="navbar {navPosition} conn-nav-offcanvas navbar--logo-{logoPos}" id="mainNav">
     <div class="container">
 
         <a class="navbar-brand fw-bold" href="/">
@@ -34,7 +36,7 @@
             </f:if>
         </a>
 
-        <div class="ms-auto d-flex align-items-center gap-2">
+        <div class="conn-nav-offcanvas__actions ms-auto d-flex align-items-center gap-2">
             <f:if condition="{site.settings.themeToggle.enabled}">
                 <button class="btn btn-sm btn-outline-secondary theme-toggle"
                         aria-label="Toggle theme" title="Toggle theme">
@@ -54,7 +56,7 @@
 </nav>
 
 <!-- Offcanvas panel – slides from right -->
-<div class="offcanvas offcanvas-end conn-nav-offcanvas__panel conn-nav-offcanvas__panel--{panelAlign} conn-nav-offcanvas__panel--expand-{breakpoint}" tabindex="-1"
+<div class="offcanvas offcanvas-end conn-nav-offcanvas__panel conn-nav-offcanvas__panel--{panelAlign}{f:if(condition: desktopPanelAlign, then: ' conn-nav-offcanvas__panel--desktop-{desktopPanelAlign}')} conn-nav-offcanvas__panel--expand-{breakpoint}" tabindex="-1"
      id="navPanelRight"
      data-bs-scroll="{offcanvasScroll}"
      data-bs-backdrop="{offcanvasBackdrop}">
@@ -108,7 +110,7 @@
                                        aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
                                        aria-controls="navRightSub{iter.index}">
                                         {item.title}
-                                        <svg class="conn-nav-offcanvas__caret" width="10" height="6" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                        <svg class="conn-nav-offcanvas__caret" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                     </a>
                                     <div class="collapse{f:if(condition: item.active, then: ' show')}" id="navRightSub{iter.index}">
                                         <ul class="conn-nav-offcanvas__subnav list-unstyled m-0">
@@ -124,14 +126,42 @@
                                                                        data-bs-target="#navRightSub{iter.index}c{childIter.index}"
                                                                        aria-expanded="{f:if(condition: child.active, then: 'true', else: 'false')}">
                                                                         {child.title}
-                                                                        <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="8" height="5" viewBox="0 0 10 6" fill="currentColor" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
+                                                                        <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                                                     </a>
                                                                     <div class="collapse{f:if(condition: child.active, then: ' show')}" id="navRightSub{iter.index}c{childIter.index}">
                                                                         <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l3 list-unstyled m-0">
-                                                                            <f:for each="{child.children}" as="grandchild">
-                                                                                <li>
-                                                                                    <a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a>
-                                                                                </li>
+                                                                            <f:for each="{child.children}" as="grandchild" iteration="grandIter">
+                                                                                <f:if condition="{grandchild.children}">
+                                                                                    <f:then>
+                                                                                        <f:if condition="{navigationLevels} > 3">
+                                                                                            <f:then>
+                                                                                                <li class="conn-nav-offcanvas__subnav-item--has-children">
+                                                                                                    <a href="{grandchild.link}"
+                                                                                                       class="{f:if(condition: grandchild.active, then: 'active')}"
+                                                                                                       data-bs-toggle="collapse"
+                                                                                                       data-bs-target="#navRightSub{iter.index}c{childIter.index}g{grandIter.index}"
+                                                                                                       aria-expanded="{f:if(condition: grandchild.active, then: 'true', else: 'false')}">
+                                                                                                        {grandchild.title}
+                                                                                                        <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
+                                                                                                    </a>
+                                                                                                    <div class="collapse{f:if(condition: grandchild.active, then: ' show')}" id="navRightSub{iter.index}c{childIter.index}g{grandIter.index}">
+                                                                                                        <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l4 list-unstyled m-0">
+                                                                                                            <f:for each="{grandchild.children}" as="greatgrandchild">
+                                                                                                                <li><a href="{greatgrandchild.link}" class="{f:if(condition: greatgrandchild.active, then: 'active')}">{greatgrandchild.title}</a></li>
+                                                                                                            </f:for>
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                <li><a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
+                                                                                            </f:else>
+                                                                                        </f:if>
+                                                                                    </f:then>
+                                                                                    <f:else>
+                                                                                        <li><a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
+                                                                                    </f:else>
+                                                                                </f:if>
                                                                             </f:for>
                                                                         </ul>
                                                                     </div>

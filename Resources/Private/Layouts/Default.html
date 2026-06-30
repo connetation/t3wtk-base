@@ -33,7 +33,7 @@
     <f:if condition="{navStyle} == 'nav-left'"><f:variable name="navStyle">NavLeft</f:variable></f:if>
     <f:if condition="{navStyle} == 'nav-right'"><f:variable name="navStyle">NavRight</f:variable></f:if>
     <f:if condition="{navStyle} == 'nav-top'"><f:variable name="navStyle">NavTop</f:variable></f:if>
-    <f:variable name="navigationLevels">{f:if(condition: '{site.settings.navbar.navigationLevels}', then: '{site.settings.navbar.navigationLevels}', else: '2')}</f:variable>
+    <f:variable name="navigationLevels">{site.settings.navbar.navigationLevels}</f:variable>
     <f:render partial="Navigation/Navbar/{navStyle}" arguments="{mainNavigation: mainNavigation, site: site, navigationLevels: navigationLevels}" />
 
     <main class="flex-shrink-0" id="main-content">
