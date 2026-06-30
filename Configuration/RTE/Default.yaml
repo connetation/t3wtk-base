@@ -1,0 +1,23 @@
+imports:
+    - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Default.yaml' }
+
+# ── TYPO3 Link Browser class dropdown ─────────────────────────────────────────
+# Adds a "Class" field next to Target and Title in the Link Browser.
+allowedOptions: 'target,title,class'
+
+buttons:
+    link:
+        properties:
+            class:
+                required: false
+                allowedClasses: 'link-external,link-file,link-pdf,link-email'
+
+classes:
+    link-external:
+        name: 'External link'
+    link-file:
+        name: 'Download'
+    link-pdf:
+        name: 'PDF'
+    link-email:
+        name: 'Email'

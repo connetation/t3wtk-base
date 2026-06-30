@@ -1,0 +1,53 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Link icons — applied via CKEditor link decorators
+// (see Configuration/RTE/Default.yaml)
+//
+// Uses CSS mask-image so the icon shape is filled with currentColor,
+// automatically matching the link colour in both light and dark mode.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Bootstrap Icons SVG paths (16×16, fill="black") encoded for data: URIs.
+// Only < and > are encoded; single-quoted SVG attributes avoid encoding ".
+// stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix
+
+$_icon-external : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill='black' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E";
+
+$_icon-file     : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z'/%3E%3Cpath fill='black' d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z'/%3E%3C/svg%3E";
+
+$_icon-pdf      : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z'/%3E%3C/svg%3E";
+
+$_icon-email    : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z'/%3E%3C/svg%3E";
+
+// Shared icon-after mixin
+@mixin _icon-after($data-uri, $size: 0.75em) {
+    &::after {
+        content: '';
+        display: inline-block;
+        width: $size;
+        height: $size;
+        background-color: currentColor;
+        -webkit-mask-image: url($data-uri);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-image: url($data-uri);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        margin-left: 0.2em;
+        vertical-align: -0.1em;
+        opacity: 0.65;
+        transition: opacity 0.15s ease;
+    }
+
+    &:hover::after { opacity: 1; }
+}
+
+// ── Link icon classes ─────────────────────────────────────────────────────────
+
+a.link-external { @include _icon-after($_icon-external); }
+a.link-file     { @include _icon-after($_icon-file); }
+a.link-pdf     { @include _icon-after($_icon-pdf); }
+a.link-email    { @include _icon-after($_icon-email); }
+
+// stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix
