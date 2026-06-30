@@ -9,16 +9,15 @@
 
 // ── Theme-invariant tokens ────────────────────
 :root {
-    --conn-accent:       #6366f1;
+    // --conn-accent follows --bs-primary so overriding --bs-primary in the
+    // sitepackage is enough to re-theme navigation, buttons, and all accent uses.
+    // Override --conn-accent directly to decouple the accent from BS primary.
+    --conn-accent:       var(--bs-primary, #6366f1);
     --conn-accent-hover: #4f52d4;
     --conn-radius:       0.75rem;
     --conn-transition:   0.2s ease-in-out;
 
-    // Bootstrap primary → accent (RGB is the default accent value; update if you change the accent)
-    --bs-primary:        var(--conn-accent);
-    --bs-primary-rgb:    99, 102, 241;
-
-    // Button defaults — overridable per site via ThemeVars
+    // Button defaults — overridable per site via _theme.scss
     --conn-btn-bg:       var(--conn-accent);
     --conn-btn-bg-hover: var(--conn-accent-hover);
     --conn-btn-color:    #fff;

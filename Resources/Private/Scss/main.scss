@@ -6,8 +6,9 @@
 
 // 1. Bootstrap with variable overrides
 @use 'bootstrap/scss/bootstrap' with (
-    // Colours
-    $primary:   #0d6efd,
+    // Colours — $primary drives --bs-primary and --bs-primary-rgb in the compiled output.
+    // conn-accent aliases --bs-primary at runtime, so changing $primary here changes everything.
+    $primary:   #6366f1,
     $secondary: #6c757d,
     $success:   #198754,
     $danger:    #dc3545,
