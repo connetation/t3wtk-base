@@ -11,28 +11,11 @@ const mainConfig = {
     sourcemap: dev ? 'inline' : false,
 };
 
-const componentsConfig = {
-    entryPoints: {
-        'navbar-megamenu-twopanel': 'Resources/Private/TypeScript/Navbar/navbar-megamenu-twopanel.ts',
-    },
-    bundle:   true,
-    format:   'esm',
-    outdir:   'Resources/Public/Js/components',
-    minify:   !dev,
-    sourcemap: dev ? 'inline' : false,
-};
-
 if (watch) {
-    const [mainCtx, compCtx] = await Promise.all([
-        esbuild.context(mainConfig),
-        esbuild.context(componentsConfig),
-    ]);
-    await Promise.all([mainCtx.watch(), compCtx.watch()]);
+    const ctx = await esbuild.context(mainConfig);
+    await ctx.watch();
     console.log('[base] watching…');
 } else {
-    await Promise.all([
-        esbuild.build(mainConfig),
-        esbuild.build(componentsConfig),
-    ]);
+    await esbuild.build(mainConfig);
     console.log('[base] built');
 }
