@@ -99,20 +99,11 @@
         --conn-panel-subnav-l4-pe: 1.625rem;
 
         .conn-nav-offcanvas__link {
-            border-left: none;
-            border-right: 3px solid transparent;
-            &:hover,
-            &:focus,
-            &.active         { border-right-color: var(--conn-accent); }
-            &[aria-expanded="true"]:not(.active) { border-right-color: var(--conn-border); }
             &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
         }
         .conn-nav-offcanvas__subnav a {
-            border-left: none;
-            border-right: 2px solid transparent;
-            border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
-            &:hover,
-            &.active { background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05)); }
+            padding-left: 1rem;
+            padding-right: var(--conn-subnav-indent, 1.5rem);
             &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
         }
     }
@@ -155,22 +146,12 @@
                 --conn-panel-subnav-l4-ps:     1.625rem;
                 --conn-panel-subnav-l4-pe:     0rem;
 
-                // Reset end-alignment structural if mobile was --end
                 .conn-nav-offcanvas__link {
-                    border-left: 3px solid transparent;
-                    border-right: none;
-                    &:hover,
-                    &:focus,
-                    &.active         { border-left-color: var(--conn-accent); }
-                    &[aria-expanded="true"]:not(.active) { border-left-color: var(--conn-border); }
                     &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-link-justify); }
                 }
                 .conn-nav-offcanvas__subnav a {
-                    border-left: 2px solid transparent;
-                    border-right: none;
-                    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
-                    &:hover,
-                    &.active { background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05)); }
+                    padding-left: var(--conn-subnav-indent, 1.5rem);
+                    padding-right: 1rem;
                     &[data-bs-toggle] { flex-direction: row; justify-content: space-between; }
                 }
             }
@@ -188,22 +169,10 @@
                 --conn-panel-subnav-l4-ps:     0rem;
                 --conn-panel-subnav-l4-pe:     0rem;
 
-                // Reset end-alignment structural if mobile was --end
                 .conn-nav-offcanvas__link {
-                    border-left: 3px solid transparent;
-                    border-right: none;
-                    &:hover,
-                    &:focus,
-                    &.active         { border-left-color: var(--conn-accent); }
-                    &[aria-expanded="true"]:not(.active) { border-left-color: var(--conn-border); }
                     &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-link-justify); }
                 }
                 .conn-nav-offcanvas__subnav a {
-                    border-left: 2px solid transparent;
-                    border-right: none;
-                    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
-                    &:hover,
-                    &.active { border-left-color: var(--conn-accent); }
                     &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-content-justify); }
                 }
             }
@@ -221,26 +190,36 @@
                 --conn-panel-subnav-l4-ps:     0rem;
                 --conn-panel-subnav-l4-pe:     1.625rem;
 
-                // Apply end-alignment structural if mobile was not --end
                 .conn-nav-offcanvas__link {
-                    border-left: none;
-                    border-right: 3px solid transparent;
-                    &:hover,
-                    &:focus,
-                    &.active         { border-right-color: var(--conn-accent); }
-                    &[aria-expanded="true"]:not(.active) { border-right-color: var(--conn-border); }
                     &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
                 }
                 .conn-nav-offcanvas__subnav a {
-                    border-left: none;
-                    border-right: 2px solid transparent;
-                    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
-                    &:hover,
-                    &.active { background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05)); }
+                    padding-left: 1rem;
+                    padding-right: var(--conn-subnav-indent, 1.5rem);
                     &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
                 }
             }
         }
+    }
+}
+
+// ── Active border tied to physical panel side ──
+// offcanvas-start (left panel) = border-left; no override needed — it is the base.
+// offcanvas-end  (right panel) = flip every border to the right.
+.offcanvas-end.conn-nav-offcanvas__panel {
+    .conn-nav-offcanvas__link {
+        border-left: none;
+        border-right: 3px solid transparent;
+        &:hover,
+        &:focus  { border-right-color: var(--conn-accent); }
+        &.active { border-right-color: var(--conn-accent); }
+        &[aria-expanded="true"]:not(.active) { border-right-color: var(--conn-border); }
+    }
+    .conn-nav-offcanvas__subnav a {
+        border-left: none;
+        border-right: 3px solid transparent;
+        &:hover  { border-right-color: var(--conn-accent); }
+        &.active { border-right-color: var(--conn-accent); }
     }
 }
 
@@ -298,16 +277,22 @@
     &.active {
         color: var(--conn-text) !important;
         font-weight: 600;
-        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.05));
         border-left-color: var(--conn-accent);
+        background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
 
     &[aria-expanded="true"]:not(.active) {
         color: var(--conn-text) !important;
         border-left-color: var(--conn-border);
+        background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
 
     &[aria-expanded="true"] .conn-nav-offcanvas__caret { transform: rotate(180deg); }
+}
+
+// ── Subnav caret rotation ─────────────────────
+.conn-nav-offcanvas__subnav a[aria-expanded="true"] .conn-nav-offcanvas__caret {
+    transform: rotate(180deg);
 }
 
 // ── Dropdown caret ────────────────────────────
@@ -322,24 +307,33 @@
     .conn-nav-offcanvas__link[aria-expanded="true"] & { opacity: 0.75; }
 
     .conn-nav-offcanvas__link.active & { opacity: 0.75; }
+
+    .conn-nav-offcanvas__subnav a:hover &,
+    .conn-nav-offcanvas__subnav a:focus &,
+    .conn-nav-offcanvas__subnav a[aria-expanded="true"] &,
+    .conn-nav-offcanvas__subnav a.active & { opacity: 0.75; }
 }
 
 // ── Sub-navigation ────────────────────────────
+// --conn-subnav-indent drives the level-based text indent.
+// Each deeper ul sets a larger value; the <a> inherits it so
+// the border (on the <a> left/right edge) stays panel-aligned
+// while only the inner text shifts.
 .conn-nav-offcanvas__subnav {
-    padding: 0.125rem var(--conn-panel-subnav-pe, 0rem) 0.5rem var(--conn-panel-subnav-ps, 1.25rem);
+    --conn-subnav-indent: 1.5rem; // L2
 
     a {
         display: flex;
         align-items: center;
         justify-content: var(--conn-panel-content-justify, flex-start);
         text-align: var(--conn-panel-text-align, left);
-        padding: 0.35rem 1rem;
+        padding: 0.35rem 1rem 0.35rem var(--conn-subnav-indent, 1.5rem);
         font-size: var(--conn-nav-panel-sublink-size, 0.875rem);
         font-weight: 400;
         color: var(--conn-text-muted) !important;
         text-decoration: none;
-        border-left: 2px solid transparent;
-        border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+        border-left: 3px solid transparent;
+        border-radius: 0;
         transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 
         &:hover {
@@ -351,12 +345,13 @@
         &.active {
             color: var(--conn-text) !important;
             font-weight: 600;
+            border-left-color: var(--conn-accent);
+            background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
         }
     }
 
     &--l3 {
-        padding-left: var(--conn-panel-subnav-l3-ps, 0.875rem);
-        padding-right: var(--conn-panel-subnav-l3-pe, 0rem);
+        --conn-subnav-indent: 2rem; // L3
         padding-top: 0;
         padding-bottom: 0.25rem;
 
@@ -364,8 +359,7 @@
     }
 
     &--l4 {
-        padding-left: var(--conn-panel-subnav-l4-ps, 1.625rem);
-        padding-right: var(--conn-panel-subnav-l4-pe, 0rem);
+        --conn-subnav-indent: 2.5rem; // L4
         padding-top: 0;
         padding-bottom: 0.25rem;
 
