@@ -14,6 +14,10 @@
     from { opacity: 0; transform: translateX(-6px); }
     to   { opacity: 1; transform: translateX(0); }
 }
+@keyframes conn-submenu-in-reverse {
+    from { opacity: 0; transform: translateX(6px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
 
 // ── Base ──────────────────────────────────────
 .conn-nav-top {
@@ -106,6 +110,29 @@
             margin-left: 0.5rem;
             border: none;
             vertical-align: middle;
+        }
+
+        // JS adds this class when there is not enough space on the right.
+        // A ::after bridge fills the gap so the mouse can reach the menu.
+        &.dropdown-submenu--dropstart {
+            > .dropdown-menu {
+                left: auto;
+                right: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                animation: conn-submenu-in-reverse 0.15s ease both;
+
+                // Invisible bridge fills the gap between menu and trigger item
+                // so the hover state is not lost while crossing it.
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: -0.75rem;
+                    width: 0.75rem;
+                    height: 100%;
+                }
+            }
         }
     }
 }
