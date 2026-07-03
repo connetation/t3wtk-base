@@ -25,8 +25,9 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'renderType' => 'selectSingle',
             'default'    => '',
             'items'      => [
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.default', 'value' => ''],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.full',    'value' => 'full'],
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.default',   'value' => ''],
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.full',      'value' => 'full'],
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.fullbleed', 'value' => 'fullbleed'],
             ],
         ],
     ],

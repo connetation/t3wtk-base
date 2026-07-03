@@ -22,7 +22,10 @@
                 <source>Default (container)</source>
             </trans-unit>
             <trans-unit id="content_width.full">
-                <source>Full width</source>
+                <source>Full width (padded)</source>
+            </trans-unit>
+            <trans-unit id="content_width.fullbleed">
+                <source>Full bleed (edge to edge)</source>
             </trans-unit>
             <trans-unit id="bg_type">
                 <source>Background</source>
