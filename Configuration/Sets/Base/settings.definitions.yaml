@@ -188,6 +188,27 @@ settings:
     default: ''
     category: conn.theme.light
 
+  theme.light.borderStrong:
+    label: 'Border color – strong'
+    description: 'Stronger border color used for hover states, active dropdowns, and focus rings (e.g. rgba(99, 102, 241, 0.28)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.accentSoft:
+    label: 'Accent soft background'
+    description: 'Low-opacity accent fill used for active stat cards, tag badges, and hover backgrounds (e.g. rgba(99, 102, 241, 0.1)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.accentGlow:
+    label: 'Accent glow'
+    description: 'Medium-opacity accent used for glows and subtle highlights (e.g. rgba(99, 102, 241, 0.2)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   theme.light.btnBg:
     label: 'Button background'
     description: 'Primary button background color for light mode (e.g. #6366f1). Leave empty to use the accent color.'
@@ -297,6 +318,27 @@ settings:
   theme.dark.border:
     label: 'Border color'
     description: 'Default border color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.borderStrong:
+    label: 'Border color – strong'
+    description: 'Stronger border color for hover states and focus rings in dark mode (e.g. rgba(255, 255, 255, 0.15)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.accentSoft:
+    label: 'Accent soft background'
+    description: 'Low-opacity accent fill for dark mode (e.g. rgba(99, 102, 241, 0.15)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.accentGlow:
+    label: 'Accent glow'
+    description: 'Medium-opacity accent glow for dark mode (e.g. rgba(99, 102, 241, 0.3)). Leave empty to keep the built-in default.'
     type: string
     default: ''
     category: conn.theme.dark
