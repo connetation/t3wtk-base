@@ -7,3 +7,4 @@
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/Styling/setup.typoscript'
 @import 'EXT:conn_base/Configuration/TypoScript/Base/Page.typoscript'
 @import 'EXT:conn_base/Configuration/TypoScript/Base/Lib.typoscript'
+@import 'EXT:conn_base/Configuration/TypoScript/ContentElementBackgrounds.typoscript'

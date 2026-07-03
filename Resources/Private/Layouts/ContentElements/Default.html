@@ -1,0 +1,107 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:variable name="positionClass"><f:if condition="{data.header_position}">ce-headline-{data.header_position}</f:if></f:variable>
+
+<f:comment>─── Section background (Appearance tab) ────────────────────────────</f:comment>
+<f:variable name="bgFile" value="0" />
+<f:if condition="{data.tx_conn_base_bg_type} == 'image'">
+    <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_base_bg_image')}" />
+</f:if>
+
+<f:variable name="hasBg" value="0" />
+<f:if condition="{data.tx_conn_base_bg_type} == 'color'">
+    <f:if condition="{data.tx_conn_base_bg_color}"><f:variable name="hasBg" value="1" /></f:if>
+</f:if>
+<f:if condition="{data.tx_conn_base_bg_type} == 'image'">
+    <f:if condition="{bgFile}"><f:variable name="hasBg" value="1" /></f:if>
+</f:if>
+
+<f:variable name="bgClass"></f:variable>
+<f:variable name="bgStyle"></f:variable>
+<f:if condition="{hasBg}">
+    <f:variable name="bgClass"> conn-bg</f:variable>
+    <f:if condition="{data.tx_conn_base_bg_type} == 'color'">
+        <f:variable name="bgStyle">background-color: {data.tx_conn_base_bg_color};</f:variable>
+        <f:if condition="{data.tx_conn_base_bg_text_color}">
+            <f:variable name="bgStyle">{bgStyle} color: {data.tx_conn_base_bg_text_color}; --bs-heading-color: {data.tx_conn_base_bg_text_color}; --bs-body-color: {data.tx_conn_base_bg_text_color}; --conn-heading: {data.tx_conn_base_bg_text_color}; --conn-text: {data.tx_conn_base_bg_text_color};</f:variable>
+        </f:if>
+    </f:if>
+    <f:if condition="{data.tx_conn_base_bg_type} == 'image'">
+        <f:variable name="bgClass"> conn-bg conn-bg--{data.tx_conn_base_bg_mode}</f:variable>
+        <f:variable name="bgStyle">background-image: url('<f:uri.image image="{bgFile}" maxWidth="1920" />');</f:variable>
+    </f:if>
+</f:if>
+
+<f:comment>─── Content width (only meaningful for frame_class = none) ─────────</f:comment>
+<f:variable name="isFullWidth" value="0" />
+<f:if condition="{data.frame_class} == 'none'">
+    <f:if condition="{data.tx_conn_base_content_width} == 'full'">
+        <f:variable name="isFullWidth" value="1" />
+    </f:if>
+</f:if>
+
+<f:if condition="{data.frame_class} != none">
+    <f:then>
+
+        <div id="c{data.uid}" class="frame frame-{data.frame_class} frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{bgClass}" data-text-animation="{data.tx_conn_elements_text_animation}" style="{bgStyle}">
+            <f:if condition="{data._LOCALIZED_UID}">
+                <a id="c{data._LOCALIZED_UID}"></a>
+            </f:if>
+            <f:render section="Header" optional="true">
+                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+            </f:render>
+            <f:render section="Main" optional="true" />
+        </div>
+
+    </f:then>
+    <f:else>
+
+        <a id="c{data.uid}"></a>
+        <f:if condition="{data._LOCALIZED_UID}">
+            <a id="c{data._LOCALIZED_UID}"></a>
+        </f:if>
+        <f:if condition="{data.space_before_class}">
+            <div class="frame-space-before-{data.space_before_class}"></div>
+        </f:if>
+
+        <f:if condition="{hasBg} || {isFullWidth}">
+            <f:then>
+                <f:comment>No Frame sections that need a wrapper (background and/or explicit full-width
+                     content) always span the full viewport width. Content Width only decides whether
+                     the actual content also stretches edge-to-edge, or stays centered in a .container.</f:comment>
+                <div class="conn-fullbleed{bgClass}" style="{bgStyle}">
+                    <f:if condition="{isFullWidth}">
+                        <f:then>
+                            <f:render section="Header" optional="true">
+                                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                            </f:render>
+                            <f:render section="Main" optional="true" />
+                        </f:then>
+                        <f:else>
+                            <div class="container">
+                                <f:render section="Header" optional="true">
+                                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                                </f:render>
+                                <f:render section="Main" optional="true" />
+                            </div>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <f:render section="Header" optional="true">
+                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                </f:render>
+                <f:render section="Main" optional="true" />
+            </f:else>
+        </f:if>
+
+        <f:if condition="{data.space_after_class}">
+            <div class="frame-space-after-{data.space_after_class}"></div>
+        </f:if>
+
+    </f:else>
+</f:if>
+</html>

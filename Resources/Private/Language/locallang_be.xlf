@@ -14,6 +14,49 @@
             <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
             </trans-unit>
+            <!-- Content Element Background (Appearance tab, all content types) -->
+            <trans-unit id="content_width">
+                <source>Content Width</source>
+            </trans-unit>
+            <trans-unit id="content_width.default">
+                <source>Default (container)</source>
+            </trans-unit>
+            <trans-unit id="content_width.full">
+                <source>Full width</source>
+            </trans-unit>
+            <trans-unit id="bg_type">
+                <source>Background</source>
+            </trans-unit>
+            <trans-unit id="bg_type.none">
+                <source>None</source>
+            </trans-unit>
+            <trans-unit id="bg_type.color">
+                <source>Color</source>
+            </trans-unit>
+            <trans-unit id="bg_type.image">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="bg_color">
+                <source>Background Color</source>
+            </trans-unit>
+            <trans-unit id="bg_text_color">
+                <source>Text Color</source>
+            </trans-unit>
+            <trans-unit id="bg_image">
+                <source>Background Image</source>
+            </trans-unit>
+            <trans-unit id="bg_mode">
+                <source>Image Display</source>
+            </trans-unit>
+            <trans-unit id="bg_mode.cover">
+                <source>Cover</source>
+            </trans-unit>
+            <trans-unit id="bg_mode.contain">
+                <source>Contain</source>
+            </trans-unit>
+            <trans-unit id="bg_mode.parallax">
+                <source>Parallax</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

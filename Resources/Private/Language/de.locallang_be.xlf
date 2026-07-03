@@ -15,6 +15,62 @@
                 <source>Hide Breadcrumb</source>
                 <target>Breadcrumb ausblenden</target>
             </trans-unit>
+            <trans-unit id="content_width">
+                <source>Content Width</source>
+                <target>Inhaltsbreite</target>
+            </trans-unit>
+            <trans-unit id="content_width.default">
+                <source>Default (container)</source>
+                <target>Standard (Container)</target>
+            </trans-unit>
+            <trans-unit id="content_width.full">
+                <source>Full width</source>
+                <target>Volle Breite</target>
+            </trans-unit>
+            <trans-unit id="bg_type">
+                <source>Background</source>
+                <target>Hintergrund</target>
+            </trans-unit>
+            <trans-unit id="bg_type.none">
+                <source>None</source>
+                <target>Kein</target>
+            </trans-unit>
+            <trans-unit id="bg_type.color">
+                <source>Color</source>
+                <target>Farbe</target>
+            </trans-unit>
+            <trans-unit id="bg_type.image">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="bg_color">
+                <source>Background Color</source>
+                <target>Hintergrundfarbe</target>
+            </trans-unit>
+            <trans-unit id="bg_text_color">
+                <source>Text Color</source>
+                <target>Textfarbe</target>
+            </trans-unit>
+            <trans-unit id="bg_image">
+                <source>Background Image</source>
+                <target>Hintergrundbild</target>
+            </trans-unit>
+            <trans-unit id="bg_mode">
+                <source>Image Display</source>
+                <target>Bilddarstellung</target>
+            </trans-unit>
+            <trans-unit id="bg_mode.cover">
+                <source>Cover</source>
+                <target>Ausfüllen</target>
+            </trans-unit>
+            <trans-unit id="bg_mode.contain">
+                <source>Contain</source>
+                <target>Enthalten</target>
+            </trans-unit>
+            <trans-unit id="bg_mode.parallax">
+                <source>Parallax</source>
+                <target>Parallax</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -1,0 +1,40 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Content Element Backgrounds & Width — Appearance tab
+//
+// Rendered by Resources/Private/Layouts/ContentElements/Default.html. Structures:
+//   .frame.conn-bg    — frame_class != none, background fills the frame
+//                        (already contained to the page .container)
+//   .conn-fullbleed   — frame_class = none: breaks out to 100vw. Used whenever a
+//                        background and/or explicit full-width content is set;
+//                        an inner .container is added unless Content Width = Full.
+// ─────────────────────────────────────────────────────────────────────────────
+
+.conn-bg {
+    position: relative;
+    padding-block: 3rem;
+    background-repeat: no-repeat;
+
+    &--cover {
+        background-size: cover;
+        background-position: center;
+    }
+
+    &--contain {
+        background-size: contain;
+        background-position: center;
+    }
+
+    &--parallax {
+        background-size: cover;
+        background-position: center;
+        // iOS Safari mostly ignores `fixed` and falls back to normal scrolling —
+        // background still renders correctly there, just without the parallax effect.
+        background-attachment: fixed;
+    }
+}
+
+.conn-fullbleed {
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    margin-right: calc((100% - 100vw) / 2);
+}
