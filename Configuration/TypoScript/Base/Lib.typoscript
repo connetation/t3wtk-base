@@ -18,6 +18,18 @@ lib.contentElement {
         # Resolves from the site setting styles.content.defaultHeaderType
         # (fsc already maps this — re-declared here only for clarity).
         defaultHeaderType = {$styles.content.defaultHeaderType}
+
+        # Gallery spacing/border site settings for the conn_base Media/Gallery
+        # partial. {site.settings.*} is NOT available in the content element
+        # Fluid context (only in the page template), so they must travel via
+        # the TypoScript settings mapping like defaultHeaderType above.
+        gallery {
+            columnSpacing = {$styles.content.textmedia.columnSpacing}
+            rowSpacing = {$styles.content.textmedia.rowSpacing}
+            borderWidth = {$styles.content.textmedia.borderWidth}
+            borderColor = {$styles.content.textmedia.borderColor}
+            borderPadding = {$styles.content.textmedia.borderPadding}
+        }
         media {
             popup {
                 directImageLink = 1

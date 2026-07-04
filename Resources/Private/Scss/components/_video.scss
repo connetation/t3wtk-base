@@ -2,22 +2,23 @@
     position: relative;
     display: block;
     overflow: hidden;
+    // Fluid 16:9 stage that follows the gallery column width; object-fit
+    // crops the letterbox bars of YouTube/Vimeo thumbnails at any size.
+    aspect-ratio: 16 / 9;
 
     &-img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         transition: transform 0.3s ease;
     }
 
-    // Local video element: auto-width preserves intrinsic aspect ratio at the
-    // height calculated by GalleryProcessor (passed via --thumb-h custom property).
-    // aspect-ratio provides a 16:9 layout hint before metadata loads.
+    // Local video element: same fluid 16:9 stage as the platform thumbnails.
     &-video {
-        width: auto;
-        height: var(--thumb-h, auto);
-        max-width: 100%;
-        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     &-play {
@@ -50,12 +51,14 @@
     }
 }
 
-// Extend fluid_styled_content border to video thumbnails.
-// Core CSS only targets img/iframe; those are clipped by overflow:hidden here,
-// so we suppress them and apply a border to the container instead.
+// Extend the fluid_styled_content border ("Border" checkbox, Media tab) to
+// video thumbnails. Core CSS only targets img/iframe; the thumb is a div, so
+// the border settings arrive as CSS custom properties emitted by the
+// conn_base Media/Gallery partial (same values as .ce-border img).
 .ce-gallery.ce-border {
     .video-thumb {
-        box-shadow: 0 0 0 2px #000; // matches fluid_styled_content default borderWidth/borderColor
+        border: var(--conn-ce-border-w, 2px) solid var(--conn-ce-border-color, #000);
+        padding: var(--conn-ce-border-pad, 0);
 
         &-img {
             border: none;

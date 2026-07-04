@@ -21,8 +21,11 @@
 <f:if condition="{gallery.rows}">
 
     <f:variable name="cols">{f:if(condition: data.imagecols, then: data.imagecols, else: 1)}</f:variable>
-    <f:variable name="columnSpacing">{f:if(condition: '{site.settings.styles.content.textmedia.columnSpacing}', then: '{site.settings.styles.content.textmedia.columnSpacing}', else: '10')}</f:variable>
-    <f:variable name="rowSpacing">{f:if(condition: '{site.settings.styles.content.textmedia.rowSpacing}', then: '{site.settings.styles.content.textmedia.rowSpacing}', else: '10')}</f:variable>
+    <f:comment>Spacing/border values come from lib.contentElement.settings.gallery
+         (Lib.typoscript) — {site.settings.*} is NOT available in the content
+         element Fluid context.</f:comment>
+    <f:variable name="columnSpacing">{f:if(condition: '{settings.gallery.columnSpacing}', then: '{settings.gallery.columnSpacing}', else: '10')}</f:variable>
+    <f:variable name="rowSpacing">{f:if(condition: '{settings.gallery.rowSpacing}', then: '{settings.gallery.rowSpacing}', else: '10')}</f:variable>
 
     <f:comment>Beside text the area is 1/cols wide and images stack inside it
          (row-cols-1) — above/below every image is its own 1/cols slot. The
@@ -41,6 +44,11 @@
             <f:variable name="mobileVw">{100 / rowColsMobile}</f:variable>
         </f:else>
     </f:if>
+    <f:comment>Border settings as CSS custom properties: fsc's Styling CSS only
+         borders img/iframe — the conn video thumb (a div) picks the same
+         values up via var() in Scss/components/_video.scss.</f:comment>
+    <f:variable name="borderVars"><f:if condition="{data.imageborder}"> --conn-ce-border-w: {f:if(condition: '{settings.gallery.borderWidth}', then: '{settings.gallery.borderWidth}', else: '2')}px; --conn-ce-border-color: {f:if(condition: '{settings.gallery.borderColor}', then: '{settings.gallery.borderColor}', else: '#000000')}; --conn-ce-border-pad: {f:if(condition: '{settings.gallery.borderPadding}', then: '{settings.gallery.borderPadding}', else: '0')}px;</f:if></f:variable>
+
     <f:variable name="slotWidth">{1320 / cols}</f:variable>
     <f:variable name="sizes">(max-width: 767px) {mobileVw -> f:format.number(decimals: 0, thousandsSeparator: '')}vw, {slotWidth -> f:format.number(decimals: 0, thousandsSeparator: '')}px</f:variable>
 
@@ -50,7 +58,7 @@
                  at exactly that size, positioned via ce-left/center/right.</f:comment>
             <div class="ce-gallery conn-gallery conn-gallery--fixed{f:if(condition: data.imageborder, then: ' ce-border')}"
                  data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
-                 style="--conn-gallery-cols: {cols}; --conn-gallery-gap: {rowSpacing}px {columnSpacing}px;">
+                 style="--conn-gallery-cols: {cols}; --conn-gallery-gap: {rowSpacing}px {columnSpacing}px;{borderVars}">
                 <f:for each="{gallery.rows}" as="row">
                     <f:for each="{row.columns}" as="column">
                         <f:if condition="{column.media}">
@@ -63,7 +71,7 @@
         <f:else>
             <div class="ce-gallery conn-gallery row row-cols-{rowColsMobile} row-cols-md-{rowColsDesktop}{f:if(condition: data.imageborder, then: ' ce-border')}"
                  data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
-                 style="--conn-gallery-cols: {cols}; --bs-gutter-x: {columnSpacing}px; --bs-gutter-y: {rowSpacing}px;">
+                 style="--conn-gallery-cols: {cols}; --bs-gutter-x: {columnSpacing}px; --bs-gutter-y: {rowSpacing}px;{borderVars}">
                 <f:for each="{gallery.rows}" as="row">
                     <f:for each="{row.columns}" as="column">
                         <f:if condition="{column.media}">
