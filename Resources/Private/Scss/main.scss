@@ -35,6 +35,9 @@
     $enable-smooth-scroll:    true,
     $enable-negative-margins: true,
 
+    // Grid — row-cols-1…8 (galleries map the imagecols select to row-cols)
+    $grid-row-columns: 8,
+
     // Transitions
     $transition-base: (all 0.2s ease-in-out)
 );
@@ -55,6 +58,7 @@
 @use 'components/video';
 @use 'components/content-frames';
 @use 'components/content-backgrounds';
+@use 'components/gallery';
 @use 'components/links';
 
 // 4. Utilities

@@ -974,18 +974,6 @@ settings:
     default: ''
     category: conn.footer
 
-  footer.showNavigation:
-    label: 'Show navigation column'
-    type: bool
-    default: true
-    category: conn.footer
-
-  footer.showAddress:
-    label: 'Show address column'
-    type: bool
-    default: false
-    category: conn.footer
-
   footer.showSocial:
     label: 'Show social media links'
     type: bool
@@ -1235,14 +1223,14 @@ settings:
 
   styles.content.textmedia.maxW:
     label: 'Text & Media: max media width'
-    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text.'
+    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text. UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width.'
     type: int
     default: 600
     category: fsc.content
 
   styles.content.textmedia.maxWInText:
     label: 'Text & Media: max media width beside text'
-    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). Typically half of the full width.'
+    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width. Beside text, the editor’s Columns select defines the media/text split instead (2 = 50/50, 3 = 1/3 vs 2/3, …).'
     type: int
     default: 300
     category: fsc.content
@@ -1270,63 +1258,63 @@ settings:
 
   styles.content.textmedia.borderColor:
     label: 'Image border color'
-    description: 'Border color for images when an editor enables "Border" in the Appearance tab of a Text & Media element.'
+    description: 'Border color for images when an editor enables "Border" (Media tab → Image Adjustments palette) in a Text & Media, Text & Images or Images element.'
     type: color
     default: '#000000'
     category: fsc.content
 
   styles.content.textmedia.borderWidth:
     label: 'Image border width'
-    description: 'Border width in px for images with the "Border" option enabled.'
+    description: 'Border width in px for images with the "Border" option (Media tab) enabled.'
     type: int
     default: 2
     category: fsc.content
 
   styles.content.textmedia.borderPadding:
     label: 'Image border padding'
-    description: 'Inner spacing in px between the image and its border when the "Border" option is enabled.'
+    description: 'Inner spacing in px between the image and its border when the "Border" option (Media tab) is enabled.'
     type: int
     default: 0
     category: fsc.content
 
   styles.content.textmedia.linkWrap.width:
     label: 'Click-enlarge: image width'
-    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept.'
+    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
     type: string
     default: 800m
     category: fsc.content
 
   styles.content.textmedia.linkWrap.height:
     label: 'Click-enlarge: image height'
-    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width).'
+    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width). UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
     type: string
     default: 600m
     category: fsc.content
 
   styles.content.textmedia.linkWrap.newWindow:
     label: 'Click-enlarge: open in new window'
-    description: 'Open the enlarged image in a new browser window instead of the current tab. Only relevant when the lightbox is disabled.'
+    description: 'Open the enlarged image in a new browser window instead of the current tab. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
     type: bool
     default: false
     category: fsc.content
 
   styles.content.textmedia.linkWrap.lightboxEnabled:
     label: 'Click-enlarge: use lightbox'
-    description: 'Render "Enlarge on Click" images as lightbox links (adds the CSS class and rel attribute below) instead of plain image links. Requires a lightbox script on the page.'
+    description: 'Render "Enlarge on Click" images as lightbox links instead of plain image links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
     type: bool
     default: false
     category: fsc.content
 
   styles.content.textmedia.linkWrap.lightboxCssClass:
     label: 'Lightbox: CSS class'
-    description: 'CSS class added to lightbox links — must match the selector your lightbox script is initialized with.'
+    description: 'CSS class added to lightbox links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
     type: string
     default: lightbox
     category: fsc.content
 
   styles.content.textmedia.linkWrap.lightboxRelAttribute:
     label: 'Lightbox: rel attribute'
-    description: 'rel attribute added to lightbox links; lightbox scripts use it to group images of one element into a gallery ({field:uid} inserts the content element uid).'
+    description: 'rel attribute added to lightbox links, used to group images of one element into a gallery. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
     type: string
     default: 'lightbox[{field:uid}]'
     category: fsc.content

@@ -1,0 +1,114 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Content element gallery (Text & Images, Text & Media, Images)
+//
+// Pairs with the conn_base override of fsc's Media/Gallery partial. The fluid
+// gallery is a Bootstrap row (row-cols-{imagecols}, gutters fed from the
+// columnSpacing/rowSpacing settings via --bs-gutter-*), so the editor's
+// "Columns" select maps 1:1 to Bootstrap column widths: 1 → full width,
+// 2 → 1/2, 3 → 1/3 (col-4 equivalent), … — regardless of the image count.
+//
+// fsc's Styling CSS still provides: .ce-left/.ce-right/.ce-center floats,
+// .ce-intext text wrapping, .ce-border image borders, textMargin spacing.
+// Compound selectors (.ce-gallery.conn-gallery) win the specificity tie
+// against fsc's inline default styles regardless of load order.
+// ─────────────────────────────────────────────────────────────────────────────
+
+.ce-gallery.conn-gallery {
+    // fsc default styles set figure { display: table } (shrink-wrap) and
+    // figcaption { display: table-caption } — undo for column cells.
+    figure {
+        display: block;
+        margin: 0;
+        width: 100%;
+    }
+
+    figcaption {
+        display: block;
+    }
+
+    // Images fill their column; intrinsic width/height attributes keep the
+    // aspect ratio reserved (no layout shift).
+    img.image-embed-item {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    // Videos/iframes (Text & Media) stretch to the column as well.
+    video,
+    iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    audio {
+        width: 100%;
+    }
+
+    // Editor entered an explicit image width/height → honor it exactly when it
+    // fits; minmax(0, max-content) lets the tracks shrink when the combined
+    // size exceeds the container, so oversized entries scale down instead of
+    // being clipped by fsc's .ce-gallery overflow: hidden.
+    &.conn-gallery--fixed {
+        display: grid;
+        grid-template-columns: repeat(var(--conn-gallery-cols, 1), minmax(0, max-content));
+        gap: var(--conn-gallery-gap, 10px 10px);
+        align-items: start;
+        justify-content: start;
+
+        figure {
+            width: auto;
+        }
+
+        img.image-embed-item {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+// Above/below the text the fluid gallery must span the full content width —
+// fsc floats left/right positioned galleries (.ce-left/.ce-right .ce-gallery
+// { float: … }), and a floated flex row shrink-wraps, which breaks the
+// percentage-based row-cols slots. Horizontal position is flex justification
+// instead (below).
+.ce-above .ce-gallery.conn-gallery.row,
+.ce-below .ce-gallery.conn-gallery.row {
+    float: none;
+    width: 100%;
+}
+
+// Horizontal position. Fluid rows: full rows have no free space, so
+// justify-content only affects an incomplete (last) row — a single image in a
+// 2-column gallery keeps its 1/cols size and is centered/right-aligned at
+// every breakpoint. Fixed-size galleries justify their shrink-wrapped grid
+// the same way. fsc's .ce-outer/.ce-inner centering hack is not rendered
+// anymore.
+.ce-center .ce-gallery.conn-gallery {
+    justify-content: center;
+}
+
+.ce-right .ce-gallery.conn-gallery {
+    justify-content: flex-end;
+}
+
+// Beside text ("In text" / "Beside text" positions): the editor's Columns
+// select defines the split between media area and text — cols=2 → images 50%
+// and text 50%, cols=3 → 1/3 vs 2/3, … Images stack inside the area
+// (row-cols-1, see Media/Gallery partial); floats/margins/wrapping come from
+// fsc. Fixed-size galleries (--fixed, no .row) shrink-wrap in the float.
+.ce-intext .ce-gallery.conn-gallery.row {
+    width: calc(100% / var(--conn-gallery-cols, 1));
+}
+
+// Small screens: gallery leaves the text flow and goes full width
+// (column collapse is handled by the responsive row-cols-* classes).
+@media (max-width: 767.98px) {
+    .ce-intext .ce-gallery.conn-gallery,
+    .ce-intext .ce-gallery.conn-gallery.row {
+        float: none;
+        width: 100%;
+    }
+}

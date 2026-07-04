@@ -1,0 +1,81 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>conn_base override of fsc's Media/Gallery partial (Text & Images,
+     Text & Media, Images) — Bootstrap grid semantics.
+
+     The editor's "Columns" select (imagecols) defines the SLOT WIDTH,
+     independent of how many images the element has:
+
+     - Above/below the text: every image spans 1/cols of the content width
+       (row-cols-{cols}); with position "center" incomplete rows are centered
+       at every breakpoint (justify-content, _gallery.scss).
+     - Beside / in text: cols defines the split between media area and text —
+       cols=2 → image area 50% / text 50%, cols=3 → 1/3 vs 2/3, … (width
+       calc(100%/cols) in _gallery.scss); images inside the area stack full
+       width (row-cols-1); the text wraps around it when a wrapping position
+       is selected (fsc float CSS).
+
+     NOTE: data.imagecols is used directly — gallery.count.columns is NOT
+     usable here because GalleryProcessor clamps it to the file count.
+     columnSpacing/rowSpacing settings feed the Bootstrap gutters; imagewidth/
+     imageheight set → conn-gallery--fixed: exact size, no fluid grid.</f:comment>
+<f:if condition="{gallery.rows}">
+
+    <f:variable name="cols">{f:if(condition: data.imagecols, then: data.imagecols, else: 1)}</f:variable>
+    <f:variable name="columnSpacing">{f:if(condition: '{site.settings.styles.content.textmedia.columnSpacing}', then: '{site.settings.styles.content.textmedia.columnSpacing}', else: '10')}</f:variable>
+    <f:variable name="rowSpacing">{f:if(condition: '{site.settings.styles.content.textmedia.rowSpacing}', then: '{site.settings.styles.content.textmedia.rowSpacing}', else: '10')}</f:variable>
+
+    <f:comment>Beside text the area is 1/cols wide and images stack inside it
+         (row-cols-1) — above/below every image is its own 1/cols slot. The
+         image width ends up at 1/cols of the content width either way, so one
+         srcset `sizes` formula covers both (1320 ≈ widest container; below md
+         galleries collapse to max. 2 columns / full width beside text).</f:comment>
+    <f:if condition="{gallery.position.vertical} == 'intext'">
+        <f:then>
+            <f:variable name="rowColsDesktop">1</f:variable>
+            <f:variable name="rowColsMobile">1</f:variable>
+            <f:variable name="mobileVw">100</f:variable>
+        </f:then>
+        <f:else>
+            <f:variable name="rowColsDesktop">{cols}</f:variable>
+            <f:variable name="rowColsMobile">{f:if(condition: '{cols} > 2', then: '2', else: cols)}</f:variable>
+            <f:variable name="mobileVw">{100 / rowColsMobile}</f:variable>
+        </f:else>
+    </f:if>
+    <f:variable name="slotWidth">{1320 / cols}</f:variable>
+    <f:variable name="sizes">(max-width: 767px) {mobileVw -> f:format.number(decimals: 0, thousandsSeparator: '')}vw, {slotWidth -> f:format.number(decimals: 0, thousandsSeparator: '')}px</f:variable>
+
+    <f:if condition="{data.imagewidth} || {data.imageheight}">
+        <f:then>
+            <f:comment>Editor entered an explicit size — shrink-wrapped columns
+                 at exactly that size, positioned via ce-left/center/right.</f:comment>
+            <div class="ce-gallery conn-gallery conn-gallery--fixed{f:if(condition: data.imageborder, then: ' ce-border')}"
+                 data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
+                 style="--conn-gallery-cols: {cols}; --conn-gallery-gap: {rowSpacing}px {columnSpacing}px;">
+                <f:for each="{gallery.rows}" as="row">
+                    <f:for each="{row.columns}" as="column">
+                        <f:if condition="{column.media}">
+                            <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings, sizes: sizes}" />
+                        </f:if>
+                    </f:for>
+                </f:for>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="ce-gallery conn-gallery row row-cols-{rowColsMobile} row-cols-md-{rowColsDesktop}{f:if(condition: data.imageborder, then: ' ce-border')}"
+                 data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
+                 style="--conn-gallery-cols: {cols}; --bs-gutter-x: {columnSpacing}px; --bs-gutter-y: {rowSpacing}px;">
+                <f:for each="{gallery.rows}" as="row">
+                    <f:for each="{row.columns}" as="column">
+                        <f:if condition="{column.media}">
+                            <div class="col">
+                                <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, settings: settings, sizes: sizes}" />
+                            </div>
+                        </f:if>
+                    </f:for>
+                </f:for>
+            </div>
+        </f:else>
+    </f:if>
+
+</f:if>
+</html>

@@ -15,7 +15,9 @@ lib.contentElement {
         10 = EXT:conn_base/Resources/Private/Partials/
     }
     settings {
-        defaultHeaderType = 2
+        # Resolves from the site setting styles.content.defaultHeaderType
+        # (fsc already maps this — re-declared here only for clarity).
+        defaultHeaderType = {$styles.content.defaultHeaderType}
         media {
             popup {
                 directImageLink = 1

@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>conn_base override of fsc's Media/Rendering/Image.
+
+     - imagewidth and/or imageheight set by the editor → explicit fixed size,
+       rendered exactly as entered (this is what makes those fields honest —
+       fsc clamped them to the maxW/maxWInText pixel budget).
+     - otherwise → responsive image: srcset candidates up to 1920px (never
+       upscaled beyond the original), `sizes` hint from the gallery geometry,
+       CSS scales the image to its grid cell.
+     Crop variants from the file reference are applied by f:image/f:uri.image
+     in both branches.</f:comment>
+<f:if condition="{data.imagewidth} || {data.imageheight}">
+    <f:then>
+        <f:image class="image-embed-item" image="{file}" width="{data.imagewidth}" height="{data.imageheight}" alt="{file.alternative}" title="{file.title}" loading="{settings.media.lazyLoading}" decoding="{settings.media.imageDecoding}" />
+    </f:then>
+    <f:else>
+        <f:variable name="srcset" value="" />
+        <f:variable name="separator" value="" />
+        <f:for each="{0: 480, 1: 768, 2: 1024, 3: 1440, 4: 1920}" as="candidateWidth">
+            <f:if condition="{candidateWidth} < {file.properties.width}">
+                <f:variable name="srcset">{srcset}{separator}{f:uri.image(image: file, width: candidateWidth)} {candidateWidth}w</f:variable>
+                <f:variable name="separator">, </f:variable>
+            </f:if>
+        </f:for>
+        <f:if condition="{srcset}">
+            <f:then>
+                <f:image class="image-embed-item" image="{file}" width="1280" alt="{file.alternative}" title="{file.title}" loading="{settings.media.lazyLoading}" decoding="{settings.media.imageDecoding}" additionalAttributes="{srcset: srcset, sizes: sizes}" />
+            </f:then>
+            <f:else>
+                <f:comment>Original is smaller than the smallest candidate —
+                     render it plain at its natural (cropped) size.</f:comment>
+                <f:image class="image-embed-item" image="{file}" alt="{file.alternative}" title="{file.title}" loading="{settings.media.lazyLoading}" decoding="{settings.media.imageDecoding}" />
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if>
+</html>

@@ -59,7 +59,7 @@
                 <a id="c{data._LOCALIZED_UID}"></a>
             </f:if>
             <f:render section="Header" optional="true">
-                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
             </f:render>
             <f:render section="Main" optional="true" />
         </div>
@@ -86,7 +86,7 @@
                             <f:if condition="{data.tx_conn_base_content_width} == 'fullbleed'">
                                 <f:then>
                                     <f:render section="Header" optional="true">
-                                        <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                                        <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
                                     </f:render>
                                     <f:render section="Main" optional="true" />
                                 </f:then>
@@ -95,7 +95,7 @@
                                          Bootstrap gutter so content never touches the page edges.</f:comment>
                                     <div class="container-fluid">
                                         <f:render section="Header" optional="true">
-                                            <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                                            <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
                                         </f:render>
                                         <f:render section="Main" optional="true" />
                                     </div>
@@ -105,7 +105,7 @@
                         <f:else>
                             <div class="container">
                                 <f:render section="Header" optional="true">
-                                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
                                 </f:render>
                                 <f:render section="Main" optional="true" />
                             </div>
@@ -115,7 +115,7 @@
             </f:then>
             <f:else>
                 <f:render section="Header" optional="true">
-                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass}" />
+                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
                 </f:render>
                 <f:render section="Main" optional="true" />
             </f:else>
