@@ -48,7 +48,7 @@ In your TYPO3 site config (`config/sites/<site>/config.yaml`):
 ```yaml
 dependencies:
   - conn/sitepackage
-  - conn/elements
+  - conn/elements   # optional component library
 ```
 
 `conn/sitepackage` should declare `conn/base` in its Set dependencies — TYPO3 loads them in order.
@@ -84,5 +84,5 @@ TYPO3 site
 ├── conn/sitepackage  (project layer — extends conn/base)
 │   └── depends on: conn/base
 ├── conn/base         (this package — reusable foundation)
-└── conn/elements     (custom elements — separate site dependency)
+└── conn/elements     (optional component library — added per project)
 ```

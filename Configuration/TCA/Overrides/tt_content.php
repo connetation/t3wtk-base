@@ -6,7 +6,7 @@ defined('TYPO3') or die();
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-// Content element registrations live in EXT:conn_elements (site-level dependency).
+// Content element registrations live in EXT:conn_elements (optional package, required per project).
 // Add conn_base CE overrides here if needed.
 
 // ─── Section background – global field for ALL content element types ─────

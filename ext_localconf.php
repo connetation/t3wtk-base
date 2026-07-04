@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 defined('TYPO3') or die();
 
-// Content element wizard entries are registered by EXT:conn_elements (site-level dependency).
+// Content element wizard entries are registered by EXT:conn_elements (optional package, required per project).
 
 // Named RTE preset — selected per site via the conn/base Set's page.tsconfig
 // (RTE.default.preset = connBase) so other sites in the installation keep
