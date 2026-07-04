@@ -20,7 +20,7 @@
     <div class="container">
 
         <!-- Brand (always visible in top bar) -->
-        <a class="navbar-brand fw-bold" href="/">
+        <a class="navbar-brand fw-bold" href="{f:uri.page(pageUid: site.rootPageId)}">
             <f:if condition="{site.settings.branding.logo}">
                 <f:then>
                     <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>
@@ -53,7 +53,7 @@
 
             <!-- Mobile-only header (hidden on desktop via Bootstrap) -->
             <div class="offcanvas-header">
-                <a class="navbar-brand fw-bold mb-0" href="/">
+                <a class="navbar-brand fw-bold mb-0" href="{f:uri.page(pageUid: site.rootPageId)}">
                     <f:if condition="{site.settings.branding.logo}">
                         <f:then>
                             <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>

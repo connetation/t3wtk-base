@@ -19,7 +19,7 @@
             </f:if>
             <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 
-            <a href="/" class="footer__brand-link text-decoration-none text-reset">
+            <a href="{f:uri.page(pageUid: site.rootPageId)}" class="footer__brand-link text-decoration-none text-reset">
                 <f:if condition="{lightSrc}">
                     <f:then>
                         <f:variable name="resolvedLight">{conn:resolvePath(path:lightSrc)}</f:variable>

@@ -1,0 +1,6 @@
+# Page TSconfig scoped to sites using the conn/base Set
+# (previously injected globally via ext_tables.php).
+
+@import 'EXT:conn_base/Configuration/TsConfig/Page/BackendLayouts.tsconfig'
+
+RTE.default.preset = connBase

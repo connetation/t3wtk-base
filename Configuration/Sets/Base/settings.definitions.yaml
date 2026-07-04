@@ -37,6 +37,24 @@ categories:
     label: 'Social Media'
   conn.meta:
     label: 'Meta & Analytics'
+  # Re-declared last so it sorts to the bottom of the Site Settings sidebar.
+  # Category definitions merge last-set-wins, so this re-parents the
+  # fluid_styled_content category under our trailing "Advanced" group.
+  # NOTE: the fsc.templates path settings in there are superseded by the
+  # conn package rootPath layering (0/10/20/30) — leave them empty.
+  conn.advanced:
+    label: 'Advanced'
+  fsc:
+    label: 'Fluid Styled Content'
+    parent: conn.advanced
+  fsc.templates:
+    label: 'Templates'
+    description: 'Global Fluid override paths shipped by fluid_styled_content. In conn projects these are superseded by the package layering (conn_base → conn_elements → sitepackage) — leave all three empty and override templates in the sitepackage instead.'
+    parent: fsc
+  fsc.content:
+    label: 'Content Elements'
+    description: 'Rendering options for the standard content elements (Text, Text & Media, Images, Insert Records, …).'
+    parent: fsc
 
 settings:
   # ─── Theme – Mode-invariant colors ───────────────────────────────────────
@@ -1152,3 +1170,163 @@ settings:
     type: string
     default: ''
     category: conn.meta
+
+  # ─── Fluid Styled Content – re-definitions ────────────────────────────────
+  # These settings are OWNED by typo3/fluid-styled-content; they are
+  # re-declared here (definitions merge last-set-wins) only to add proper
+  # labels and descriptions. type/default/enum MUST stay identical to the
+  # originals in EXT:fluid_styled_content .../settings.definitions.yaml.
+  styles.templates.templateRootPath:
+    label: 'Additional template path'
+    description: 'Extra Fluid template path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place template overrides in the sitepackage instead.'
+    type: string
+    default: ''
+    category: fsc.templates
+
+  styles.templates.partialRootPath:
+    label: 'Additional partial path'
+    description: 'Extra Fluid partial path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place partial overrides in the sitepackage instead.'
+    type: string
+    default: ''
+    category: fsc.templates
+
+  styles.templates.layoutRootPath:
+    label: 'Additional layout path'
+    description: 'Extra Fluid layout path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place layout overrides in the sitepackage instead.'
+    type: string
+    default: ''
+    category: fsc.templates
+
+  styles.content.defaultHeaderType:
+    label: 'Default header type'
+    description: 'Heading tag used when an editor leaves the header type on "Default": 1 = <h1> … 5 = <h5>. Keep 2 so <h1> stays reserved for the page title.'
+    type: int
+    default: 2
+    category: fsc.content
+
+  styles.content.shortcut.tables:
+    label: 'Insert Records: allowed tables'
+    description: 'Comma-separated database tables the "Insert Records" (shortcut) element is allowed to render. Normally only tt_content.'
+    type: string
+    default: tt_content
+    category: fsc.content
+
+  styles.content.image.lazyLoading:
+    label: 'Image loading'
+    description: 'loading attribute on content images. lazy = load only when scrolled into view (default, best performance) · eager = load immediately (for above-the-fold images) · auto = browser decides.'
+    type: string
+    enum:
+      - lazy
+      - eager
+      - auto
+    category: fsc.content
+    default: lazy
+
+  styles.content.image.imageDecoding:
+    label: 'Image decoding'
+    description: 'decoding attribute on content images. async = decode off the main thread (smoother scrolling) · sync = decode immediately · empty = omit the attribute (browser default).'
+    type: string
+    enum:
+      - sync
+      - async
+      - auto
+    category: fsc.content
+    default: ''
+
+  styles.content.textmedia.maxW:
+    label: 'Text & Media: max media width'
+    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text.'
+    type: int
+    default: 600
+    category: fsc.content
+
+  styles.content.textmedia.maxWInText:
+    label: 'Text & Media: max media width beside text'
+    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). Typically half of the full width.'
+    type: int
+    default: 300
+    category: fsc.content
+
+  styles.content.textmedia.columnSpacing:
+    label: 'Text & Media: column gap'
+    description: 'Horizontal gap in px between media columns when a Text & Media element shows multiple images side by side.'
+    type: int
+    default: 10
+    category: fsc.content
+
+  styles.content.textmedia.rowSpacing:
+    label: 'Text & Media: row gap'
+    description: 'Vertical gap in px between media rows when a Text & Media element shows multiple images in several rows.'
+    type: int
+    default: 10
+    category: fsc.content
+
+  styles.content.textmedia.textMargin:
+    label: 'Text & Media: text gap'
+    description: 'Gap in px between the media area and the text that wraps around it.'
+    type: int
+    default: 10
+    category: fsc.content
+
+  styles.content.textmedia.borderColor:
+    label: 'Image border color'
+    description: 'Border color for images when an editor enables "Border" in the Appearance tab of a Text & Media element.'
+    type: color
+    default: '#000000'
+    category: fsc.content
+
+  styles.content.textmedia.borderWidth:
+    label: 'Image border width'
+    description: 'Border width in px for images with the "Border" option enabled.'
+    type: int
+    default: 2
+    category: fsc.content
+
+  styles.content.textmedia.borderPadding:
+    label: 'Image border padding'
+    description: 'Inner spacing in px between the image and its border when the "Border" option is enabled.'
+    type: int
+    default: 0
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.width:
+    label: 'Click-enlarge: image width'
+    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept.'
+    type: string
+    default: 800m
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.height:
+    label: 'Click-enlarge: image height'
+    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width).'
+    type: string
+    default: 600m
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.newWindow:
+    label: 'Click-enlarge: open in new window'
+    description: 'Open the enlarged image in a new browser window instead of the current tab. Only relevant when the lightbox is disabled.'
+    type: bool
+    default: false
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.lightboxEnabled:
+    label: 'Click-enlarge: use lightbox'
+    description: 'Render "Enlarge on Click" images as lightbox links (adds the CSS class and rel attribute below) instead of plain image links. Requires a lightbox script on the page.'
+    type: bool
+    default: false
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.lightboxCssClass:
+    label: 'Lightbox: CSS class'
+    description: 'CSS class added to lightbox links — must match the selector your lightbox script is initialized with.'
+    type: string
+    default: lightbox
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.lightboxRelAttribute:
+    label: 'Lightbox: rel attribute'
+    description: 'rel attribute added to lightbox links; lightbox scripts use it to group images of one element into a gallery ({field:uid} inserts the content element uid).'
+    type: string
+    default: 'lightbox[{field:uid}]'
+    category: fsc.content

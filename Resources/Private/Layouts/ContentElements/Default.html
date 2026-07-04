@@ -4,6 +4,14 @@
 
 <f:variable name="positionClass"><f:if condition="{data.header_position}">ce-headline-{data.header_position}</f:if></f:variable>
 
+<f:comment>Text-animation assets are only collected when this element actually uses a
+     text animation. f:asset.* dedupes by identifier, so multiple elements on one
+     page still emit the assets once.</f:comment>
+<f:if condition="{data.tx_conn_elements_text_animation}">
+    <f:asset.css identifier="connElementsTextAnimation" href="EXT:conn_elements/Resources/Public/Css/text-animation.css" />
+    <f:asset.script identifier="connElementsTextAnimation" src="EXT:conn_elements/Resources/Public/Js/components/text-animation.js" type="module" />
+</f:if>
+
 <f:comment>─── Section background (Appearance tab) ────────────────────────────</f:comment>
 <f:variable name="bgFile" value="0" />
 <f:if condition="{data.tx_conn_base_bg_type} == 'image'">

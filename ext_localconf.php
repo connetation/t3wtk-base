@@ -6,4 +6,7 @@ defined('TYPO3') or die();
 
 // Content element wizard entries are registered by EXT:conn_elements (site-level dependency).
 
-$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:conn_base/Configuration/RTE/Default.yaml';
+// Named RTE preset — selected per site via the conn/base Set's page.tsconfig
+// (RTE.default.preset = connBase) so other sites in the installation keep
+// the core default preset.
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['connBase'] = 'EXT:conn_base/Configuration/RTE/Default.yaml';

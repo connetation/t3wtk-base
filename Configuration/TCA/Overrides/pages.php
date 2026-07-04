@@ -6,22 +6,9 @@ defined('TYPO3') or die();
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-// Register backend layouts
-$backendLayouts = [
-    ['pagets__conn_default', 'Default (1 column)'],
-    ['pagets__conn_landingpage', 'Landing Page'],
-];
-
-foreach ($backendLayouts as [$value, $label]) {
-    $GLOBALS['TCA']['pages']['columns']['backend_layout']['config']['items'][] = [
-        'label' => $label,
-        'value' => $value,
-    ];
-    $GLOBALS['TCA']['pages']['columns']['backend_layout_next_level']['config']['items'][] = [
-        'label' => $label,
-        'value' => $value,
-    ];
-}
+// Backend layouts are defined once via page TSconfig (Set page.tsconfig →
+// TsConfig/Page/BackendLayouts.tsconfig); TYPO3 merges them into the
+// backend_layout selects automatically — no static TCA items needed here.
 
 // Add custom page fields
 ExtensionManagementUtility::addTCAcolumns('pages', [

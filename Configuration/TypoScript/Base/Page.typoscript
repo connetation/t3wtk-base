@@ -2,16 +2,27 @@
 # Page Object
 # ─────────────────────────────────────────────
 
+# TYPO3's PageRenderer owns the document shell (<!DOCTYPE>, <html>, <head>,
+# <body>) — the Fluid layout renders body content only.
+config {
+    htmlTag.attributes.data-bs-theme = auto
+    htmlTag.attributes.class = h-100
+}
+
 page = PAGE
 page {
     typeNum = 0
 
+    # Sticky-footer flexbox classes (extended below via condition when the
+    # floating theme toggle is enabled).
+    bodyTagCObject = TEXT
+    bodyTagCObject.value = <body class="d-flex flex-column h-100">
+
     meta {
         viewport = width=device-width, initial-scale=1
-        charset = utf-8
-        robots = index, follow
-        theme-color = #0d6efd
         color-scheme = light dark
+        robots = index, follow
+        google-site-verification = {$meta.googleVerification}
     }
 
     includeCSS {
@@ -82,3 +93,19 @@ page {
         }
     }
 }
+
+# Body class variant when the floating theme toggle is enabled
+["{$themeToggle.position}" != ""]
+page.bodyTagCObject.value = <body class="d-flex flex-column h-100 has-float-toggle">
+[global]
+
+# theme-color per scheme, only when the corresponding site setting is set
+["{$theme.light.bg}" != ""]
+page.headerData.20 = TEXT
+page.headerData.20.value = <meta name="theme-color" content="{$theme.light.bg}" media="(prefers-color-scheme: light)">
+[global]
+
+["{$theme.dark.bg}" != ""]
+page.headerData.21 = TEXT
+page.headerData.21.value = <meta name="theme-color" content="{$theme.dark.bg}" media="(prefers-color-scheme: dark)">
+[global]

@@ -17,7 +17,7 @@
 <nav class="navbar {navPosition} conn-nav-offcanvas navbar--logo-{logoPos}" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="/">
+        <a class="navbar-brand fw-bold" href="{f:uri.page(pageUid: site.rootPageId)}">
             <f:if condition="{site.settings.branding.logo}">
                 <f:then>
                     <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>
@@ -62,7 +62,7 @@
      data-bs-backdrop="{offcanvasBackdrop}">
 
     <div class="offcanvas-header">
-        <a class="navbar-brand fw-bold mb-0" href="/">
+        <a class="navbar-brand fw-bold mb-0" href="{f:uri.page(pageUid: site.rootPageId)}">
             <f:if condition="{site.settings.branding.logo}">
                 <f:then>
                     <f:variable name="resolvedLogo">{conn:resolvePath(path: site.settings.branding.logo)}</f:variable>

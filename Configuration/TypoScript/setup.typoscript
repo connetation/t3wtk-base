@@ -3,8 +3,8 @@
 # TYPO3 LTS 14
 # ─────────────────────────────────────────────
 
-@import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
-@import 'EXT:fluid_styled_content/Configuration/TypoScript/Styling/setup.typoscript'
+# fluid_styled_content TypoScript is provided by the typo3/fluid-styled-content
+# and typo3/fluid-styled-content-css Set dependencies (see Sets/Base/config.yaml).
 @import 'EXT:conn_base/Configuration/TypoScript/Base/Page.typoscript'
 @import 'EXT:conn_base/Configuration/TypoScript/Base/Lib.typoscript'
 @import 'EXT:conn_base/Configuration/TypoScript/ContentElementBackgrounds.typoscript'
