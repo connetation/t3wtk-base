@@ -1,0 +1,48 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Templates/UserRegistration/List.fluid.html:
+    Bootstrap 5 list matching the conn/events list shell, plus the same
+    "Template Layout" switch used for News/Event lists (settings.templateLayout,
+    options from Configuration/Sets/Events/page.tsconfig via
+    tx_sfeventmgt.templateLayouts). The field itself doesn't exist on this
+    plugin's FlexForm by default — it's injected by
+    Classes/EventListener/AddUserRegistrationTemplateLayoutField.php.
+    1 = Liste (row-per-registration), 2/3/4 = Karten with 2, 3 or 4 cards per
+    row (the numeric value doubles as the row-cols-lg-{n} class).
+</f:comment>
+<f:section name="main">
+
+    <h1 class="mb-3"><f:translate domain="sf_event_mgt.messages" key="userRegistrations.title" /></h1>
+
+    <f:if condition="{registrations}">
+        <f:then>
+            <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
+                <f:then>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards">
+                        <f:for each="{registrations}" as="registration" iteration="iterator">
+                            <f:render partial="UserRegistration/Card" arguments="{_all}"/>
+                        </f:for>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="d-flex flex-column gap-3 conn-event-cards">
+                        <f:for each="{registrations}" as="registration" iteration="iterator">
+                            <f:render partial="UserRegistration/ListItem" arguments="{_all}"/>
+                        </f:for>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <div class="alert alert-info">
+                Sie haben sich bisher für keine Veranstaltung angemeldet.
+            </div>
+        </f:else>
+    </f:if>
+
+</f:section>
+
+</html>

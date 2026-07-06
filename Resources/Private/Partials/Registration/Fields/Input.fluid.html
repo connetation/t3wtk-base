@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>conn_base override of derhansen/sf_event_mgt's Partials/Registration/Fields/Input.fluid.html — Bootstrap 5 form-control styling.</f:comment>
+<div class="mb-3">
+    <label class="form-label" for="{field.uid}">
+        {field.title}
+        <e:registration.isRequiredField settings="{settings}" registrationField="{field}">
+            <span class="text-danger">*</span>
+        </e:registration.isRequiredField>
+    </label>
+    <f:form.textfield id="{field.uid}" property="fields.{field.uid}" value="{e:registration.field.prefillField(registrationField: field)}" placeholder="{field.placeholder}" class="form-control {e:validation.errorClass(registrationField: field, class: 'is-invalid')}" />
+    <f:render partial="FormErrors" arguments="{field: 'registration.fields.{field.uid}'}"/>
+</div>
+</html>

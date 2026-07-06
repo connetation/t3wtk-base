@@ -1,0 +1,52 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:comment>conn_base override of derhansen/sf_event_mgt's Templates/UserRegistration/Detail.fluid.html — same fields, Bootstrap 5 card layout consistent with the Event Detail page.</f:comment>
+<f:section name="main">
+
+    <h1 class="mb-2"><f:translate domain="sf_event_mgt.messages" key="userRegistration.title" /></h1>
+
+    <h2 class="h4 mb-2">{registration.event.title}</h2>
+
+    <p class="text-body-secondary mb-4">
+        <f:format.date format="d.m.Y, H:i">{registration.event.startdate}</f:format.date> Uhr
+        &ndash;
+        <f:format.date format="d.m.Y, H:i">{registration.event.enddate}</f:format.date> Uhr
+    </p>
+
+    <f:if condition="{registration.event.description}">
+        <div class="mb-4">
+            <f:format.html>{registration.event.description}</f:format.html>
+        </div>
+    </f:if>
+
+    <f:if condition="{registration.event.enablePayment}">
+        <p class="mb-4">
+            <strong><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.payment.paid" />:</strong>
+            <f:if condition="{registration.event.paid}">
+                <f:then>
+                    <span class="badge bg-success"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.payment.paid.yes" /></span>
+                </f:then>
+                <f:else>
+                    <span class="badge bg-secondary"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.payment.paid.no" /></span>
+                </f:else>
+            </f:if>
+        </p>
+    </f:if>
+
+    <div class="d-flex flex-wrap gap-2">
+        <f:if condition="{registration.event.cancellationPossible}">
+            <f:variable name="hmac" value="{e:registration.hmac(registration: registration)}"/>
+            <f:link.action action="cancelRegistration" arguments="{reguid: registration.uid, hmac: hmac}" absolute="TRUE" controller="Event" extensionName="sfeventmgt" pluginName="Pieventregistration" pageUid="{settings.registrationPid}" class="btn btn-outline-danger">
+                <f:translate domain="sf_event_mgt.messages" key="userRegistration.cancel" />
+            </f:link.action>
+        </f:if>
+        <f:link.action action="list" controller="UserRegistration" pluginName="Piuserreg" class="btn btn-outline-secondary"><f:translate domain="sf_event_mgt.messages" key="event.backtext" /></f:link.action>
+    </div>
+
+</f:section>
+
+</html>

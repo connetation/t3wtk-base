@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Partials/Registration/SpamCheck.fluid.html:
+    same honeypot/challenge-response logic, just dropped the "event-registration-row"
+    wrapper (this renders hidden anti-spam fields, nothing visible to style).
+</f:comment>
+<f:if condition="{spamSettings.enabled} == 1">
+    <f:if condition="{spamSettings.checks.honeypot.enabled} == 1">
+        <f:if condition="{spamSettings.checks.honeypot.configuration.renderAsHiddenField} == 1">
+            <f:then>
+                <f:form.hidden property="hp{event.uid}" />
+            </f:then>
+            <f:else>
+                <f:form.textfield property="hp{event.uid}" additionalAttributes="{aria-hidden: 'true'}" tabindex="-1" class="d-none" />
+            </f:else>
+        </f:if>
+    </f:if>
+
+    <f:if condition="{spamSettings.checks.challengeResponse.enabled} == 1">
+        <f:asset.script identifier="sfeventmgt-cr-spamcheck" src="EXT:sf_event_mgt/Resources/Public/JavaScript/cr-spamcheck.js" />
+        <f:variable name="challenge" value="{spamSettings.checks.challengeResponse.configuration.prefix}{event.spamCheckChallenge}{spamSettings.checks.challengeResponse.configuration.postfix}" />
+        <f:form.hidden id="js-cr-challenge" property="cr-response" additionalAttributes="{data-challenge: challenge}" />
+    </f:if>
+
+    <f:render partial="FormErrors" arguments="{field: 'registration.spamCheck'}"/>
+</f:if>
+</html>

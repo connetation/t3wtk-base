@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>conn_base override of derhansen/sf_event_mgt's Partials/Registration/Fields/Radio.fluid.html — Bootstrap 5 form-check styling.</f:comment>
+<div class="mb-3">
+    <label class="form-label d-block">
+        {field.title}
+        <e:registration.isRequiredField settings="{settings}" registrationField="{field}">
+            <span class="text-danger">*</span>
+        </e:registration.isRequiredField>
+    </label>
+    <f:for each="{field.settingsForOption}" as="option" iteration="i">
+        <div class="form-check">
+            <f:form.radio id="{field.uid}-{i.cycle}" property="fields.{field.uid}" value="{option.value}" checked="{e:registration.field.prefillMultiValueField(registrationField: field, currentValue: option.value)}" class="form-check-input" />
+            <label class="form-check-label" for="{field.uid}-{i.cycle}">{option.label}</label>
+        </div>
+    </f:for>
+    <f:render partial="FormErrors" arguments="{field: 'registration.fields.{field.uid}'}"/>
+</div>
+</html>

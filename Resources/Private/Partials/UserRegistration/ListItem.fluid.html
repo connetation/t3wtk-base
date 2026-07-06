@@ -1,0 +1,59 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Partials/UserRegistration/ListItem.fluid.html:
+    same fields/links, reflowed as a Bootstrap card reusing conn/events'
+    shell treatment (.conn-event-list-item, see Scss/components/_events.scss)
+    for visual consistency with the rest of the site — without the
+    stretched-link/hover-lift behavior, since this row has several
+    independent actions (event page, registration detail, cancel) rather
+    than a single destination. The event image column (settings.hideEventImage,
+    default shown when the event has an image) is injected via
+    Classes/EventListener/AddUserRegistrationTemplateFields.php.
+</f:comment>
+<div class="row g-0 conn-event-list-item" style="cursor: default; --i: {iterator.index}">
+    <f:if condition="!{settings.hideEventImage} && {registration.event.firstListViewImage}">
+        <div class="col-4 col-sm-3">
+            <div class="ratio ratio-16x9 overflow-hidden rounded-start h-100">
+                <f:image src="{registration.event.firstListViewImage.uid}" treatIdAsReference="1" class="object-fit-cover w-100 h-100" alt="{registration.event.title}" />
+            </div>
+        </div>
+    </f:if>
+    <div class="{f:if(condition: '!{settings.hideEventImage} && {registration.event.firstListViewImage}', then: 'col-8 col-sm-9', else: 'col-12')} p-3">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+            <h2 class="h6 fw-bold mb-0">{registration.event.title}</h2>
+        </div>
+
+        <f:if condition="{registration.event.teaser}">
+            <p class="conn-event-card__body small mb-2">{registration.event.teaser}</p>
+        </f:if>
+
+        <p class="text-body-secondary small mb-3">
+            <f:format.date format="d.m.Y, H:i">{registration.event.startdate}</f:format.date> Uhr
+            &ndash;
+            <f:format.date format="d.m.Y, H:i">{registration.event.enddate}</f:format.date> Uhr
+            <f:if condition="{registration.event.location}">
+                <span class="mx-1">&middot;</span>{registration.event.location.title}
+            </f:if>
+        </p>
+
+        <div class="d-flex flex-wrap align-items-center gap-2">
+            <f:if condition="{settings.detailPid}">
+                <f:link.action action="detail" controller="Event" pluginName="Pieventdetail" pageUid="{settings.detailPid}" arguments="{event: registration.event}" class="btn btn-sm btn-outline-primary conn-event-card__visit-link">
+                    Zur Veranstaltung
+                </f:link.action>
+            </f:if>
+            <f:link.action action="detail" controller="UserRegistration" pluginName="Piuserreg" arguments="{registration: registration}" class="btn btn-sm btn-outline-secondary conn-event-card__visit-link">
+                Details zur Anmeldung
+            </f:link.action>
+            <f:if condition="{registration.event.cancellationPossible}">
+                <f:variable name="hmac" value="{e:registration.hmac(registration: registration)}"/>
+                <f:link.action action="cancelRegistration" arguments="{reguid: registration.uid, hmac: hmac}" absolute="TRUE" controller="Event" extensionName="sfeventmgt" pluginName="Pieventregistration" pageUid="{settings.registrationPid}" class="btn btn-sm btn-outline-danger conn-event-card__visit-link">
+                    <f:translate domain="sf_event_mgt.messages" key="userRegistration.cancel" />
+                </f:link.action>
+            </f:if>
+        </div>
+    </div>
+</div>
+</html>

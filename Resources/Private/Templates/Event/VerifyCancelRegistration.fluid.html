@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Templates/Event/VerifyCancelRegistration.fluid.html:
+    same logic, Bootstrap button + alert styling, hardcoded sentence
+    translated to German (see VerifyConfirmRegistration.fluid.html comment).
+</f:comment>
+<f:section name="main">
+    <f:if condition="{cancellationPossible}">
+        <f:then>
+            <p>Um Ihre Anmeldung zur Veranstaltung "{event.title}" endgültig zu stornieren, klicken Sie bitte auf "<f:translate domain="sf_event_mgt.messages" key="cancelRegistration" />".</p>
+
+            <f:link.action action="cancelRegistration" arguments="{reguid: '{registration.uid}', hmac: '{hmac}'}" absolute="TRUE" controller="Event" extensionName="sfeventmgt" pluginName="Pieventregistration" class="btn btn-outline-danger">
+                <f:translate domain="sf_event_mgt.messages" key="cancelRegistration" />
+            </f:link.action>
+        </f:then>
+        <f:else>
+            <h1 class="mb-3"><f:translate domain="sf_event_mgt.messages" key="{titleKey}" /></h1>
+            <div class="alert alert-info">
+                <f:translate domain="sf_event_mgt.messages" key="{messageKey}" />
+            </div>
+        </f:else>
+    </f:if>
+
+</f:section>
+</html>

@@ -1,0 +1,276 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Templates/Event/Registration.fluid.html:
+    same fields/conditionals as the original (a flat "event-registration-row"/
+    label/value/clear dump with zero CSS framework), reflowed into Bootstrap 5
+    form markup consistent with conn/base's Event Detail page. Field-type
+    partials (Input/Textarea/Select/Radio/Check/Datetime/Divider/Text) are
+    overridden separately in Partials/Registration/Fields/.
+</f:comment>
+<f:section name="main">
+    <f:if condition="{event.registrationPossible}">
+        <f:then>
+            <f:page.title>{event.metaTitle}</f:page.title>
+
+            <h1 class="mb-2"><f:translate domain="sf_event_mgt.messages" key="registration.title" /></h1>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="h5 card-title">{event.title}</h2>
+                    <p class="text-body-secondary mb-2">
+                        <f:format.date format="d.m.Y, H:i">{event.startdate}</f:format.date> Uhr
+                        &ndash;
+                        <f:format.date format="d.m.Y, H:i">{event.enddate}</f:format.date> Uhr
+                        <f:if condition="{event.location}">
+                            <span class="mx-1">&middot;</span>{event.location.title}
+                        </f:if>
+                    </p>
+                    <p class="mb-0 small text-body-secondary">
+                        <f:if condition="{event.maxParticipants}">
+                            <span class="me-3"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.maxParticipants" />: {event.maxParticipants}</span>
+                        </f:if>
+                        <span class="me-3"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.registrations" />: {event.registrations -> f:count()}</span>
+                        <f:if condition="{event.currentPrice} > 0">
+                            <span><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.price" />: {event.currentPrice} {event.currency} <f:if condition="{event.taxRate} > 0">(incl. {event.taxRate}% VAT)</f:if></span>
+                        </f:if>
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="h5 mb-3"><f:translate domain="sf_event_mgt.messages" key="registration.form.header" /></h2>
+
+            <f:if condition="{event.enableWaitlist}">
+                <f:if condition="{event.maxParticipants} != 0 && {event.registrations -> f:count()} >= {event.maxParticipants}">
+                    <div class="alert alert-warning">
+                        <f:translate domain="sf_event_mgt.messages" key="registration.form.waitlist" />
+                    </div>
+                </f:if>
+            </f:if>
+
+            <f:form object="{registration}" name="registration" action="saveRegistration" arguments="{event: event}" class="registration" enctype="multipart/form-data">
+                <fieldset class="border-0 p-0 m-0">
+
+                    <f:render partial="Registration/SpamCheck" arguments="{spamSettings: settings.registration.spamCheck, event: event}" />
+
+                    <div class="mb-3 {e:validation.errorClass(fieldname: 'gender')}">
+                        <label class="form-label d-block" for="gender">
+                            <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.gender" />
+                            <e:registration.isRequiredField settings="{settings}" fieldname="gender">
+                                <span class="text-danger">*</span>
+                            </e:registration.isRequiredField>
+                        </label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check form-check-inline">
+                                <f:form.radio id="gender-notset" name="gender" property="gender" value="" class="form-check-input" />
+                                <label class="form-check-label" for="gender-notset"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.gender.notset" /></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <f:form.radio id="gender-f" name="gender" property="gender" value="f" class="form-check-input" />
+                                <label class="form-check-label" for="gender-f"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.gender.female" /></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <f:form.radio id="gender-m" name="gender" property="gender" value="m" class="form-check-input" />
+                                <label class="form-check-label" for="gender-m"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.gender.male" /></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <f:form.radio id="gender-v" name="gender" property="gender" value="v" class="form-check-input" />
+                                <label class="form-check-label" for="gender-v"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.gender.various" /></label>
+                            </div>
+                        </div>
+                        <f:render partial="FormErrors" arguments="{field: 'registration.gender'}"/>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6 {e:validation.errorClass(fieldname: 'firstname')}">
+                            <label class="form-label" for="firstname">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.firstname" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="firstname"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="firstname" property="firstname" value="{e:prefill(fieldname: 'firstname', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'firstname', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.firstname'}"/>
+                        </div>
+                        <div class="col-md-6 {e:validation.errorClass(fieldname: 'lastname')}">
+                            <label class="form-label" for="lastname">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.lastname" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="lastname"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="lastname" property="lastname" value="{e:prefill(fieldname: 'lastname', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'lastname', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.lastname'}"/>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6 {e:validation.errorClass(fieldname: 'title')}">
+                            <label class="form-label" for="title">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.title" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="title"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="title" property="title" value="{e:prefill(fieldname: 'title', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'title', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.title'}"/>
+                        </div>
+                        <div class="col-md-6 {e:validation.errorClass(fieldname: 'company')}">
+                            <label class="form-label" for="company">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.company" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="company"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="company" property="company" value="{e:prefill(fieldname: 'company', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'company', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.company'}"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 {e:validation.errorClass(fieldname: 'address')}">
+                        <label class="form-label" for="address">
+                            <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.address" />
+                            <e:registration.isRequiredField settings="{settings}" fieldname="address"><span class="text-danger">*</span></e:registration.isRequiredField>
+                        </label>
+                        <f:form.textfield id="address" property="address" value="{e:prefill(fieldname: 'address', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'address', class: 'is-invalid')}" />
+                        <f:render partial="FormErrors" arguments="{field: 'registration.address'}"/>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4 {e:validation.errorClass(fieldname: 'zip')}">
+                            <label class="form-label" for="zip">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.zip" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="zip"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="zip" property="zip" value="{e:prefill(fieldname: 'zip', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'zip', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.zip'}"/>
+                        </div>
+                        <div class="col-md-8 {e:validation.errorClass(fieldname: 'city')}">
+                            <label class="form-label" for="city">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.city" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="city"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="city" property="city" value="{e:prefill(fieldname: 'city', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'city', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.city'}"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 {e:validation.errorClass(fieldname: 'country')}">
+                        <label class="form-label" for="country">
+                            <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.country" />
+                            <e:registration.isRequiredField settings="{settings}" fieldname="country"><span class="text-danger">*</span></e:registration.isRequiredField>
+                        </label>
+                        <f:form.textfield id="country" property="country" value="{e:prefill(fieldname: 'country', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'country', class: 'is-invalid')}" />
+                        <f:render partial="FormErrors" arguments="{field: 'registration.country'}"/>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6 {e:validation.errorClass(fieldname: 'email')}">
+                            <label class="form-label" for="email">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.email" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="email"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="email" property="email" value="{e:prefill(fieldname: 'email', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'email', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.email'}"/>
+                        </div>
+                        <div class="col-md-6 {e:validation.errorClass(fieldname: 'phone')}">
+                            <label class="form-label" for="phone">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.phone" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="phone"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:form.textfield id="phone" property="phone" value="{e:prefill(fieldname: 'phone', prefillSettings: '{settings.registration.prefillFields}')}" class="form-control {e:validation.errorClass(fieldname: 'phone', class: 'is-invalid')}" />
+                            <f:render partial="FormErrors" arguments="{field: 'registration.phone'}"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 {e:validation.errorClass(fieldname: 'dateOfBirth')}">
+                        <label class="form-label" for="dateOfBirth">
+                            <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.date_of_birth" />
+                            <e:registration.isRequiredField settings="{settings}" fieldname="dateOfBirth"><span class="text-danger">*</span></e:registration.isRequiredField>
+                        </label>
+                        <f:form.textfield id="dateOfBirth" property="dateOfBirth" class="form-control {e:validation.errorClass(fieldname: 'dateOfBirth', class: 'is-invalid')}" />
+                        <f:render partial="FormErrors" arguments="{field: 'registration.dateOfBirth'}"/>
+                    </div>
+
+                    <f:if condition="{event.maxRegistrationsPerUser} > 1">
+                        <div class="mb-3">
+                            <label class="form-label" for="amountOfRegistrations"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.amountOfRegistrations" /></label>
+                            <f:form.select id="amountOfRegistrations" property="amountOfRegistrations" options="{e:event.simultaneousRegistrations(event: '{event}')}" class="form-select" />
+                        </div>
+                    </f:if>
+
+                    <f:if condition="{event.activePriceOptions}">
+                        <div class="mb-3 {e:validation.errorClass(fieldname: 'priceOption')}">
+                            <label class="form-label d-block">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.priceOption" />
+                                <e:registration.isRequiredField settings="{settings}" fieldname="priceOption"><span class="text-danger">*</span></e:registration.isRequiredField>
+                            </label>
+                            <f:for each="{event.activePriceOptions}" as="priceOption" iteration="i">
+                                <div class="form-check">
+                                    <f:form.radio id="priceOption-{i.cycle}" name="priceOption" property="priceOption" value="{priceOption.uid}" class="form-check-input" />
+                                    <label class="form-check-label" for="priceOption-{i.cycle}">{priceOption.title} &ndash; {priceOption.price -> f:format.number()} {event.currency} <f:if condition="{priceOption.taxRate} > 0">(incl. {priceOption.taxRate}% VAT)</f:if></label>
+                                </div>
+                            </f:for>
+                            <f:render partial="FormErrors" arguments="{field: 'registration.priceOption'}"/>
+                        </div>
+                    </f:if>
+
+                    <f:if condition="{event.enablePayment}">
+                        <div class="mb-3">
+                            <label class="form-label" for="paymentmethod"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.paymentmethod" /></label>
+                            <f:form.select id="paymentmethod" property="paymentmethod" options="{paymentMethods}" class="form-select" />
+                        </div>
+                    </f:if>
+
+                    <div class="mb-3 {e:validation.errorClass(fieldname: 'notes')}">
+                        <label class="form-label" for="notes">
+                            <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.notes" />
+                            <e:registration.isRequiredField settings="{settings}" fieldname="notes"><span class="text-danger">*</span></e:registration.isRequiredField>
+                        </label>
+                        <f:form.textarea id="notes" property="notes" class="form-control {e:validation.errorClass(fieldname: 'notes', class: 'is-invalid')}" rows="4" />
+                        <f:render partial="FormErrors" arguments="{field: 'registration.notes'}"/>
+                    </div>
+
+                    <f:if condition="{event.registrationFields}">
+                        <f:for each="{event.registrationFields}" as="field">
+                            <f:render partial="Registration/Fields/{field.partialName}" arguments="{field: field}" />
+                        </f:for>
+                    </f:if>
+
+                    <div class="mb-3 form-check {e:validation.errorClass(fieldname: 'accepttc')}">
+                        <f:form.checkbox id="accepttc" property="accepttc" value="1" class="form-check-input" />
+                        <label class="form-check-label" for="accepttc">
+                            <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_registration.accepttc" />
+                            <f:if condition="{settings.registration.linkTermsAndConditions}">
+                                <f:link.typolink parameter="{settings.registration.linkTermsAndConditions}"/>
+                            </f:if>
+                            <e:registration.isRequiredField settings="{settings}" fieldname="accepttc"><span class="text-danger">*</span></e:registration.isRequiredField>
+                        </label>
+                        <f:render partial="FormErrors" arguments="{field: 'registration.accepttc'}"/>
+                    </div>
+
+                    <f:if condition="{settings.registration.captcha.enabled}">
+                        <f:render partial="Registration/Captcha/{settings.registration.captcha.type -> f:format.case(mode: 'capital')}" arguments="{_all}" />
+                    </f:if>
+
+                    <div class="mb-3">
+                        <f:flashMessages />
+                    </div>
+
+                    <f:form.submit value="{f:translate(key:'event.submit-registration')}" class="btn btn-primary" id="registration-submit"/>
+                </fieldset>
+            </f:form>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                <f:if condition="{settings.detailPid}">
+                    <f:link.action action="detail" arguments="{event: event}" class="btn btn-outline-primary" pageUid="{settings.detailPid}"><f:translate domain="sf_event_mgt.messages" key="event.backDetailsText" /></f:link.action>
+                </f:if>
+                <f:link.action action="list" class="btn btn-outline-secondary" pageUid="{settings.listPid}"><f:translate domain="sf_event_mgt.messages" key="event.backtext" /></f:link.action>
+            </div>
+
+        </f:then>
+        <f:else>
+            <div class="alert alert-info">
+                <f:translate domain="sf_event_mgt.messages" key="event.message.registrationnotpossible" />
+            </div>
+        </f:else>
+    </f:if>
+
+</f:section>
+
+</html>
