@@ -2,4 +2,5 @@ name: conn/events
 label: 'Events'
 dependencies:
   - conn/base
+optionalDependencies:
   - derhansen/sf_event_mgt
