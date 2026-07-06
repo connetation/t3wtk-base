@@ -1,0 +1,74 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Templates/Event/List.fluid.html:
+    sf_event_mgt ships no Bootstrap-style template pack (unlike georgringer/news),
+    so this reskins the extension's own hand-rolled "event-list-row"/clear-div
+    markup with Bootstrap 5, and adds the same "Template Layout" switch
+    (settings.templateLayout, options from Configuration/Sets/Events/page.tsconfig
+    via tx_sfeventmgt.templateLayouts) used for the news list: 1 = Liste
+    (row-per-event), 2/3/4 = Karten with 2, 3 or 4 cards per row (the numeric
+    value doubles as the row-cols-lg-{n} class) — same visual language as
+    conn/elements' CardGroup and the conn/news list.
+</f:comment>
+
+<f:section name="main">
+
+    <f:if condition="{categories}">
+        <div class="mb-3">
+            <div class="btn-group flex-wrap" role="group">
+                <f:link.action action="list" class="btn btn-sm {f:if(condition: overwriteDemand.category, then: 'btn-outline-primary', else: 'btn-primary')}" controller="Event">
+                    <f:translate domain="sf_event_mgt.messages" key="event.allEvents" />
+                </f:link.action>
+                <f:for each="{categories}" as="category">
+                    <f:link.action action="list" controller="Event" arguments="{overwriteDemand:{category: category}}" class="btn btn-sm {f:if(condition: '{overwriteDemand.category} == {category.uid}', then: 'btn-primary', else: 'btn-outline-primary')}">{category.title}</f:link.action>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+
+    <f:if condition="{pagination}">
+        <f:then>
+            <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
+                <f:then>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards">
+                        <f:for each="{pagination.paginator.paginatedItems}" as="event" iteration="iterator">
+                            <f:render partial="Event/Card" arguments="{_all}"/>
+                        </f:for>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="d-flex flex-column gap-3 conn-event-cards">
+                        <f:for each="{pagination.paginator.paginatedItems}" as="event" iteration="iterator">
+                            <f:render partial="Event/ListItem" arguments="{_all}"/>
+                        </f:for>
+                    </div>
+                </f:else>
+            </f:if>
+            <f:render partial="Event/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator, overwriteDemand: overwriteDemand}" />
+        </f:then>
+        <f:else>
+            <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
+                <f:then>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards">
+                        <f:for each="{events}" as="event" iteration="iterator">
+                            <f:render partial="Event/Card" arguments="{_all}"/>
+                        </f:for>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="d-flex flex-column gap-3 conn-event-cards">
+                        <f:for each="{events}" as="event" iteration="iterator">
+                            <f:render partial="Event/ListItem" arguments="{_all}"/>
+                        </f:for>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+
+</f:section>
+
+</html>

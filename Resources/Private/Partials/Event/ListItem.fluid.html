@@ -1,0 +1,92 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    conn_base "Liste" template layout for the event list — same shell
+    treatment (border/radius/shadow, accent-bar hover, entrance stagger) as
+    conn/news' list-item / conn/elements' CardGroup, laid out as a
+    horizontal row.
+</f:comment>
+<article class="row g-0 conn-event-list-item" style="--i: {iterator.index}">
+
+    <div class="col-4 col-sm-3">
+        <f:if condition="{event.firstListViewImage}">
+            <f:then>
+                <div class="ratio ratio-16x9 overflow-hidden rounded-start h-100">
+                    <f:if condition="{settings.detailPid} == ''">
+                        <f:then>
+                            <f:link.action action="detail" controller="Event" extensionName="SfEventMgt" arguments="{event : event}">
+                                <f:image src="{event.firstListViewImage.uid}" treatIdAsReference="1" class="object-fit-cover w-100 h-100" alt="{event.title}" />
+                            </f:link.action>
+                        </f:then>
+                        <f:else>
+                            <f:link.action action="detail" arguments="{event : event}" pageUid="{settings.detailPid}">
+                                <f:image src="{event.firstListViewImage.uid}" treatIdAsReference="1" class="object-fit-cover w-100 h-100" alt="{event.title}" />
+                            </f:link.action>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="conn-event-card__placeholder ratio ratio-16x9 rounded-start h-100 d-flex align-items-center justify-content-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="opacity-25" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+
+    <div class="col-8 col-sm-9 d-flex">
+        <div class="p-3 d-flex flex-column flex-fill">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="h6 fw-bold mb-0 me-2">
+                    <f:if condition="{settings.detailPid} == ''">
+                        <f:then>
+                            <f:link.action action="detail" controller="Event" extensionName="SfEventMgt" arguments="{event : event}" class="stretched-link text-decoration-none text-reset">{event.title}</f:link.action>
+                        </f:then>
+                        <f:else>
+                            <f:link.action action="detail" arguments="{event : event}" pageUid="{settings.detailPid}" class="stretched-link text-decoration-none text-reset">{event.title}</f:link.action>
+                        </f:else>
+                    </f:if>
+                </h3>
+                <f:if condition="{event.currentPrice} == 0">
+                    <f:then>
+                        <span class="badge conn-event-card__badge flex-shrink-0"><f:translate domain="sf_event_mgt.messages" key="event.freeofcharge" /></span>
+                    </f:then>
+                    <f:else>
+                        <span class="badge conn-event-card__badge flex-shrink-0">{event.currentPrice -> f:format.number()} {event.currency}</span>
+                    </f:else>
+                </f:if>
+            </div>
+
+            <p class="text-body-secondary small mb-2">
+                <f:format.date format="d.m.Y, H:i">{event.startdate}</f:format.date> Uhr
+                <f:if condition="{event.location.title}">
+                    <span class="mx-1">&middot;</span>{event.location.title}
+                </f:if>
+            </p>
+
+            <f:if condition="{event.teaser}">
+                <div class="conn-event-card__body small flex-grow-1">
+                    {event.teaser}
+                </div>
+            </f:if>
+
+            <div class="mt-2 d-flex align-items-center gap-3">
+                <f:if condition="{event.registrationPossible}">
+                    <f:if condition="{settings.registrationPid} !=''">
+                        <f:link.action action="registration" arguments="{event : event}" class="btn btn-sm btn-outline-primary conn-event-card__visit-link" pageUid="{settings.registrationPid}">
+                            <f:translate domain="sf_event_mgt.messages" key="event.registration" />
+                        </f:link.action>
+                    </f:if>
+                </f:if>
+                <f:if condition="{event.maxParticipants} > 0">
+                    <span class="text-body-secondary small">
+                        <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.registrations" />: {event.registrations->f:count()}/{event.maxParticipants}
+                    </span>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</article>
+</html>

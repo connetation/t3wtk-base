@@ -1,0 +1,209 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:comment>
+    conn_base override of derhansen/sf_event_mgt's Templates/Event/Detail.fluid.html:
+    same fields/conditionals as the original (which is a flat dump of
+    "event-detail-row"/label/value/clear divs with no CSS framework), reflowed
+    into a single-column Bootstrap 5 layout consistent with conn/news' Detail
+    page (hero image, title, meta line, description, grouped detail sections).
+</f:comment>
+
+<f:section name="main">
+
+    <f:if condition="{event}">
+        <f:page.title>{event.metaTitle}</f:page.title>
+        <f:page.meta property="og:title">{event.metaTitle}</f:page.meta>
+        <f:page.meta property="keywords">{event.metaKeywords}</f:page.meta>
+        <f:page.meta property="description">{event.metaDescription}</f:page.meta>
+
+        <f:if condition="{event.firstDetailViewImage}">
+            <div class="ratio ratio-21x9 overflow-hidden rounded mb-4">
+                <f:image src="{event.firstDetailViewImage.uid}" treatIdAsReference="1" class="object-fit-cover w-100 h-100" alt="{event.title}" />
+            </div>
+        </f:if>
+
+        <h1 class="mb-2">{event.title}</h1>
+
+        <p class="text-body-secondary mb-4">
+            <f:format.date format="d.m.Y, H:i">{event.startdate}</f:format.date> Uhr
+            &ndash;
+            <f:format.date format="d.m.Y, H:i">{event.enddate}</f:format.date> Uhr
+            <f:if condition="{event.location.title}">
+                <span class="mx-1">&middot;</span>{event.location.title}
+            </f:if>
+        </p>
+
+        <f:if condition="{event.teaser}">
+            <p class="lead">{event.teaser}</p>
+        </f:if>
+
+        <f:if condition="{event.description}">
+            <div class="mb-4">
+                <f:format.html>{event.description}</f:format.html>
+            </div>
+        </f:if>
+
+        <f:if condition="{event.program}">
+            <div class="mb-4">
+                <h2 class="h5"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.program" /></h2>
+                <f:format.html>{event.program}</f:format.html>
+            </div>
+        </f:if>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.location" /></h2>
+                        <address class="mb-0">
+                            {event.location.title}<br />
+                            <f:format.nl2br>{event.location.address}</f:format.nl2br><br />
+                            <f:if condition="{event.location.zip}">{event.location.zip} </f:if>{event.location.city}<br />
+                            <f:if condition="{event.room}">
+                                <f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.room" />: {event.room}<br />
+                            </f:if>
+                            {event.location.country}
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.organisator" /></h2>
+                        <p class="mb-3">
+                            <f:if condition="{event.organisator.link}">
+                                <f:then>
+                                    <f:link.typolink parameter="{event.organisator.link}">{event.organisator.name}</f:link.typolink>
+                                </f:then>
+                                <f:else>
+                                    {event.organisator.name}
+                                </f:else>
+                            </f:if>
+                        </p>
+
+                        <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.price" /></h2>
+                        <p class="mb-0">
+                            <f:if condition="{event.currentPrice} == 0">
+                                <f:then>
+                                    <f:translate domain="sf_event_mgt.messages" key="event.freeofcharge" />
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{event.priceOptions}">
+                                        <f:then>
+                                            <f:translate domain="sf_event_mgt.messages" key="startingAt" /> {event.currentPrice} {event.currency}
+                                            <f:if condition="{event.taxRate} > 0"> (incl. {event.taxRate}% VAT)</f:if>
+                                        </f:then>
+                                        <f:else>
+                                            {event.currentPrice -> f:format.number()} {event.currency}
+                                        </f:else>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+                        </p>
+                        <f:if condition="{event.priceOptions}">
+                            <ul class="list-unstyled small mb-0 mt-2">
+                                <f:for each="{event.priceOptions}" as="priceOption">
+                                    <li>{priceOption.title}: {priceOption.price -> f:format.number()} {event.currency}<f:if condition="{priceOption.taxRate} > 0"> (incl. {priceOption.taxRate}% VAT)</f:if></li>
+                                </f:for>
+                            </ul>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-4 text-body-secondary small">
+            <f:if condition="{event.maxParticipants} > 0">
+                <span><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.registrations" />: {event.registrations->f:count()}/{event.maxParticipants}</span>
+                <span><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.freePlaces" />: {event.freePlaces}</span>
+            </f:if>
+            <f:if condition="{event.enableWaitlist}">
+                <span class="badge bg-secondary"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.hasWaitlist" /></span>
+            </f:if>
+            <f:if condition="{event.link}">
+                <f:link.typolink parameter="{event.link}"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.link" /></f:link.typolink>
+            </f:if>
+        </div>
+
+        <f:if condition="{event.files}">
+            <div class="mb-4">
+                <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.files" /></h2>
+                <ul class="list-group">
+                    <f:for each="{event.files}" as="file">
+                        <li class="list-group-item">
+                            <f:if condition="{file.originalResource.title}">
+                                <f:then>
+                                    <a href="{file.originalResource.publicUrl}" target="_blank">{file.originalResource.title}</a>
+                                </f:then>
+                                <f:else>
+                                    <a href="{file.originalResource.publicUrl}" target="_blank"><f:translate domain="sf_event_mgt.messages" key="detail.download" /></a>
+                                </f:else>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </f:if>
+
+        <f:if condition="{event.speaker}">
+            <div class="mb-4">
+                <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.speaker" /></h2>
+                <ul class="list-group">
+                    <f:for each="{event.speaker}" as="speaker">
+                        <li class="list-group-item">{speaker.name}</li>
+                    </f:for>
+                </ul>
+            </div>
+        </f:if>
+
+        <f:if condition="{event.related}">
+            <div class="mb-4">
+                <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="tx_sfeventmgt_domain_model_event.related" /></h2>
+                <ul class="list-group">
+                    <f:for each="{event.related}" as="relatedevent">
+                        <li class="list-group-item">
+                            <f:if condition="{settings.detailPid} == ''">
+                                <f:then>
+                                    <f:link.action action="detail" arguments="{event : relatedevent}">{relatedevent.title}</f:link.action>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action action="detail" arguments="{event : relatedevent}" pageUid="{settings.detailPid}">{relatedevent.title}</f:link.action>
+                                </f:else>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </f:if>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+            <f:link.action action="list" class="btn btn-outline-primary" pageUid="{settings.listPid}"><f:translate domain="sf_event_mgt.messages" key="event.backtext" /></f:link.action>
+            <f:if condition="{event.registrationPossible}">
+                <f:if condition="{settings.registrationPid} !=''">
+                    <f:link.action action="registration" arguments="{event : event}" pageUid="{settings.registrationPid}" class="btn btn-primary">
+                        <f:translate domain="sf_event_mgt.messages" key="event.registration" />
+                    </f:link.action>
+                </f:if>
+            </f:if>
+        </div>
+
+        <div class="mb-4">
+            <h2 class="h6 fw-bold"><f:translate domain="sf_event_mgt.messages" key="event.icalDownload" /></h2>
+            <div class="btn-group flex-wrap" role="group">
+                <f:link.action action="icalDownload" arguments="{event : event}" class="btn btn-sm btn-outline-secondary" rel="nofollow"><f:translate domain="sf_event_mgt.messages" key="event.icalDownload" /></f:link.action>
+                <f:link.external rel="nofollow" uri="{e:uri.onlineCalendar(type: 'google', event: event)}" target="_blank" class="btn btn-sm btn-outline-secondary">Google Calendar</f:link.external>
+                <f:link.external rel="nofollow" uri="{e:uri.onlineCalendar(type: 'outlook', event: event)}" target="_blank" class="btn btn-sm btn-outline-secondary">Outlook</f:link.external>
+                <f:link.external rel="nofollow" uri="{e:uri.onlineCalendar(type: 'office365', event: event)}" target="_blank" class="btn btn-sm btn-outline-secondary">Office 365</f:link.external>
+                <f:link.external rel="nofollow" uri="{e:uri.onlineCalendar(type: 'yahoo', event: event)}" target="_blank" class="btn btn-sm btn-outline-secondary">Yahoo</f:link.external>
+            </div>
+        </div>
+    </f:if>
+
+</f:section>
+
+</html>

@@ -82,12 +82,12 @@ const initNavbar = () => {
 };
 
 // ─────────────────────────────────────────────
-// News card grid — entrance reveal
+// News/Event card grid — entrance reveal
 // (same stagger fade/slide-in as conn/elements' CardGroup, CSS-driven —
-// see Scss/components/_news.scss for the keyframes/stagger)
+// see Scss/components/_news.scss and _events.scss for the keyframes/stagger)
 // ─────────────────────────────────────────────
 const initNewsCardReveal = () => {
-    const groups = document.querySelectorAll('.conn-news-cards');
+    const groups = document.querySelectorAll('.conn-news-cards, .conn-event-cards');
     if (!groups.length) return;
 
     if (!('IntersectionObserver' in window)) {

@@ -7,8 +7,10 @@
     adds a "Template Layout" switch (settings.templateLayout, options defined
     in Configuration/Sets/News/page.tsconfig via tx_news.templateLayouts) so
     editors can pick between the original list-group rendering (1 = Liste)
-    and a Bootstrap card grid (2 = Karten), matching the site's other
-    card-style content elements.
+    and a Bootstrap card grid with 2, 3 or 4 cards per row (values 2/3/4 =
+    Karten), matching the site's other card-style content elements. The
+    numeric value doubles as the row-cols-lg-{n} class, so no separate
+    "columns" setting/field is needed.
 </f:comment>
 
 <f:section name="content">
@@ -18,43 +20,43 @@
             <div class="news-list-view" id="news-container-{contentObjectData.uid}">
                 <f:if condition="{settings.hidePagination}">
                     <f:then>
-                        <f:switch expression="{settings.templateLayout}">
-                            <f:case value="2">
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 conn-news-cards">
+                        <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
+                            <f:then>
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards">
                                     <f:for each="{news}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Card" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
                                 </div>
-                            </f:case>
-                            <f:defaultCase>
+                            </f:then>
+                            <f:else>
                                 <ul class="list-group mb-3 conn-news-cards">
                                     <f:for each="{news}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
                                 </ul>
-                            </f:defaultCase>
-                        </f:switch>
+                            </f:else>
+                        </f:if>
                     </f:then>
                     <f:else>
                         <f:if condition="{settings.list.paginate.insertAbove}">
                             <f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
                         </f:if>
-                        <f:switch expression="{settings.templateLayout}">
-                            <f:case value="2">
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 conn-news-cards">
+                        <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
+                            <f:then>
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards">
                                     <f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Card" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
                                 </div>
-                            </f:case>
-                            <f:defaultCase>
+                            </f:then>
+                            <f:else>
                                 <ul class="list-group mb-3 conn-news-cards">
                                     <f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
                                 </ul>
-                            </f:defaultCase>
-                        </f:switch>
+                            </f:else>
+                        </f:if>
                         <f:if condition="{settings.list.paginate.insertBelow}">
                             <f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
                         </f:if>

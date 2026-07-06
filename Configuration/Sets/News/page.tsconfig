@@ -1,4 +1,6 @@
 tx_news.templateLayouts {
     1 = Liste
-    2 = Karten
+    2 = Karten (2 pro Reihe)
+    3 = Karten (3 pro Reihe)
+    4 = Karten (4 pro Reihe)
 }
