@@ -1,0 +1,4 @@
+tx_news.templateLayouts {
+    1 = Liste
+    2 = Karten
+}

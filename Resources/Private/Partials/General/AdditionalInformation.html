@@ -1,0 +1,36 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:comment>
+    conn_base override of georgringer/news-twb5's Partials/General/AdditionalInformation.html:
+    drops the Font Awesome icons (conn/base ships no icon font) and swaps the
+    Bootstrap 3/4 `.label.label-info` classes for real Bootstrap 5 `.badge`s.
+    Date uses a hardcoded German "d.m.Y" format instead of news' own
+    translated `dateFormat` label (source default "%m/%d/%Y") — the site has
+    no German language pack installed for EXT:news, so that label falls back
+    to the English/US format regardless of the site's de_DE locale.
+</f:comment>
+<div class="text-muted small mb-2 extra">
+
+    <f:if condition="{newsItem.author}">
+        <f:translate key="author" arguments="{0:newsItem.author}" extensionName="News"/>
+        <span class="mx-1">&middot;</span>
+    </f:if>
+
+    <time datetime="{f:format.date(date:newsItem.datetime, format:'c')}" itemprop="datePublished">
+        <f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+    </time>
+
+    <f:if condition="{newsItem.firstCategory}">
+        <span class="mx-1">&middot;</span>
+        <span class="badge bg-secondary">{newsItem.firstCategory.title}</span>
+    </f:if>
+
+    <f:if condition="{newsItem.tags}">
+        <span class="news-list-tags ms-1" itemprop="keywords">
+            <f:for as="tag" each="{newsItem.tags}">
+                <span class="badge bg-light text-dark border me-1">{tag.title}</span>
+            </f:for>
+        </span>
+    </f:if>
+</div>
+</html>

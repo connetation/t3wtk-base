@@ -1,0 +1,122 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// News (georgringer/news) — "Liste" and "Karten" template layouts
+//
+// Both layouts mirror conn/elements' CardGroup (.conn-card-group__card) 1:1 —
+// same border/radius/shadow, same accent-bar hover treatment, same entrance
+// stagger — built entirely on conn_base's own --conn-* design tokens
+// (Scss/theme/_light.scss, _dark.scss), so they need no dependency on
+// conn/elements itself. `.conn-news-card` (grid) and `.conn-news-list-item`
+// (row) share the exact same shell treatment; only the shape differs.
+// ─────────────────────────────────────────────────────────────────────────────
+
+.conn-news-card,
+.conn-news-list-item {
+    cursor: pointer;
+    background: var(--conn-surface) !important;
+    border: 1px solid var(--conn-border) !important;
+    border-radius: var(--conn-radius) !important;
+    box-shadow: var(--conn-shadow-card);
+    color: var(--conn-text);
+    overflow: hidden;
+    position: relative;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color var(--conn-transition),
+        border-color var(--conn-transition),
+        color var(--conn-transition);
+
+    // Accent top bar on hover (same pattern as conn/elements' cards)
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--conn-accent), var(--conn-accent-secondary));
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    &:hover,
+    &:focus-within {
+        transform: translateY(-5px);
+        box-shadow: var(--conn-shadow-hover) !important;
+        border-color: var(--conn-border-strong) !important;
+        outline: none;
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    .card-img-top,
+    .object-fit-cover {
+        object-fit: cover;
+    }
+}
+
+// ── Shared card/list-item sub-parts ─────────────────────────────────────────
+.conn-news-card__placeholder {
+    background: var(--conn-surface-alt) !important;
+}
+
+.conn-news-card__badge {
+    background: var(--conn-accent-soft);
+    color: var(--conn-accent);
+    border: 1px solid var(--conn-border-strong);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.25em 0.65em;
+    border-radius: 50rem;
+}
+
+.conn-news-card__body {
+    font-size: 0.875rem;
+    color: var(--conn-text-muted);
+    line-height: 1.6;
+
+    p:last-child { margin-bottom: 0; }
+}
+
+// Interactive elements nested inside .conn-news-card/.conn-news-list-item
+// also carry a `.stretched-link` (the title) that makes the whole card
+// clickable via a full-cover `::after` at z-index: 1 (Bootstrap core) — any
+// other link/button in the same card needs an explicit z-index above that to
+// remain independently hoverable/clickable instead of being covered by it.
+.conn-news-card__visit-link {
+    position: relative;
+    z-index: 2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+// ── Entrance animation ──────────────────────────────────────────────────────
+// GSAP powers this same stagger-fade-in on conn/elements' CardGroup
+// (card-group.ts); conn_base has no JS animation library of its own, so this
+// reproduces the identical opacity/translateY stagger with a CSS animation
+// driven by a tiny IntersectionObserver in JavaScript/main.js — same visual
+// result, no new dependency for the foundation package.
+@media (prefers-reduced-motion: no-preference) {
+    .conn-news-cards .col,
+    .conn-news-cards .conn-news-list-item {
+        opacity: 0;
+    }
+
+    .conn-news-cards.is-visible .col,
+    .conn-news-cards.is-visible .conn-news-list-item {
+        animation: conn-news-card-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: calc(var(--i, 0) * 70ms);
+    }
+}
+
+@keyframes conn-news-card-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

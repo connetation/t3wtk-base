@@ -1,0 +1,87 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    conn_base "Cards" template layout for the news list — mirrors conn/elements'
+    CardGroup/Card.html structure/classes 1:1 (ratio-wrapped image, badge/title/
+    subtitle/body/footer slots) so hover, accent-bar and typography match via
+    the same --conn-* design tokens (owned by conn_base's theme), without any
+    dependency on conn/elements itself.
+</f:comment>
+<n:excludeDisplayedNews newsItem="{newsItem}" />
+<div class="col" style="--i: {iterator.index}">
+    <article class="card h-100 conn-news-card">
+
+        <f:if condition="{newsItem.mediaPreviews}">
+            <f:then>
+                <div class="ratio ratio-16x9 overflow-hidden rounded-top">
+                    <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                        <f:media class="object-fit-cover w-100 h-100" file="{newsItem.mediaPreviews.0}" title="{newsItem.mediaPreviews.0.originalResource.title}" alt="{newsItem.mediaPreviews.0.originalResource.alternative}" loading="{settings.list.media.image.lazyLoading}" />
+                    </n:link>
+                </div>
+            </f:then>
+            <f:else>
+                <f:if condition="{settings.displayDummyIfNoMedia}">
+                    <f:then>
+                        <div class="ratio ratio-16x9 overflow-hidden rounded-top">
+                            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                                <f:image class="object-fit-cover w-100 h-100" src="{settings.list.media.dummyImage}" title="" alt="" loading="{settings.list.media.image.lazyLoading}" />
+                            </n:link>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div class="conn-news-card__placeholder ratio ratio-16x9 rounded-top d-flex align-items-center justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="opacity-25" viewBox="0 0 16 16">
+                                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                            </svg>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+
+        <div class="card-body p-3 d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h6 fw-bold mb-0 me-2">
+                    <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" itemprop="url" class="stretched-link text-decoration-none text-reset">
+                        {newsItem.title}
+                    </n:link>
+                </h3>
+                <f:if condition="{newsItem.firstCategory}">
+                    <span class="badge conn-news-card__badge flex-shrink-0">{newsItem.firstCategory.title}</span>
+                </f:if>
+            </div>
+
+            <p class="card-text text-body-secondary small mb-2">
+                <time datetime="{f:format.date(date:newsItem.datetime, format:'c')}">
+                    <f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+                </time>
+                <f:if condition="{newsItem.author}">
+                    <span class="mx-1">&middot;</span>
+                    <f:translate key="author" arguments="{0:newsItem.author}" extensionName="News"/>
+                </f:if>
+            </p>
+
+            <div class="conn-news-card__body small flex-grow-1" itemprop="description">
+                <n:removeMediaTags>
+                    <f:if condition="{newsItem.teaser}">
+                        <f:then>
+                            {newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+                        </f:then>
+                        <f:else>
+                            {newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+                        </f:else>
+                    </f:if>
+                </n:removeMediaTags>
+            </div>
+        </div>
+
+        <div class="card-footer bg-transparent border-top-0 pb-3 px-3 pt-0">
+            <n:link newsItem="{newsItem}" settings="{settings}" class="btn btn-sm btn-outline-primary conn-news-card__visit-link" title="{newsItem.title}">
+                <f:translate key="more-link" extensionName="News"/>
+            </n:link>
+        </div>
+    </article>
+</div>
+</html>

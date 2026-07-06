@@ -1,0 +1,6 @@
+name: conn/news
+label: 'News'
+dependencies:
+  - conn/base
+  - georgringer/news
+  - georgringer/news-twb5

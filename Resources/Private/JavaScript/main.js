@@ -82,6 +82,31 @@ const initNavbar = () => {
 };
 
 // ─────────────────────────────────────────────
+// News card grid — entrance reveal
+// (same stagger fade/slide-in as conn/elements' CardGroup, CSS-driven —
+// see Scss/components/_news.scss for the keyframes/stagger)
+// ─────────────────────────────────────────────
+const initNewsCardReveal = () => {
+    const groups = document.querySelectorAll('.conn-news-cards');
+    if (!groups.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        groups.forEach(group => group.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.15 });
+
+    groups.forEach(group => observer.observe(group));
+};
+
+// ─────────────────────────────────────────────
 // Init
 // ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -89,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBootstrapComponents();
     initSmoothScroll();
     initNavbar();
+    initNewsCardReveal();
     const lightbox = GLightbox({ selector: '.glightbox', autoplayVideos: false });
 
     lightbox.on('slide_changed', ({ current }) => {
