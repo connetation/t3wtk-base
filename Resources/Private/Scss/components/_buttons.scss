@@ -12,8 +12,10 @@
         text-transform: uppercase;
         width: max-content;
         box-shadow: 0 0 0.75rem white;
-        background-color: var(--conn-btn-bg);
-        color: var(--conn-btn-color);
+        // No background-color/color here — Bootstrap's own .btn-primary/
+        // .btn-danger/.btn-outline-*/etc. already set --bs-btn-bg and
+        // --bs-btn-color per variant; overriding them would force every
+        // variant to the same accent color.
 
         &:before,
         &:after {
@@ -53,11 +55,21 @@
             }
         }
 
-        &:active,
-        &:focus,
-        &:hover {
-            background-color: var(--conn-btn-bg-hover);
-            color: var(--conn-btn-color);
+        // Outline variants keep --bs-btn-bg transparent (only their
+        // border-color carries the accent) — combined with `border: none`
+        // above, that leaves nothing visible. Fill them solid with their own
+        // border-color instead, matching the reference button (always a
+        // solid CTA, never outlined).
+        &[class*='btn-outline-'] {
+            background-color: var(--bs-btn-border-color);
+            color: var(--bs-btn-hover-color);
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: var(--bs-btn-hover-border-color, var(--bs-btn-border-color));
+                color: var(--bs-btn-hover-color);
+            }
         }
     }
 }

@@ -1,6 +1,19 @@
 imports:
     - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Default.yaml' }
 
+# ── WYSIWYG accuracy ───────────────────────────────────────────────────────────
+# The CKEditor editing area only loads its own minimal contents.css by default,
+# so custom classes (RTE link styles, .btn-hexagon, …) render unstyled while
+# editing even though they look correct on the frontend. Layer the site's own
+# compiled CSS on top so what editors see matches what visitors see.
+editor:
+    config:
+        # List arrays get merged/appended (not replaced) with the imported
+        # rte_ckeditor default, so its own contents.css stays included too —
+        # no need to repeat it here.
+        contentsCss:
+            - 'EXT:conn_base/Resources/Public/Css/main.css'
+
 # ── TYPO3 Link Browser class dropdown ─────────────────────────────────────────
 # Adds a "Class" field next to Target and Title in the Link Browser.
 allowedOptions: 'target,title,class'
@@ -10,7 +23,7 @@ buttons:
         properties:
             class:
                 required: false
-                allowedClasses: 'link-external,link-file,link-pdf,link-email,btn btn-hexagon'
+                allowedClasses: 'link-external,link-file,link-pdf,link-email,btn btn-primary btn-hexagon'
 
 classes:
     link-external:
@@ -21,5 +34,5 @@ classes:
         name: 'PDF'
     link-email:
         name: 'Email'
-    'btn btn-hexagon':
+    'btn btn-primary btn-hexagon':
         name: 'Hexagon button'
