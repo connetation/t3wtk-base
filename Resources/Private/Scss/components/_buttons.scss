@@ -1,0 +1,63 @@
+.btn {
+    &.btn-hexagon {
+        display: inline-block;
+        margin: 0 0.625rem;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        border-radius: 0.375em !important;
+        text-transform: uppercase;
+        width: max-content;
+        box-shadow: 0 0 0.75rem white;
+        background-color: var(--conn-btn-bg);
+        color: var(--conn-btn-color);
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 1.25em;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: inherit;
+            transition: background-color var(--conn-transition);
+        }
+
+        &:before {
+            left: -0.75em;
+            height: 100%;
+            -webkit-mask: url('../Icons/Buttons/hex_btn_left_border.svg') no-repeat center / contain;
+            mask: url('../Icons/Buttons/hex_btn_left_border.svg') no-repeat center / contain;
+        }
+
+        &:after {
+            right: -0.75em;
+            height: 100%;
+            -webkit-mask: url('../Icons/Buttons/hex_btn_right_border.svg') no-repeat center / contain;
+            mask: url('../Icons/Buttons/hex_btn_right_border.svg') no-repeat center / contain;
+        }
+
+        &.btn-sm {
+            &:before {
+                left: -0.7em;
+            }
+
+            &:after {
+                right: -0.7em;
+            }
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+            background-color: var(--conn-btn-bg-hover);
+            color: var(--conn-btn-color);
+        }
+    }
+}
