@@ -90,7 +90,7 @@
 
 // Bootstrap styles <a> via rgba(--bs-link-color-rgb, opacity) — override directly
 // so site-setting link colors work without needing separate RGB values
-a:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item) {
+a:not(.btn):not(.btn-hexagon):not(.nav-link):not(.navbar-brand):not(.dropdown-item) {
     color: var(--conn-link);
     &:hover, &:focus-visible {
         color: var(--conn-link-hover);

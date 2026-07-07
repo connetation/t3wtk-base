@@ -10,7 +10,7 @@ buttons:
         properties:
             class:
                 required: false
-                allowedClasses: 'link-external,link-file,link-pdf,link-email'
+                allowedClasses: 'link-external,link-file,link-pdf,link-email,btn btn-hexagon'
 
 classes:
     link-external:
@@ -21,3 +21,5 @@ classes:
         name: 'PDF'
     link-email:
         name: 'Email'
+    'btn btn-hexagon':
+        name: 'Hexagon button'
