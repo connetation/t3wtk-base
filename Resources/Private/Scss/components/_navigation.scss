@@ -44,6 +44,15 @@ body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-heigh
     background-color: var(--conn-nav-bg) !important;
     box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
 
+    // Bootstrap reads these on .nav-link / .navbar-brand rather than
+    // inheriting a plain `color`, so overriding the tokens is required.
+    --bs-navbar-color: var(--conn-nav-text, var(--bs-navbar-color));
+    --bs-navbar-hover-color: var(--conn-nav-text, var(--bs-navbar-hover-color));
+    --bs-navbar-disabled-color: var(--conn-nav-text, var(--bs-navbar-disabled-color));
+    --bs-navbar-active-color: var(--conn-nav-text, var(--bs-navbar-active-color));
+    --bs-navbar-brand-color: var(--conn-nav-text, var(--bs-navbar-brand-color));
+    --bs-navbar-brand-hover-color: var(--conn-nav-text, var(--bs-navbar-brand-hover-color));
+
     .navbar-brand {
         font-size: 1.25rem;
         letter-spacing: -0.02em;

@@ -60,6 +60,13 @@
     --conn-panel-link-justify: space-between;
     --conn-panel-content-justify: flex-start;
     background-color: var(--conn-nav-bg) !important;
+    color: var(--conn-nav-text, var(--conn-text));
+    // This panel is a DOM sibling of <nav>, not a descendant, so it can't
+    // inherit the token overrides set on .navbar — repeat them here.
+    --bs-navbar-color: var(--conn-nav-text, var(--bs-navbar-color));
+    --bs-navbar-hover-color: var(--conn-nav-text, var(--bs-navbar-hover-color));
+    --bs-navbar-disabled-color: var(--conn-nav-text, var(--bs-navbar-disabled-color));
+    --bs-navbar-active-color: var(--conn-nav-text, var(--bs-navbar-active-color));
     border-color: var(--conn-border) !important;
     display: flex;
     flex-direction: column;
@@ -259,7 +266,7 @@
     font-weight: 500;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--conn-text-muted) !important;
+    color: var(--conn-nav-text, var(--conn-text-muted)) !important;
     text-decoration: none;
     border-left: 3px solid transparent;
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
@@ -269,20 +276,20 @@
 
     &:hover,
     &:focus {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
         background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
         border-left-color: var(--conn-accent);
     }
 
     &.active {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
         font-weight: 600;
         border-left-color: var(--conn-accent);
         background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
 
     &[aria-expanded="true"]:not(.active) {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
         border-left-color: var(--conn-border);
         background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
@@ -330,20 +337,20 @@
         padding: 0.35rem 1rem 0.35rem var(--conn-subnav-indent, 1.5rem);
         font-size: var(--conn-nav-panel-sublink-size, 0.875rem);
         font-weight: 400;
-        color: var(--conn-text-muted) !important;
+        color: var(--conn-nav-text, var(--conn-text-muted)) !important;
         text-decoration: none;
         border-left: 3px solid transparent;
         border-radius: 0;
         transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 
         &:hover {
-            color: var(--conn-text) !important;
+            color: var(--conn-nav-text, var(--conn-text)) !important;
             background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
             border-left-color: var(--conn-accent);
         }
 
         &.active {
-            color: var(--conn-text) !important;
+            color: var(--conn-nav-text, var(--conn-text)) !important;
             font-weight: 600;
             border-left-color: var(--conn-accent);
             background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
@@ -390,7 +397,7 @@
     border-bottom: 1px solid var(--conn-border);
 
     a {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
         opacity: 0.5;
         text-decoration: none;
         font-size: 0.875rem;
@@ -413,7 +420,7 @@
     border-bottom: 1px solid var(--conn-border);
 
     a {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
         opacity: 0.55;
         text-decoration: none;
         transition: opacity 0.15s ease;

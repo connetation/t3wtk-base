@@ -48,7 +48,7 @@
     // Shadows
     --conn-shadow:       0 4px 24px rgb(0 0 0 / 40%);
     --conn-shadow-card:  0 1px 4px rgb(0 0 0 / 25%);
-    --conn-shadow-hover: 0 8px 32px rgb(99 102 241 / 28%);
+    --conn-shadow-hover: var(--conn-sh-x, 0) var(--conn-sh-y, 8px) var(--conn-sh-blur, 32px) var(--conn-sh-spread, 0px) var(--conn-sh-color, rgb(99 102 241 / 28%));
 
     // Bootstrap CSS-var overrides
     --bs-body-bg:              #0b0b1a;

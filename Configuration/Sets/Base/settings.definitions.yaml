@@ -153,9 +153,23 @@ settings:
     default: ''
     category: conn.theme.light
 
+  theme.light.navText:
+    label: 'Navbar text'
+    description: 'Text color inside the navbar and offcanvas panel for light mode. Falls back to the general text color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   theme.light.footerBg:
     label: 'Footer background'
     description: 'Footer background color for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.footerText:
+    label: 'Footer text'
+    description: 'Text color inside the footer for light mode. Falls back to the general text color when empty.'
     type: string
     default: ''
     category: conn.theme.light
@@ -287,9 +301,23 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  theme.dark.navText:
+    label: 'Navbar text'
+    description: 'Text color inside the navbar and offcanvas panel for dark mode. Falls back to the general text color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
   theme.dark.footerBg:
     label: 'Footer background'
     description: 'Footer background color for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.footerText:
+    label: 'Footer text'
+    description: 'Text color inside the footer for dark mode. Falls back to the general text color when empty.'
     type: string
     default: ''
     category: conn.theme.dark
