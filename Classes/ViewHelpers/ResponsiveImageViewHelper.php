@@ -23,15 +23,15 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\TagBuilder;
  * - SVG and GIF are served unprocessed (vector scales infinitely,
  *   processing would break GIF animation).
  * - Emits width/height attributes to prevent layout shift.
- * - When mobileCropVariant is set, wraps the <img> in a <picture> with a
- *   <source> for that variant below mobileMediaQuery — lets editors pick a
- *   different focus/crop for narrow viewports instead of relying on
- *   object-fit: cover to center-crop the desktop image.
+ * - When breakpoints is set, wraps the <img> in a <picture> with one
+ *   <source> per breakpoint (smallest maxWidth first) — lets editors pick a
+ *   different focus/crop per breakpoint instead of relying on
+ *   object-fit: cover to center-crop the same (largest) image everywhere.
  *
  * Usage:
  *   <conn:responsiveImage image="{slide.imageFile}" alt="{slide.title}"
  *        widths="640,960,1280,1920,2560,3840" sizes="100vw"
- *        mobileCropVariant="mobile"
+ *        breakpoints="{0: {cropVariant: 'base', maxWidth: 575.98}, 1: {cropVariant: 'sm', maxWidth: 767.98}}"
  *        loading="eager" fetchpriority="high"
  *        class="conn-hero-slider__bg-img" />
  */
@@ -51,11 +51,7 @@ final class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('fetchpriority', 'string', 'high | low | auto (empty = attribute omitted)', false, '');
         $this->registerArgument('cropVariant', 'string', 'Crop variant name', false, 'default');
         $this->registerArgument('fileExtension', 'string', 'Target format for srcset renditions', false, 'webp');
-        $this->registerArgument('mobileCropVariant', 'string', 'Crop variant rendered via a <picture> <source> below mobileMediaQuery (empty = disabled, renders a plain <img>)', false, '');
-        $this->registerArgument('mobileAspectRatio', 'string', 'Aspect ratio for the mobile source, e.g. "3:4" (empty = reuse aspectRatio)', false, '');
-        $this->registerArgument('mobileWidths', 'string', 'Comma-separated srcset width ladder in px for the mobile source', false, '480,640,828,1080');
-        $this->registerArgument('mobileSizes', 'string', 'sizes attribute for the mobile source', false, '100vw');
-        $this->registerArgument('mobileMediaQuery', 'string', 'media attribute for the mobile <source>', false, '(max-width: 767.98px)');
+        $this->registerArgument('breakpoints', 'array', 'List of {cropVariant, maxWidth, widths?, aspectRatio?, sizes?} rendered as <picture> <source> elements, one per breakpoint (empty = disabled, renders a plain <img>)', false, []);
     }
 
     public function render(): string
@@ -118,31 +114,61 @@ final class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
 
         $imgTag = $this->tag->render();
 
-        $mobileCropVariant = (string)$this->arguments['mobileCropVariant'];
-        if ($mobileCropVariant === '' || $mobileCropVariant === (string)$this->arguments['cropVariant']) {
+        $breakpoints = $this->arguments['breakpoints'];
+        if (!is_array($breakpoints) || $breakpoints === []) {
             return $imgTag;
         }
 
-        $mobileCrop = $this->resolveCropArea($cropVariants, $mobileCropVariant, $image);
-        $mobileSourceWidth = $mobileCrop !== null ? (int)floor($mobileCrop->asArray()['width']) : (int)$image->getProperty('width');
-        $mobileRequested = $this->parseWidths((string)$this->arguments['mobileWidths'], 1080);
-        $mobileWidths = $this->selectWidths($mobileRequested, $mobileSourceWidth);
+        // Smallest maxWidth first, so the browser hits the most specific
+        // <source> before falling through to wider (or the <img>) ones.
+        usort($breakpoints, static fn(array $a, array $b): int
+            => ((float)($a['maxWidth'] ?? 0)) <=> ((float)($b['maxWidth'] ?? 0)));
 
-        $mobileRatioArg = (string)$this->arguments['mobileAspectRatio'];
-        $mobileRatio = $mobileRatioArg !== '' ? $this->parseRatio($mobileRatioArg) : $ratio;
+        $sources = '';
+        foreach ($breakpoints as $breakpoint) {
+            $variantName = (string)($breakpoint['cropVariant'] ?? '');
+            if ($variantName === '' || $variantName === (string)$this->arguments['cropVariant']) {
+                continue;
+            }
 
-        $mobileSrcsetEntries = $this->buildSrcSet($imageService, $image, $mobileWidths, $mobileRatio, $mobileCrop, $targetExtension);
-        if ($mobileSrcsetEntries === []) {
+            $maxWidth = $breakpoint['maxWidth'] ?? null;
+            if ($maxWidth === null) {
+                continue;
+            }
+            $maxWidthPx = (int)round((float)$maxWidth);
+
+            $breakpointCrop = $this->resolveCropArea($cropVariants, $variantName, $image);
+            $breakpointSourceWidth = $breakpointCrop !== null
+                ? (int)floor($breakpointCrop->asArray()['width'])
+                : (int)$image->getProperty('width');
+
+            $requestedStr = (string)($breakpoint['widths'] ?? '');
+            if ($requestedStr === '') {
+                $requestedStr = $maxWidthPx . ',' . ($maxWidthPx * 2);
+            }
+            $breakpointWidths = $this->selectWidths($this->parseWidths($requestedStr, $maxWidthPx), $breakpointSourceWidth);
+
+            $breakpointRatioArg = (string)($breakpoint['aspectRatio'] ?? '');
+            $breakpointRatio = $breakpointRatioArg !== '' ? $this->parseRatio($breakpointRatioArg) : $ratio;
+
+            $entries = $this->buildSrcSet($imageService, $image, $breakpointWidths, $breakpointRatio, $breakpointCrop, $targetExtension);
+            if ($entries === []) {
+                continue;
+            }
+
+            $sourceTag = new TagBuilder('source');
+            $sourceTag->addAttribute('media', '(max-width: ' . $maxWidth . 'px)');
+            $sourceTag->addAttribute('srcset', implode(', ', $entries));
+            $sourceTag->addAttribute('sizes', (string)($breakpoint['sizes'] ?? $this->arguments['sizes']));
+            $sourceTag->addAttribute('type', 'image/' . $targetExtension);
+            $sources .= $sourceTag->render();
+        }
+
+        if ($sources === '') {
             return $imgTag;
         }
 
-        $sourceTag = new TagBuilder('source');
-        $sourceTag->addAttribute('media', (string)$this->arguments['mobileMediaQuery']);
-        $sourceTag->addAttribute('srcset', implode(', ', $mobileSrcsetEntries));
-        $sourceTag->addAttribute('sizes', (string)$this->arguments['mobileSizes']);
-        $sourceTag->addAttribute('type', 'image/' . $targetExtension);
-
-        return '<picture>' . $sourceTag->render() . $imgTag . '</picture>';
+        return '<picture>' . $sources . $imgTag . '</picture>';
     }
 
     private function resolveCropArea(CropVariantCollection $cropVariants, string $variantName, FileInterface $image): ?Area
