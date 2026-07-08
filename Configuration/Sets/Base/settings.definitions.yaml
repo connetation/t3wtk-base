@@ -750,6 +750,26 @@ settings:
       tagline: 'Tagline'
       '': 'Empty'
 
+  footer.bar.leftMobileAlign:
+    label: 'Bottom bar – Left slot text alignment (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.bar
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
+  footer.bar.rightMobileAlign:
+    label: 'Bottom bar – Right slot text alignment (mobile, <768px)'
+    type: string
+    default: ''
+    category: conn.footer.bar
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
   # ─── Footer – Grid columns ───────────────────────────────────────────────
   footer.col1.content:
     label: 'Column 1 – Content'
@@ -772,12 +792,98 @@ settings:
     default: true
     category: conn.footer.grid
 
-  footer.col1.size:
-    label: 'Column 1 – Width (of 12)'
+  footer.col1.size.base:
+    label: 'Column 1 – Width (default, all sizes unless overridden, of 12)'
+    type: string
+    default: '12'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col1.size.sm:
+    label: 'Column 1 – Width (small, ≥576px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col1.size.md:
+    label: 'Column 1 – Width (medium, ≥768px, of 12)'
+    type: string
+    default: '6'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col1.size.lg:
+    label: 'Column 1 – Width (large, ≥992px, of 12)'
     type: string
     default: '4'
     category: conn.footer.grid
     enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col1.size.xl:
+    label: 'Column 1 – Width (x-large, ≥1200px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col1.size.xxl:
+    label: 'Column 1 – Width (xx-large, ≥1400px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
       '2': '2'
       '3': '3'
       '4': '4'
@@ -849,12 +955,98 @@ settings:
     default: true
     category: conn.footer.grid
 
-  footer.col2.size:
-    label: 'Column 2 – Width (of 12)'
+  footer.col2.size.base:
+    label: 'Column 2 – Width (default, all sizes unless overridden, of 12)'
+    type: string
+    default: '12'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col2.size.sm:
+    label: 'Column 2 – Width (small, ≥576px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col2.size.md:
+    label: 'Column 2 – Width (medium, ≥768px, of 12)'
+    type: string
+    default: '6'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col2.size.lg:
+    label: 'Column 2 – Width (large, ≥992px, of 12)'
     type: string
     default: '4'
     category: conn.footer.grid
     enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col2.size.xl:
+    label: 'Column 2 – Width (x-large, ≥1200px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col2.size.xxl:
+    label: 'Column 2 – Width (xx-large, ≥1400px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
       '2': '2'
       '3': '3'
       '4': '4'
@@ -926,12 +1118,98 @@ settings:
     default: true
     category: conn.footer.grid
 
-  footer.col3.size:
-    label: 'Column 3 – Width (of 12)'
+  footer.col3.size.base:
+    label: 'Column 3 – Width (default, all sizes unless overridden, of 12)'
+    type: string
+    default: '12'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col3.size.sm:
+    label: 'Column 3 – Width (small, ≥576px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col3.size.md:
+    label: 'Column 3 – Width (medium, ≥768px, of 12)'
+    type: string
+    default: '6'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col3.size.lg:
+    label: 'Column 3 – Width (large, ≥992px, of 12)'
     type: string
     default: '4'
     category: conn.footer.grid
     enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col3.size.xl:
+    label: 'Column 3 – Width (x-large, ≥1200px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col3.size.xxl:
+    label: 'Column 3 – Width (xx-large, ≥1400px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
       '2': '2'
       '3': '3'
       '4': '4'
@@ -1003,12 +1281,98 @@ settings:
     default: true
     category: conn.footer.grid
 
-  footer.col4.size:
-    label: 'Column 4 – Width (of 12)'
+  footer.col4.size.base:
+    label: 'Column 4 – Width (default, all sizes unless overridden, of 12)'
+    type: string
+    default: '12'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col4.size.sm:
+    label: 'Column 4 – Width (small, ≥576px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col4.size.md:
+    label: 'Column 4 – Width (medium, ≥768px, of 12)'
+    type: string
+    default: '6'
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col4.size.lg:
+    label: 'Column 4 – Width (large, ≥992px, of 12)'
     type: string
     default: '3'
     category: conn.footer.grid
     enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col4.size.xl:
+    label: 'Column 4 – Width (x-large, ≥1200px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '12': '12 (full)'
+
+  footer.col4.size.xxl:
+    label: 'Column 4 – Width (xx-large, ≥1400px, of 12)'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'Inherit'
       '2': '2'
       '3': '3'
       '4': '4'

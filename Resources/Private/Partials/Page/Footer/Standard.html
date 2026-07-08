@@ -21,7 +21,7 @@
 
             <!-- Column 1 -->
             <f:if condition="{site.settings.footer.col1.content}">
-                <div class="col-lg-{site.settings.footer.col1.size} col-md-6 {site.settings.footer.col1.mobilejustify} {site.settings.footer.col1.desktopjustify} {site.settings.footer.col1.mobilealign} {site.settings.footer.col1.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col1.size.base}">col-{site.settings.footer.col1.size.base} </f:if><f:if condition="{site.settings.footer.col1.size.sm}">col-sm-{site.settings.footer.col1.size.sm} </f:if><f:if condition="{site.settings.footer.col1.size.md}">col-md-{site.settings.footer.col1.size.md} </f:if><f:if condition="{site.settings.footer.col1.size.lg}">col-lg-{site.settings.footer.col1.size.lg} </f:if><f:if condition="{site.settings.footer.col1.size.xl}">col-xl-{site.settings.footer.col1.size.xl} </f:if><f:if condition="{site.settings.footer.col1.size.xxl}">col-xxl-{site.settings.footer.col1.size.xxl} </f:if>{site.settings.footer.col1.mobilejustify} {site.settings.footer.col1.desktopjustify} {site.settings.footer.col1.mobilealign} {site.settings.footer.col1.desktopalign}">
                     <f:switch expression="{site.settings.footer.col1.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
@@ -35,7 +35,7 @@
 
             <!-- Column 2 -->
             <f:if condition="{site.settings.footer.col2.content}">
-                <div class="col-lg-{site.settings.footer.col2.size} col-md-6 {site.settings.footer.col2.mobilejustify} {site.settings.footer.col2.desktopjustify} {site.settings.footer.col2.mobilealign} {site.settings.footer.col2.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col2.size.base}">col-{site.settings.footer.col2.size.base} </f:if><f:if condition="{site.settings.footer.col2.size.sm}">col-sm-{site.settings.footer.col2.size.sm} </f:if><f:if condition="{site.settings.footer.col2.size.md}">col-md-{site.settings.footer.col2.size.md} </f:if><f:if condition="{site.settings.footer.col2.size.lg}">col-lg-{site.settings.footer.col2.size.lg} </f:if><f:if condition="{site.settings.footer.col2.size.xl}">col-xl-{site.settings.footer.col2.size.xl} </f:if><f:if condition="{site.settings.footer.col2.size.xxl}">col-xxl-{site.settings.footer.col2.size.xxl} </f:if>{site.settings.footer.col2.mobilejustify} {site.settings.footer.col2.desktopjustify} {site.settings.footer.col2.mobilealign} {site.settings.footer.col2.desktopalign}">
                     <f:switch expression="{site.settings.footer.col2.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
@@ -49,7 +49,7 @@
 
             <!-- Column 3 -->
             <f:if condition="{site.settings.footer.col3.content}">
-                <div class="col-lg-{site.settings.footer.col3.size} col-md-6 {site.settings.footer.col3.mobilejustify} {site.settings.footer.col3.desktopjustify} {site.settings.footer.col3.mobilealign} {site.settings.footer.col3.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col3.size.base}">col-{site.settings.footer.col3.size.base} </f:if><f:if condition="{site.settings.footer.col3.size.sm}">col-sm-{site.settings.footer.col3.size.sm} </f:if><f:if condition="{site.settings.footer.col3.size.md}">col-md-{site.settings.footer.col3.size.md} </f:if><f:if condition="{site.settings.footer.col3.size.lg}">col-lg-{site.settings.footer.col3.size.lg} </f:if><f:if condition="{site.settings.footer.col3.size.xl}">col-xl-{site.settings.footer.col3.size.xl} </f:if><f:if condition="{site.settings.footer.col3.size.xxl}">col-xxl-{site.settings.footer.col3.size.xxl} </f:if>{site.settings.footer.col3.mobilejustify} {site.settings.footer.col3.desktopjustify} {site.settings.footer.col3.mobilealign} {site.settings.footer.col3.desktopalign}">
                     <f:switch expression="{site.settings.footer.col3.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
@@ -63,7 +63,7 @@
 
             <!-- Column 4 -->
             <f:if condition="{site.settings.footer.col4.content}">
-                <div class="col-lg-{site.settings.footer.col4.size} col-md-6 {site.settings.footer.col4.mobilejustify} {site.settings.footer.col4.desktopjustify} {site.settings.footer.col4.mobilealign} {site.settings.footer.col4.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col4.size.base}">col-{site.settings.footer.col4.size.base} </f:if><f:if condition="{site.settings.footer.col4.size.sm}">col-sm-{site.settings.footer.col4.size.sm} </f:if><f:if condition="{site.settings.footer.col4.size.md}">col-md-{site.settings.footer.col4.size.md} </f:if><f:if condition="{site.settings.footer.col4.size.lg}">col-lg-{site.settings.footer.col4.size.lg} </f:if><f:if condition="{site.settings.footer.col4.size.xl}">col-xl-{site.settings.footer.col4.size.xl} </f:if><f:if condition="{site.settings.footer.col4.size.xxl}">col-xxl-{site.settings.footer.col4.size.xxl} </f:if>{site.settings.footer.col4.mobilejustify} {site.settings.footer.col4.desktopjustify} {site.settings.footer.col4.mobilealign} {site.settings.footer.col4.desktopalign}">
                     <f:switch expression="{site.settings.footer.col4.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
@@ -81,7 +81,7 @@
             <hr class="mt-4" />
             <div class="row align-items-center g-2">
 
-                <div class="col-md-6 text-body-secondary small">
+                <div class="col-md-6 {site.settings.footer.bar.leftMobileAlign} text-body-secondary small">
                     <f:switch expression="{site.settings.footer.bar.left}">
                         <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                         <f:case value="social">
@@ -96,7 +96,7 @@
                     </f:switch>
                 </div>
 
-                <div class="col-md-6 text-md-end">
+                <div class="col-md-6 {site.settings.footer.bar.rightMobileAlign} text-md-end">
                     <f:switch expression="{site.settings.footer.bar.right}">
                         <f:case value="copyright"><span class="text-body-secondary small">&copy; {currentYear} {copyrightName}</span></f:case>
                         <f:case value="social">
