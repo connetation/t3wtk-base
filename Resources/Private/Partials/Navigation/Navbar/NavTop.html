@@ -27,11 +27,11 @@
                     <f:if condition="{site.settings.branding.logoDark}">
                         <f:then>
                             <f:variable name="resolvedLogoDark">{conn:resolvePath(path: site.settings.branding.logoDark)}</f:variable>
-                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
-                            <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
+                            <img src="{resolvedLogo}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="navbar-logo navbar-logo--light" />
+                            <img src="{resolvedLogoDark}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="navbar-logo navbar-logo--dark" />
                         </f:then>
                         <f:else>
-                            <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo" />
+                            <img src="{resolvedLogo}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="navbar-logo" />
                         </f:else>
                     </f:if>
                 </f:then>
@@ -60,11 +60,11 @@
                             <f:if condition="{site.settings.branding.logoDark}">
                                 <f:then>
                                     <f:variable name="resolvedLogoDark">{conn:resolvePath(path: site.settings.branding.logoDark)}</f:variable>
-                                    <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--light" />
-                                    <img src="{resolvedLogoDark}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo navbar-logo--dark" />
+                                    <img src="{resolvedLogo}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="navbar-logo navbar-logo--light" />
+                                    <img src="{resolvedLogoDark}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="navbar-logo navbar-logo--dark" />
                                 </f:then>
                                 <f:else>
-                                    <img src="{resolvedLogo}" alt="{logoAlt}" height="{site.settings.branding.logoHeight}" class="navbar-logo" />
+                                    <img src="{resolvedLogo}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="navbar-logo" />
                                 </f:else>
                             </f:if>
                         </f:then>

@@ -64,9 +64,8 @@
     // This panel is a DOM sibling of <nav>, not a descendant, so it can't
     // inherit the token overrides set on .navbar — repeat them here.
     --bs-navbar-color: var(--conn-nav-text, var(--bs-navbar-color));
-    --bs-navbar-hover-color: var(--conn-nav-text, var(--bs-navbar-hover-color));
-    --bs-navbar-disabled-color: var(--conn-nav-text, var(--bs-navbar-disabled-color));
-    --bs-navbar-active-color: var(--conn-nav-text, var(--bs-navbar-active-color));
+    --bs-navbar-hover-color: var(--conn-link-hover, var(--conn-accent, var(--bs-navbar-hover-color)));
+    --bs-navbar-active-color: var(--conn-link-hover, var(--conn-accent, var(--bs-navbar-active-color)));
     border-color: var(--conn-border) !important;
     display: flex;
     flex-direction: column;
@@ -276,20 +275,20 @@
 
     &:hover,
     &:focus {
-        color: var(--conn-nav-text, var(--conn-text)) !important;
+        color: var(--conn-text) !important;
         background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
         border-left-color: var(--conn-accent);
     }
 
     &.active {
-        color: var(--conn-nav-text, var(--conn-text)) !important;
+        color: var(--conn-text) !important;
         font-weight: 600;
         border-left-color: var(--conn-accent);
         background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
 
     &[aria-expanded="true"]:not(.active) {
-        color: var(--conn-nav-text, var(--conn-text)) !important;
+        color: var(--conn-text) !important;
         border-left-color: var(--conn-border);
         background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
@@ -344,13 +343,13 @@
         transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 
         &:hover {
-            color: var(--conn-nav-text, var(--conn-text)) !important;
+            color: var(--conn-text) !important;
             background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
             border-left-color: var(--conn-accent);
         }
 
         &.active {
-            color: var(--conn-nav-text, var(--conn-text)) !important;
+            color: var(--conn-text) !important;
             font-weight: 600;
             border-left-color: var(--conn-accent);
             background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);

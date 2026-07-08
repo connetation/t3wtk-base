@@ -12,12 +12,14 @@
     || {site.settings.theme.light.navText}
     || {site.settings.theme.light.footerBg}
     || {site.settings.theme.light.footerText}
+    || {site.settings.theme.light.footerHeaderText}
     || {site.settings.theme.light.text}
     || {site.settings.theme.light.heading}
     || {site.settings.theme.light.emphasis}
     || {site.settings.theme.light.textMuted}
     || {site.settings.theme.light.link}
-    || {site.settings.theme.light.linkHover}
+    || {site.settings.theme.light.linkHover.text}
+    || {site.settings.theme.light.linkHover.underline}
     || {site.settings.theme.light.border}
     || {site.settings.theme.light.borderStrong}
     || {site.settings.theme.light.accentSoft}
@@ -33,12 +35,14 @@
     || {site.settings.theme.dark.navText}
     || {site.settings.theme.dark.footerBg}
     || {site.settings.theme.dark.footerText}
+    || {site.settings.theme.dark.footerHeaderText}
     || {site.settings.theme.dark.text}
     || {site.settings.theme.dark.heading}
     || {site.settings.theme.dark.emphasis}
     || {site.settings.theme.dark.textMuted}
     || {site.settings.theme.dark.link}
-    || {site.settings.theme.dark.linkHover}
+    || {site.settings.theme.dark.linkHover.text}
+    || {site.settings.theme.dark.linkHover.underline}
     || {site.settings.theme.dark.border}
     || {site.settings.theme.dark.borderStrong}
     || {site.settings.theme.dark.accentSoft}
@@ -87,12 +91,14 @@
     || {site.settings.theme.light.navText}
     || {site.settings.theme.light.footerBg}
     || {site.settings.theme.light.footerText}
+    || {site.settings.theme.light.footerHeaderText}
     || {site.settings.theme.light.text}
     || {site.settings.theme.light.heading}
     || {site.settings.theme.light.emphasis}
     || {site.settings.theme.light.textMuted}
     || {site.settings.theme.light.link}
-    || {site.settings.theme.light.linkHover}
+    || {site.settings.theme.light.linkHover.text}
+    || {site.settings.theme.light.linkHover.underline}
     || {site.settings.theme.light.border}
     || {site.settings.theme.light.borderStrong}
     || {site.settings.theme.light.accentSoft}
@@ -114,6 +120,7 @@
 </f:if><f:if condition="{site.settings.theme.light.navText}">    --conn-nav-text: {site.settings.theme.light.navText};
 </f:if><f:if condition="{site.settings.theme.light.footerBg}">    --conn-footer-bg: {site.settings.theme.light.footerBg};
 </f:if><f:if condition="{site.settings.theme.light.footerText}">    --conn-footer-text: {site.settings.theme.light.footerText};
+</f:if><f:if condition="{site.settings.theme.light.footerHeaderText}">    --conn-footer-header-text: {site.settings.theme.light.footerHeaderText};
 </f:if><f:if condition="{site.settings.theme.light.text}">    --conn-text: {site.settings.theme.light.text};
     --bs-body-color: {site.settings.theme.light.text};
 </f:if><f:if condition="{site.settings.theme.light.heading}">    --conn-heading: {site.settings.theme.light.heading};
@@ -124,8 +131,9 @@
     --bs-secondary-color: {site.settings.theme.light.textMuted};
 </f:if><f:if condition="{site.settings.theme.light.link}">    --conn-link: {site.settings.theme.light.link};
     --bs-link-color: {site.settings.theme.light.link};
-</f:if><f:if condition="{site.settings.theme.light.linkHover}">    --conn-link-hover: {site.settings.theme.light.linkHover};
-    --bs-link-hover-color: {site.settings.theme.light.linkHover};
+</f:if><f:if condition="{site.settings.theme.light.linkHover.text}">    --conn-link-hover: {site.settings.theme.light.linkHover.text};
+    --bs-link-hover-color: {site.settings.theme.light.linkHover.text};
+</f:if><f:if condition="{site.settings.theme.light.linkHover.underline}">    --conn-link-hover-underline: {site.settings.theme.light.linkHover.underline};
 </f:if><f:if condition="{site.settings.theme.light.border}">    --conn-border: {site.settings.theme.light.border};
 </f:if><f:if condition="{site.settings.theme.light.borderStrong}">    --conn-border-strong: {site.settings.theme.light.borderStrong};
 </f:if><f:if condition="{site.settings.theme.light.accentSoft}">    --conn-accent-soft: {site.settings.theme.light.accentSoft};
@@ -144,12 +152,14 @@
     || {site.settings.theme.dark.navText}
     || {site.settings.theme.dark.footerBg}
     || {site.settings.theme.dark.footerText}
+    || {site.settings.theme.dark.footerHeaderText}
     || {site.settings.theme.dark.text}
     || {site.settings.theme.dark.heading}
     || {site.settings.theme.dark.emphasis}
     || {site.settings.theme.dark.textMuted}
     || {site.settings.theme.dark.link}
-    || {site.settings.theme.dark.linkHover}
+    || {site.settings.theme.dark.linkHover.text}
+    || {site.settings.theme.dark.linkHover.underline}
     || {site.settings.theme.dark.border}
     || {site.settings.theme.dark.borderStrong}
     || {site.settings.theme.dark.accentSoft}
@@ -171,6 +181,7 @@
 </f:if><f:if condition="{site.settings.theme.dark.navText}">    --conn-nav-text: {site.settings.theme.dark.navText};
 </f:if><f:if condition="{site.settings.theme.dark.footerBg}">    --conn-footer-bg: {site.settings.theme.dark.footerBg};
 </f:if><f:if condition="{site.settings.theme.dark.footerText}">    --conn-footer-text: {site.settings.theme.dark.footerText};
+</f:if><f:if condition="{site.settings.theme.dark.footerHeaderText}">    --conn-footer-header-text: {site.settings.theme.dark.footerHeaderText};
 </f:if><f:if condition="{site.settings.theme.dark.text}">    --conn-text: {site.settings.theme.dark.text};
     --bs-body-color: {site.settings.theme.dark.text};
 </f:if><f:if condition="{site.settings.theme.dark.heading}">    --conn-heading: {site.settings.theme.dark.heading};
@@ -181,8 +192,9 @@
     --bs-secondary-color: {site.settings.theme.dark.textMuted};
 </f:if><f:if condition="{site.settings.theme.dark.link}">    --conn-link: {site.settings.theme.dark.link};
     --bs-link-color: {site.settings.theme.dark.link};
-</f:if><f:if condition="{site.settings.theme.dark.linkHover}">    --conn-link-hover: {site.settings.theme.dark.linkHover};
-    --bs-link-hover-color: {site.settings.theme.dark.linkHover};
+</f:if><f:if condition="{site.settings.theme.dark.linkHover.text}">    --conn-link-hover: {site.settings.theme.dark.linkHover.text};
+    --bs-link-hover-color: {site.settings.theme.dark.linkHover.text};
+</f:if><f:if condition="{site.settings.theme.dark.linkHover.underline}">    --conn-link-hover-underline: {site.settings.theme.dark.linkHover.underline};
 </f:if><f:if condition="{site.settings.theme.dark.border}">    --conn-border: {site.settings.theme.dark.border};
 </f:if><f:if condition="{site.settings.theme.dark.borderStrong}">    --conn-border-strong: {site.settings.theme.dark.borderStrong};
 </f:if><f:if condition="{site.settings.theme.dark.accentSoft}">    --conn-accent-soft: {site.settings.theme.dark.accentSoft};

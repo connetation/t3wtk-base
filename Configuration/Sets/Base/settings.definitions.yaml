@@ -82,6 +82,13 @@ settings:
     default: ''
     category: conn.theme.colors
 
+  theme.linkHoverEffect:
+    label: 'Animated underline on link hover'
+    description: 'Grows an underline in from the left under links on hover, using the link/link-hover colors.'
+    type: bool
+    default: false
+    category: conn.theme.colors
+
   theme.shadowHover.color:
     label: 'Card hover shadow – color'
     description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
@@ -174,6 +181,13 @@ settings:
     default: ''
     category: conn.theme.light
 
+  theme.light.footerHeaderText:
+    label: 'Footer header text'
+    description: 'Text color for footer section headers ("Navigation", "Contact", …) for light mode. Falls back to the footer text color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   theme.light.text:
     label: 'Text color'
     description: 'Main body text color for light mode.'
@@ -202,9 +216,16 @@ settings:
     default: ''
     category: conn.theme.light
 
-  theme.light.linkHover:
+  theme.light.linkHover.text:
     label: 'Link – hover color'
-    description: 'Hyperlink color on hover/focus for light mode.'
+    description: 'Hyperlink text color on hover/focus for light mode.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.linkHover.underline:
+    label: 'Link – hover underline color'
+    description: 'Color of the animated underline effect (see "Animated underline on link hover") for light mode. Falls back to the link hover color when empty.'
     type: string
     default: ''
     category: conn.theme.light
@@ -322,6 +343,13 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  theme.dark.footerHeaderText:
+    label: 'Footer header text'
+    description: 'Text color for footer section headers ("Navigation", "Contact", …) for dark mode. Falls back to the footer text color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
   theme.dark.text:
     label: 'Text color'
     description: 'Main body text color for dark mode.'
@@ -350,9 +378,16 @@ settings:
     default: ''
     category: conn.theme.dark
 
-  theme.dark.linkHover:
+  theme.dark.linkHover.text:
     label: 'Link – hover color'
-    description: 'Hyperlink color on hover/focus for dark mode.'
+    description: 'Hyperlink text color on hover/focus for dark mode.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.linkHover.underline:
+    label: 'Link – hover underline color'
+    description: 'Color of the animated underline effect (see "Animated underline on link hover") for dark mode. Falls back to the link hover color when empty.'
     type: string
     default: ''
     category: conn.theme.dark
@@ -655,10 +690,18 @@ settings:
     default: ''
     category: conn.branding
 
+  branding.logoWidth:
+    label: 'Logo width (px)'
+    description: 'Optional. Leave empty to scale automatically from the height (or from the image itself if both are empty).'
+    type: int
+    default: 0
+    category: conn.branding
+
   branding.logoHeight:
     label: 'Logo height (px)'
+    description: 'Optional. Leave empty to scale automatically from the width (or from the image itself if both are empty).'
     type: int
-    default: 36
+    default: 0
     category: conn.branding
 
   # ─── Footer – General ─────────────────────────────────────────────────────
@@ -721,6 +764,13 @@ settings:
       address: 'Address'
       social: 'Social links'
       '': 'Empty'
+
+  footer.col1.showHeader:
+    label: 'Column 1 – Show section header'
+    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
+    type: bool
+    default: true
+    category: conn.footer.grid
 
   footer.col1.size:
     label: 'Column 1 – Width (of 12)'
@@ -792,6 +842,13 @@ settings:
       social: 'Social links'
       '': 'Empty'
 
+  footer.col2.showHeader:
+    label: 'Column 2 – Show section header'
+    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
+    type: bool
+    default: true
+    category: conn.footer.grid
+
   footer.col2.size:
     label: 'Column 2 – Width (of 12)'
     type: string
@@ -861,6 +918,13 @@ settings:
       address: 'Address'
       social: 'Social links'
       '': 'Empty'
+
+  footer.col3.showHeader:
+    label: 'Column 3 – Show section header'
+    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
+    type: bool
+    default: true
+    category: conn.footer.grid
 
   footer.col3.size:
     label: 'Column 3 – Width (of 12)'
@@ -932,6 +996,13 @@ settings:
       social: 'Social links'
       '': 'Empty'
 
+  footer.col4.showHeader:
+    label: 'Column 4 – Show section header'
+    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
+    type: bool
+    default: true
+    category: conn.footer.grid
+
   footer.col4.size:
     label: 'Column 4 – Width (of 12)'
     type: string
@@ -991,9 +1062,30 @@ settings:
   # ─── Footer – General ─────────────────────────────────────────────────────
   footer.tagline:
     label: 'Footer tagline'
-    description: 'Short text below the brand name in the footer.'
+    description: 'Short text below the brand name in the footer. Ignored when a tagline icon is set.'
     type: string
     default: ''
+    category: conn.footer
+
+  footer.taglineIcon:
+    label: 'Footer tagline icon'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, renders instead of the tagline text.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.taglineIconWidth:
+    label: 'Footer tagline icon width (px)'
+    description: 'Optional. Leave empty to scale automatically from the height (or from the image itself if both are empty).'
+    type: int
+    default: 0
+    category: conn.footer
+
+  footer.taglineIconHeight:
+    label: 'Footer tagline icon height (px)'
+    description: 'Optional. Leave empty to scale automatically from the width (or from the image itself if both are empty).'
+    type: int
+    default: 0
     category: conn.footer
 
   footer.copyrightName:
@@ -1215,16 +1307,16 @@ settings:
 
   social.iconWidth:
     label: 'Icon width (px)'
-    description: 'Applies to all social icons. Match your icon files aspect ratio to avoid stretching.'
+    description: 'Applies to all social icons. Optional — leave empty to scale automatically from the height (or from each image itself if both are empty).'
     type: int
-    default: 16
+    default: 0
     category: conn.social
 
   social.iconHeight:
     label: 'Icon height (px)'
-    description: 'Applies to all social icons. Match your icon files aspect ratio to avoid stretching.'
+    description: 'Applies to all social icons. Optional — leave empty to scale automatically from the width (or from each image itself if both are empty).'
     type: int
-    default: 18
+    default: 0
     category: conn.social
 
   # ─── Meta & Analytics ─────────────────────────────────────────────────────

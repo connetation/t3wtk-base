@@ -46,12 +46,13 @@ body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-heigh
 
     // Bootstrap reads these on .nav-link / .navbar-brand rather than
     // inheriting a plain `color`, so overriding the tokens is required.
+    // Hover/active use the accent color (same as regular link hover) so
+    // they stay visibly distinct from the base nav text color.
     --bs-navbar-color: var(--conn-nav-text, var(--bs-navbar-color));
-    --bs-navbar-hover-color: var(--conn-nav-text, var(--bs-navbar-hover-color));
-    --bs-navbar-disabled-color: var(--conn-nav-text, var(--bs-navbar-disabled-color));
-    --bs-navbar-active-color: var(--conn-nav-text, var(--bs-navbar-active-color));
+    --bs-navbar-hover-color: var(--conn-link-hover, var(--conn-accent, var(--bs-navbar-hover-color)));
+    --bs-navbar-active-color: var(--conn-link-hover, var(--conn-accent, var(--bs-navbar-active-color)));
     --bs-navbar-brand-color: var(--conn-nav-text, var(--bs-navbar-brand-color));
-    --bs-navbar-brand-hover-color: var(--conn-nav-text, var(--bs-navbar-brand-hover-color));
+    --bs-navbar-brand-hover-color: var(--conn-link-hover, var(--conn-accent, var(--bs-navbar-brand-hover-color)));
 
     .navbar-brand {
         font-size: 1.25rem;

@@ -20,6 +20,11 @@
 
     &__brand { font-size: 1.25rem; letter-spacing: -0.02em; }
 
+    &__nav-title,
+    &__address-title {
+        color: var(--conn-footer-header-text, var(--conn-footer-text, var(--conn-text)));
+    }
+
     &__link {
         transition: color var(--conn-transition);
         &:hover { color: var(--conn-accent) !important; }

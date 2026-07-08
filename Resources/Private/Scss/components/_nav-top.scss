@@ -42,7 +42,7 @@
 
         &:hover {
             background-color: var(--conn-surface-hover, var(--bs-secondary-bg));
-            color: var(--conn-nav-text, var(--bs-body-color));
+            color: var(--conn-link-hover, var(--conn-accent, var(--bs-body-color)));
         }
 
         &.active {

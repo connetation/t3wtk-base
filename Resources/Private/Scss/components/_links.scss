@@ -51,3 +51,52 @@ a.link-pdf     { @include _icon-after($_icon-pdf); }
 a.link-email    { @include _icon-after($_icon-email); }
 
 // stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix
+
+// ── Animated underline on hover ──────────────────────────────────────────
+// Opt-in via the "Animated underline on link hover" site setting
+// (theme.linkHoverEffect), which toggles the .link-hover-underline body class.
+body.link-hover-underline {
+    // :not(.ratio a) — card media links (image, video, embed, whatever) live
+    // inside Bootstrap's .ratio aspect-ratio box, which requires its direct
+    // content to stay position:absolute to fill the box. Forcing our own
+    // position:relative onto that <a> breaks the fill for any non-<img>
+    // media (video, iframe, …) — :has(img) alone only masked this for images.
+    // :not(:has(img)) still catches image-wrapping links outside .ratio too
+    // (social icons, logo links).
+    // :not(.stretched-link) — forcing position:relative here would break
+    // Bootstrap's stretched-link trick, which needs the <a> itself to stay
+    // unpositioned so its ::after overlay resolves against the card, not itself.
+    a[href]:not(.btn):not(.btn-hexagon):not(.nav-link):not(.navbar-brand):not(.dropdown-item):not(.lightbox):not(.stretched-link):not(.ratio a):not(:has(img)) {
+        position: relative;
+        // Above a .stretched-link's own ::after overlay (z-index: 1), so a
+        // regular link nested inside a stretched-link card (e.g. one inside
+        // the excerpt text) still receives its own hover/click instead of
+        // the overlay swallowing it — this is Bootstrap's documented fix.
+        z-index: 2;
+        // The browser's native underline is replaced entirely by the ::before
+        // animation below, so it's suppressed at all times, not just on hover.
+        text-decoration: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--conn-link-hover-underline, var(--conn-link-hover, var(--conn-accent)));
+            visibility: hidden;
+            transition: width 0.3s ease-in-out;
+        }
+
+        &:hover,
+        &.active {
+            text-decoration: none !important;
+
+            &::before {
+                visibility: visible;
+                width: 100%;
+            }
+        }
+    }
+}

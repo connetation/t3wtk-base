@@ -13,10 +13,30 @@ page = PAGE
 page {
     typeNum = 0
 
-    # Sticky-footer flexbox classes (extended below via condition when the
-    # floating theme toggle is enabled).
-    bodyTagCObject = TEXT
-    bodyTagCObject.value = <body class="d-flex flex-column h-100">
+    # Sticky-footer flexbox classes, plus optional feature classes appended
+    # only when their site setting is active.
+    bodyTagCObject = COA
+    bodyTagCObject {
+        10 = TEXT
+        10.value = <body class="d-flex flex-column h-100
+
+        15 = TEXT
+        15.char = 32
+
+        20 = TEXT
+        20.value = has-float-toggle
+        20.if.isTrue = {$themeToggle.position}
+
+        25 = TEXT
+        25.char = 32
+
+        30 = TEXT
+        30.value = link-hover-underline
+        30.if.isTrue = {$theme.linkHoverEffect}
+
+        40 = TEXT
+        40.value = ">
+    }
 
     meta {
         viewport = width=device-width, initial-scale=1
@@ -108,11 +128,6 @@ page.10.dataProcessing.40 {
     special = directory
     special.value = {$footer.navigation.pages}
 }
-[global]
-
-# Body class variant when the floating theme toggle is enabled
-["{$themeToggle.position}" != ""]
-page.bodyTagCObject.value = <body class="d-flex flex-column h-100 has-float-toggle">
 [global]
 
 # theme-color per scheme, only when the corresponding site setting is set
