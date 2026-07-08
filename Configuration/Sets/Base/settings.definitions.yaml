@@ -33,6 +33,9 @@ categories:
   conn.footer.address:
     label: 'Footer – Address'
     parent: conn.footer
+  conn.footer.navigation:
+    label: 'Footer – Navigation'
+    parent: conn.footer
   conn.social:
     label: 'Social Media'
   conn.meta:
@@ -657,7 +660,9 @@ settings:
       copyright: 'Copyright'
       social: 'Social links'
       navigation: 'Navigation (inline)'
-      brand: 'Brand logo'
+      brand: 'Brand'
+      brandTagline: 'Brand & tagline'
+      tagline: 'Tagline'
       '': 'Empty'
 
   footer.bar.right:
@@ -669,7 +674,9 @@ settings:
       copyright: 'Copyright'
       social: 'Social links'
       navigation: 'Navigation (inline)'
-      brand: 'Brand logo'
+      brand: 'Brand'
+      brandTagline: 'Brand & tagline'
+      tagline: 'Tagline'
       '': 'Empty'
 
   # ─── Footer – Grid columns ───────────────────────────────────────────────
@@ -679,7 +686,9 @@ settings:
     default: 'brand'
     category: conn.footer.grid
     enum:
+      brandOnly: 'Brand'
       brand: 'Brand & tagline'
+      tagline: 'Tagline'
       navigation: 'Navigation'
       address: 'Address'
       social: 'Social links'
@@ -704,10 +713,10 @@ settings:
   footer.col1.mobilealign:
     label: 'Column 1 – Text alignment (mobile, <768px)'
     type: string
-    default: ''
+    default: 'text-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-start': 'Left'
       'text-center': 'Center'
       'text-end': 'Right'
 
@@ -724,10 +733,10 @@ settings:
   footer.col1.desktopalign:
     label: 'Column 1 – Text alignment (desktop, >=768px)'
     type: string
-    default: ''
+    default: 'text-md-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-md-start': 'Left'
       'text-md-center': 'Center'
       'text-md-end': 'Right'
 
@@ -747,7 +756,9 @@ settings:
     default: 'navigation'
     category: conn.footer.grid
     enum:
+      brandOnly: 'Brand'
       brand: 'Brand & tagline'
+      tagline: 'Tagline'
       navigation: 'Navigation'
       address: 'Address'
       social: 'Social links'
@@ -772,10 +783,10 @@ settings:
   footer.col2.mobilealign:
     label: 'Column 2 – Text alignment (mobile, <768px)'
     type: string
-    default: ''
+    default: 'text-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-start': 'Left'
       'text-center': 'Center'
       'text-end': 'Right'
 
@@ -792,10 +803,10 @@ settings:
   footer.col2.desktopalign:
     label: 'Column 2 – Text alignment (desktop, >=768px)'
     type: string
-    default: ''
+    default: 'text-md-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-md-start': 'Left'
       'text-md-center': 'Center'
       'text-md-end': 'Right'
 
@@ -815,7 +826,9 @@ settings:
     default: 'address'
     category: conn.footer.grid
     enum:
+      brandOnly: 'Brand'
       brand: 'Brand & tagline'
+      tagline: 'Tagline'
       navigation: 'Navigation'
       address: 'Address'
       social: 'Social links'
@@ -840,10 +853,10 @@ settings:
   footer.col3.mobilealign:
     label: 'Column 3 – Text alignment (mobile, <768px)'
     type: string
-    default: ''
+    default: 'text-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-start': 'Left'
       'text-center': 'Center'
       'text-end': 'Right'
 
@@ -860,10 +873,10 @@ settings:
   footer.col3.desktopalign:
     label: 'Column 3 – Text alignment (desktop, >=768px)'
     type: string
-    default: ''
+    default: 'text-md-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-md-start': 'Left'
       'text-md-center': 'Center'
       'text-md-end': 'Right'
 
@@ -883,7 +896,9 @@ settings:
     default: ''
     category: conn.footer.grid
     enum:
+      brandOnly: 'Brand'
       brand: 'Brand & tagline'
+      tagline: 'Tagline'
       navigation: 'Navigation'
       address: 'Address'
       social: 'Social links'
@@ -908,10 +923,10 @@ settings:
   footer.col4.mobilealign:
     label: 'Column 4 – Text alignment (mobile, <768px)'
     type: string
-    default: ''
+    default: 'text-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-start': 'Left'
       'text-center': 'Center'
       'text-end': 'Right'
 
@@ -928,10 +943,10 @@ settings:
   footer.col4.desktopalign:
     label: 'Column 4 – Text alignment (desktop, >=768px)'
     type: string
-    default: ''
+    default: 'text-md-start'
     category: conn.footer.grid
     enum:
-      '': 'Left'
+      'text-md-start': 'Left'
       'text-md-center': 'Center'
       'text-md-end': 'Right'
 
@@ -979,6 +994,32 @@ settings:
     type: bool
     default: false
     category: conn.footer
+
+  # ─── Footer – Navigation ──────────────────────────────────────────────────
+  footer.navigation.type:
+    label: 'Source'
+    description: 'Default lists the top-level pages of the site, same as the main navigation.'
+    type: string
+    default: ''
+    category: conn.footer.navigation
+    enum:
+      '': 'Default (top-level pages)'
+      'list': 'List of pages'
+      'directory': 'Directory (subpages of a page)'
+
+  footer.navigation.pages:
+    label: 'Values'
+    description: 'Comma-separated list of page UIDs. For "List of pages" each UID becomes one menu item. For "Directory" the subpages of these UID(s) are listed.'
+    type: string
+    default: ''
+    category: conn.footer.navigation
+
+  footer.navigation.includeNotInMenu:
+    label: 'Include items not in menu'
+    description: 'Also include pages with "Hide in menu" enabled.'
+    type: bool
+    default: false
+    category: conn.footer.navigation
 
   # ─── Footer – Address ─────────────────────────────────────────────────────
   footer.address.company:
@@ -1142,6 +1183,20 @@ settings:
     description: 'Dark-mode variant. Falls back to the light icon when empty.'
     type: string
     default: ''
+    category: conn.social
+
+  social.iconWidth:
+    label: 'Icon width (px)'
+    description: 'Applies to all social icons. Match your icon files aspect ratio to avoid stretching.'
+    type: int
+    default: 16
+    category: conn.social
+
+  social.iconHeight:
+    label: 'Icon height (px)'
+    description: 'Applies to all social icons. Match your icon files aspect ratio to avoid stretching.'
+    type: int
+    default: 18
     category: conn.social
 
   # ─── Meta & Analytics ─────────────────────────────────────────────────────

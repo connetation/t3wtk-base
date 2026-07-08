@@ -89,10 +89,26 @@ page {
                 expandAll = 1
                 includeSpacer = 0
                 as = footerNavigation
+                includeNotInMenu = {$footer.navigation.includeNotInMenu}
             }
         }
     }
 }
+
+["{$footer.navigation.type}" == "list"]
+page.10.dataProcessing.40 {
+    special = list
+    special.value = {$footer.navigation.pages}
+    levels = 1
+}
+[global]
+
+["{$footer.navigation.type}" == "directory"]
+page.10.dataProcessing.40 {
+    special = directory
+    special.value = {$footer.navigation.pages}
+}
+[global]
 
 # Body class variant when the floating theme toggle is enabled
 ["{$themeToggle.position}" != ""]

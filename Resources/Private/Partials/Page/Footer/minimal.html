@@ -29,6 +29,8 @@
                     </f:case>
                     <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
                     <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                    <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                    <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
                 </f:switch>
             </div>
 
@@ -42,6 +44,8 @@
                     </f:case>
                     <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
                     <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                    <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                    <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
                 </f:switch>
             </div>
 
@@ -85,6 +89,19 @@
     </a>
 </f:section>
 
+<f:section name="BarTagline">
+    <f:if condition="{site.settings.footer.tagline}">
+        <span class="text-body-secondary small">{site.settings.footer.tagline}</span>
+    </f:if>
+</f:section>
+
+<f:section name="BarBrandTagline">
+    <f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" />
+    <f:if condition="{site.settings.footer.tagline}">
+        <span class="text-body-secondary small ms-2">{site.settings.footer.tagline}</span>
+    </f:if>
+</f:section>
+
 <f:section name="BarNavigation">
     <ul class="list-inline mb-0 small">
         <f:for each="{footerNavigation}" as="item">
@@ -100,9 +117,9 @@
         <f:if condition="{site.settings.social.githubIcon}">
             <f:then>
                 <a href="{site.settings.social.github}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <img src="{conn:resolvePath(path: site.settings.social.githubIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.githubIconDark, then: ' footer__social-icon--light')}" />
+                    <img src="{conn:resolvePath(path: site.settings.social.githubIcon)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.githubIconDark, then: ' footer__social-icon--light')}" />
                     <f:if condition="{site.settings.social.githubIconDark}">
-                        <img src="{conn:resolvePath(path: site.settings.social.githubIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                        <img src="{conn:resolvePath(path: site.settings.social.githubIconDark)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
                     </f:if>
                 </a>
             </f:then>
@@ -115,9 +132,9 @@
         <f:if condition="{site.settings.social.linkedinIcon}">
             <f:then>
                 <a href="{site.settings.social.linkedin}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <img src="{conn:resolvePath(path: site.settings.social.linkedinIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.linkedinIconDark, then: ' footer__social-icon--light')}" />
+                    <img src="{conn:resolvePath(path: site.settings.social.linkedinIcon)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.linkedinIconDark, then: ' footer__social-icon--light')}" />
                     <f:if condition="{site.settings.social.linkedinIconDark}">
-                        <img src="{conn:resolvePath(path: site.settings.social.linkedinIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                        <img src="{conn:resolvePath(path: site.settings.social.linkedinIconDark)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
                     </f:if>
                 </a>
             </f:then>
@@ -130,9 +147,9 @@
         <f:if condition="{site.settings.social.xIcon}">
             <f:then>
                 <a href="{site.settings.social.x}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                    <img src="{conn:resolvePath(path: site.settings.social.xIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.xIconDark, then: ' footer__social-icon--light')}" />
+                    <img src="{conn:resolvePath(path: site.settings.social.xIcon)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.xIconDark, then: ' footer__social-icon--light')}" />
                     <f:if condition="{site.settings.social.xIconDark}">
-                        <img src="{conn:resolvePath(path: site.settings.social.xIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                        <img src="{conn:resolvePath(path: site.settings.social.xIconDark)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
                     </f:if>
                 </a>
             </f:then>
@@ -145,9 +162,9 @@
         <f:if condition="{site.settings.social.instagramIcon}">
             <f:then>
                 <a href="{site.settings.social.instagram}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <img src="{conn:resolvePath(path: site.settings.social.instagramIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.instagramIconDark, then: ' footer__social-icon--light')}" />
+                    <img src="{conn:resolvePath(path: site.settings.social.instagramIcon)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.instagramIconDark, then: ' footer__social-icon--light')}" />
                     <f:if condition="{site.settings.social.instagramIconDark}">
-                        <img src="{conn:resolvePath(path: site.settings.social.instagramIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                        <img src="{conn:resolvePath(path: site.settings.social.instagramIconDark)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
                     </f:if>
                 </a>
             </f:then>
@@ -160,9 +177,9 @@
         <f:if condition="{site.settings.social.youtubeIcon}">
             <f:then>
                 <a href="{site.settings.social.youtube}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <img src="{conn:resolvePath(path: site.settings.social.youtubeIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.youtubeIconDark, then: ' footer__social-icon--light')}" />
+                    <img src="{conn:resolvePath(path: site.settings.social.youtubeIcon)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.youtubeIconDark, then: ' footer__social-icon--light')}" />
                     <f:if condition="{site.settings.social.youtubeIconDark}">
-                        <img src="{conn:resolvePath(path: site.settings.social.youtubeIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                        <img src="{conn:resolvePath(path: site.settings.social.youtubeIconDark)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
                     </f:if>
                 </a>
             </f:then>
@@ -175,9 +192,9 @@
         <f:if condition="{site.settings.social.facebookIcon}">
             <f:then>
                 <a href="{site.settings.social.facebook}" class="footer__social-link footer__social-link--icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <img src="{conn:resolvePath(path: site.settings.social.facebookIcon)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.facebookIconDark, then: ' footer__social-icon--light')}" />
+                    <img src="{conn:resolvePath(path: site.settings.social.facebookIcon)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon{f:if(condition: site.settings.social.facebookIconDark, then: ' footer__social-icon--light')}" />
                     <f:if condition="{site.settings.social.facebookIconDark}">
-                        <img src="{conn:resolvePath(path: site.settings.social.facebookIconDark)}" alt="" width="16" height="16" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
+                        <img src="{conn:resolvePath(path: site.settings.social.facebookIconDark)}" alt="" width="{site.settings.social.iconWidth}" height="{site.settings.social.iconHeight}" aria-hidden="true" class="footer__social-icon footer__social-icon--dark" />
                     </f:if>
                 </a>
             </f:then>

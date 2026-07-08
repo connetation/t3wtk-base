@@ -26,17 +26,13 @@
         padding: 0.2rem 0.6rem;
         font-size: 0.8125rem;
         color: var(--conn-text);
-        border: 1px solid var(--conn-border);
         border-radius: 50rem;
         text-decoration: none;
-        transition: color var(--conn-transition),
-                    border-color var(--conn-transition),
-                    background-color var(--conn-transition);
+        opacity: 1;
+        transition: opacity var(--conn-transition);
 
         &:hover {
-            color: #fff !important;
-            background-color: var(--conn-accent);
-            border-color: var(--conn-accent);
+            opacity: 0.75;
         }
 
         &--icon {
@@ -45,12 +41,6 @@
 
             img {
                 display: block;
-                width: 1rem;
-                height: 1rem;
-            }
-
-            &:hover img {
-                filter: brightness(0) invert(1);
             }
         }
     }
