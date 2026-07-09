@@ -28,6 +28,14 @@ final class ResolvePathViewHelper extends AbstractViewHelper
             return $absolute !== '' ? PathUtility::getAbsoluteWebPath($absolute) : '';
         }
 
-        return $path;
+        if (str_starts_with($path, '/') || str_starts_with($path, 'http://') || str_starts_with($path, 'https://') || str_starts_with($path, '//')) {
+            return $path;
+        }
+
+        // Editor-entered fileadmin-relative paths (e.g. "fileadmin/theme/icons/x.svg") have no
+        // leading slash, so the browser resolves them against the current page's URL directory
+        // instead of the site root — breaking on any route deeper than one path segment
+        // (e.g. news detail pages). Force them absolute from the site root.
+        return '/' . $path;
     }
 }
