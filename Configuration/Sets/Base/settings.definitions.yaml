@@ -13,7 +13,7 @@ categories:
   conn.navbar:
     label: 'Navbar'
   conn.navbar.top:
-    label: 'NavTop – Desktop'
+    label: 'NavTop'
     parent: conn.navbar
   conn.navbar.panel:
     label: 'Panel (NavLeft / NavRight / mobile)'
@@ -22,6 +22,8 @@ categories:
     label: 'Theme toggle'
   conn.branding:
     label: 'Branding'
+  conn.contact:
+    label: 'Contact Information'
   conn.footer:
     label: 'Footer'
   conn.footer.grid:
@@ -30,9 +32,6 @@ categories:
   conn.footer.bar:
     label: 'Footer – Bottom bar'
     parent: conn.footer
-  conn.footer.address:
-    label: 'Footer – Address'
-    parent: conn.footer
   conn.footer.navigation:
     label: 'Footer – Navigation'
     parent: conn.footer
@@ -40,11 +39,6 @@ categories:
     label: 'Social Media'
   conn.meta:
     label: 'Meta & Analytics'
-  # Re-declared last so it sorts to the bottom of the Site Settings sidebar.
-  # Category definitions merge last-set-wins, so this re-parents the
-  # fluid_styled_content category under our trailing "Advanced" group.
-  # NOTE: the fsc.templates path settings in there are superseded by the
-  # conn package rootPath layering (0/10/20/30) — leave them empty.
   conn.advanced:
     label: 'Advanced'
   fsc:
@@ -1505,76 +1499,76 @@ settings:
     default: false
     category: conn.footer.navigation
 
-  # ─── Footer – Address ─────────────────────────────────────────────────────
-  footer.address.company:
+  # ─── Contact Information ──────────────────────────────────────────────────
+  contact.address.company:
     label: 'Company name'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.street:
+  contact.address.street:
     label: 'Street address'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.zip:
+  contact.address.zip:
     label: 'ZIP / Postal code'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.city:
+  contact.address.city:
     label: 'City'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.country:
+  contact.address.country:
     label: 'Country'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.url:
+  contact.address.url:
     label: 'Address link (e.g. Google Maps)'
     description: 'If set, the company/street/city/country block becomes a link to this URL.'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.icon:
+  contact.address.icon:
     label: 'Address – icon'
     description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, shown next to the address (both in the footer and the navigation panel).'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.phone:
+  contact.phone:
     label: 'Phone number'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.phoneIcon:
+  contact.phoneIcon:
     label: 'Phone – icon'
     description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, shown next to the phone number (both in the footer and the navigation panel).'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.email:
+  contact.email:
     label: 'E-mail address'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
-  footer.address.emailIcon:
+  contact.emailIcon:
     label: 'E-mail – icon'
     description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, shown next to the e-mail address (both in the footer and the navigation panel).'
     type: string
     default: ''
-    category: conn.footer.address
+    category: conn.contact
 
   # ─── Social Media ─────────────────────────────────────────────────────────
   social.github:

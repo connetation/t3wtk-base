@@ -249,33 +249,33 @@
 </f:section>
 
 <f:section name="AddressLines">
-    <f:if condition="{site.settings.footer.address.company}">
-        <strong>{site.settings.footer.address.company}</strong><br />
+    <f:if condition="{site.settings.contact.address.company}">
+        <strong>{site.settings.contact.address.company}</strong><br />
     </f:if>
-    <f:if condition="{site.settings.footer.address.street}">
-        {site.settings.footer.address.street}<br />
+    <f:if condition="{site.settings.contact.address.street}">
+        {site.settings.contact.address.street}<br />
     </f:if>
-    <f:if condition="{site.settings.footer.address.zip}">
-        {site.settings.footer.address.zip}&#32;
+    <f:if condition="{site.settings.contact.address.zip}">
+        {site.settings.contact.address.zip}&#32;
     </f:if>
-    <f:if condition="{site.settings.footer.address.city}">
-        {site.settings.footer.address.city}<br />
+    <f:if condition="{site.settings.contact.address.city}">
+        {site.settings.contact.address.city}<br />
     </f:if>
-    <f:if condition="{site.settings.footer.address.country}">
-        {site.settings.footer.address.country}
+    <f:if condition="{site.settings.contact.address.country}">
+        {site.settings.contact.address.country}
     </f:if>
 </f:section>
 
 <f:section name="Address">
     <f:if condition="{showHeader}"><h6 class="footer__address-title fw-semibold text-uppercase small mb-3">Contact</h6></f:if>
     <div class="footer__address-list text-body-secondary small">
-        <f:if condition="{site.settings.footer.address.company} || {site.settings.footer.address.street} || {site.settings.footer.address.city}">
+        <f:if condition="{site.settings.contact.address.company} || {site.settings.contact.address.street} || {site.settings.contact.address.city}">
             <div class="footer__address-row">
-                <f:if condition="{site.settings.footer.address.url}">
+                <f:if condition="{site.settings.contact.address.url}">
                     <f:then>
-                        <a href="{site.settings.footer.address.url}" class="footer__address-link text-body-secondary text-decoration-none" target="_blank" rel="noopener noreferrer">
-                            <f:if condition="{site.settings.footer.address.icon}">
-                                <img src="{conn:resolvePath(path: site.settings.footer.address.icon)}" alt="" aria-hidden="true" class="footer__address-icon" />
+                        <a href="{site.settings.contact.address.url}" class="footer__address-link text-body-secondary text-decoration-none" target="_blank" rel="noopener noreferrer">
+                            <f:if condition="{site.settings.contact.address.icon}">
+                                <img src="{conn:resolvePath(path: site.settings.contact.address.icon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                             </f:if>
                             <address class="mb-0">
                                 <f:render section="AddressLines" arguments="{site: site}" />
@@ -284,8 +284,8 @@
                     </f:then>
                     <f:else>
                         <span class="footer__address-link">
-                            <f:if condition="{site.settings.footer.address.icon}">
-                                <img src="{conn:resolvePath(path: site.settings.footer.address.icon)}" alt="" aria-hidden="true" class="footer__address-icon" />
+                            <f:if condition="{site.settings.contact.address.icon}">
+                                <img src="{conn:resolvePath(path: site.settings.contact.address.icon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                             </f:if>
                             <address class="mb-0">
                                 <f:render section="AddressLines" arguments="{site: site}" />
@@ -295,23 +295,23 @@
                 </f:if>
             </div>
         </f:if>
-        <f:if condition="{site.settings.footer.address.phone}">
+        <f:if condition="{site.settings.contact.phone}">
             <div class="footer__address-row">
-                <a href="tel:{site.settings.footer.address.phone}" class="footer__link text-body-secondary text-decoration-none">
-                    <f:if condition="{site.settings.footer.address.phoneIcon}">
-                        <img src="{conn:resolvePath(path: site.settings.footer.address.phoneIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
+                <a href="tel:{site.settings.contact.phone}" class="footer__link text-body-secondary text-decoration-none">
+                    <f:if condition="{site.settings.contact.phoneIcon}">
+                        <img src="{conn:resolvePath(path: site.settings.contact.phoneIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                     </f:if>
-                    {site.settings.footer.address.phone}
+                    {site.settings.contact.phone}
                 </a>
             </div>
         </f:if>
-        <f:if condition="{site.settings.footer.address.email}">
+        <f:if condition="{site.settings.contact.email}">
             <div class="footer__address-row">
-                <a href="mailto:{site.settings.footer.address.email}" class="footer__link text-body-secondary text-decoration-none">
-                    <f:if condition="{site.settings.footer.address.emailIcon}">
-                        <img src="{conn:resolvePath(path: site.settings.footer.address.emailIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
+                <a href="mailto:{site.settings.contact.email}" class="footer__link text-body-secondary text-decoration-none">
+                    <f:if condition="{site.settings.contact.emailIcon}">
+                        <img src="{conn:resolvePath(path: site.settings.contact.emailIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                     </f:if>
-                    {site.settings.footer.address.email}
+                    {site.settings.contact.email}
                 </a>
             </div>
         </f:if>
