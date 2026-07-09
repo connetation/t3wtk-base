@@ -4,9 +4,6 @@
     <f:if condition="{data.header} || {data.subheader} || {data.date}">
         <header>
             <f:if condition="{data.header}">
-                <f:comment>header_layout 0 = "Default" resolves to the site setting
-                     styles.content.defaultHeaderType (fsc convention, mapped into
-                     {settings.defaultHeaderType} by lib.contentElement).</f:comment>
                 <f:variable name="headerLayout" value="{data.header_layout}" />
                 <f:if condition="!{headerLayout} && {settings.defaultHeaderType}">
                     <f:variable name="headerLayout" value="{settings.defaultHeaderType}" />

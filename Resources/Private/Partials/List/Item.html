@@ -1,12 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<f:comment>
-    conn_base "Liste" template layout for the news list — same shell
-    treatment (border/radius/shadow, accent-bar hover, entrance stagger) as
-    the "Karten" layout's List/Card.html, just laid out as a horizontal row
-    instead of a grid tile, so both layouts read as the same design system.
-</f:comment>
 <n:excludeDisplayedNews newsItem="{newsItem}" />
 <li class="list-group-item p-0 border-0 mb-3" style="--i: {iterator.index}">
     <article class="row g-0 conn-news-list-item">

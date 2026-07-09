@@ -2,17 +2,6 @@
 
 <f:layout name="Default" />
 
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Templates/UserRegistration/List.fluid.html:
-    Bootstrap 5 list matching the conn/events list shell, plus the same
-    "Template Layout" switch used for News/Event lists (settings.templateLayout,
-    options from Configuration/Sets/Events/page.tsconfig via
-    tx_sfeventmgt.templateLayouts). The field itself doesn't exist on this
-    plugin's FlexForm by default — it's injected by
-    Classes/EventListener/AddUserRegistrationTemplateLayoutField.php.
-    1 = Liste (row-per-registration), 2/3/4 = Karten with 2, 3 or 4 cards per
-    row (the numeric value doubles as the row-cols-lg-{n} class).
-</f:comment>
 <f:section name="main">
 
     <h1 class="mb-3"><f:translate domain="sf_event_mgt.messages" key="userRegistrations.title" /></h1>

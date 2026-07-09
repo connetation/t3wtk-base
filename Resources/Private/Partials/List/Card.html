@@ -1,13 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<f:comment>
-    conn_base "Cards" template layout for the news list — mirrors conn/elements'
-    CardGroup/Card.html structure/classes 1:1 (ratio-wrapped image, badge/title/
-    subtitle/body/footer slots) so hover, accent-bar and typography match via
-    the same --conn-* design tokens (owned by conn_base's theme), without any
-    dependency on conn/elements itself.
-</f:comment>
 <n:excludeDisplayedNews newsItem="{newsItem}" />
 <div class="col" style="--i: {iterator.index}">
     <article class="card h-100 conn-news-card">

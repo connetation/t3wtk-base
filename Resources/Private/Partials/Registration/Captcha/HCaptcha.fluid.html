@@ -1,7 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<f:comment>conn_base override of derhansen/sf_event_mgt's Partials/Registration/Captcha/HCaptcha.fluid.html — same widget, just spacing to match the rest of the form.</f:comment>
 <f:if condition="{settings.registration.captcha.enabled} && {settings.registration.captcha.hCaptcha.publicKey}">
     <div class="mb-3">
         <script src="{settings.registration.captcha.hCaptcha.apiScript}" async defer></script>

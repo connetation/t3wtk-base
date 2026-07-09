@@ -2,17 +2,6 @@
 
 <f:layout name="Default" />
 
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Templates/Event/List.fluid.html:
-    sf_event_mgt ships no Bootstrap-style template pack (unlike georgringer/news),
-    so this reskins the extension's own hand-rolled "event-list-row"/clear-div
-    markup with Bootstrap 5, and adds the same "Template Layout" switch
-    (settings.templateLayout, options from Configuration/Sets/Events/page.tsconfig
-    via tx_sfeventmgt.templateLayouts) used for the news list: 1 = Liste
-    (row-per-event), 2/3/4 = Karten with 2, 3 or 4 cards per row (the numeric
-    value doubles as the row-cols-lg-{n} class) — same visual language as
-    conn/elements' CardGroup and the conn/news list.
-</f:comment>
 
 <f:section name="main">
 

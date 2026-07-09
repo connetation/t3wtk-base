@@ -1,11 +1,4 @@
-<f:comment>
-    TYPO3's PageRenderer emits <!DOCTYPE>, <html>, <head> and <body> itself —
-    this layout renders body CONTENT only. Head meta, <html> attributes and
-    the <body> class list are configured in Base/Page.typoscript
-    (page.meta / config.htmlTag / page.bodyTagCObject / page.headerData).
-</f:comment>
 
-<f:comment>Apply stored theme immediately to prevent flash of wrong theme.</f:comment>
 <script>
     (function() {
         const stored = localStorage.getItem('conn-theme');
@@ -37,7 +30,6 @@
 <f:if condition="{footerLayout} == 'minimal'"><f:variable name="footerLayout">Minimal</f:variable></f:if>
 <f:render partial="Page/Footer/{footerLayout}" arguments="{site: site, footerNavigation: footerNavigation}" />
 
-<f:comment>Floating theme toggle (position configured via site settings)</f:comment>
 <f:if condition="{site.settings.themeToggle.position}">
     <f:if condition="{site.settings.themeToggle.enabled}">
         <f:render partial="Page/ThemeToggle" arguments="{position: site.settings.themeToggle.position, offsetX: site.settings.themeToggle.offsetX, offsetY: site.settings.themeToggle.offsetY}" />

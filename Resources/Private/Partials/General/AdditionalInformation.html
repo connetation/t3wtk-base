@@ -1,14 +1,5 @@
 <html data-namespace-typo3-fluid="true"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
-<f:comment>
-    conn_base override of georgringer/news-twb5's Partials/General/AdditionalInformation.html:
-    drops the Font Awesome icons (conn/base ships no icon font) and swaps the
-    Bootstrap 3/4 `.label.label-info` classes for real Bootstrap 5 `.badge`s.
-    Date uses a hardcoded German "d.m.Y" format instead of news' own
-    translated `dateFormat` label (source default "%m/%d/%Y") — the site has
-    no German language pack installed for EXT:news, so that label falls back
-    to the English/US format regardless of the site's de_DE locale.
-</f:comment>
 <div class="text-muted small mb-2 extra">
 
     <f:if condition="{newsItem.author}">

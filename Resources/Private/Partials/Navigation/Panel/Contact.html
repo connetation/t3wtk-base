@@ -1,12 +1,23 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
       data-namespace-typo3-fluid="true">
 <f:if condition="{site.settings.footer.address.email} || {site.settings.footer.address.phone}">
 <div class="conn-panel-contact">
-    <f:if condition="{site.settings.footer.address.email}">
-        <a href="mailto:{site.settings.footer.address.email}">{site.settings.footer.address.email}</a>
-    </f:if>
     <f:if condition="{site.settings.footer.address.phone}">
-        <a href="tel:{site.settings.footer.address.phone}">{site.settings.footer.address.phone}</a>
+        <a href="tel:{site.settings.footer.address.phone}">
+            <f:if condition="{site.settings.footer.address.phoneIcon}">
+                <img src="{conn:resolvePath(path: site.settings.footer.address.phoneIcon)}" alt="" aria-hidden="true" class="conn-panel-contact__icon" />
+            </f:if>
+            {site.settings.footer.address.phone}
+        </a>
+    </f:if>
+    <f:if condition="{site.settings.footer.address.email}">
+        <a href="mailto:{site.settings.footer.address.email}">
+            <f:if condition="{site.settings.footer.address.emailIcon}">
+                <img src="{conn:resolvePath(path: site.settings.footer.address.emailIcon)}" alt="" aria-hidden="true" class="conn-panel-contact__icon" />
+            </f:if>
+            {site.settings.footer.address.email}
+        </a>
     </f:if>
 </div>
 </f:if>

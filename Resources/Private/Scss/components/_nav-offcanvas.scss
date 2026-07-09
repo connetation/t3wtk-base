@@ -419,6 +419,9 @@
     border-bottom: 1px solid var(--conn-border);
 
     a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
         color: var(--conn-nav-text, var(--conn-text)) !important;
         opacity: 0.55;
         text-decoration: none;
@@ -426,13 +429,35 @@
 
         &:hover { opacity: 0.9; }
     }
+
+    &__icon {
+        flex: 0 0 auto;
+        width: 16px;
+        height: 16px;
+    }
 }
 
 .conn-panel-address {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     padding: 1rem 1rem;
     font-size: 0.875rem;
     text-align: var(--conn-panel-text-align, left);
     border-bottom: 1px solid var(--conn-border);
+
+    &__row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    &__icon {
+        flex: 0 0 auto;
+        width: 16px;
+        height: 16px;
+        margin-top: 0.15em;
+    }
 
     address {
         font-style: normal;
@@ -448,12 +473,35 @@
             opacity: 0.9;
             font-weight: 600;
         }
+    }
 
-        a {
-            color: inherit !important;
-            text-decoration: none;
-            transition: opacity 0.15s ease;
-            &:hover { opacity: 0.9; }
+    // display:inline-flex so the icon (when present) and text sit side by
+    // side inside the same clickable link.
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: inherit !important;
+        text-decoration: none;
+        transition: opacity 0.15s ease;
+        &:hover { opacity: 0.9; }
+    }
+
+    // The multi-line address link: only the company name should visually
+    // react on hover, not the whole street/city/country block — and
+    // without this override, the address's own opacity:0.55 (see `address`
+    // above) would compound with the generic a:hover bump above instead
+    // of highlighting anything.
+    &__link {
+        align-items: flex-start;
+
+        &:hover {
+            opacity: 1;
+
+            strong {
+                opacity: 1;
+                color: var(--conn-accent);
+            }
         }
     }
 }

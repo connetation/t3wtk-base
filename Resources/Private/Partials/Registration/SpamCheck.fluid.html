@@ -1,11 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Partials/Registration/SpamCheck.fluid.html:
-    same honeypot/challenge-response logic, just dropped the "event-registration-row"
-    wrapper (this renders hidden anti-spam fields, nothing visible to style).
-</f:comment>
 <f:if condition="{spamSettings.enabled} == 1">
     <f:if condition="{spamSettings.checks.honeypot.enabled} == 1">
         <f:if condition="{spamSettings.checks.honeypot.configuration.renderAsHiddenField} == 1">

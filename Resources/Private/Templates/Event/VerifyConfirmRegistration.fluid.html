@@ -2,13 +2,6 @@
       data-namespace-typo3-fluid="true">
 
 <f:layout name="Default" />
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Templates/Event/VerifyConfirmRegistration.fluid.html:
-    same logic, Bootstrap button + alert styling. Also translates the two
-    sentences the original hardcodes in English (a pre-existing gap in the
-    extension itself, not introduced here) into German, matching the site's
-    only configured language.
-</f:comment>
 <f:section name="main">
     <f:if condition="{confirmationPossible}">
         <f:then>

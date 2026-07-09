@@ -1,4 +1,3 @@
-<f:comment>conn_base override of derhansen/sf_event_mgt's Partials/FormErrors.fluid.html — Bootstrap 5 invalid-feedback styling instead of plain .field-errors/.error spans. Fluid already only renders this block when there ARE errors, so "d-block" is safe (no need for Bootstrap's .is-invalid-sibling CSS toggling).</f:comment>
 <f:form.validationResults for="{field}">
     <f:if condition="{validationResults.flattenedErrors}">
         <div class="invalid-feedback d-block" id="field-errors-{field}">

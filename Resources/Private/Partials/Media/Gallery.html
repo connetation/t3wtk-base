@@ -1,37 +1,10 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:comment>conn_base override of fsc's Media/Gallery partial (Text & Images,
-     Text & Media, Images) — Bootstrap grid semantics.
-
-     The editor's "Columns" select (imagecols) defines the SLOT WIDTH,
-     independent of how many images the element has:
-
-     - Above/below the text: every image spans 1/cols of the content width
-       (row-cols-{cols}); with position "center" incomplete rows are centered
-       at every breakpoint (justify-content, _gallery.scss).
-     - Beside / in text: cols defines the split between media area and text —
-       cols=2 → image area 50% / text 50%, cols=3 → 1/3 vs 2/3, … (width
-       calc(100%/cols) in _gallery.scss); images inside the area stack full
-       width (row-cols-1); the text wraps around it when a wrapping position
-       is selected (fsc float CSS).
-
-     NOTE: data.imagecols is used directly — gallery.count.columns is NOT
-     usable here because GalleryProcessor clamps it to the file count.
-     columnSpacing/rowSpacing settings feed the Bootstrap gutters; imagewidth/
-     imageheight set → conn-gallery--fixed: exact size, no fluid grid.</f:comment>
 <f:if condition="{gallery.rows}">
 
     <f:variable name="cols">{f:if(condition: data.imagecols, then: data.imagecols, else: 1)}</f:variable>
-    <f:comment>Spacing/border values come from lib.contentElement.settings.gallery
-         (Lib.typoscript) — {site.settings.*} is NOT available in the content
-         element Fluid context.</f:comment>
     <f:variable name="columnSpacing">{f:if(condition: '{settings.gallery.columnSpacing}', then: '{settings.gallery.columnSpacing}', else: '10')}</f:variable>
     <f:variable name="rowSpacing">{f:if(condition: '{settings.gallery.rowSpacing}', then: '{settings.gallery.rowSpacing}', else: '10')}</f:variable>
 
-    <f:comment>Beside text the area is 1/cols wide and images stack inside it
-         (row-cols-1) — above/below every image is its own 1/cols slot. The
-         image width ends up at 1/cols of the content width either way, so one
-         srcset `sizes` formula covers both (1320 ≈ widest container; below md
-         galleries collapse to max. 2 columns / full width beside text).</f:comment>
     <f:if condition="{gallery.position.vertical} == 'intext'">
         <f:then>
             <f:variable name="rowColsDesktop">1</f:variable>
@@ -44,9 +17,6 @@
             <f:variable name="mobileVw">{100 / rowColsMobile}</f:variable>
         </f:else>
     </f:if>
-    <f:comment>Border settings as CSS custom properties: fsc's Styling CSS only
-         borders img/iframe — the conn video thumb (a div) picks the same
-         values up via var() in Scss/components/_video.scss.</f:comment>
     <f:variable name="borderVars"><f:if condition="{data.imageborder}"> --conn-ce-border-w: {f:if(condition: '{settings.gallery.borderWidth}', then: '{settings.gallery.borderWidth}', else: '2')}px; --conn-ce-border-color: {f:if(condition: '{settings.gallery.borderColor}', then: '{settings.gallery.borderColor}', else: '#000000')}; --conn-ce-border-pad: {f:if(condition: '{settings.gallery.borderPadding}', then: '{settings.gallery.borderPadding}', else: '0')}px;</f:if></f:variable>
 
     <f:variable name="slotWidth">{1320 / cols}</f:variable>
@@ -54,8 +24,6 @@
 
     <f:if condition="{data.imagewidth} || {data.imageheight}">
         <f:then>
-            <f:comment>Editor entered an explicit size — shrink-wrapped columns
-                 at exactly that size, positioned via ce-left/center/right.</f:comment>
             <div class="ce-gallery conn-gallery conn-gallery--fixed{f:if(condition: data.imageborder, then: ' ce-border')}"
                  data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
                  style="--conn-gallery-cols: {cols}; --conn-gallery-gap: {rowSpacing}px {columnSpacing}px;{borderVars}">

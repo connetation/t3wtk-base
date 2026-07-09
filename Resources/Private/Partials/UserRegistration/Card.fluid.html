@@ -1,15 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<f:comment>
-    conn_base "Karten" template layout for the UserRegistration list — mirrors
-    conn/events' List/Card.fluid.html structure/classes so it matches the
-    news/event card grids, without the stretched-link/hover-lift behavior
-    (this card has several independent actions: event page, registration
-    detail, cancel — not a single destination). The event image
-    (settings.hideEventImage, default shown when the event has an image) is
-    injected via Classes/EventListener/AddUserRegistrationTemplateFields.php.
-</f:comment>
 <div class="col" style="--i: {iterator.index}">
     <article class="card h-100 conn-event-card" style="cursor: default;">
 

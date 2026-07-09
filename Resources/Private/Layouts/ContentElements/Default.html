@@ -4,14 +4,8 @@
 
 <f:variable name="positionClass"><f:if condition="{data.header_position}">ce-headline-{data.header_position}</f:if></f:variable>
 
-<f:comment>─── Frame attribute hook ───────────────────────────────────────────
-     Extension point for packages layered above conn_base: the partial may emit
-     extra HTML attributes for the frame div (and register assets via f:asset.*).
-     conn_base ships an empty default; e.g. conn_elements overrides it via a
-     higher partialRootPaths index to add data-text-animation.</f:comment>
 <f:variable name="frameAttributes"><f:render partial="ContentElements/FrameAttributes" arguments="{data: data}" /></f:variable>
 
-<f:comment>─── Section background (Appearance tab) ────────────────────────────</f:comment>
 <f:variable name="bgFile" value="0" />
 <f:if condition="{data.tx_conn_base_bg_type} == 'image'">
     <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_base_bg_image')}" />
@@ -41,9 +35,6 @@
     </f:if>
 </f:if>
 
-<f:comment>─── Content width (only meaningful for frame_class = none) ─────────
-     'full'      → spans the viewport, content padded via .container-fluid
-     'fullbleed' → spans the viewport, content touches the page edges</f:comment>
 <f:variable name="isFullWidth" value="0" />
 <f:if condition="{data.frame_class} == 'none'">
     <f:if condition="{data.tx_conn_base_content_width} == 'full' || {data.tx_conn_base_content_width} == 'fullbleed'">
@@ -77,9 +68,6 @@
 
         <f:if condition="{hasBg} || {isFullWidth}">
             <f:then>
-                <f:comment>No Frame sections that need a wrapper (background and/or explicit full-width
-                     content) always span the full viewport width. Content Width only decides whether
-                     the actual content also stretches edge-to-edge, or stays centered in a .container.</f:comment>
                 <div class="conn-fullbleed{bgClass}" style="{bgStyle}">
                     <f:if condition="{isFullWidth}">
                         <f:then>
@@ -91,8 +79,6 @@
                                     <f:render section="Main" optional="true" />
                                 </f:then>
                                 <f:else>
-                                    <f:comment>container-fluid: full viewport width, but with the standard
-                                         Bootstrap gutter so content never touches the page edges.</f:comment>
                                     <div class="container-fluid">
                                         <f:render section="Header" optional="true">
                                             <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />

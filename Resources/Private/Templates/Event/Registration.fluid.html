@@ -3,14 +3,6 @@
       data-namespace-typo3-fluid="true">
 
 <f:layout name="Default" />
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Templates/Event/Registration.fluid.html:
-    same fields/conditionals as the original (a flat "event-registration-row"/
-    label/value/clear dump with zero CSS framework), reflowed into Bootstrap 5
-    form markup consistent with conn/base's Event Detail page. Field-type
-    partials (Input/Textarea/Select/Radio/Check/Datetime/Divider/Text) are
-    overridden separately in Partials/Registration/Fields/.
-</f:comment>
 <f:section name="main">
     <f:if condition="{event.registrationPossible}">
         <f:then>

@@ -1,17 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:e="http://typo3.org/ns/DERHANSEN/SfEventMgt/ViewHelpers"
       data-namespace-typo3-fluid="true">
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Partials/UserRegistration/ListItem.fluid.html:
-    same fields/links, reflowed as a Bootstrap card reusing conn/events'
-    shell treatment (.conn-event-list-item, see Scss/components/_events.scss)
-    for visual consistency with the rest of the site — without the
-    stretched-link/hover-lift behavior, since this row has several
-    independent actions (event page, registration detail, cancel) rather
-    than a single destination. The event image column (settings.hideEventImage,
-    default shown when the event has an image) is injected via
-    Classes/EventListener/AddUserRegistrationTemplateFields.php.
-</f:comment>
 <div class="row g-0 conn-event-list-item" style="cursor: default; --i: {iterator.index}">
     <f:if condition="!{settings.hideEventImage} && {registration.event.firstListViewImage}">
         <div class="col-4 col-sm-3">

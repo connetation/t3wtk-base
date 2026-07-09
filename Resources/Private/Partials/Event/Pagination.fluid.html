@@ -1,12 +1,4 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:comment>
-    conn_base override of derhansen/sf_event_mgt's Partials/Event/Pagination.fluid.html:
-    the original renders a bare `<ul class="paginator">` with no CSS framework
-    at all. This mirrors the exact Bootstrap 5 `.pagination`/`.page-item`/
-    `.page-link` markup used by conn/news' (georgringer/news-twb5)
-    List/Pagination.html, so event and news lists page through identical
-    controls.
-</f:comment>
 <f:if condition="{pagination.paginator.numberOfPages} > 1">
     <nav aria-label="{f:translate(key: 'pagination.first', domain: 'sf_event_mgt.messages')}">
         <ul class="pagination">

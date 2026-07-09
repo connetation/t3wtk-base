@@ -2,9 +2,6 @@
       xmlns:conn="http://typo3.org/ns/Connetation/Base/ViewHelpers"
       data-namespace-typo3-fluid="true">
 <f:variable name="videoId"><conn:videoId url="{file.publicUrl}" /></f:variable>
-<f:comment>The video fills its gallery column (figure width 100%, 16:9 thumb box
-     via CSS) — only an explicit editor size (imagewidth/imageheight, fixed
-     gallery mode) pins it to a pixel width.</f:comment>
 <figure class="video"{f:if(condition: '{data.imagewidth} || {data.imageheight}', then: ' style="width: {dimensions.width}px;"')}>
     <a href="{file.publicUrl}"
        class="glightbox"

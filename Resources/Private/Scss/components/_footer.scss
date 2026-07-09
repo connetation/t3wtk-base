@@ -25,9 +25,69 @@
         color: var(--conn-footer-header-text, var(--conn-footer-text, var(--conn-text)));
     }
 
+    // The icon is a faint watermark absolutely centered BEHIND the text,
+    // not a flex sibling beside it — a flex layout keeps the text itself
+    // off-center (pushed aside by the icon's own width) even once the row
+    // as a whole is centered. position:relative here just gives the
+    // absolutely-positioned icon something to center against; text-align
+    // still comes from the ancestor column (mobilealign/desktopalign)
+    // since this stays inline-level (inline-block, not block/flex).
+    //
+    // z-index:0 (not just position:relative) is required so this element
+    // establishes its OWN stacking context — otherwise &__address-icon's
+    // z-index:-1 escapes to a much broader ancestor context (e.g. behind
+    // the whole footer's own background) instead of just behind this one
+    // link's own text.
     &__link {
+        position: relative;
+        z-index: 0;
+        display: inline-block;
         transition: color var(--conn-transition);
         &:hover { color: var(--conn-accent) !important; }
+    }
+
+    // Only the company name should visually react on hover — coloring the
+    // whole multi-line block would be noisy. Not sharing &__link's rule
+    // since that colors everything.
+    &__address-link {
+        position: relative;
+        z-index: 0;
+        display: inline-block;
+        color: inherit;
+
+        &:hover {
+            color: inherit !important;
+
+            strong {
+                color: var(--conn-accent) !important;
+            }
+        }
+    }
+
+    &__address-list {
+        > * + * {
+            margin-top: 0.5rem;
+        }
+    }
+
+    &__address-row {
+        display: block;
+    }
+
+    // z-index:-1 (no need to touch the text at all) — within the same
+    // stacking context, a negative-z-index positioned element always
+    // paints behind normal-flow siblings, regardless of DOM order.
+    &__address-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 36px;
+        height: 36px;
+        opacity: 0.2;
+        z-index: -1;
+        pointer-events: none;
+        max-height: 100%;
     }
 
     &__social-link {

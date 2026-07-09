@@ -1536,14 +1536,42 @@ settings:
     default: ''
     category: conn.footer.address
 
+  footer.address.url:
+    label: 'Address link (e.g. Google Maps)'
+    description: 'If set, the company/street/city/country block becomes a link to this URL.'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.icon:
+    label: 'Address – icon'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, shown next to the address (both in the footer and the navigation panel).'
+    type: string
+    default: ''
+    category: conn.footer.address
+
   footer.address.phone:
     label: 'Phone number'
     type: string
     default: ''
     category: conn.footer.address
 
+  footer.address.phoneIcon:
+    label: 'Phone – icon'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, shown next to the phone number (both in the footer and the navigation panel).'
+    type: string
+    default: ''
+    category: conn.footer.address
+
   footer.address.email:
     label: 'E-mail address'
+    type: string
+    default: ''
+    category: conn.footer.address
+
+  footer.address.emailIcon:
+    label: 'E-mail – icon'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, shown next to the e-mail address (both in the footer and the navigation panel).'
     type: string
     default: ''
     category: conn.footer.address
