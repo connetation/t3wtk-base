@@ -13,7 +13,14 @@
 //   extra-large = 6rem
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ── Frame default spacing (overridden by the classes below) ───────────────────
+.frame {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 // ── Space before ─────────────────────────────────────────────────────────────
+.frame-space-before-none        { margin-top: 0;       }
 .frame-space-before-extra-small { margin-top: 0.5rem; }
 .frame-space-before-small       { margin-top: 1rem;   }
 .frame-space-before-medium      { margin-top: 1.5rem; }
@@ -21,6 +28,7 @@
 .frame-space-before-extra-large { margin-top: 6rem;   }
 
 // ── Space after ──────────────────────────────────────────────────────────────
+.frame-space-after-none        { margin-bottom: 0;       }
 .frame-space-after-extra-small { margin-bottom: 0.5rem; }
 .frame-space-after-small       { margin-bottom: 1rem;   }
 .frame-space-after-medium      { margin-bottom: 1.5rem; }
