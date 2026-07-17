@@ -43,7 +43,14 @@
         z-index: 0;
         display: inline-block;
         transition: color var(--conn-transition);
-        &:hover { color: var(--conn-accent) !important; }
+        &:hover { color: var(--conn-footer-link-hover, var(--conn-accent-hover)) !important; }
+
+        // Overrides only the color of the sliding underline bar that
+        // _links.scss' generic a[href]::before rule already draws —
+        // position/animation stay as defined there.
+        &::before {
+            background-color: var(--conn-footer-link-hover-underline, var(--conn-accent-hover, var(--conn-link-hover))) !important;
+        }
 
         // >=md the icon moves beside the text instead of behind it — see
         // &__address-icon's own breakpoint override below.
@@ -63,6 +70,10 @@
         display: inline-block;
         color: inherit;
 
+        &::before {
+            background-color: var(--conn-footer-link-hover-underline, var(--conn-accent-hover, var(--conn-link-hover))) !important;
+        }
+
         @media (min-width: 768px) {
             display: inline-flex;
             align-items: flex-start;
@@ -73,7 +84,7 @@
             color: inherit !important;
 
             strong {
-                color: var(--conn-accent) !important;
+                color: var(--conn-footer-link-hover, var(--conn-accent-hover)) !important;
             }
         }
     }

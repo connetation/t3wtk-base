@@ -182,6 +182,20 @@ settings:
     default: ''
     category: conn.theme.light
 
+  theme.light.footerLinkHover:
+    label: 'Footer link hover'
+    description: 'Hover color for footer links (nav, address, social) for light mode. Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
+    type: string
+    default: ''
+    category: conn.theme.light
+
+  theme.light.footerLinkHoverUnderline:
+    label: 'Footer link hover underline'
+    description: 'Color of the sliding underline shown on footer link hover for light mode. Falls back to the footer link hover color when empty, then the general accent color.'
+    type: string
+    default: ''
+    category: conn.theme.light
+
   theme.light.text:
     label: 'Text color'
     description: 'Main body text color for light mode.'
@@ -340,6 +354,20 @@ settings:
   theme.dark.footerHeaderText:
     label: 'Footer header text'
     description: 'Text color for footer section headers ("Navigation", "Contact", …) for dark mode. Falls back to the footer text color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.footerLinkHover:
+    label: 'Footer link hover'
+    description: 'Hover color for footer links (nav, address, social) for dark mode. Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  theme.dark.footerLinkHoverUnderline:
+    label: 'Footer link hover underline'
+    description: 'Color of the sliding underline shown on footer link hover for dark mode. Falls back to the footer link hover color when empty, then the general accent color.'
     type: string
     default: ''
     category: conn.theme.dark
