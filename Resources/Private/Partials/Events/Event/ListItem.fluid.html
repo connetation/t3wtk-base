@@ -4,7 +4,7 @@
     <div class="col-4 col-sm-3">
         <f:if condition="{event.firstListViewImage}">
             <f:then>
-                <div class="ratio ratio-16x9 overflow-hidden rounded-start h-100">
+                <div class="ratio ratio-16x9 overflow-hidden h-100">
                     <f:if condition="{settings.detailPid} == ''">
                         <f:then>
                             <f:link.action action="detail" controller="Event" extensionName="SfEventMgt" arguments="{event : event}">
@@ -20,7 +20,7 @@
                 </div>
             </f:then>
             <f:else>
-                <div class="conn-event-card__placeholder ratio ratio-16x9 rounded-start h-100 d-flex align-items-center justify-content-center">
+                <div class="conn-event-card__placeholder ratio ratio-16x9 h-100 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="opacity-25" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
@@ -33,7 +33,7 @@
     <div class="col-8 col-sm-9 d-flex">
         <div class="p-3 d-flex flex-column flex-fill">
             <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="h6 fw-bold mb-0 me-2">
+                <h3 class="h6 fw-bold mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}">
                     <f:if condition="{settings.detailPid} == ''">
                         <f:then>
                             <f:link.action action="detail" controller="Event" extensionName="SfEventMgt" arguments="{event : event}" class="stretched-link text-decoration-none text-reset">{event.title}</f:link.action>
@@ -53,7 +53,7 @@
                 </f:if>
             </div>
 
-            <p class="text-body-secondary small mb-2">
+            <p class="text-body-secondary small mb-2 text-{f:if(condition: settings.appearance.metaAlign, then: settings.appearance.metaAlign, else: 'start')}">
                 <f:format.date format="d.m.Y, H:i">{event.startdate}</f:format.date> Uhr
                 <f:if condition="{event.location.title}">
                     <span class="mx-1">&middot;</span>{event.location.title}
@@ -66,7 +66,7 @@
                 </div>
             </f:if>
 
-            <div class="mt-2 d-flex align-items-center gap-3">
+            <div class="mt-2 d-flex align-items-center gap-3 justify-content-{f:if(condition: settings.appearance.linkAlign, then: settings.appearance.linkAlign, else: 'start')}">
                 <f:if condition="{event.registrationPossible}">
                     <f:if condition="{settings.registrationPid} !=''">
                         <f:link.action action="registration" arguments="{event : event}" class="btn btn-sm btn-outline-primary conn-event-card__visit-link" pageUid="{settings.registrationPid}">

@@ -60,6 +60,32 @@
             <trans-unit id="bg_mode.parallax">
                 <source>Parallax</source>
             </trans-unit>
+            <!-- Alignment select items (shared across every conn_base *Align flexform field) -->
+            <trans-unit id="align.left">
+                <source>Left</source>
+            </trans-unit>
+            <trans-unit id="align.center">
+                <source>Center</source>
+            </trans-unit>
+            <trans-unit id="align.right">
+                <source>Right</source>
+            </trans-unit>
+            <!-- News List/Card plugin — Alignment flexform sheet -->
+            <trans-unit id="flexform.appearance">
+                <source>Alignment</source>
+            </trans-unit>
+            <trans-unit id="flexform.titleAlign">
+                <source>Title alignment</source>
+            </trans-unit>
+            <trans-unit id="flexform.metaAlign">
+                <source>Date/author alignment</source>
+            </trans-unit>
+            <trans-unit id="flexform.bodyAlign">
+                <source>Body text alignment</source>
+            </trans-unit>
+            <trans-unit id="flexform.linkAlign">
+                <source>Link alignment</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
