@@ -1495,6 +1495,20 @@ settings:
     default: ''
     category: conn.footer
 
+  footer.logoWidth:
+    label: 'Footer logo width (px)'
+    description: 'Optional. Leave both this and footer logo height empty to use the branding logo size. Set either one to size the footer logo independently of the header (the other dimension then scales automatically).'
+    type: int
+    default: 0
+    category: conn.footer
+
+  footer.logoHeight:
+    label: 'Footer logo height (px)'
+    description: 'Optional. Leave both this and footer logo width empty to use the branding logo size. Set either one to size the footer logo independently of the header (the other dimension then scales automatically).'
+    type: int
+    default: 0
+    category: conn.footer
+
   footer.showSocial:
     label: 'Show social media links'
     type: bool

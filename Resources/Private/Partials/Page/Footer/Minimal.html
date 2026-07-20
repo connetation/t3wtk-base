@@ -12,6 +12,16 @@
     <f:then><f:variable name="darkSrc">{site.settings.footer.logoDark}</f:variable></f:then>
     <f:else><f:variable name="darkSrc">{site.settings.branding.logoDark}</f:variable></f:else>
 </f:if>
+<f:if condition="{site.settings.footer.logoWidth} || {site.settings.footer.logoHeight}">
+    <f:then>
+        <f:variable name="logoWidth">{site.settings.footer.logoWidth}</f:variable>
+        <f:variable name="logoHeight">{site.settings.footer.logoHeight}</f:variable>
+    </f:then>
+    <f:else>
+        <f:variable name="logoWidth">{site.settings.branding.logoWidth}</f:variable>
+        <f:variable name="logoHeight">{site.settings.branding.logoHeight}</f:variable>
+    </f:else>
+</f:if>
 <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 
 <f:if condition="{site.settings.footer.bar.show}">
@@ -28,8 +38,8 @@
                         </div>
                     </f:case>
                     <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
-                    <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
-                    <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                    <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                    <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                     <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
                 </f:switch>
             </div>
@@ -43,8 +53,8 @@
                         </div>
                     </f:case>
                     <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
-                    <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
-                    <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" /></f:case>
+                    <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                    <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                     <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
                 </f:switch>
             </div>
@@ -74,11 +84,11 @@
                 <f:if condition="{darkSrc}">
                     <f:then>
                         <f:variable name="resolvedDark">{conn:resolvePath(path:darkSrc)}</f:variable>
-                        <img src="{resolvedLight}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="footer-logo footer-logo--light" />
-                        <img src="{resolvedDark}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="footer-logo footer-logo--dark" />
+                        <img src="{resolvedLight}" alt="{logoAlt}" <f:if condition="{logoWidth}">width="{logoWidth}" </f:if><f:if condition="{logoHeight}">height="{logoHeight}"</f:if> class="footer-logo footer-logo--light" />
+                        <img src="{resolvedDark}" alt="{logoAlt}" <f:if condition="{logoWidth}">width="{logoWidth}" </f:if><f:if condition="{logoHeight}">height="{logoHeight}"</f:if> class="footer-logo footer-logo--dark" />
                     </f:then>
                     <f:else>
-                        <img src="{resolvedLight}" alt="{logoAlt}" <f:if condition="{site.settings.branding.logoWidth}">width="{site.settings.branding.logoWidth}" </f:if><f:if condition="{site.settings.branding.logoHeight}">height="{site.settings.branding.logoHeight}"</f:if> class="footer-logo" />
+                        <img src="{resolvedLight}" alt="{logoAlt}" <f:if condition="{logoWidth}">width="{logoWidth}" </f:if><f:if condition="{logoHeight}">height="{logoHeight}"</f:if> class="footer-logo" />
                     </f:else>
                 </f:if>
             </f:then>
@@ -103,7 +113,7 @@
 </f:section>
 
 <f:section name="BarBrandTagline">
-    <f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt}" />
+    <f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" />
     <f:if condition="{site.settings.footer.taglineIcon}">
         <f:then>
             <img src="{conn:resolvePath(path: site.settings.footer.taglineIcon)}" alt="" <f:if condition="{site.settings.footer.taglineIconWidth}"> width="{site.settings.footer.taglineIconWidth}"</f:if><f:if condition="{site.settings.footer.taglineIconHeight}"> height="{site.settings.footer.taglineIconHeight}"</f:if> class="footer__tagline-icon ms-2" />
