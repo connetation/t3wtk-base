@@ -71,6 +71,66 @@
                 <source>Parallax</source>
                 <target>Parallax</target>
             </trans-unit>
+            <trans-unit id="header_layout.default">
+                <source>Default</source>
+                <target>Standard</target>
+            </trans-unit>
+            <trans-unit id="header_layout.h1">
+                <source>H1</source>
+                <target>H1</target>
+            </trans-unit>
+            <trans-unit id="header_layout.h2">
+                <source>H2</source>
+                <target>H2</target>
+            </trans-unit>
+            <trans-unit id="header_layout.h3">
+                <source>H3</source>
+                <target>H3</target>
+            </trans-unit>
+            <trans-unit id="header_layout.h4">
+                <source>H4</source>
+                <target>H4</target>
+            </trans-unit>
+            <trans-unit id="header_layout.h5">
+                <source>H5</source>
+                <target>H5</target>
+            </trans-unit>
+            <trans-unit id="header_layout.hidden">
+                <source>Hidden</source>
+                <target>Ausgeblendet</target>
+            </trans-unit>
+            <trans-unit id="header_class">
+                <source>Header class</source>
+                <target>Header-Klasse</target>
+            </trans-unit>
+            <trans-unit id="subheader_class">
+                <source>Subheader class</source>
+                <target>Subheader-Klasse</target>
+            </trans-unit>
+            <trans-unit id="header_class.none">
+                <source>None</source>
+                <target>Keine</target>
+            </trans-unit>
+            <trans-unit id="header_class.h1">
+                <source>H1</source>
+                <target>H1</target>
+            </trans-unit>
+            <trans-unit id="header_class.h2">
+                <source>H2</source>
+                <target>H2</target>
+            </trans-unit>
+            <trans-unit id="header_class.h3">
+                <source>H3</source>
+                <target>H3</target>
+            </trans-unit>
+            <trans-unit id="header_class.h4">
+                <source>H4</source>
+                <target>H4</target>
+            </trans-unit>
+            <trans-unit id="header_class.h5">
+                <source>H5</source>
+                <target>H5</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -8,18 +8,19 @@
                 <f:if condition="!{headerLayout} && {settings.defaultHeaderType}">
                     <f:variable name="headerLayout" value="{settings.defaultHeaderType}" />
                 </f:if>
+                <f:variable name="headerClass">{positionClass}<f:if condition="{data.tx_conn_base_header_class}"> {data.tx_conn_base_header_class}</f:if></f:variable>
                 <f:switch expression="{headerLayout}">
-                    <f:case value="1"><h1 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h1></f:case>
-                    <f:case value="2"><h2 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h2></f:case>
-                    <f:case value="3"><h3 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h3></f:case>
-                    <f:case value="4"><h4 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h4></f:case>
-                    <f:case value="5"><h5 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h5></f:case>
-                    <f:case value="6"><h6 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h6></f:case>
-                    <f:defaultCase><h2 class="{positionClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h2></f:defaultCase>
+                    <f:case value="1"><h1 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h1></f:case>
+                    <f:case value="2"><h2 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h2></f:case>
+                    <f:case value="3"><h3 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h3></f:case>
+                    <f:case value="4"><h4 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h4></f:case>
+                    <f:case value="5"><h5 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h5></f:case>
+                    <f:case value="6"><h6 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h6></f:case>
+                    <f:defaultCase><h2 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h2></f:defaultCase>
                 </f:switch>
             </f:if>
             <f:if condition="{data.subheader}">
-                <p class="ce-subheader {positionClass}">{data.subheader}</p>
+                <p class="ce-subheader {positionClass}<f:if condition="{data.tx_conn_base_subheader_class}"> {data.tx_conn_base_subheader_class}</f:if>">{data.subheader}</p>
             </f:if>
         </header>
     </f:if>
