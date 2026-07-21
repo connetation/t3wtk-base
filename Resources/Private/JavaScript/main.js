@@ -3,8 +3,13 @@
  * TYPO3 LTS 14
  */
 
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import GLightbox from 'glightbox';
+
+// Bootstrap's ESM build (unlike the old UMD bundle) doesn't attach itself to
+// `window` — other scripts on the page (navbar partials) call
+// `bootstrap.Collapse`/`bootstrap.Dropdown` etc. expecting that global.
+window.bootstrap = bootstrap;
 
 // ─────────────────────────────────────────────
 // Theme management (light / dark)
