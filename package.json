@@ -15,6 +15,7 @@
     "lint:js": "eslint '**/*.js' --fix"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-emoji": "47.6.0",
     "bootstrap": "^5.3.3",
     "esbuild": "^0.21.0",
     "sass": "^1.77.0",

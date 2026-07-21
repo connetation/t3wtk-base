@@ -9,12 +9,9 @@ defined('TYPO3') or die();
 // Named RTE preset — selected per site via the conn/base Set's page.tsconfig
 // (RTE.default.preset = connBase) so other sites in the installation keep
 // the core default preset.
-$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['connBase'] = 'EXT:conn_base/Configuration/RTE/Default.yaml';
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['connBase'] = 'EXT:conn_base/Configuration/RTE/Conn.yaml';
 
-// The News List/Card plugin's "Alignment" sheet is added via the
-// AddNewsListAppearanceFields event listener (AfterFlexFormDataStructureParsedEvent),
-// not addPiFlexFormValue() — that API is deprecated in TYPO3 v14 and no longer
-// merges sheets, it just overwrites the ds pointer outright. Since
-// georgringer/news sets its own ds in Configuration/TCA/Overrides/tt_content.php,
-// which always runs after every extension's ext_localconf.php, its assignment
-// unconditionally won and this sheet never appeared.
+// Emoji picker/autocomplete editor-chrome CSS (grid, categories, tone
+// selector, search balloon) — the plugin ships this separately from its JS,
+// see Configuration/RTE/Conn.yaml and Configuration/JavaScriptModules.php.
+$GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets'][] = 'EXT:conn_base/Resources/Public/Css/ckeditor5-emoji-editor.css';

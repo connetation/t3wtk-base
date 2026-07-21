@@ -1,0 +1,46 @@
+imports:
+    - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Full.yaml' }
+
+editor:
+    config:
+        contentsCss:
+            - 'EXT:conn_base/Resources/Public/Css/main.css'
+
+        importModules:
+            - { module: '@typo3/conn-base/CKEditor/ckeditor5-emoji.js', exports: ['Emoji'] }
+
+        # Presence of this key (even empty) is the marker the
+        # ResolveEmojiDefinitionsUrl event listener checks for — it fills in
+        # definitionsUrl at runtime with an absolute URL to the self-hosted
+        # dataset, so the backend never calls cdn.ckeditor.com.
+        emoji: {}
+
+        toolbar:
+            items:
+                - emoji
+
+        # textPartLanguage only tags a lang="" attribute on the selection for
+        # a11y/spell-check — no visible effect, which read as broken to editors.
+        removePlugins:
+            - TextPartLanguage
+
+allowedOptions: 'target,title,class'
+
+buttons:
+    link:
+        properties:
+            class:
+                required: false
+                allowedClasses: 'link-external,link-file,link-pdf,link-email,btn btn-primary btn-hexagon'
+
+classes:
+    link-external:
+        name: 'External link'
+    link-file:
+        name: 'Download'
+    link-pdf:
+        name: 'PDF'
+    link-email:
+        name: 'Email'
+    'btn btn-primary btn-hexagon':
+        name: 'Hexagon button'

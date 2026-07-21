@@ -1,0 +1,15 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// RTE (CKEditor) content output — styles for markup editors produce in the
+// richtext field, applied both in the CKEditor editing view (via contentsCss)
+// and on the rendered frontend, since both load this same compiled main.css.
+// ─────────────────────────────────────────────────────────────────────────────
+
+figure.table > table {
+    width: 100%;
+}
+
+blockquote {
+    border-left: 4px solid var(--conn-accent, var(--bs-primary));
+    padding-left: 1rem;
+    color: var(--bs-secondary-color);
+}
