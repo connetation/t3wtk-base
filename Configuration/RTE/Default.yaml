@@ -1,5 +1,5 @@
 imports:
-    - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Default.yaml' }
+    - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Full.yaml' }
 
 # ── WYSIWYG accuracy ───────────────────────────────────────────────────────────
 # The CKEditor editing area only loads its own minimal contents.css by default,
