@@ -1,0 +1,13 @@
+// ── Pagination ──────────────────────────────────
+
+.pagination {
+    --bs-pagination-active-bg:           var(--conn-accent);
+    --bs-pagination-active-border-color: var(--conn-accent);
+    --bs-pagination-active-color:        var(--conn-btn-color);
+    --bs-pagination-focus-box-shadow:    0 0 0 0.25rem var(--conn-accent-glow);
+
+    // Bootstrap's Reboot resets <ul> margin-top to 0 — mirror the 1rem
+    // margin-bottom the content above it carries (e.g. news list's mb-3)
+    // so there's equal space on both sides.
+    margin-top: 1rem;
+}

@@ -116,9 +116,9 @@
             <trans-unit id="align.right">
                 <source>Right</source>
             </trans-unit>
-            <!-- News List/Card plugin — Alignment flexform sheet -->
+            <!-- News List/Card plugin — Appearance flexform sheet -->
             <trans-unit id="flexform.appearance">
-                <source>Alignment</source>
+                <source>Appearance</source>
             </trans-unit>
             <trans-unit id="flexform.titleAlign">
                 <source>Title alignment</source>
@@ -131,6 +131,24 @@
             </trans-unit>
             <trans-unit id="flexform.linkAlign">
                 <source>Link alignment</source>
+            </trans-unit>
+            <trans-unit id="flexform.cardStyle">
+                <source>Card style</source>
+            </trans-unit>
+            <trans-unit id="cardStyle.shadow">
+                <source>Shadow</source>
+            </trans-unit>
+            <trans-unit id="cardStyle.flat">
+                <source>Flat (no border)</source>
+            </trans-unit>
+            <trans-unit id="cardStyle.border">
+                <source>Border (accent color)</source>
+            </trans-unit>
+            <trans-unit id="flexform.cardBorderColor">
+                <source>Border color</source>
+            </trans-unit>
+            <trans-unit id="flexform.cardBorderRadius">
+                <source>Border radius</source>
             </trans-unit>
         </body>
     </file>

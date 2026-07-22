@@ -7,19 +7,21 @@
     <!--TYPO3SEARCH_end-->
     <f:if condition="{news}">
         <f:then>
+            <f:variable name="cardStyleClass">{f:if(condition: settings.appearance.cardStyle, then: ' conn-news-cards--{settings.appearance.cardStyle}')}</f:variable>
+            <f:variable name="cardStyleVars">{f:if(condition: settings.appearance.cardBorderColor, then: '--conn-card-border-color:{settings.appearance.cardBorderColor};')}{f:if(condition: settings.appearance.cardBorderRadius, then: '--conn-card-radius:{settings.appearance.cardBorderRadius};')}</f:variable>
             <div class="news-list-view" id="news-container-{contentObjectData.uid}">
                 <f:if condition="{settings.hidePagination}">
                     <f:then>
                         <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
                             <f:then>
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards{cardStyleClass}" style="{cardStyleVars}">
                                     <f:for each="{news}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Card" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
                                 </div>
                             </f:then>
                             <f:else>
-                                <ul class="list-group mb-3 conn-news-cards">
+                                <ul class="list-group mb-3 conn-news-cards{cardStyleClass}" style="{cardStyleVars}">
                                     <f:for each="{news}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
@@ -33,14 +35,14 @@
                         </f:if>
                         <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
                             <f:then>
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards{cardStyleClass}" style="{cardStyleVars}">
                                     <f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Card" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>
                                 </div>
                             </f:then>
                             <f:else>
-                                <ul class="list-group mb-3 conn-news-cards">
+                                <ul class="list-group mb-3 conn-news-cards{cardStyleClass}" style="{cardStyleVars}">
                                     <f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
                                         <f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
                                     </f:for>

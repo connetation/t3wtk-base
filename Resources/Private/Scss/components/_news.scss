@@ -13,9 +13,9 @@
 .conn-news-list-item {
     cursor: pointer;
     background: var(--conn-surface) !important;
-    border: 1px solid var(--conn-border) !important;
-    border-radius: var(--conn-radius) !important;
-    box-shadow: var(--conn-shadow-card);
+    border: 1px solid var(--conn-card-border-color, var(--conn-accent)) !important;
+    border-radius: var(--conn-card-radius, var(--conn-radius)) !important;
+    box-shadow: none;
     color: var(--conn-text);
     overflow: hidden;
     position: relative;
@@ -40,8 +40,8 @@
     &:hover,
     &:focus-within {
         transform: translateY(-5px);
-        box-shadow: var(--conn-shadow-hover) !important;
-        border-color: var(--conn-border-strong) !important;
+        box-shadow: none !important;
+        border-color: var(--conn-card-border-color, var(--conn-accent)) !important;
         outline: none;
 
         &::after {
@@ -52,6 +52,37 @@
     .card-img-top,
     .object-fit-cover {
         object-fit: cover;
+    }
+}
+
+// ── Card style variants (Appearance flexform sheet) ────────────────────────
+.conn-news-cards {
+    &--flat {
+        .conn-news-card,
+        .conn-news-list-item {
+            border: none !important;
+            box-shadow: none !important;
+
+            &:hover,
+            &:focus-within {
+                box-shadow: none !important;
+                border-color: transparent !important;
+            }
+        }
+    }
+
+    &--shadow {
+        .conn-news-card,
+        .conn-news-list-item {
+            border: none !important;
+            box-shadow: 0 4px 20px var(--conn-card-shadow-color, var(--conn-accent-glow));
+
+            &:hover,
+            &:focus-within {
+                border-color: transparent !important;
+                box-shadow: var(--conn-sh-x) var(--conn-sh-y) var(--conn-sh-blur) var(--conn-sh-spread) var(--conn-card-shadow-color, var(--conn-sh-color)) !important;
+            }
+        }
     }
 }
 
@@ -80,10 +111,6 @@
 }
 
 // Interactive elements nested inside .conn-news-card/.conn-news-list-item
-// also carry a `.stretched-link` (the title) that makes the whole card
-// clickable via a full-cover `::after` at z-index: 1 (Bootstrap core) — any
-// other link/button in the same card needs an explicit z-index above that to
-// remain independently hoverable/clickable instead of being covered by it.
 .conn-news-card__visit-link {
     position: relative;
     z-index: 2;
@@ -93,10 +120,6 @@
 
 // ── Entrance animation ──────────────────────────────────────────────────────
 // GSAP powers this same stagger-fade-in on conn/elements' CardGroup
-// (card-group.ts); conn_base has no JS animation library of its own, so this
-// reproduces the identical opacity/translateY stagger with a CSS animation
-// driven by a tiny IntersectionObserver in JavaScript/main.js — same visual
-// result, no new dependency for the foundation package.
 @media (prefers-reduced-motion: no-preference) {
     .conn-news-cards .col,
     .conn-news-cards .conn-news-list-item {
@@ -105,18 +128,12 @@
 
     .conn-news-cards.is-visible .col,
     .conn-news-cards.is-visible .conn-news-list-item {
-        animation: conn-news-card-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation: conn-news-fade-in 0.4s ease-out both;
         animation-delay: calc(var(--i, 0) * 70ms);
     }
 }
 
-@keyframes conn-news-card-in {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes conn-news-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

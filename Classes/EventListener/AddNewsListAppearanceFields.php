@@ -8,10 +8,12 @@ use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
 
 /**
- * Adds an "Alignment" sheet to georgringer/news' List/Card plugin (news_pi1),
+ * Adds an "Appearance" sheet to georgringer/news' List/Card plugin (news_pi1),
  * read by Partials/News/List/{Item,Card}.html as
- * settings.appearance.{titleAlign,metaAlign,bodyAlign,linkAlign}. Mirrors
- * AddEventListAppearanceFields for derhansen/sf_event_mgt.
+ * settings.appearance.{titleAlign,metaAlign,bodyAlign,linkAlign} and by
+ * Templates/News/List.html as settings.appearance.{cardStyle,cardBorderColor,
+ * cardBorderRadius}. Mirrors AddEventListAppearanceFields for
+ * derhansen/sf_event_mgt.
  *
  * Deliberately NOT done via ExtensionManagementUtility::addPiFlexFormValue()
  * (used in ext_localconf.php for older TYPO3 versions): that API is
@@ -81,6 +83,34 @@ final class AddNewsListAppearanceFields
                             'renderType' => 'selectSingle',
                             'items' => $alignItems,
                             'default' => 'start',
+                        ],
+                    ],
+                    'settings.appearance.cardStyle' => [
+                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.cardStyle',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'items' => [
+                                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:cardStyle.border', 'value' => ''],
+                                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:cardStyle.shadow', 'value' => 'shadow'],
+                                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:cardStyle.flat', 'value' => 'flat'],
+                            ],
+                            'default' => '',
+                        ],
+                    ],
+                    'settings.appearance.cardBorderColor' => [
+                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderColor',
+                        'config' => [
+                            'type' => 'color',
+                            'default' => '',
+                        ],
+                    ],
+                    'settings.appearance.cardBorderRadius' => [
+                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderRadius',
+                        'config' => [
+                            'type' => 'input',
+                            'default' => '',
+                            'placeholder' => 'e.g. 12px',
                         ],
                     ],
                 ],
