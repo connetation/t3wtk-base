@@ -6,6 +6,13 @@
 
 <f:variable name="frameAttributes"><f:render partial="ContentElements/FrameAttributes" arguments="{data: data}" /></f:variable>
 
+<f:variable name="headerAndMain">
+    <f:render section="Header" optional="true">
+        <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
+    </f:render>
+    <f:render section="Main" optional="true" />
+</f:variable>
+
 <f:variable name="bgFile" value="0" />
 <f:if condition="{data.tx_conn_base_bg_type} == 'image'">
     <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_base_bg_image')}" />
@@ -49,10 +56,7 @@
             <f:if condition="{data._LOCALIZED_UID}">
                 <a id="c{data._LOCALIZED_UID}"></a>
             </f:if>
-            <f:render section="Header" optional="true">
-                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-            </f:render>
-            <f:render section="Main" optional="true" />
+            {headerAndMain -> f:format.raw()}
         </div>
 
     </f:then>
@@ -73,27 +77,18 @@
                         <f:then>
                             <f:if condition="{data.tx_conn_base_content_width} == 'fullbleed'">
                                 <f:then>
-                                    <f:render section="Header" optional="true">
-                                        <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-                                    </f:render>
-                                    <f:render section="Main" optional="true" />
+                                    {headerAndMain -> f:format.raw()}
                                 </f:then>
                                 <f:else>
                                     <div class="container-fluid">
-                                        <f:render section="Header" optional="true">
-                                            <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-                                        </f:render>
-                                        <f:render section="Main" optional="true" />
+                                        {headerAndMain -> f:format.raw()}
                                     </div>
                                 </f:else>
                             </f:if>
                         </f:then>
                         <f:else>
                             <div class="container">
-                                <f:render section="Header" optional="true">
-                                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-                                </f:render>
-                                <f:render section="Main" optional="true" />
+                                {headerAndMain -> f:format.raw()}
                             </div>
                         </f:else>
                     </f:if>
@@ -103,17 +98,11 @@
                 <f:if condition="{animationSettings}">
                     <f:then>
                         <div{animationSettings -> f:format.raw()}>
-                            <f:render section="Header" optional="true">
-                                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-                            </f:render>
-                            <f:render section="Main" optional="true" />
+                            {headerAndMain -> f:format.raw()}
                         </div>
                     </f:then>
                     <f:else>
-                        <f:render section="Header" optional="true">
-                            <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-                        </f:render>
-                        <f:render section="Main" optional="true" />
+                        {headerAndMain -> f:format.raw()}
                     </f:else>
                 </f:if>
             </f:else>
