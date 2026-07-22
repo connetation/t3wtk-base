@@ -1,26 +1,3 @@
-# ─────────────────────────────────────────────────────────────────────────────
-# Content Element Backgrounds — Appearance tab (background color/image)
-#
-# Adds a higher-priority layoutRootPaths entry so every content element renders
-# through conn_base's own ContentElements/Default.html instead of whichever
-# extension's copy it would otherwise use.
-#
-# Two mechanisms are needed because of how TypoScript's `=<` copy operator works
-# (it snapshots the source object's CURRENT state — later changes to the source
-# don't retroactively reach anything already copied from it):
-#
-# 1. The standard fluid_styled_content CTypes are copied from lib.contentElement
-#    at the very top of this extension's own setup.typoscript (the
-#    `@import 'EXT:fluid_styled_content/...'` line), before this file runs — so
-#    we patch each of those already-made copies directly.
-# 2. Content-element extensions layered above conn_base (e.g. the optional
-#    EXT:conn_elements library) copy `lib.contentElement` into their own base
-#    object INSIDE their extension, which — since they depend on conn_base and
-#    Sets load in dependency order — always runs after this whole file. For
-#    those, simply updating lib.contentElement itself is enough: their later
-#    `=<` copy picks up this layoutRootPaths entry automatically.
-# ─────────────────────────────────────────────────────────────────────────────
-
 lib.contentElement.layoutRootPaths.30  = EXT:conn_base/Resources/Private/Layouts/ContentElements/
 lib.contentElement.partialRootPaths.30 = EXT:conn_base/Resources/Private/Partials/
 
@@ -47,3 +24,6 @@ tt_content.table.partialRootPaths.30     = EXT:conn_base/Resources/Private/Parti
 tt_content.uploads.partialRootPaths.30   = EXT:conn_base/Resources/Private/Partials/
 tt_content.shortcut.partialRootPaths.30  = EXT:conn_base/Resources/Private/Partials/
 tt_content.div.partialRootPaths.30       = EXT:conn_base/Resources/Private/Partials/
+
+lib.contentElement.layoutRootPaths.100 >
+lib.conn_elements_ce.layoutRootPaths.100 >

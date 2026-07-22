@@ -49,6 +49,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'displayCond' => 'FIELD:tx_conn_base_bg_type:=:color',
         'config'      => [
             'type'    => 'color',
+            'opacity' => true,
             'default' => '',
         ],
     ],
@@ -57,6 +58,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'displayCond' => 'FIELD:tx_conn_base_bg_type:=:color',
         'config'      => [
             'type'    => 'color',
+            'opacity' => true,
             'default' => '',
         ],
     ],

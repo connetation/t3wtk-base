@@ -45,7 +45,7 @@
 <f:if condition="{data.frame_class} != none">
     <f:then>
 
-        <div id="c{data.uid}" class="frame frame-{data.frame_class} frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{bgClass}" {frameAttributes -> f:format.raw()} style="{bgStyle}">
+        <div id="c{data.uid}" class="frame frame-{data.frame_class} frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{bgClass}" {frameAttributes -> f:format.raw()}{f:if(condition: animationSettings, then: '{animationSettings -> f:format.raw()}')} style="{bgStyle}">
             <f:if condition="{data._LOCALIZED_UID}">
                 <a id="c{data._LOCALIZED_UID}"></a>
             </f:if>
@@ -68,7 +68,7 @@
 
         <f:if condition="{hasBg} || {isFullWidth}">
             <f:then>
-                <div class="conn-fullbleed{bgClass}" style="{bgStyle}">
+                <div class="conn-fullbleed{bgClass}"{f:if(condition: animationSettings, then: '{animationSettings -> f:format.raw()}')} style="{bgStyle}">
                     <f:if condition="{isFullWidth}">
                         <f:then>
                             <f:if condition="{data.tx_conn_base_content_width} == 'fullbleed'">
@@ -100,10 +100,22 @@
                 </div>
             </f:then>
             <f:else>
-                <f:render section="Header" optional="true">
-                    <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
-                </f:render>
-                <f:render section="Main" optional="true" />
+                <f:if condition="{animationSettings}">
+                    <f:then>
+                        <div{animationSettings -> f:format.raw()}>
+                            <f:render section="Header" optional="true">
+                                <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
+                            </f:render>
+                            <f:render section="Main" optional="true" />
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <f:render section="Header" optional="true">
+                            <f:render partial="ContentElements/HeaderSwitch" arguments="{data: data, positionClass: positionClass, settings: settings}" />
+                        </f:render>
+                        <f:render section="Main" optional="true" />
+                    </f:else>
+                </f:if>
             </f:else>
         </f:if>
 
