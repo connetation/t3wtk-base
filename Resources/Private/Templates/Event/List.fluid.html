@@ -18,18 +18,21 @@
         </div>
     </f:if>
 
+    <f:variable name="cardStyleClass">{f:if(condition: settings.appearance.cardStyle, then: ' conn-event-cards--{settings.appearance.cardStyle}')}</f:variable>
+    <f:variable name="cardStyleVars">{f:if(condition: "{settings.appearance.cardBorderColor} != ''", then: '--conn-card-border-color:{settings.appearance.cardBorderColor};')}{f:if(condition: "{settings.appearance.cardBorderRadius} != ''", then: '--conn-card-radius:{settings.appearance.cardBorderRadius};')}</f:variable>
+
     <f:if condition="{pagination}">
         <f:then>
             <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
                 <f:then>
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards{cardStyleClass}" style="{cardStyleVars}">
                         <f:for each="{pagination.paginator.paginatedItems}" as="event" iteration="iterator">
                             <f:render partial="Event/Card" arguments="{_all}"/>
                         </f:for>
                     </div>
                 </f:then>
                 <f:else>
-                    <div class="d-flex flex-column gap-3 conn-event-cards">
+                    <div class="d-flex flex-column gap-3 conn-event-cards{cardStyleClass}" style="{cardStyleVars}">
                         <f:for each="{pagination.paginator.paginatedItems}" as="event" iteration="iterator">
                             <f:render partial="Event/ListItem" arguments="{_all}"/>
                         </f:for>
@@ -41,14 +44,14 @@
         <f:else>
             <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
                 <f:then>
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards{cardStyleClass}" style="{cardStyleVars}">
                         <f:for each="{events}" as="event" iteration="iterator">
                             <f:render partial="Event/Card" arguments="{_all}"/>
                         </f:for>
                     </div>
                 </f:then>
                 <f:else>
-                    <div class="d-flex flex-column gap-3 conn-event-cards">
+                    <div class="d-flex flex-column gap-3 conn-event-cards{cardStyleClass}" style="{cardStyleVars}">
                         <f:for each="{events}" as="event" iteration="iterator">
                             <f:render partial="Event/ListItem" arguments="{_all}"/>
                         </f:for>

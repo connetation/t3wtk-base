@@ -61,7 +61,7 @@
             </p>
 
             <f:if condition="{event.teaser}">
-                <div class="conn-event-card__body small flex-grow-1">
+                <div class="conn-event-card__body small flex-grow-1 text-{f:if(condition: settings.appearance.bodyAlign, then: settings.appearance.bodyAlign, else: 'start')}">
                     {event.teaser}
                 </div>
             </f:if>

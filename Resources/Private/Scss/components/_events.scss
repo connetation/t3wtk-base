@@ -1,22 +1,17 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Events (derhansen/sf_event_mgt) — "Liste" and "Karten" template layouts
 //
-// sf_event_mgt ships no Bootstrap template pack of its own (unlike
-// georgringer/news), so this is a from-scratch skin — but it deliberately
-// mirrors conn/news' .conn-news-card / .conn-news-list-item treatment
-// (see _news.scss) 1:1, which itself mirrors conn/elements' CardGroup, so
-// all three "card" surfaces across the site look/feel identical. Kept as a
-// separate ruleset (not shared/refactored with _news.scss) so the
-// already-verified news styling is never touched by event-related changes.
+// from-scratch skin — but that mirrors 
+// conn/news' .conn-news-card / .conn-news-list-item (see _news.scss)
 // ─────────────────────────────────────────────────────────────────────────────
 
 .conn-event-card,
 .conn-event-list-item {
     cursor: pointer;
     background: var(--conn-surface) !important;
-    border: 1px solid var(--conn-border) !important;
-    border-radius: var(--conn-radius) !important;
-    box-shadow: var(--conn-shadow-card);
+    border: 1px solid var(--conn-card-border-color, var(--conn-accent)) !important;
+    border-radius: var(--conn-card-radius, var(--conn-radius)) !important;
+    box-shadow: none;
     color: var(--conn-text);
     overflow: hidden;
     position: relative;
@@ -41,8 +36,8 @@
     &:hover,
     &:focus-within {
         transform: translateY(-5px);
-        box-shadow: var(--conn-shadow-hover) !important;
-        border-color: var(--conn-border-strong) !important;
+        box-shadow: none !important;
+        border-color: var(--conn-card-border-color, var(--conn-accent)) !important;
         outline: none;
 
         &::after {
@@ -52,6 +47,37 @@
 
     .object-fit-cover {
         object-fit: cover;
+    }
+}
+
+// ── Card style variants (Appearance flexform sheet) ────────────────────────
+.conn-event-cards {
+    &--flat {
+        .conn-event-card,
+        .conn-event-list-item {
+            border: none !important;
+            box-shadow: none !important;
+
+            &:hover,
+            &:focus-within {
+                box-shadow: none !important;
+                border-color: transparent !important;
+            }
+        }
+    }
+
+    &--shadow {
+        .conn-event-card,
+        .conn-event-list-item {
+            border: none !important;
+            box-shadow: 0 4px 20px var(--conn-card-shadow-color, var(--conn-accent-glow));
+
+            &:hover,
+            &:focus-within {
+                border-color: transparent !important;
+                box-shadow: var(--conn-sh-x) var(--conn-sh-y) var(--conn-sh-blur) var(--conn-sh-spread) var(--conn-card-shadow-color, var(--conn-sh-color)) !important;
+            }
+        }
     }
 }
 
@@ -78,9 +104,6 @@
     p:last-child { margin-bottom: 0; }
 }
 
-// See _news.scss for why this needs its own stacking context: the title's
-// .stretched-link covers the whole card via a `z-index: 1` ::after, so any
-// other interactive element (this button) needs to sit above it explicitly.
 .conn-event-card__visit-link {
     position: relative;
     z-index: 2;
@@ -89,10 +112,6 @@
 }
 
 // ── Entrance animation ──────────────────────────────────────────────────────
-// Same CSS-driven stagger fade/slide-in as conn/news (see _news.scss) and
-// conn/elements' CardGroup (GSAP) — triggered by the shared
-// initNewsCardReveal() IntersectionObserver in JavaScript/main.js, which
-// watches any `.conn-news-cards`/`.conn-event-cards` element.
 @media (prefers-reduced-motion: no-preference) {
     .conn-event-cards .col,
     .conn-event-cards .conn-event-list-item {
@@ -101,7 +120,7 @@
 
     .conn-event-cards.is-visible .col,
     .conn-event-cards.is-visible .conn-event-list-item {
-        animation: conn-news-card-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation: conn-news-fade-in 0.4s ease-out both;
         animation-delay: calc(var(--i, 0) * 70ms);
     }
 }
