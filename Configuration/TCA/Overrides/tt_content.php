@@ -95,6 +95,28 @@ ExtensionManagementUtility::addFieldsToPalette(
     'after:frame_class'
 );
 
+// ─── Space Before/After — extend core's 6-step scale to match --conn-space-* ──
+// Core only ships extra-small…extra-large (5 sizes + none), leaving out the
+// smallest and largest --conn-space-* tokens. Add them at both ends so editors
+// can reach the full 2xs…2xl scale. Rendered generically by Default.html as
+// .frame-space-before-{value} / .frame-space-after-{value} — see _content-frames.scss.
+foreach (['space_before_class', 'space_after_class'] as $spaceField) {
+    ExtensionManagementUtility::addTcaSelectItem(
+        'tt_content',
+        $spaceField,
+        ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_small', 'value' => 'extra-extra-small'],
+        'extra-small',
+        'before'
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'tt_content',
+        $spaceField,
+        ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_large', 'value' => 'extra-extra-large'],
+        'extra-large',
+        'after'
+    );
+}
+
 // ─── Header/Subheader — relabel header_layout, add class overrides ────────
 // Core's own labels are "Layout 1".."Layout 5", which don't tell editors
 // which heading tag they're actually choosing — relabel to the real tag

@@ -60,6 +60,13 @@
             <trans-unit id="bg_mode.parallax">
                 <source>Parallax</source>
             </trans-unit>
+            <!-- Space Before/After (frames palette, all content types) -->
+            <trans-unit id="space_class.extra_extra_small">
+                <source>Extra Extra Small</source>
+            </trans-unit>
+            <trans-unit id="space_class.extra_extra_large">
+                <source>Extra Extra Large</source>
+            </trans-unit>
             <!-- Header/Subheader (header/headers palettes, all content types) -->
             <trans-unit id="header_layout.default">
                 <source>Default</source>

@@ -6,11 +6,13 @@
 // to Bootstrap-equivalent spacing and decoration so they have visual effect.
 //
 // Frame spacing scale matches the --conn-space-* tokens (theme/_light.scss):
-//   extra-small = --conn-space-xs  (8px)
-//   small       = --conn-space-sm  (16px)
-//   medium      = --conn-space-md  (20–24px fluid)
-//   large       = --conn-space-xl  (40–64px fluid)
-//   extra-large = --conn-space-2xl (56–96px fluid)
+//   extra-extra-small = --conn-space-2xs (4px)
+//   extra-small       = --conn-space-xs  (8px)
+//   small             = --conn-space-sm  (16px)
+//   medium            = --conn-space-md  (20–24px fluid)
+//   large             = --conn-space-lg  (28–40px fluid) — matches the default
+//   extra-large       = --conn-space-xl  (40–64px fluid)
+//   extra-extra-large = --conn-space-2xl (56–96px fluid)
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ── Frame default spacing (overridden by the classes below) ───────────────────
@@ -20,20 +22,26 @@
 }
 
 // ── Space before ─────────────────────────────────────────────────────────────
-.frame-space-before-none        { margin-top: 0; }
-.frame-space-before-extra-small { margin-top: var(--conn-space-xs);  }
-.frame-space-before-small       { margin-top: var(--conn-space-sm);  }
-.frame-space-before-medium      { margin-top: var(--conn-space-md);  }
-.frame-space-before-large       { margin-top: var(--conn-space-xl);  }
-.frame-space-before-extra-large { margin-top: var(--conn-space-2xl); }
+.frame-space-before-default           { margin-top: var(--conn-space-lg); }
+.frame-space-before-none              { margin-top: 0; }
+.frame-space-before-extra-extra-small { margin-top: var(--conn-space-2xs); }
+.frame-space-before-extra-small       { margin-top: var(--conn-space-xs);  }
+.frame-space-before-small             { margin-top: var(--conn-space-sm);  }
+.frame-space-before-medium            { margin-top: var(--conn-space-md);  }
+.frame-space-before-large             { margin-top: var(--conn-space-lg); }
+.frame-space-before-extra-large       { margin-top: var(--conn-space-xl); }
+.frame-space-before-extra-extra-large { margin-top: var(--conn-space-2xl); }
 
 // ── Space after ──────────────────────────────────────────────────────────────
-.frame-space-after-none        { margin-bottom: 0; }
-.frame-space-after-extra-small { margin-bottom: var(--conn-space-xs);  }
-.frame-space-after-small       { margin-bottom: var(--conn-space-sm);  }
-.frame-space-after-medium      { margin-bottom: var(--conn-space-md);  }
-.frame-space-after-large       { margin-bottom: var(--conn-space-xl);  }
-.frame-space-after-extra-large { margin-bottom: var(--conn-space-2xl); }
+.frame-space-after-default           { margin-bottom: var(--conn-space-lg); }
+.frame-space-after-none              { margin-bottom: 0; }
+.frame-space-after-extra-extra-small { margin-bottom: var(--conn-space-2xs); }
+.frame-space-after-extra-small       { margin-bottom: var(--conn-space-xs);  }
+.frame-space-after-small             { margin-bottom: var(--conn-space-sm);  }
+.frame-space-after-medium            { margin-bottom: var(--conn-space-md);  }
+.frame-space-after-large             { margin-bottom: var(--conn-space-lg); }
+.frame-space-after-extra-large       { margin-bottom: var(--conn-space-xl); }
+.frame-space-after-extra-extra-large { margin-bottom: var(--conn-space-2xl); }
 
 // ── Frame decorations ─────────────────────────────────────────────────────────
 .frame-ruler-before {
@@ -50,32 +58,6 @@
 .frame-indent-left  { padding-left: var(--conn-space-lg);   }
 .frame-indent-right { padding-right: var(--conn-space-lg);  }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Full-viewport breakout for full-width content elements
-//
-// When frame_class = none, these CEs render as direct children of .container
-// (no .frame div wrapper). The > combinator breaks them out to 100vw.
-// With a frame (.frame > .conn-*) the combinator does NOT match,
-// so framed elements stay inside their frame as intended.
-// ─────────────────────────────────────────────────────────────────────────────
-
 main#main-content {
     overflow-x: hidden;
-}
-
-.container {
-    // Swiper sliders — always full-width
-    > .conn-hero-slider,
-    > .conn-slider,
-    > .conn-thumbs-slider,
-    > .conn-parallax-slider,
-    // Bootstrap elements — full-width when frame = none
-    > .conn-bs-carousel,
-    > .conn-accordion,
-    > .conn-card-group {
-        width: 100vw;
-        max-width: none;
-        margin-left: calc((100% - 100vw) / 2);
-        margin-right: calc((100% - 100vw) / 2);
-    }
 }

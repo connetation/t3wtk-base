@@ -67,7 +67,12 @@
             <a id="c{data._LOCALIZED_UID}"></a>
         </f:if>
         <f:if condition="{data.space_before_class}">
-            <div class="frame-space-before-{data.space_before_class}"></div>
+            <f:then>
+                <div class="frame-space-before-{data.space_before_class}"></div>
+            </f:then>
+            <f:else>
+                <div class="frame-space-before-default"></div>
+            </f:else>
         </f:if>
 
         <f:if condition="{hasBg} || {isFullWidth}">
@@ -109,7 +114,12 @@
         </f:if>
 
         <f:if condition="{data.space_after_class}">
-            <div class="frame-space-after-{data.space_after_class}"></div>
+            <f:then>
+                <div class="frame-space-after-{data.space_after_class}"></div>
+            </f:then>
+            <f:else>
+                <div class="frame-space-after-default"></div>
+            </f:else>
         </f:if>
 
     </f:else>
