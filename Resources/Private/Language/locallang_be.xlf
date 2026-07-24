@@ -14,6 +14,9 @@
             <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
             </trans-unit>
+            <trans-unit id="pages.tx_conn_base_bg_color">
+                <source>Page Background Color</source>
+            </trans-unit>
             <!-- Content Element Background (Appearance tab, all content types) -->
             <trans-unit id="content_width">
                 <source>Content Width</source>
