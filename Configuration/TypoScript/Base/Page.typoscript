@@ -17,8 +17,14 @@ page {
     # only when their site setting is active.
     bodyTagCObject = COA
     bodyTagCObject {
-        10 = TEXT
-        10.value = <body class="d-flex flex-column h-100
+        5 = TEXT
+        5.value = <body id="page-
+
+        7 = TEXT
+        7.data = page:uid
+
+        9 = TEXT
+        9.value = " class="d-flex flex-column h-100
 
         15 = TEXT
         15.char = 32
@@ -111,6 +117,19 @@ page {
                 as = footerNavigation
                 includeNotInMenu = {$footer.navigation.includeNotInMenu}
             }
+
+            # Separate, independently curated menu for the footer bottom-bar
+            # "Navigation (inline)" slot (e.g. Impressum, AGB, FAQ) — kept
+            # apart from footerNavigation above so the bar doesn't just repeat
+            # the full footer menu.
+            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            50 {
+                levels = 1
+                expandAll = 1
+                includeSpacer = 0
+                as = footerBarNavigation
+                includeNotInMenu = {$footer.barNavigation.includeNotInMenu}
+            }
         }
     }
 }
@@ -127,6 +146,21 @@ page.10.dataProcessing.40 {
 page.10.dataProcessing.40 {
     special = directory
     special.value = {$footer.navigation.pages}
+}
+[global]
+
+["{$footer.barNavigation.type}" == "list"]
+page.10.dataProcessing.50 {
+    special = list
+    special.value = {$footer.barNavigation.pages}
+    levels = 1
+}
+[global]
+
+["{$footer.barNavigation.type}" == "directory"]
+page.10.dataProcessing.50 {
+    special = directory
+    special.value = {$footer.barNavigation.pages}
 }
 [global]
 

@@ -30,11 +30,31 @@ ExtensionManagementUtility::addTCAcolumns('pages', [
             'default' => '',
         ],
     ],
+    // Per-page override of --conn-text / --bs-body-color (theme/_light.scss, theme/_dark.scss).
+    // Rendered by Partials/Page/ThemeVars.html for both light and dark mode.
+    'tx_conn_base_text_color' => [
+        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_base_text_color',
+        'config' => [
+            'type'    => 'color',
+            'opacity' => true,
+            'default' => '',
+        ],
+    ],
+    // Per-page override of --conn-heading / --bs-heading-color (theme/_light.scss, theme/_dark.scss).
+    // Rendered by Partials/Page/ThemeVars.html for both light and dark mode.
+    'tx_conn_base_heading_color' => [
+        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:pages.tx_conn_base_heading_color',
+        'config' => [
+            'type'    => 'color',
+            'opacity' => true,
+            'default' => '',
+        ],
+    ],
 ]);
 
 ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
-    '--div--;Connetation,tx_conn_base_hide_breadcrumb,tx_conn_base_bg_color',
+    '--div--;Connetation,tx_conn_base_hide_breadcrumb,tx_conn_base_bg_color,tx_conn_base_text_color,tx_conn_base_heading_color',
     '',
     'after:title'
 );

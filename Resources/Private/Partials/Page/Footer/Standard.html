@@ -87,39 +87,60 @@
 
         </div>
 
-        <f:if condition="{site.settings.footer.bar.show}">
+        <f:if condition="{site.settings.footer.bar.show} && ({site.settings.footer.bar.left} || {site.settings.footer.bar.center} || {site.settings.footer.bar.right})">
             <hr class="mt-4" />
             <div class="row align-items-center g-2">
 
-                <div class="col-md-6 {site.settings.footer.bar.leftMobileAlign} text-md-start text-body-secondary small">
-                    <f:switch expression="{site.settings.footer.bar.left}">
-                        <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
-                        <f:case value="social">
-                            <div class="footer__social d-flex flex-wrap gap-2">
-                                <f:render section="SocialLinks" arguments="{site: site}" />
-                            </div>
-                        </f:case>
-                        <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
-                        <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
-                        <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
-                        <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
-                    </f:switch>
-                </div>
+                <f:if condition="{site.settings.footer.bar.left}">
+                    <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start text-body-secondary small">
+                        <f:switch expression="{site.settings.footer.bar.left}">
+                            <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
+                            <f:case value="social">
+                                <div class="footer__social d-flex flex-wrap gap-2">
+                                    <f:render section="SocialLinks" arguments="{site: site}" />
+                                </div>
+                            </f:case>
+                            <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerBarNavigation: footerBarNavigation}" /></f:case>
+                            <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                            <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                            <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
+                        </f:switch>
+                    </div>
+                </f:if>
 
-                <div class="col-md-6 {site.settings.footer.bar.rightMobileAlign} text-md-end">
-                    <f:switch expression="{site.settings.footer.bar.right}">
-                        <f:case value="copyright"><span class="text-body-secondary small">&copy; {currentYear} {copyrightName}</span></f:case>
-                        <f:case value="social">
-                            <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
-                                <f:render section="SocialLinks" arguments="{site: site}" />
-                            </div>
-                        </f:case>
-                        <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
-                        <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
-                        <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
-                        <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
-                    </f:switch>
-                </div>
+                <f:if condition="{site.settings.footer.bar.center}">
+                    <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center text-body-secondary small">
+                        <f:switch expression="{site.settings.footer.bar.center}">
+                            <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
+                            <f:case value="social">
+                                <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-center">
+                                    <f:render section="SocialLinks" arguments="{site: site}" />
+                                </div>
+                            </f:case>
+                            <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerBarNavigation: footerBarNavigation}" /></f:case>
+                            <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                            <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                            <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
+                        </f:switch>
+                    </div>
+                </f:if>
+
+                <f:if condition="{site.settings.footer.bar.right}">
+                    <div class="col-12 col-md {site.settings.footer.bar.rightMobileAlign} text-md-end">
+                        <f:switch expression="{site.settings.footer.bar.right}">
+                            <f:case value="copyright"><span class="text-body-secondary small">&copy; {currentYear} {copyrightName}</span></f:case>
+                            <f:case value="social">
+                                <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
+                                    <f:render section="SocialLinks" arguments="{site: site}" />
+                                </div>
+                            </f:case>
+                            <f:case value="navigation"><f:render section="BarNavigation" arguments="{footerBarNavigation: footerBarNavigation}" /></f:case>
+                            <f:case value="brand"><f:render section="BarBrand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                            <f:case value="brandTagline"><f:render section="BarBrandTagline" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
+                            <f:case value="tagline"><f:render section="BarTagline" arguments="{site: site}" /></f:case>
+                        </f:switch>
+                    </div>
+                </f:if>
 
             </div>
         </f:if>
@@ -194,7 +215,7 @@
 
 <f:section name="BarNavigation">
     <ul class="list-inline mb-0 small">
-        <f:for each="{footerNavigation}" as="item">
+        <f:for each="{footerBarNavigation}" as="item">
             <li class="list-inline-item">
                 <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">{item.title}</a>
             </li>

@@ -28,7 +28,7 @@
 <f:if condition="{footerLayout} == 'standard'"><f:variable name="footerLayout">Standard</f:variable></f:if>
 <f:if condition="{footerLayout} == 'centered'"><f:variable name="footerLayout">Centered</f:variable></f:if>
 <f:if condition="{footerLayout} == 'minimal'"><f:variable name="footerLayout">Minimal</f:variable></f:if>
-<f:render partial="Page/Footer/{footerLayout}" arguments="{site: site, footerNavigation: footerNavigation}" />
+<f:render partial="Page/Footer/{footerLayout}" arguments="{site: site, footerNavigation: footerNavigation, footerBarNavigation: footerBarNavigation}" />
 
 <f:if condition="{site.settings.themeToggle.position}">
     <f:if condition="{site.settings.themeToggle.enabled}">

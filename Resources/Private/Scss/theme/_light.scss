@@ -3,8 +3,8 @@
 // ─────────────────────────────────────────────
 
 ::selection {
-    background: rgba(99, 102, 241, 0.2);
-    color: #1e1e3f;
+    background: var(--bs-primary, rgba(99, 102, 241, 0.2));
+    color: #e2e2ff;
 }
 
 // ── Theme-invariant tokens ────────────────────

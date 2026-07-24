@@ -17,6 +17,12 @@
             <trans-unit id="pages.tx_conn_base_bg_color">
                 <source>Page Background Color</source>
             </trans-unit>
+            <trans-unit id="pages.tx_conn_base_text_color">
+                <source>Page Text Color</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_heading_color">
+                <source>Page Heading Color</source>
+            </trans-unit>
             <!-- Content Element Background (Appearance tab, all content types) -->
             <trans-unit id="content_width">
                 <source>Content Width</source>

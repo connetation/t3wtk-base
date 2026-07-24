@@ -62,7 +62,9 @@
     || {site.settings.theme.shadowHover.offsetY}
     || {site.settings.theme.shadowHover.offsetX}
     || {site.settings.theme.shadowHover.spread}
-    || {data.tx_conn_base_bg_color}">
+    || {data.tx_conn_base_bg_color}
+    || {data.tx_conn_base_text_color}
+    || {data.tx_conn_base_heading_color}">
 <style>
 <f:if condition="{site.settings.theme.accent}
     || {site.settings.theme.accentHover}
@@ -218,19 +220,28 @@
 </f:if><f:if condition="{site.settings.theme.shadowHover.color}">    --conn-sh-color: {site.settings.theme.shadowHover.color};
 </f:if>}
 </f:if>
-<f:if condition="{data.tx_conn_base_bg_color}">
-<f:comment>Page-level override (pages.tx_conn_base_bg_color) — beats the site-wide
-theme.light.bg / theme.dark.bg settings above via source order, stays below any
-per-element background (Appearance tab), which paints directly on its own
-wrapper regardless of --conn-bg.</f:comment>
+<f:if condition="{data.tx_conn_base_bg_color} || {data.tx_conn_base_text_color} || {data.tx_conn_base_heading_color}">
+<f:comment>Page-level overrides (pages.tx_conn_base_bg_color / tx_conn_base_text_color /
+tx_conn_base_heading_color) — beat the site-wide theme.light.* / theme.dark.*
+settings above via source order, stay below any per-element background/text
+(Appearance tab), which paints directly on its own wrapper regardless of
+--conn-bg / --conn-text / --conn-heading.</f:comment>
 [data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
-    --conn-bg: {data.tx_conn_base_bg_color};
+<f:if condition="{data.tx_conn_base_bg_color}">    --conn-bg: {data.tx_conn_base_bg_color};
     --bs-body-bg: {data.tx_conn_base_bg_color};
-}
+</f:if><f:if condition="{data.tx_conn_base_text_color}">    --conn-text: {data.tx_conn_base_text_color};
+    --bs-body-color: {data.tx_conn_base_text_color};
+</f:if><f:if condition="{data.tx_conn_base_heading_color}">    --conn-heading: {data.tx_conn_base_heading_color};
+    --bs-heading-color: {data.tx_conn_base_heading_color};
+</f:if>}
 [data-bs-theme="dark"] {
-    --conn-bg: {data.tx_conn_base_bg_color};
+<f:if condition="{data.tx_conn_base_bg_color}">    --conn-bg: {data.tx_conn_base_bg_color};
     --bs-body-bg: {data.tx_conn_base_bg_color};
-}
+</f:if><f:if condition="{data.tx_conn_base_text_color}">    --conn-text: {data.tx_conn_base_text_color};
+    --bs-body-color: {data.tx_conn_base_text_color};
+</f:if><f:if condition="{data.tx_conn_base_heading_color}">    --conn-heading: {data.tx_conn_base_heading_color};
+    --bs-heading-color: {data.tx_conn_base_heading_color};
+</f:if>}
 </f:if>
 </style>
 </f:if>

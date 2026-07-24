@@ -35,6 +35,9 @@ categories:
   conn.footer.navigation:
     label: 'Footer – Navigation'
     parent: conn.footer
+  conn.footer.barNavigation:
+    label: 'Footer – Bottom bar navigation'
+    parent: conn.footer
   conn.social:
     label: 'Social Media'
   conn.meta:
@@ -758,6 +761,20 @@ settings:
       tagline: 'Tagline'
       '': 'Empty'
 
+  footer.bar.center:
+    label: 'Bottom bar – Center slot'
+    type: string
+    default: ''
+    category: conn.footer.bar
+    enum:
+      copyright: 'Copyright'
+      social: 'Social links'
+      navigation: 'Navigation (inline)'
+      brand: 'Brand'
+      brandTagline: 'Brand & tagline'
+      tagline: 'Tagline'
+      '': 'Empty'
+
   footer.bar.right:
     label: 'Bottom bar – Right slot'
     type: string
@@ -776,6 +793,16 @@ settings:
     label: 'Bottom bar – Left slot text alignment (mobile, <768px)'
     type: string
     default: ''
+    category: conn.footer.bar
+    enum:
+      '': 'Left'
+      'text-center': 'Center'
+      'text-end': 'Right'
+
+  footer.bar.centerMobileAlign:
+    label: 'Bottom bar – Center slot text alignment (mobile, <768px)'
+    type: string
+    default: 'text-center'
     category: conn.footer.bar
     enum:
       '': 'Left'
@@ -1540,6 +1567,35 @@ settings:
     type: bool
     default: false
     category: conn.footer.navigation
+
+  # ─── Footer – Bottom bar navigation ───────────────────────────────────────
+  # Independent from footer.navigation.* above — lets the bottom bar's
+  # "Navigation (inline)" slot show a short curated list (e.g. Impressum,
+  # AGB, FAQ) instead of repeating the full footer menu.
+  footer.barNavigation.type:
+    label: 'Source'
+    description: 'Default lists the top-level pages of the site, same as the main navigation.'
+    type: string
+    default: ''
+    category: conn.footer.barNavigation
+    enum:
+      '': 'Default (top-level pages)'
+      'list': 'List of pages'
+      'directory': 'Directory (subpages of a page)'
+
+  footer.barNavigation.pages:
+    label: 'Values'
+    description: 'Comma-separated list of page UIDs. For "List of pages" each UID becomes one menu item. For "Directory" the subpages of these UID(s) are listed.'
+    type: string
+    default: ''
+    category: conn.footer.barNavigation
+
+  footer.barNavigation.includeNotInMenu:
+    label: 'Include items not in menu'
+    description: 'Also include pages with "Hide in menu" enabled.'
+    type: bool
+    default: false
+    category: conn.footer.barNavigation
 
   # ─── Contact Information ──────────────────────────────────────────────────
   contact.address.company:

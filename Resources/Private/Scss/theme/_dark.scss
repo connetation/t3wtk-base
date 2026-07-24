@@ -4,7 +4,7 @@
 
 [data-bs-theme="dark"] {
     ::selection {
-        background: rgba(99, 102, 241, 0.4);
+        background: var(--bs-primary, rgba(99, 102, 241, 0.4));
         color: #e2e2ff;
     }
 
