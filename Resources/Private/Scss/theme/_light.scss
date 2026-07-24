@@ -26,6 +26,25 @@
     --conn-nav-panel-link-size:       1.125rem;
     --conn-nav-panel-sublink-size:    0.9375rem;
     --conn-nav-panel-sublink-size-l3: 0.875rem;
+
+    // ── Spacing scale — 8px base, fluid from md up (360px–1240px viewport) ──
+    --conn-space-2xs: 0.25rem;
+    --conn-space-xs:  0.5rem;
+    --conn-space-sm:  1rem;
+    --conn-space-md:  clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+    --conn-space-lg:  clamp(1.75rem, 1.44rem + 1.36vw, 2.5rem);
+    --conn-space-xl:  clamp(2.5rem,  1.89rem + 2.73vw, 4rem);
+    --conn-space-2xl: clamp(3.5rem,  2.48rem + 4.55vw, 6rem);
+
+    // ── Type scale — 18px body anchor, ~1.25 ratio, fluid (360px–1240px viewport) ──
+    --conn-font-size-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
+    --conn-font-size-body: clamp(1rem,      0.95rem + 0.23vw, 1.125rem);
+    --conn-font-size-h3:   clamp(1.25rem,   1.17rem + 0.34vw, 1.4375rem);
+    --conn-font-size-h2:   clamp(1.625rem,  1.37rem + 1.14vw, 2.25rem);
+    --conn-font-size-h1:   clamp(2rem,      1.39rem + 2.73vw, 3.5rem);
+
+    --conn-line-height-tight:  1.1;
+    --conn-line-height-normal: 1.6;
 }
 
 // ── Light-mode tokens ─────────────────────────

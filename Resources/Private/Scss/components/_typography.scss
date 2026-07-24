@@ -1,0 +1,14 @@
+// ─────────────────────────────────────────────
+// Typography — fluid type scale (see theme/_light.scss for tokens)
+// ─────────────────────────────────────────────
+
+body {
+    font-size:   var(--conn-font-size-body);
+    line-height: var(--conn-line-height-normal);
+}
+
+h1, .h1 { font-size: var(--conn-font-size-h1); line-height: var(--conn-line-height-tight); }
+h2, .h2 { font-size: var(--conn-font-size-h2); line-height: var(--conn-line-height-tight); }
+h3, .h3 { font-size: var(--conn-font-size-h3); line-height: var(--conn-line-height-tight); }
+
+small, .small { font-size: var(--conn-font-size-sm); }

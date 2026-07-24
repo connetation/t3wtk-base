@@ -5,50 +5,50 @@
 // and space_after_class from the Appearance tab. This file maps those classes
 // to Bootstrap-equivalent spacing and decoration so they have visual effect.
 //
-// Frame spacing scale matches Bootstrap $spacers:
-//   extra-small = 0.5rem  (bs-2)
-//   small       = 1rem    (bs-3)
-//   medium      = 1.5rem  (bs-4)
-//   large       = 3rem    (bs-5)
-//   extra-large = 6rem
+// Frame spacing scale matches the --conn-space-* tokens (theme/_light.scss):
+//   extra-small = --conn-space-xs  (8px)
+//   small       = --conn-space-sm  (16px)
+//   medium      = --conn-space-md  (20–24px fluid)
+//   large       = --conn-space-xl  (40–64px fluid)
+//   extra-large = --conn-space-2xl (56–96px fluid)
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ── Frame default spacing (overridden by the classes below) ───────────────────
 .frame {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: var(--conn-space-lg);
+    margin-bottom: var(--conn-space-lg);
 }
 
 // ── Space before ─────────────────────────────────────────────────────────────
-.frame-space-before-none        { margin-top: 0;       }
-.frame-space-before-extra-small { margin-top: 0.5rem; }
-.frame-space-before-small       { margin-top: 1rem;   }
-.frame-space-before-medium      { margin-top: 1.5rem; }
-.frame-space-before-large       { margin-top: 3rem;   }
-.frame-space-before-extra-large { margin-top: 6rem;   }
+.frame-space-before-none        { margin-top: 0; }
+.frame-space-before-extra-small { margin-top: var(--conn-space-xs);  }
+.frame-space-before-small       { margin-top: var(--conn-space-sm);  }
+.frame-space-before-medium      { margin-top: var(--conn-space-md);  }
+.frame-space-before-large       { margin-top: var(--conn-space-xl);  }
+.frame-space-before-extra-large { margin-top: var(--conn-space-2xl); }
 
 // ── Space after ──────────────────────────────────────────────────────────────
-.frame-space-after-none        { margin-bottom: 0;       }
-.frame-space-after-extra-small { margin-bottom: 0.5rem; }
-.frame-space-after-small       { margin-bottom: 1rem;   }
-.frame-space-after-medium      { margin-bottom: 1.5rem; }
-.frame-space-after-large       { margin-bottom: 3rem;   }
-.frame-space-after-extra-large { margin-bottom: 6rem;   }
+.frame-space-after-none        { margin-bottom: 0; }
+.frame-space-after-extra-small { margin-bottom: var(--conn-space-xs);  }
+.frame-space-after-small       { margin-bottom: var(--conn-space-sm);  }
+.frame-space-after-medium      { margin-bottom: var(--conn-space-md);  }
+.frame-space-after-large       { margin-bottom: var(--conn-space-xl);  }
+.frame-space-after-extra-large { margin-bottom: var(--conn-space-2xl); }
 
 // ── Frame decorations ─────────────────────────────────────────────────────────
 .frame-ruler-before {
     border-top: 1px solid var(--bs-border-color);
-    padding-top: 1.5rem;
+    padding-top: var(--conn-space-md);
 }
 
 .frame-ruler-after {
     border-bottom: 1px solid var(--bs-border-color);
-    padding-bottom: 1.5rem;
+    padding-bottom: var(--conn-space-md);
 }
 
-.frame-indent       { padding-inline: 2rem; }
-.frame-indent-left  { padding-left: 2rem;   }
-.frame-indent-right { padding-right: 2rem;  }
+.frame-indent       { padding-inline: var(--conn-space-lg); }
+.frame-indent-left  { padding-left: var(--conn-space-lg);   }
+.frame-indent-right { padding-right: var(--conn-space-lg);  }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Full-viewport breakout for full-width content elements
