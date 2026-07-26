@@ -10,12 +10,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 // Add conn_base CE overrides here if needed.
 
 // ─── Section background – global field for ALL content element types ─────
-// Rendered by conn_base's ContentElements/Default.html layout, injected at a
-// higher priority than any other Layout named "Default" for every CType that
-// (directly or transitively) copies `lib.contentElement` — see
-// Configuration/TypoScript/ContentElementBackgrounds.typoscript. Any future
-// content element extension gets this automatically as long as it depends on
-// conn_base and builds on lib.contentElement, which is the standard pattern.
 ExtensionManagementUtility::addTCAcolumns('tt_content', [
     'tx_conn_base_content_width' => [
         'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width',
@@ -96,10 +90,14 @@ ExtensionManagementUtility::addFieldsToPalette(
 );
 
 // ─── Space Before/After — extend core's 6-step scale to match --conn-space-* ──
-// Core only ships extra-small…extra-large (5 sizes + none), leaving out the
-// smallest and largest --conn-space-* tokens. Add them at both ends so editors
-// can reach the full 2xs…2xl scale. Rendered generically by Default.html as
-// .frame-space-before-{value} / .frame-space-after-{value} — see _content-frames.scss.
+// Core only ships extra-small…extra-large (5 sizes) plus a blank "Default" item.
+// That blank item is NOT zero spacing: Default.html only adds a
+// frame-space-{before,after}-{value} class when the field is non-empty, so
+// picking "Default" adds no class at all and silently falls back to .frame's
+// base lg margin. A real "None" (zero margin) rule has existed in
+// _content-frames.scss (.frame-space-before-none / -after-none) but was never
+// wired up as a selectable TCA item — add it, plus the 2xs/2xl ends of the
+// --conn-space-* scale that core also leaves out.
 foreach (['space_before_class', 'space_after_class'] as $spaceField) {
     ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
@@ -114,6 +112,13 @@ foreach (['space_before_class', 'space_after_class'] as $spaceField) {
         ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_large', 'value' => 'extra-extra-large'],
         'extra-large',
         'after'
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'tt_content',
+        $spaceField,
+        ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.none', 'value' => 'none'],
+        'extra-extra-small',
+        'before'
     );
 }
 

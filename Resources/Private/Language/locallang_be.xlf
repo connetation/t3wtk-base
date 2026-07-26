@@ -70,6 +70,9 @@
                 <source>Parallax</source>
             </trans-unit>
             <!-- Space Before/After (frames palette, all content types) -->
+            <trans-unit id="space_class.none">
+                <source>None</source>
+            </trans-unit>
             <trans-unit id="space_class.extra_extra_small">
                 <source>Extra Extra Small</source>
             </trans-unit>
