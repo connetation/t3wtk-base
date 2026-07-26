@@ -221,24 +221,22 @@
 </f:if>}
 </f:if>
 <f:if condition="{data.tx_conn_base_bg_color} || {data.tx_conn_base_text_color} || {data.tx_conn_base_heading_color}">
-<f:comment>Page-level overrides (pages.tx_conn_base_bg_color / tx_conn_base_text_color /
-tx_conn_base_heading_color) — beat the site-wide theme.light.* / theme.dark.*
-settings above via source order, stay below any per-element background/text
-(Appearance tab), which paints directly on its own wrapper regardless of
---conn-bg / --conn-text / --conn-heading.</f:comment>
-[data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
+
+[data-bs-theme="light"] #main-content, :root:not([data-bs-theme="dark"]) #main-content {
 <f:if condition="{data.tx_conn_base_bg_color}">    --conn-bg: {data.tx_conn_base_bg_color};
-    --bs-body-bg: {data.tx_conn_base_bg_color};
+    background-color: {data.tx_conn_base_bg_color};
 </f:if><f:if condition="{data.tx_conn_base_text_color}">    --conn-text: {data.tx_conn_base_text_color};
     --bs-body-color: {data.tx_conn_base_text_color};
+    color: {data.tx_conn_base_text_color};
 </f:if><f:if condition="{data.tx_conn_base_heading_color}">    --conn-heading: {data.tx_conn_base_heading_color};
     --bs-heading-color: {data.tx_conn_base_heading_color};
 </f:if>}
-[data-bs-theme="dark"] {
+[data-bs-theme="dark"] #main-content {
 <f:if condition="{data.tx_conn_base_bg_color}">    --conn-bg: {data.tx_conn_base_bg_color};
-    --bs-body-bg: {data.tx_conn_base_bg_color};
+    background-color: {data.tx_conn_base_bg_color};
 </f:if><f:if condition="{data.tx_conn_base_text_color}">    --conn-text: {data.tx_conn_base_text_color};
     --bs-body-color: {data.tx_conn_base_text_color};
+    color: {data.tx_conn_base_text_color};
 </f:if><f:if condition="{data.tx_conn_base_heading_color}">    --conn-heading: {data.tx_conn_base_heading_color};
     --bs-heading-color: {data.tx_conn_base_heading_color};
 </f:if>}

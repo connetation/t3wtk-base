@@ -30,6 +30,11 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
+            // Forces a full record reload on change, same as FlexForm's
+            // <onChange>reload</onChange> — needed so the color/image field
+            // group swapped in by displayCond re-renders cleanly instead of
+            // just toggling visibility in place.
+            'onChange'   => 'reload',
             'default'    => '',
             'items'      => [
                 ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_type.none',  'value' => ''],
@@ -81,23 +86,18 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
     ],
 ]);
 
-// Inject into the 'frames' palette that every CE type uses in its Appearance tab
-ExtensionManagementUtility::addFieldsToPalette(
-    'tt_content',
-    'frames',
-    'tx_conn_base_content_width, tx_conn_base_bg_type, tx_conn_base_bg_color, tx_conn_base_bg_text_color, tx_conn_base_bg_image, tx_conn_base_bg_mode',
-    'after:frame_class'
-);
+// The 'frames' palette showitem (grouped rows, incl. this content_width field
+// and any optional conn_elements field like tx_conn_elements_text_animation)
+// is assembled from scratch in EventListener\ReorderFramesPalette, which runs
+// on AfterTcaCompilationEvent — after every extension (including optional
+// ones) has already inserted its own fields via addFieldsToPalette. Doing the
+// grouping there, instead of here, avoids depending on extension load order:
+// whichever extension's addFieldsToPalette('after:frame_class', ...) call
+// runs last would otherwise land closest to frame_class, silently breaking
+// the row grouping.
 
-// ─── Space Before/After — extend core's 6-step scale to match --conn-space-* ──
-// Core only ships extra-small…extra-large (5 sizes) plus a blank "Default" item.
-// That blank item is NOT zero spacing: Default.html only adds a
-// frame-space-{before,after}-{value} class when the field is non-empty, so
-// picking "Default" adds no class at all and silently falls back to .frame's
-// base lg margin. A real "None" (zero margin) rule has existed in
-// _content-frames.scss (.frame-space-before-none / -after-none) but was never
-// wired up as a selectable TCA item — add it, plus the 2xs/2xl ends of the
-// --conn-space-* scale that core also leaves out.
+// ─── Space Before/After — extend core's to match --conn-space-* ──
+// _content-frames.scss 
 foreach (['space_before_class', 'space_after_class'] as $spaceField) {
     ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
