@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────
 // Theme toggle button + transition rules
 // ─────────────────────────────────────────────
+@use 'tokens';
 
 .theme-toggle {
     border-radius: 50rem;
@@ -39,3 +40,5 @@ img {
     transition: transform 0.3s ease-in-out,
                 box-shadow 0.3s ease-in-out;
 }
+
+@include tokens.conn-reduced-motion;

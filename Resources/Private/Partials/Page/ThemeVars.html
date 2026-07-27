@@ -68,7 +68,6 @@
 <style>
 <f:if condition="{site.settings.theme.accent}
     || {site.settings.theme.accentHover}
-    || {site.settings.theme.accentSecondary}
     || {site.settings.theme.nav.panelLinkSize}
     || {site.settings.theme.nav.panelSubLinkSize}
     || {site.settings.theme.nav.panelSubLinkSizeL3}
@@ -80,7 +79,6 @@
 <f:if condition="{site.settings.theme.accent}">    --conn-accent: {site.settings.theme.accent};
     --bs-primary: {site.settings.theme.accent};
 </f:if><f:if condition="{site.settings.theme.accentHover}">    --conn-accent-hover: {site.settings.theme.accentHover};
-</f:if><f:if condition="{site.settings.theme.accentSecondary}">    --conn-accent-secondary: {site.settings.theme.accentSecondary};
 </f:if><f:if condition="{site.settings.theme.nav.panelLinkSize}">    --conn-nav-panel-link-size: {site.settings.theme.nav.panelLinkSize};
 </f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSize}">    --conn-nav-panel-sublink-size: {site.settings.theme.nav.panelSubLinkSize};
 </f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSizeL3}">    --conn-nav-panel-sublink-size-l3: {site.settings.theme.nav.panelSubLinkSizeL3};
@@ -92,6 +90,7 @@
 </f:if>
 <f:if condition="{site.settings.theme.light.accent}
     || {site.settings.theme.light.accentHover}
+    || {site.settings.theme.accentSecondary}
     || {site.settings.theme.light.bg}
     || {site.settings.theme.light.surface}
     || {site.settings.theme.light.navBg}
@@ -120,6 +119,7 @@
 <f:if condition="{site.settings.theme.light.accent}">    --conn-accent: {site.settings.theme.light.accent};
     --bs-primary: {site.settings.theme.light.accent};
 </f:if><f:if condition="{site.settings.theme.light.accentHover}">    --conn-accent-hover: {site.settings.theme.light.accentHover};
+</f:if><f:if condition="{site.settings.theme.accentSecondary}">    --conn-accent-secondary: {site.settings.theme.accentSecondary};
 </f:if><f:if condition="{site.settings.theme.light.bg}">    --conn-bg: {site.settings.theme.light.bg};
     --bs-body-bg: {site.settings.theme.light.bg};
 </f:if><f:if condition="{site.settings.theme.light.surface}">    --conn-surface: {site.settings.theme.light.surface};
@@ -157,6 +157,7 @@
 </f:if>
 <f:if condition="{site.settings.theme.dark.accent}
     || {site.settings.theme.dark.accentHover}
+    || {site.settings.theme.accentSecondary}
     || {site.settings.theme.dark.bg}
     || {site.settings.theme.dark.surface}
     || {site.settings.theme.dark.navBg}
@@ -185,6 +186,7 @@
 <f:if condition="{site.settings.theme.dark.accent}">    --conn-accent: {site.settings.theme.dark.accent};
     --bs-primary: {site.settings.theme.dark.accent};
 </f:if><f:if condition="{site.settings.theme.dark.accentHover}">    --conn-accent-hover: {site.settings.theme.dark.accentHover};
+</f:if><f:if condition="{site.settings.theme.accentSecondary}">    --conn-accent-secondary: {site.settings.theme.accentSecondary};
 </f:if><f:if condition="{site.settings.theme.dark.bg}">    --conn-bg: {site.settings.theme.dark.bg};
     --bs-body-bg: {site.settings.theme.dark.bg};
 </f:if><f:if condition="{site.settings.theme.dark.surface}">    --conn-surface: {site.settings.theme.dark.surface};

@@ -1,6 +1,7 @@
 // ─────────────────────────────────────────────
 // Light theme (default)
 // ─────────────────────────────────────────────
+@use 'tokens';
 
 ::selection {
     background: var(--bs-primary, rgba(99, 102, 241, 0.2));
@@ -9,13 +10,7 @@
 
 // ── Theme-invariant tokens ────────────────────
 :root {
-    // --conn-accent follows --bs-primary so overriding --bs-primary in the
-    // sitepackage is enough to re-theme navigation, buttons, and all accent uses.
-    // Override --conn-accent directly to decouple the accent from BS primary.
-    --conn-accent:       var(--bs-primary, #6366f1);
-    --conn-accent-hover: #4f52d4;
-    --conn-radius:       0.75rem;
-    --conn-transition:   0.2s ease-in-out;
+    @include tokens.conn-design-tokens;
 
     // Button defaults — overridable per site via _theme.scss
     --conn-btn-bg:       var(--conn-accent);
@@ -26,71 +21,16 @@
     --conn-nav-panel-link-size:       1.125rem;
     --conn-nav-panel-sublink-size:    0.9375rem;
     --conn-nav-panel-sublink-size-l3: 0.875rem;
-
-    // ── Spacing scale — 8px base, fluid from md up (360px–1240px viewport) ──
-    --conn-space-2xs: 0.25rem;
-    --conn-space-xs:  0.5rem;
-    --conn-space-sm:  1rem;
-    --conn-space-md:  clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
-    --conn-space-lg:  clamp(1.75rem, 1.44rem + 1.36vw, 2.5rem);
-    --conn-space-xl:  clamp(2.5rem,  1.89rem + 2.73vw, 4rem);
-    --conn-space-2xl: clamp(3.5rem,  2.48rem + 4.55vw, 6rem);
-
-    // ── Type scale — 18px body anchor, ~1.25 ratio, fluid (360px–1240px viewport) ──
-    --conn-font-size-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
-    --conn-font-size-body: clamp(1rem,      0.95rem + 0.23vw, 1.125rem);
-    --conn-font-size-h3:   clamp(1.25rem,   1.17rem + 0.34vw, 1.4375rem);
-    --conn-font-size-h2:   clamp(1.625rem,  1.37rem + 1.14vw, 2.25rem);
-    --conn-font-size-h1:   clamp(2rem,      1.39rem + 2.73vw, 3.5rem);
-
-    --conn-line-height-tight:  1.1;
-    --conn-line-height-normal: 1.6;
 }
 
 // ── Light-mode tokens ─────────────────────────
 [data-bs-theme="light"],
 :root:not([data-bs-theme="dark"]) {
-    // Surfaces
-    --conn-bg:             #f4f5ff;
-    --conn-surface:        #ffffff;
-    --conn-surface-alt:    #f1f2ff;
-    --conn-surface-raised: #ffffff;
-    --conn-surface-hover:  rgba(99, 102, 241, 0.1);
+    @include tokens.conn-light-theme;
 
     // Navigation & footer
     --conn-nav-bg:    #ffffff;
     --conn-footer-bg: #ffffff;
-
-    // Borders
-    --conn-border:        rgba(99, 102, 241, 0.12);
-    --conn-border-strong: rgba(99, 102, 241, 0.28);
-
-    // Text
-    --conn-text:       #1e1e3f;
-    --conn-heading:    #0a0a0a;
-    --conn-text-muted: #6b7280;
-    --conn-emphasis:   #0a0a0a;
-    --conn-link:       #6366f1;
-    --conn-link-hover: #4f52d4;
-
-    // Secondary accent (used in gradients/highlights)
-    --conn-accent-secondary:       #06b6d4;
-    --conn-accent-secondary-hover: #0891b2;
-
-    // Validation / status
-    --conn-success:      #22c55e;
-    --conn-success-glow: rgba(34, 197, 94, 0.2);
-    --conn-danger:       #ef4444;
-    --conn-danger-glow:  rgba(239, 68, 68, 0.2);
-
-    // Accent soft variants
-    --conn-accent-soft: rgba(99, 102, 241, 0.1);
-    --conn-accent-glow: rgba(99, 102, 241, 0.2);
-
-    // Shadows
-    --conn-shadow:       0 4px 24px rgb(99 102 241 / 15%);
-    --conn-shadow-card:  0 1px 4px rgb(0 0 0 / 6%);
-    --conn-shadow-hover: var(--conn-sh-x, 0) var(--conn-sh-y, 8px) var(--conn-sh-blur, 32px) var(--conn-sh-spread, 0px) var(--conn-sh-color, rgb(99 102 241 / 22%));
 
     // Bootstrap CSS-var overrides
     --bs-body-bg:              #f4f5ff;

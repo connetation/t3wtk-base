@@ -14,7 +14,7 @@
     cursor: pointer;
     background: var(--conn-surface) !important;
     border: 1px solid var(--conn-card-border-color, var(--conn-accent)) !important;
-    border-radius: var(--conn-card-radius, var(--conn-radius)) !important;
+    border-radius: var(--conn-card-radius) !important;
     box-shadow: none;
     color: var(--conn-text);
     overflow: hidden;

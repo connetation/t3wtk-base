@@ -1,0 +1,132 @@
+// ─────────────────────────────────────────────
+// Design-token mixins — single source of truth for
+// values shared by conn/base and conn/elements.
+//
+// Each package still compiles a full, independent :root
+// block (conn/elements consumes these mixins at compile
+// time via a sass load-path into this file, see its
+// Components/Shared/_tokens.scss) — no runtime dependency
+// between the two packages' compiled CSS.
+// ─────────────────────────────────────────────
+
+@mixin conn-design-tokens {
+    // --conn-accent follows --bs-primary so overriding --bs-primary in the
+    // sitepackage is enough to re-theme navigation, buttons, and all accent uses.
+    // Override --conn-accent directly to decouple the accent from BS primary.
+    --conn-accent:       var(--bs-primary, #6366f1);
+    --conn-accent-hover: #4f52d4;
+    --conn-radius:       0.75rem;
+    --conn-card-radius:  var(--conn-radius);
+    --conn-transition:   0.2s ease-in-out;
+
+    // Shadow-hover primitives (overridable per component/site)
+    --conn-sh-x:      0;
+    --conn-sh-y:      8px;
+    --conn-sh-blur:   32px;
+    --conn-sh-spread: 0;
+
+    // ── Spacing scale — 8px base, fluid from md up (360px–1240px viewport) ──
+    --conn-space-2xs: 0.25rem;
+    --conn-space-xs:  0.5rem;
+    --conn-space-sm:  1rem;
+    --conn-space-md:  clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+    --conn-space-lg:  clamp(1.75rem, 1.44rem + 1.36vw, 2.5rem);
+    --conn-space-xl:  clamp(2.5rem,  1.89rem + 2.73vw, 4rem);
+    --conn-space-2xl: clamp(3.5rem,  2.48rem + 4.55vw, 6rem);
+
+    // ── Type scale — 18px body anchor, ~1.25 ratio, fluid (360px–1240px viewport) ──
+    --conn-font-size-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
+    --conn-font-size-body: clamp(1rem,      0.95rem + 0.23vw, 1.125rem);
+    --conn-font-size-h3:   clamp(1.25rem,   1.17rem + 0.34vw, 1.4375rem);
+    --conn-font-size-h2:   clamp(1.625rem,  1.37rem + 1.14vw, 2.25rem);
+    --conn-font-size-h1:   clamp(2rem,      1.39rem + 2.73vw, 3.5rem);
+
+    --conn-line-height-tight:  1.1;
+    --conn-line-height-normal: 1.6;
+
+    // ── Layout ──
+    --conn-content-max: 1080px;
+}
+
+@mixin conn-light-theme {
+    --conn-bg:             #f4f5ff;
+    --conn-surface:        #ffffff;
+    --conn-surface-alt:    #f1f2ff;
+    --conn-surface-raised: #ffffff;
+    --conn-surface-hover:  rgba(99, 102, 241, 0.1);
+
+    --conn-border:        rgba(99, 102, 241, 0.12);
+    --conn-border-strong: rgba(99, 102, 241, 0.28);
+
+    --conn-text:       #1e1e3f;
+    --conn-heading:    #0a0a0a;
+    --conn-text-muted: #6b7280;
+    --conn-emphasis:   #0a0a0a;
+    --conn-link:       #6366f1;
+    --conn-link-hover: #4f52d4;
+
+    --conn-accent-secondary:       #06b6d4;
+    --conn-accent-secondary-hover: #0891b2;
+
+    --conn-success:      #22c55e;
+    --conn-success-glow: rgba(34, 197, 94, 0.2);
+    --conn-danger:       #ef4444;
+    --conn-danger-glow:  rgba(239, 68, 68, 0.2);
+
+    --conn-accent-soft: rgba(99, 102, 241, 0.1);
+    --conn-accent-glow: rgba(99, 102, 241, 0.2);
+
+    --conn-shadow:       0 4px 24px rgb(99 102 241 / 15%);
+    --conn-shadow-card:  0 1px 4px rgb(0 0 0 / 6%);
+    --conn-sh-color:     rgb(99 102 241 / 22%);
+    --conn-shadow-hover: var(--conn-sh-x) var(--conn-sh-y) var(--conn-sh-blur) var(--conn-sh-spread) var(--conn-sh-color);
+}
+
+// Universal reduced-motion safety net (WCAG 2.3.3-friendly baseline).
+// Applies page-wide whenever the user has prefers-reduced-motion: reduce —
+// on top of it, individual entrance/reveal animations should still gate
+// themselves behind `@media (prefers-reduced-motion: no-preference)`.
+@mixin conn-reduced-motion {
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration:    0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration:   0.01ms !important;
+            scroll-behavior:       auto !important;
+        }
+    }
+}
+
+@mixin conn-dark-theme {
+    --conn-bg:             #0b0b1a;
+    --conn-surface:        #12122a;
+    --conn-surface-alt:    #1a1a38;
+    --conn-surface-raised: #1e1e42;
+    --conn-surface-hover:  rgba(255, 255, 255, 0.07);
+
+    --conn-border:        rgba(255, 255, 255, 0.08);
+    --conn-border-strong: rgba(255, 255, 255, 0.15);
+
+    --conn-text:       #e2e2ff;
+    --conn-heading:    #fafafa;
+    --conn-text-muted: #8b8bcd;
+    --conn-emphasis:   #ffffff;
+    --conn-link:       #a5b4fc;
+    --conn-link-hover: #c7d2fe;
+
+    --conn-accent-secondary:       #22d3ee;
+    --conn-accent-secondary-hover: #06b6d4;
+
+    --conn-success:      #86efac;
+    --conn-success-glow: rgba(134, 239, 172, 0.2);
+    --conn-danger:       #f87171;
+    --conn-danger-glow:  rgba(248, 113, 113, 0.2);
+
+    --conn-accent-soft: rgba(99, 102, 241, 0.15);
+    --conn-accent-glow: rgba(99, 102, 241, 0.3);
+
+    --conn-shadow:       0 4px 24px rgb(0 0 0 / 40%);
+    --conn-shadow-card:  0 1px 4px rgb(0 0 0 / 25%);
+    --conn-sh-color:     rgb(99 102 241 / 28%);
+    --conn-shadow-hover: var(--conn-sh-x) var(--conn-sh-y) var(--conn-sh-blur) var(--conn-sh-spread) var(--conn-sh-color);
+}
