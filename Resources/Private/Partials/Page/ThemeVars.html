@@ -1,20 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<f:if condition="{site.settings.theme.accent}
-    || {site.settings.theme.accentHover}
-    || {site.settings.theme.accentSecondary}
-    || {site.settings.theme.light.accent}
+<f:if condition="{site.settings.theme.light.accent}
     || {site.settings.theme.light.accentHover}
+    || {site.settings.theme.accentSecondary}
     || {site.settings.theme.light.bg}
     || {site.settings.theme.light.surface}
-    || {site.settings.theme.light.navBg}
-    || {site.settings.theme.light.navText}
-    || {site.settings.theme.light.footerBg}
-    || {site.settings.theme.light.footerText}
-    || {site.settings.theme.light.footerHeaderText}
-    || {site.settings.theme.light.footerLinkHover}
-    || {site.settings.theme.light.footerLinkHoverUnderline}
     || {site.settings.theme.light.text}
     || {site.settings.theme.light.heading}
     || {site.settings.theme.light.emphasis}
@@ -29,6 +20,21 @@
     || {site.settings.theme.light.btnBg}
     || {site.settings.theme.light.btnBgHover}
     || {site.settings.theme.light.btnColor}
+    || {site.settings.theme.light.navBg}
+    || {site.settings.theme.light.navText}
+    || {site.settings.theme.light.footerBg}
+    || {site.settings.theme.light.footerText}
+    || {site.settings.theme.light.footerHeaderText}
+    || {site.settings.theme.light.footerLinkHover}
+    || {site.settings.theme.light.footerLinkHoverUnderline}
+    || {site.settings.theme.nav.panelLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSizeL3}
+    || {site.settings.theme.shadowHover.color}
+    || {site.settings.theme.shadowHover.blur}
+    || {site.settings.theme.shadowHover.offsetY}
+    || {site.settings.theme.shadowHover.offsetX}
+    || {site.settings.theme.shadowHover.spread}
     || {site.settings.theme.dark.accent}
     || {site.settings.theme.dark.accentHover}
     || {site.settings.theme.dark.bg}
@@ -54,40 +60,10 @@
     || {site.settings.theme.dark.btnBg}
     || {site.settings.theme.dark.btnBgHover}
     || {site.settings.theme.dark.btnColor}
-    || {site.settings.theme.nav.panelLinkSize}
-    || {site.settings.theme.nav.panelSubLinkSize}
-    || {site.settings.theme.nav.panelSubLinkSizeL3}
-    || {site.settings.theme.shadowHover.color}
-    || {site.settings.theme.shadowHover.blur}
-    || {site.settings.theme.shadowHover.offsetY}
-    || {site.settings.theme.shadowHover.offsetX}
-    || {site.settings.theme.shadowHover.spread}
     || {data.tx_conn_base_bg_color}
     || {data.tx_conn_base_text_color}
     || {data.tx_conn_base_heading_color}">
 <style>
-<f:if condition="{site.settings.theme.accent}
-    || {site.settings.theme.accentHover}
-    || {site.settings.theme.nav.panelLinkSize}
-    || {site.settings.theme.nav.panelSubLinkSize}
-    || {site.settings.theme.nav.panelSubLinkSizeL3}
-    || {site.settings.theme.shadowHover.offsetX}
-    || {site.settings.theme.shadowHover.offsetY}
-    || {site.settings.theme.shadowHover.blur}
-    || {site.settings.theme.shadowHover.spread}">
-:root {
-<f:if condition="{site.settings.theme.accent}">    --conn-accent: {site.settings.theme.accent};
-    --bs-primary: {site.settings.theme.accent};
-</f:if><f:if condition="{site.settings.theme.accentHover}">    --conn-accent-hover: {site.settings.theme.accentHover};
-</f:if><f:if condition="{site.settings.theme.nav.panelLinkSize}">    --conn-nav-panel-link-size: {site.settings.theme.nav.panelLinkSize};
-</f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSize}">    --conn-nav-panel-sublink-size: {site.settings.theme.nav.panelSubLinkSize};
-</f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSizeL3}">    --conn-nav-panel-sublink-size-l3: {site.settings.theme.nav.panelSubLinkSizeL3};
-</f:if><f:if condition="{site.settings.theme.shadowHover.offsetX}">    --conn-sh-x: {site.settings.theme.shadowHover.offsetX};
-</f:if><f:if condition="{site.settings.theme.shadowHover.offsetY}">    --conn-sh-y: {site.settings.theme.shadowHover.offsetY};
-</f:if><f:if condition="{site.settings.theme.shadowHover.blur}">    --conn-sh-blur: {site.settings.theme.shadowHover.blur};
-</f:if><f:if condition="{site.settings.theme.shadowHover.spread}">    --conn-sh-spread: {site.settings.theme.shadowHover.spread};
-</f:if>}
-</f:if>
 <f:if condition="{site.settings.theme.light.accent}
     || {site.settings.theme.light.accentHover}
     || {site.settings.theme.accentSecondary}
@@ -114,8 +90,15 @@
     || {site.settings.theme.light.btnBg}
     || {site.settings.theme.light.btnBgHover}
     || {site.settings.theme.light.btnColor}
-    || {site.settings.theme.shadowHover.color}">
-[data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
+    || {site.settings.theme.nav.panelLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSize}
+    || {site.settings.theme.nav.panelSubLinkSizeL3}
+    || {site.settings.theme.shadowHover.color}
+    || {site.settings.theme.shadowHover.blur}
+    || {site.settings.theme.shadowHover.offsetY}
+    || {site.settings.theme.shadowHover.offsetX}
+    || {site.settings.theme.shadowHover.spread}">
+:root {
 <f:if condition="{site.settings.theme.light.accent}">    --conn-accent: {site.settings.theme.light.accent};
     --bs-primary: {site.settings.theme.light.accent};
 </f:if><f:if condition="{site.settings.theme.light.accentHover}">    --conn-accent-hover: {site.settings.theme.light.accentHover};
@@ -152,7 +135,14 @@
 </f:if><f:if condition="{site.settings.theme.light.btnBg}">    --conn-btn-bg: {site.settings.theme.light.btnBg};
 </f:if><f:if condition="{site.settings.theme.light.btnBgHover}">    --conn-btn-bg-hover: {site.settings.theme.light.btnBgHover};
 </f:if><f:if condition="{site.settings.theme.light.btnColor}">    --conn-btn-color: {site.settings.theme.light.btnColor};
+</f:if><f:if condition="{site.settings.theme.nav.panelLinkSize}">    --conn-nav-panel-link-size: {site.settings.theme.nav.panelLinkSize};
+</f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSize}">    --conn-nav-panel-sublink-size: {site.settings.theme.nav.panelSubLinkSize};
+</f:if><f:if condition="{site.settings.theme.nav.panelSubLinkSizeL3}">    --conn-nav-panel-sublink-size-l3: {site.settings.theme.nav.panelSubLinkSizeL3};
 </f:if><f:if condition="{site.settings.theme.shadowHover.color}">    --conn-sh-color: {site.settings.theme.shadowHover.color};
+</f:if><f:if condition="{site.settings.theme.shadowHover.offsetX}">    --conn-sh-x: {site.settings.theme.shadowHover.offsetX};
+</f:if><f:if condition="{site.settings.theme.shadowHover.offsetY}">    --conn-sh-y: {site.settings.theme.shadowHover.offsetY};
+</f:if><f:if condition="{site.settings.theme.shadowHover.blur}">    --conn-sh-blur: {site.settings.theme.shadowHover.blur};
+</f:if><f:if condition="{site.settings.theme.shadowHover.spread}">    --conn-sh-spread: {site.settings.theme.shadowHover.spread};
 </f:if>}
 </f:if>
 <f:if condition="{site.settings.theme.dark.accent}

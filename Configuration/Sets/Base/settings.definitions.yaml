@@ -1,14 +1,13 @@
 categories:
   conn.theme:
     label: 'Theme & Colors'
-  conn.theme.colors:
-    label: 'Colors'
-    parent: conn.theme
-  conn.theme.light:
-    label: 'Light mode'
+  conn.theme.color:
+    label: 'Color'
+    description: 'The base color scheme — used as-is (this is also what light mode renders, since light is the default theme). Override any of these for dark mode only under "Dark-theme coloring".'
     parent: conn.theme
   conn.theme.dark:
-    label: 'Dark mode'
+    label: 'Dark-theme coloring'
+    description: 'Per-setting overrides applied only when dark mode is active. Leave a setting empty here to keep using its Color value in dark mode too.'
     parent: conn.theme
   conn.navbar:
     label: 'Navbar'
@@ -18,6 +17,9 @@ categories:
   conn.navbar.panel:
     label: 'Panel (NavLeft / NavRight / mobile)'
     parent: conn.navbar
+  conn.navbar.colors:
+    label: 'Navbar – Colors'
+    parent: conn.navbar
   conn.themetoggle:
     label: 'Theme toggle'
   conn.branding:
@@ -26,6 +28,9 @@ categories:
     label: 'Contact Information'
   conn.footer:
     label: 'Footer'
+  conn.footer.colors:
+    label: 'Footer – Colors'
+    parent: conn.footer
   conn.footer.grid:
     label: 'Footer – Grid'
     parent: conn.footer
@@ -57,250 +62,235 @@ categories:
     parent: fsc
 
 settings:
-  # ─── Theme – Mode-invariant colors ───────────────────────────────────────
-  theme.accent:
-    label: 'Accent color'
-    description: 'Primary brand/accent color. Any CSS color value (e.g. #6366f1, rgb(99,102,241)). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.colors
-
-  theme.accentHover:
-    label: 'Accent – hover'
-    description: 'Accent color on hover/focus. Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.colors
-
+  # ─── Color (base/default — used directly, dark mode below overrides it) ──
   theme.accentSecondary:
     label: 'Accent secondary'
     description: 'Secondary accent color used in card hover gradients and highlights (e.g. #06b6d4). Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.colors
+    category: conn.theme.color
 
   theme.linkHoverEffect:
     label: 'Animated underline on link hover'
     description: 'Grows an underline in from the left under links on hover, using the link/link-hover colors.'
     type: bool
     default: false
-    category: conn.theme.colors
+    category: conn.theme.color
 
   theme.shadowHover.color:
     label: 'Card hover shadow – color'
     description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.colors
+    category: conn.theme.color
 
   theme.shadowHover.blur:
     label: 'Card hover shadow – blur radius'
     description: 'Blur radius of the hover shadow, e.g. 32px. Leave empty to keep the built-in default (32px).'
     type: string
     default: ''
-    category: conn.theme.colors
+    category: conn.theme.color
 
   theme.shadowHover.offsetY:
     label: 'Card hover shadow – vertical offset'
     description: 'Vertical offset of the hover shadow, e.g. 8px. Leave empty to keep the built-in default (8px).'
     type: string
     default: ''
-    category: conn.theme.colors
+    category: conn.theme.color
 
   theme.shadowHover.offsetX:
     label: 'Card hover shadow – horizontal offset'
     description: 'Horizontal offset of the hover shadow, e.g. 0. Leave empty to keep the built-in default (0).'
     type: string
     default: ''
-    category: conn.theme.colors
+    category: conn.theme.color
 
   theme.shadowHover.spread:
     label: 'Card hover shadow – spread radius'
     description: 'Spread radius of the hover shadow, e.g. 4px. Leave empty to keep the built-in default (0).'
     type: string
     default: ''
-    category: conn.theme.colors
+    category: conn.theme.color
 
-  # ─── Theme – Light mode ────────────────────────────────────────────────────
   theme.light.accent:
     label: 'Accent color'
-    description: 'Accent color for light mode. Overrides the global accent. Leave empty to use the global value.'
+    description: 'Primary brand/accent color. Any CSS color value (e.g. #6366f1, rgb(99,102,241)). Leave empty to keep the built-in default. Overridden per-setting by "Dark-theme coloring" below when set.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.accentHover:
     label: 'Accent – hover'
-    description: 'Accent hover color for light mode. Leave empty to use the global value.'
+    description: 'Accent color on hover/focus. Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.bg:
     label: 'Page background'
     description: 'Page background color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.surface:
     label: 'Surface color'
     description: 'Card / panel surface color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.navBg:
     label: 'Navbar background'
-    description: 'Navbar and offcanvas panel background for light mode.'
+    description: 'Navbar and offcanvas panel background color. Overridden by "Dark-theme coloring" below when set.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.navbar.colors
 
   theme.light.navText:
     label: 'Navbar text'
-    description: 'Text color inside the navbar and offcanvas panel for light mode. Falls back to the general text color when empty.'
+    description: 'Text color inside the navbar and offcanvas panel. Falls back to the general text color when empty.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.navbar.colors
 
   theme.light.footerBg:
     label: 'Footer background'
-    description: 'Footer background color for light mode.'
+    description: 'Footer background color. Overridden by "Dark-theme coloring" below when set.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.footer.colors
 
   theme.light.footerText:
     label: 'Footer text'
-    description: 'Text color inside the footer for light mode. Falls back to the general text color when empty.'
+    description: 'Text color inside the footer. Falls back to the general text color when empty.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.footer.colors
 
   theme.light.footerHeaderText:
     label: 'Footer header text'
-    description: 'Text color for footer section headers ("Navigation", "Contact", …) for light mode. Falls back to the footer text color when empty.'
+    description: 'Text color for footer section headers ("Navigation", "Contact", …). Falls back to the footer text color when empty.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.footer.colors
 
   theme.light.footerLinkHover:
     label: 'Footer link hover'
-    description: 'Hover color for footer links (nav, address, social) for light mode. Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
+    description: 'Hover color for footer links (nav, address, social). Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.footer.colors
 
   theme.light.footerLinkHoverUnderline:
     label: 'Footer link hover underline'
-    description: 'Color of the sliding underline shown on footer link hover for light mode. Falls back to the footer link hover color when empty, then the general accent color.'
+    description: 'Color of the sliding underline shown on footer link hover. Falls back to the footer link hover color when empty, then the general accent color.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.footer.colors
 
   theme.light.text:
     label: 'Text color'
     description: 'Main body text color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.heading:
     label: 'Headers color'
     description: 'Heading (h1–h6) color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.emphasis:
     label: 'Emphasis color'
     description: 'Strong/bold text and emphasis color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.link:
     label: 'Link color'
     description: 'Hyperlink color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.linkHover.text:
     label: 'Link – hover color'
     description: 'Hyperlink text color on hover/focus for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.linkHover.underline:
     label: 'Link – hover underline color'
     description: 'Color of the animated underline effect (see "Animated underline on link hover") for light mode. Falls back to the link hover color when empty.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.textMuted:
     label: 'Muted text color'
     description: 'Secondary / muted text color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.border:
     label: 'Border color'
     description: 'Default border color for light mode.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.borderStrong:
     label: 'Border color – strong'
     description: 'Stronger border color used for hover states, active dropdowns, and focus rings (e.g. rgba(99, 102, 241, 0.28)). Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.accentSoft:
     label: 'Accent soft background'
     description: 'Low-opacity accent fill used for active stat cards, tag badges, and hover backgrounds (e.g. rgba(99, 102, 241, 0.1)). Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.accentGlow:
     label: 'Accent glow'
     description: 'Medium-opacity accent used for glows and subtle highlights (e.g. rgba(99, 102, 241, 0.2)). Leave empty to keep the built-in default.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.btnBg:
     label: 'Button background'
     description: 'Primary button background color for light mode (e.g. #6366f1). Leave empty to use the accent color.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.btnBgHover:
     label: 'Button background – hover'
     description: 'Primary button background color on hover/active for light mode. Leave empty to use the accent hover color.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
   theme.light.btnColor:
     label: 'Button text color'
     description: 'Text (label) color on primary buttons for light mode (e.g. #ffffff). Leave empty to keep white.'
     type: string
     default: ''
-    category: conn.theme.light
+    category: conn.theme.color
 
-  # ─── Theme – Dark mode ─────────────────────────────────────────────────────
+  # ─── Dark-theme coloring (overrides the Color settings above, dark mode only) ──
   theme.dark.accent:
     label: 'Accent color'
-    description: 'Accent color for dark mode. Overrides the global accent. Leave empty to use the global value.'
+    description: 'Accent color for dark mode. Overrides the Color setting above. Leave empty to use that value.'
     type: string
     default: ''
     category: conn.theme.dark
@@ -1829,6 +1819,7 @@ settings:
     type: string
     default: ''
     category: fsc.templates
+    readonly: true
 
   styles.templates.partialRootPath:
     label: 'Additional partial path'
@@ -1836,6 +1827,7 @@ settings:
     type: string
     default: ''
     category: fsc.templates
+    readonly: true
 
   styles.templates.layoutRootPath:
     label: 'Additional layout path'
@@ -1843,6 +1835,7 @@ settings:
     type: string
     default: ''
     category: fsc.templates
+    readonly: true
 
   styles.content.defaultHeaderType:
     label: 'Default header type'
@@ -1886,6 +1879,7 @@ settings:
     type: int
     default: 600
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.maxWInText:
     label: 'Text & Media: max media width beside text'
@@ -1893,6 +1887,7 @@ settings:
     type: int
     default: 300
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.columnSpacing:
     label: 'Text & Media: column gap'
@@ -1942,6 +1937,7 @@ settings:
     type: string
     default: 800m
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.linkWrap.height:
     label: 'Click-enlarge: image height'
@@ -1949,6 +1945,7 @@ settings:
     type: string
     default: 600m
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.linkWrap.newWindow:
     label: 'Click-enlarge: open in new window'
@@ -1956,6 +1953,7 @@ settings:
     type: bool
     default: false
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.linkWrap.lightboxEnabled:
     label: 'Click-enlarge: use lightbox'
@@ -1963,6 +1961,7 @@ settings:
     type: bool
     default: false
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.linkWrap.lightboxCssClass:
     label: 'Lightbox: CSS class'
@@ -1970,6 +1969,7 @@ settings:
     type: string
     default: lightbox
     category: fsc.content
+    readonly: true
 
   styles.content.textmedia.linkWrap.lightboxRelAttribute:
     label: 'Lightbox: rel attribute'
@@ -1977,3 +1977,4 @@ settings:
     type: string
     default: 'lightbox[{field:uid}]'
     category: fsc.content
+    readonly: true
