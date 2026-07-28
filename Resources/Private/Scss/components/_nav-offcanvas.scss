@@ -399,7 +399,6 @@
         color: var(--conn-nav-text, var(--conn-text)) !important;
         opacity: 0.5;
         text-decoration: none;
-        font-size: 0.875rem;
         line-height: 1;
         transition: opacity 0.15s ease;
 
@@ -415,7 +414,6 @@
     align-items: var(--conn-panel-content-justify, flex-start);
     text-align: var(--conn-panel-text-align, left);
     padding: 1rem 1rem;
-    font-size: 0.875rem;
     border-bottom: 1px solid var(--conn-border);
 
     a {
@@ -442,7 +440,6 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem 1rem;
-    font-size: 0.875rem;
     text-align: var(--conn-panel-text-align, left);
     border-bottom: 1px solid var(--conn-border);
 

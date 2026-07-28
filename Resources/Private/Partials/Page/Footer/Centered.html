@@ -57,7 +57,7 @@
             </f:then>
             <f:else>
                 <f:if condition="{site.settings.footer.tagline}">
-                    <p class="text-body-secondary small mb-4">{site.settings.footer.tagline}</p>
+                    <p class="mb-4">{site.settings.footer.tagline}</p>
                 </f:if>
             </f:else>
         </f:if>
@@ -160,7 +160,7 @@
 
         <hr />
 
-        <p class="text-body-secondary small mb-0">
+        <p class="mb-0">
             &copy; {currentYear}
             {f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}
         </p>

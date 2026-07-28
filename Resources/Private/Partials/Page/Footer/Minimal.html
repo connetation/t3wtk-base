@@ -30,7 +30,7 @@
         <div class="row align-items-center g-2">
 
             <f:if condition="{site.settings.footer.bar.left}">
-                <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start text-body-secondary small">
+                <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start">
                     <f:switch expression="{site.settings.footer.bar.left}">
                         <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                         <f:case value="social">
@@ -47,7 +47,7 @@
             </f:if>
 
             <f:if condition="{site.settings.footer.bar.center}">
-                <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center text-body-secondary small">
+                <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center">
                     <f:switch expression="{site.settings.footer.bar.center}">
                         <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                         <f:case value="social">
@@ -66,7 +66,7 @@
             <f:if condition="{site.settings.footer.bar.right}">
                 <div class="col-12 col-md {site.settings.footer.bar.rightMobileAlign} text-md-end">
                     <f:switch expression="{site.settings.footer.bar.right}">
-                        <f:case value="copyright"><span class="text-body-secondary small">&copy; {currentYear} {copyrightName}</span></f:case>
+                        <f:case value="copyright"><span class="">&copy; {currentYear} {copyrightName}</span></f:case>
                         <f:case value="social">
                             <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
                                 <f:render section="SocialLinks" arguments="{site: site}" />
@@ -127,7 +127,7 @@
         </f:then>
         <f:else>
             <f:if condition="{site.settings.footer.tagline}">
-                <span class="text-body-secondary small">{site.settings.footer.tagline}</span>
+                <span class="">{site.settings.footer.tagline}</span>
             </f:if>
         </f:else>
     </f:if>
@@ -141,17 +141,17 @@
         </f:then>
         <f:else>
             <f:if condition="{site.settings.footer.tagline}">
-                <span class="text-body-secondary small ms-2">{site.settings.footer.tagline}</span>
+                <span class="ms-2">{site.settings.footer.tagline}</span>
             </f:if>
         </f:else>
     </f:if>
 </f:section>
 
 <f:section name="BarNavigation">
-    <ul class="list-inline mb-0 small">
+    <ul class="list-inline mb-0">
         <f:for each="{footerBarNavigation}" as="item">
             <li class="list-inline-item">
-                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">{item.title}</a>
+                <a href="{item.link}" class="footer__link text-decoration-none">{item.title}</a>
             </li>
         </f:for>
     </ul>

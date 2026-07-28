@@ -92,7 +92,7 @@
             <div class="row align-items-center g-2">
 
                 <f:if condition="{site.settings.footer.bar.left}">
-                    <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start text-body-secondary small">
+                    <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start">
                         <f:switch expression="{site.settings.footer.bar.left}">
                             <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                             <f:case value="social">
@@ -109,7 +109,7 @@
                 </f:if>
 
                 <f:if condition="{site.settings.footer.bar.center}">
-                    <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center text-body-secondary small">
+                    <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center">
                         <f:switch expression="{site.settings.footer.bar.center}">
                             <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                             <f:case value="social">
@@ -128,7 +128,7 @@
                 <f:if condition="{site.settings.footer.bar.right}">
                     <div class="col-12 col-md {site.settings.footer.bar.rightMobileAlign} text-md-end">
                         <f:switch expression="{site.settings.footer.bar.right}">
-                            <f:case value="copyright"><span class="text-body-secondary small">&copy; {currentYear} {copyrightName}</span></f:case>
+                            <f:case value="copyright"><span class="">&copy; {currentYear} {copyrightName}</span></f:case>
                             <f:case value="social">
                                 <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
                                     <f:render section="SocialLinks" arguments="{site: site}" />
@@ -193,7 +193,7 @@
         </f:then>
         <f:else>
             <f:if condition="{site.settings.footer.tagline}">
-                <span class="text-body-secondary small">{site.settings.footer.tagline}</span>
+                <span class="">{site.settings.footer.tagline}</span>
             </f:if>
         </f:else>
     </f:if>
@@ -207,17 +207,17 @@
         </f:then>
         <f:else>
             <f:if condition="{site.settings.footer.tagline}">
-                <span class="text-body-secondary small ms-2">{site.settings.footer.tagline}</span>
+                <span class="ms-2">{site.settings.footer.tagline}</span>
             </f:if>
         </f:else>
     </f:if>
 </f:section>
 
 <f:section name="BarNavigation">
-    <ul class="list-inline mb-0 small">
+    <ul class="list-inline mb-0">
         <f:for each="{footerBarNavigation}" as="item">
             <li class="list-inline-item">
-                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">{item.title}</a>
+                <a href="{item.link}" class="footer__link text-decoration-none">{item.title}</a>
             </li>
         </f:for>
     </ul>
@@ -255,7 +255,7 @@
         </f:then>
         <f:else>
             <f:if condition="{site.settings.footer.tagline}">
-                <p class="text-body-secondary small mb-0">{site.settings.footer.tagline}</p>
+                <p class="mb-0">{site.settings.footer.tagline}</p>
             </f:if>
         </f:else>
     </f:if>
@@ -267,11 +267,11 @@
 </f:section>
 
 <f:section name="Navigation">
-    <f:if condition="{showHeader}"><h6 class="footer__nav-title fw-semibold text-uppercase small mb-3">Navigation</h6></f:if>
+    <f:if condition="{showHeader}"><h6 class="footer__nav-title fw-semibold text-uppercase mb-3">Navigation</h6></f:if>
     <ul class="list-unstyled mb-0">
         <f:for each="{footerNavigation}" as="item">
             <li class="mb-1">
-                <a href="{item.link}" class="footer__link text-body-secondary text-decoration-none">
+                <a href="{item.link}" class="footer__link text-decoration-none">
                     {item.title}
                 </a>
             </li>
@@ -298,13 +298,13 @@
 </f:section>
 
 <f:section name="Address">
-    <f:if condition="{showHeader}"><h6 class="footer__address-title fw-semibold text-uppercase small mb-3">Contact</h6></f:if>
-    <div class="footer__address-list text-body-secondary small">
+    <f:if condition="{showHeader}"><h6 class="footer__address-title fw-semibold text-uppercase mb-3">Contact</h6></f:if>
+    <div class="footer__address-list">
         <f:if condition="{site.settings.contact.address.company} || {site.settings.contact.address.street} || {site.settings.contact.address.city}">
             <div class="footer__address-row">
                 <f:if condition="{site.settings.contact.address.url}">
                     <f:then>
-                        <a href="{site.settings.contact.address.url}" class="footer__address-link text-body-secondary text-decoration-none" target="_blank" rel="noopener noreferrer">
+                        <a href="{site.settings.contact.address.url}" class="footer__address-link text-decoration-none" target="_blank" rel="noopener noreferrer">
                             <f:if condition="{site.settings.contact.address.icon}">
                                 <img src="{conn:resolvePath(path: site.settings.contact.address.icon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                             </f:if>
@@ -328,7 +328,7 @@
         </f:if>
         <f:if condition="{site.settings.contact.phone}">
             <div class="footer__address-row">
-                <a href="tel:{site.settings.contact.phone}" class="footer__link text-body-secondary text-decoration-none">
+                <a href="tel:{site.settings.contact.phone}" class="footer__link text-decoration-none">
                     <f:if condition="{site.settings.contact.phoneIcon}">
                         <img src="{conn:resolvePath(path: site.settings.contact.phoneIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                     </f:if>
@@ -338,7 +338,7 @@
         </f:if>
         <f:if condition="{site.settings.contact.email}">
             <div class="footer__address-row">
-                <a href="mailto:{site.settings.contact.email}" class="footer__link text-body-secondary text-decoration-none">
+                <a href="mailto:{site.settings.contact.email}" class="footer__link text-decoration-none">
                     <f:if condition="{site.settings.contact.emailIcon}">
                         <img src="{conn:resolvePath(path: site.settings.contact.emailIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                     </f:if>
