@@ -6,9 +6,6 @@
 import * as bootstrap from 'bootstrap';
 import GLightbox from 'glightbox';
 
-// Bootstrap's ESM build (unlike the old UMD bundle) doesn't attach itself to
-// `window` — other scripts on the page (navbar partials) call
-// `bootstrap.Collapse`/`bootstrap.Dropdown` etc. expecting that global.
 window.bootstrap = bootstrap;
 
 // ─────────────────────────────────────────────
@@ -19,8 +16,7 @@ const ConnTheme = (() => {
     const ATTR = 'data-bs-theme';
 
     const getPreferred = () =>
-        localStorage.getItem(STORAGE_KEY) ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        localStorage.getItem(STORAGE_KEY) || 'light';
 
     const apply = (theme) => {
         document.documentElement.setAttribute(ATTR, theme);
@@ -37,12 +33,6 @@ const ConnTheme = (() => {
 
         document.querySelectorAll('.theme-toggle').forEach(btn => {
             btn.addEventListener('click', toggle);
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (!localStorage.getItem(STORAGE_KEY)) {
-                apply(e.matches ? 'dark' : 'light');
-            }
         });
     };
 

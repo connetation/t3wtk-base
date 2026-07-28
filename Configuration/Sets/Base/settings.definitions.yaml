@@ -663,7 +663,7 @@ settings:
     label: 'Theme toggle – show button'
     description: 'Show the light/dark theme toggle button. Disable to remove it from the navbar and footer.'
     type: bool
-    default: true
+    default: false
     category: conn.themetoggle
 
   themeToggle.position:

@@ -150,7 +150,22 @@ $headerClassItems = [
     ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h5', 'value' => 'h5'],
 ];
 
+// Subheader previously had no layout choice at all — HeaderSwitch.html always
+// rendered it as a plain <p>, unlike header (switchable h1-h6). That was the
+// one inconsistency in the reference header/subheader implementation itself:
+// every OTHER header/subheader pair in the project (Card Group, Pricing,
+// Slider, ...) must always render a real heading tag, so this one should too.
+// Reuses header_layout's item set/labels (Default/H1-H5/Hidden) for parity.
 ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'tx_conn_base_subheader_layout' => [
+        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_layout',
+        'config' => [
+            'type'       => 'select',
+            'renderType' => 'selectSingle',
+            'default'    => '0',
+            'items'      => $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'],
+        ],
+    ],
     'tx_conn_base_header_class' => [
         'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class',
         'config' => [
@@ -172,7 +187,8 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 ]);
 
 // header_class fits both 'header' and 'headers' (every CE has a header);
-// subheader_class only makes sense in 'headers' (the only palette with subheader).
+// subheader_layout/subheader_class only make sense in 'headers' (the only
+// palette with subheader).
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_conn_base_header_class', 'after:header_layout');
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_header_class', 'after:header_layout');
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_subheader_class', 'after:subheader');
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_subheader_layout, tx_conn_base_subheader_class', 'after:subheader');

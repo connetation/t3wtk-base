@@ -20,7 +20,15 @@
                 </f:switch>
             </f:if>
             <f:if condition="{data.subheader}">
-                <p class="ce-subheader {positionClass}<f:if condition="{data.tx_conn_base_subheader_class}"> {data.tx_conn_base_subheader_class}</f:if>">{data.subheader}</p>
+                <f:variable name="subheaderClass">ce-subheader {positionClass}<f:if condition="{data.tx_conn_base_subheader_class}"> {data.tx_conn_base_subheader_class}</f:if></f:variable>
+                <f:switch expression="{data.tx_conn_base_subheader_layout}">
+                    <f:case value="1"><h1 class="{subheaderClass}">{data.subheader}</h1></f:case>
+                    <f:case value="2"><h2 class="{subheaderClass}">{data.subheader}</h2></f:case>
+                    <f:case value="3"><h3 class="{subheaderClass}">{data.subheader}</h3></f:case>
+                    <f:case value="4"><h4 class="{subheaderClass}">{data.subheader}</h4></f:case>
+                    <f:case value="5"><h5 class="{subheaderClass}">{data.subheader}</h5></f:case>
+                    <f:defaultCase><h3 class="{subheaderClass}">{data.subheader}</h3></f:defaultCase>
+                </f:switch>
             </f:if>
         </header>
     </f:if>

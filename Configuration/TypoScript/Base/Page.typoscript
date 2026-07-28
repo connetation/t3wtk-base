@@ -5,7 +5,7 @@
 # TYPO3's PageRenderer owns the document shell (<!DOCTYPE>, <html>, <head>,
 # <body>) — the Fluid layout renders body content only.
 config {
-    htmlTag.attributes.data-bs-theme = auto
+    htmlTag.attributes.data-bs-theme = light
     htmlTag.attributes.class = h-100
 }
 

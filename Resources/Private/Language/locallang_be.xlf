@@ -101,6 +101,9 @@
             <trans-unit id="header_layout.hidden">
                 <source>Hidden</source>
             </trans-unit>
+            <trans-unit id="subheader_layout">
+                <source>Subheading Layout</source>
+            </trans-unit>
             <trans-unit id="header_class">
                 <source>Header class</source>
             </trans-unit>
