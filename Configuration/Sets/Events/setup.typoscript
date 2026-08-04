@@ -1,13 +1,4 @@
 plugin.tx_sfeventmgt.view {
-    templateRootPaths.20 = EXT:conn_base/Resources/Private/Templates/
-    partialRootPaths.20  = EXT:conn_base/Resources/Private/Partials/
+    templateRootPaths.21 = EXT:conn_base/Resources/Private/Templates/Events/
     partialRootPaths.21  = EXT:conn_base/Resources/Private/Partials/Events/
 }
-
-# No layoutRootPaths.20 override: sf_event_mgt's own Layouts/Default.fluid.html
-# (a 3-line wrapper) is fine as-is and needs no reskinning. Pointing this at
-# the shared EXT:conn_base/Resources/Private/Layouts/ root like the other two
-# would collide with conn_base's own page-level Layouts/Default.html (same
-# layout name "Default", used by <f:layout name="Default" /> everywhere in
-# sf_event_mgt) — Fluid then wrongly resolves the PAGE layout instead of
-# sf_event_mgt's own, causing "Section Main does not exist" fatals.
