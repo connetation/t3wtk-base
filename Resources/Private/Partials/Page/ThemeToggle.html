@@ -6,23 +6,5 @@
         <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
     </button>
 </div>
-<script>
-    (function() {
-        var el = document.querySelector('.conn-theme-toggle-float');
-        if (!el) return;
-        var x = (el.dataset.tgX || '24') + 'px';
-        var y = (el.dataset.tgY || '24') + 'px';
-        el.style.setProperty('--tg-x', x);
-        el.style.setProperty('--tg-y', y);
-        var btn = el.querySelector('.conn-float-toggle');
-        if (!btn) return;
-        btn.addEventListener('click', function() {
-            var html = document.documentElement;
-            var next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-bs-theme', next);
-            localStorage.setItem('conn-theme', next);
-        });
-    })();
-</script>
 
 </html>

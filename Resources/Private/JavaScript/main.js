@@ -77,6 +77,65 @@ const initNavbar = () => {
 };
 
 // ─────────────────────────────────────────────
+// NavTop — dropdown grid alignment + flyout submenu positioning
+// ─────────────────────────────────────────────
+const initNavTopDropdowns = () => {
+    const nav = document.getElementById('mainNav');
+    if (!nav) return;
+
+    const align = nav.dataset.gridAlign || 'auto';
+    nav.querySelectorAll('.conn-nav-top__dropdown').forEach(menu => {
+        if (align !== 'auto') {
+            menu.classList.add(`conn-grid-align-${align}`);
+            return;
+        }
+        const applyAutoAlign = () => {
+            const trigger = menu.previousElementSibling;
+            if (!trigger) return;
+            const rect = trigger.getBoundingClientRect();
+            const triggerCenter = rect.left + rect.width / 2;
+            menu.classList.remove('conn-grid-align-left', 'conn-grid-align-right', 'conn-grid-align-center');
+            menu.classList.add(triggerCenter > window.innerWidth / 2 ? 'conn-grid-align-right' : 'conn-grid-align-left');
+        };
+        menu.closest('.nav-item').addEventListener('mouseenter', applyAutoAlign);
+        const trigger = menu.previousElementSibling;
+        if (trigger) trigger.addEventListener('click', applyAutoAlign);
+    });
+
+    // Flyout submenus: open to the left when there is not enough space on the right.
+    // Always reset to right-side first so getBoundingClientRect() measures the
+    // right-opening position — otherwise a stale --dropstart class from the
+    // previous hover would cause the position to alternate every other open.
+    nav.querySelectorAll('.dropdown-submenu').forEach(sm => {
+        sm.addEventListener('mouseenter', () => {
+            const flyout = sm.querySelector(':scope > .dropdown-menu');
+            if (!flyout) return;
+            sm.classList.remove('dropdown-submenu--dropstart');
+            const rect = flyout.getBoundingClientRect();
+            // Use clientWidth (excludes scrollbar) + 8px buffer for sub-pixel cases
+            if (rect.right > document.documentElement.clientWidth - 8) {
+                sm.classList.add('dropdown-submenu--dropstart');
+            }
+        });
+    });
+};
+
+// ─────────────────────────────────────────────
+// Floating theme-toggle button — position offset + click handler
+// ─────────────────────────────────────────────
+const initThemeToggleFloat = () => {
+    const el = document.querySelector('.conn-theme-toggle-float');
+    if (!el) return;
+
+    el.style.setProperty('--tg-x', `${el.dataset.tgX || '24'}px`);
+    el.style.setProperty('--tg-y', `${el.dataset.tgY || '24'}px`);
+
+    const btn = el.querySelector('.conn-float-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => ConnTheme.toggle());
+};
+
+// ─────────────────────────────────────────────
 // News/Event card grid — entrance reveal
 // (same stagger fade/slide-in as conn/elements' CardGroup, CSS-driven —
 // see Scss/components/_news.scss and _events.scss for the keyframes/stagger)
@@ -109,6 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBootstrapComponents();
     initSmoothScroll();
     initNavbar();
+    initNavTopDropdowns();
+    initThemeToggleFloat();
     initNewsCardReveal();
     const lightbox = GLightbox({ selector: '.glightbox', autoplayVideos: false });
 
