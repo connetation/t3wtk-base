@@ -63,6 +63,7 @@ categories:
 
 settings:
   # ─── Color (base/default — used directly, dark mode below overrides it) ──
+  # CSS var (ThemeVarsProcessor): --conn-accent-secondary
   theme.accentSecondary:
     label: 'Accent secondary'
     description: 'Secondary accent color used in card hover gradients and highlights (e.g. #06b6d4). Leave empty to keep the built-in default.'
@@ -70,6 +71,9 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # Not resolved by ThemeVarsProcessor — this is a feature toggle, not a color/size.
+  # Consumed in Page.typoscript (bodyTagCObject) to append the "link-hover-underline"
+  # body class; the actual CSS lives in conn_base's link-hover-effect partial/SCSS.
   theme.linkHoverEffect:
     label: 'Animated underline on link hover'
     description: 'Grows an underline in from the left under links on hover, using the link/link-hover colors.'
@@ -77,6 +81,7 @@ settings:
     default: false
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-sh-color
   theme.shadowHover.color:
     label: 'Card hover shadow – color'
     description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
@@ -84,6 +89,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-sh-blur
   theme.shadowHover.blur:
     label: 'Card hover shadow – blur radius'
     description: 'Blur radius of the hover shadow, e.g. 32px. Leave empty to keep the built-in default (32px).'
@@ -91,6 +97,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-sh-y
   theme.shadowHover.offsetY:
     label: 'Card hover shadow – vertical offset'
     description: 'Vertical offset of the hover shadow, e.g. 8px. Leave empty to keep the built-in default (8px).'
@@ -98,6 +105,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-sh-x
   theme.shadowHover.offsetX:
     label: 'Card hover shadow – horizontal offset'
     description: 'Horizontal offset of the hover shadow, e.g. 0. Leave empty to keep the built-in default (0).'
@@ -105,6 +113,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-sh-spread
   theme.shadowHover.spread:
     label: 'Card hover shadow – spread radius'
     description: 'Spread radius of the hover shadow, e.g. 4px. Leave empty to keep the built-in default (0).'
@@ -112,6 +121,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-accent, --bs-primary
   theme.light.accent:
     label: 'Accent color'
     description: 'Primary brand/accent color. Any CSS color value (e.g. #6366f1, rgb(99,102,241)). Leave empty to keep the built-in default. Overridden per-setting by "Dark-theme coloring" below when set.'
@@ -119,6 +129,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-hover
   theme.light.accentHover:
     label: 'Accent – hover'
     description: 'Accent color on hover/focus. Leave empty to keep the built-in default.'
@@ -126,6 +137,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-bg, --bs-body-bg
   theme.light.bg:
     label: 'Page background'
     description: 'Page background color for light mode.'
@@ -133,6 +145,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-surface, --conn-surface-alt, --conn-surface-raised
   theme.light.surface:
     label: 'Surface color'
     description: 'Card / panel surface color for light mode.'
@@ -140,6 +153,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-nav-bg
   theme.light.navBg:
     label: 'Navbar background'
     description: 'Navbar and offcanvas panel background color. Overridden by "Dark-theme coloring" below when set.'
@@ -147,6 +161,7 @@ settings:
     default: ''
     category: conn.navbar.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-nav-text
   theme.light.navText:
     label: 'Navbar text'
     description: 'Text color inside the navbar and offcanvas panel. Falls back to the general text color when empty.'
@@ -154,6 +169,7 @@ settings:
     default: ''
     category: conn.navbar.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-bg
   theme.light.footerBg:
     label: 'Footer background'
     description: 'Footer background color. Overridden by "Dark-theme coloring" below when set.'
@@ -161,6 +177,7 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-text
   theme.light.footerText:
     label: 'Footer text'
     description: 'Text color inside the footer. Falls back to the general text color when empty.'
@@ -168,6 +185,7 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
   theme.light.footerHeaderText:
     label: 'Footer header text'
     description: 'Text color for footer section headers ("Navigation", "Contact", …). Falls back to the footer text color when empty.'
@@ -175,6 +193,7 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
   theme.light.footerLinkHover:
     label: 'Footer link hover'
     description: 'Hover color for footer links (nav, address, social). Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
@@ -182,6 +201,7 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover-underline
   theme.light.footerLinkHoverUnderline:
     label: 'Footer link hover underline'
     description: 'Color of the sliding underline shown on footer link hover. Falls back to the footer link hover color when empty, then the general accent color.'
@@ -189,6 +209,7 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-text, --bs-body-color
   theme.light.text:
     label: 'Text color'
     description: 'Main body text color for light mode.'
@@ -196,6 +217,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-heading, --bs-heading-color
   theme.light.heading:
     label: 'Headers color'
     description: 'Heading (h1–h6) color for light mode.'
@@ -203,6 +225,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-emphasis, --bs-emphasis-color
   theme.light.emphasis:
     label: 'Emphasis color'
     description: 'Strong/bold text and emphasis color for light mode.'
@@ -210,6 +233,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-link, --bs-link-color
   theme.light.link:
     label: 'Link color'
     description: 'Hyperlink color for light mode.'
@@ -217,6 +241,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-link-hover, --bs-link-hover-color
   theme.light.linkHover.text:
     label: 'Link – hover color'
     description: 'Hyperlink text color on hover/focus for light mode.'
@@ -224,6 +249,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-link-hover-underline
   theme.light.linkHover.underline:
     label: 'Link – hover underline color'
     description: 'Color of the animated underline effect (see "Animated underline on link hover") for light mode. Falls back to the link hover color when empty.'
@@ -231,6 +257,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-text-muted, --bs-secondary-color
   theme.light.textMuted:
     label: 'Muted text color'
     description: 'Secondary / muted text color for light mode.'
@@ -238,6 +265,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-border
   theme.light.border:
     label: 'Border color'
     description: 'Default border color for light mode.'
@@ -245,6 +273,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-border-strong
   theme.light.borderStrong:
     label: 'Border color – strong'
     description: 'Stronger border color used for hover states, active dropdowns, and focus rings (e.g. rgba(99, 102, 241, 0.28)). Leave empty to keep the built-in default.'
@@ -252,6 +281,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-soft
   theme.light.accentSoft:
     label: 'Accent soft background'
     description: 'Low-opacity accent fill used for active stat cards, tag badges, and hover backgrounds (e.g. rgba(99, 102, 241, 0.1)). Leave empty to keep the built-in default.'
@@ -259,6 +289,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-glow
   theme.light.accentGlow:
     label: 'Accent glow'
     description: 'Medium-opacity accent used for glows and subtle highlights (e.g. rgba(99, 102, 241, 0.2)). Leave empty to keep the built-in default.'
@@ -266,6 +297,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-btn-bg
   theme.light.btnBg:
     label: 'Button background'
     description: 'Primary button background color for light mode (e.g. #6366f1). Leave empty to use the accent color.'
@@ -273,6 +305,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-btn-bg-hover
   theme.light.btnBgHover:
     label: 'Button background – hover'
     description: 'Primary button background color on hover/active for light mode. Leave empty to use the accent hover color.'
@@ -280,6 +313,7 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-btn-color
   theme.light.btnColor:
     label: 'Button text color'
     description: 'Text (label) color on primary buttons for light mode (e.g. #ffffff). Leave empty to keep white.'
@@ -288,6 +322,7 @@ settings:
     category: conn.theme.color
 
   # ─── Dark-theme coloring (overrides the Color settings above, dark mode only) ──
+  # CSS var(s) (ThemeVarsProcessor): --conn-accent, --bs-primary
   theme.dark.accent:
     label: 'Accent color'
     description: 'Accent color for dark mode. Overrides the Color setting above. Leave empty to use that value.'
@@ -295,6 +330,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-hover
   theme.dark.accentHover:
     label: 'Accent – hover'
     description: 'Accent hover color for dark mode. Leave empty to use the global value.'
@@ -302,6 +338,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-bg, --bs-body-bg
   theme.dark.bg:
     label: 'Page background'
     description: 'Page background color for dark mode.'
@@ -309,6 +346,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-surface, --conn-surface-alt, --conn-surface-raised
   theme.dark.surface:
     label: 'Surface color'
     description: 'Card / panel surface color for dark mode.'
@@ -316,6 +354,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-nav-bg
   theme.dark.navBg:
     label: 'Navbar background'
     description: 'Navbar and offcanvas panel background for dark mode.'
@@ -323,6 +362,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-nav-text
   theme.dark.navText:
     label: 'Navbar text'
     description: 'Text color inside the navbar and offcanvas panel for dark mode. Falls back to the general text color when empty.'
@@ -330,6 +370,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-bg
   theme.dark.footerBg:
     label: 'Footer background'
     description: 'Footer background color for dark mode.'
@@ -337,6 +378,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-text
   theme.dark.footerText:
     label: 'Footer text'
     description: 'Text color inside the footer for dark mode. Falls back to the general text color when empty.'
@@ -344,6 +386,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
   theme.dark.footerHeaderText:
     label: 'Footer header text'
     description: 'Text color for footer section headers ("Navigation", "Contact", …) for dark mode. Falls back to the footer text color when empty.'
@@ -351,6 +394,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
   theme.dark.footerLinkHover:
     label: 'Footer link hover'
     description: 'Hover color for footer links (nav, address, social) for dark mode. Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
@@ -358,6 +402,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover-underline
   theme.dark.footerLinkHoverUnderline:
     label: 'Footer link hover underline'
     description: 'Color of the sliding underline shown on footer link hover for dark mode. Falls back to the footer link hover color when empty, then the general accent color.'
@@ -365,6 +410,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-text, --bs-body-color
   theme.dark.text:
     label: 'Text color'
     description: 'Main body text color for dark mode.'
@@ -372,6 +418,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-heading, --bs-heading-color
   theme.dark.heading:
     label: 'Headers color'
     description: 'Heading (h1–h6) color for dark mode.'
@@ -379,6 +426,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-emphasis, --bs-emphasis-color
   theme.dark.emphasis:
     label: 'Emphasis color'
     description: 'Strong/bold text and emphasis color for dark mode.'
@@ -386,6 +434,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-link, --bs-link-color
   theme.dark.link:
     label: 'Link color'
     description: 'Hyperlink color for dark mode.'
@@ -393,6 +442,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-link-hover, --bs-link-hover-color
   theme.dark.linkHover.text:
     label: 'Link – hover color'
     description: 'Hyperlink text color on hover/focus for dark mode.'
@@ -400,6 +450,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-link-hover-underline
   theme.dark.linkHover.underline:
     label: 'Link – hover underline color'
     description: 'Color of the animated underline effect (see "Animated underline on link hover") for dark mode. Falls back to the link hover color when empty.'
@@ -407,6 +458,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var(s) (ThemeVarsProcessor): --conn-text-muted, --bs-secondary-color
   theme.dark.textMuted:
     label: 'Muted text color'
     description: 'Secondary / muted text color for dark mode.'
@@ -414,6 +466,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-border
   theme.dark.border:
     label: 'Border color'
     description: 'Default border color for dark mode.'
@@ -421,6 +474,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-border-strong
   theme.dark.borderStrong:
     label: 'Border color – strong'
     description: 'Stronger border color for hover states and focus rings in dark mode (e.g. rgba(255, 255, 255, 0.15)). Leave empty to keep the built-in default.'
@@ -428,6 +482,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-soft
   theme.dark.accentSoft:
     label: 'Accent soft background'
     description: 'Low-opacity accent fill for dark mode (e.g. rgba(99, 102, 241, 0.15)). Leave empty to keep the built-in default.'
@@ -435,6 +490,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-glow
   theme.dark.accentGlow:
     label: 'Accent glow'
     description: 'Medium-opacity accent glow for dark mode (e.g. rgba(99, 102, 241, 0.3)). Leave empty to keep the built-in default.'
@@ -442,6 +498,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-btn-bg
   theme.dark.btnBg:
     label: 'Button background'
     description: 'Primary button background color for dark mode. Leave empty to use the accent color.'
@@ -449,6 +506,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-btn-bg-hover
   theme.dark.btnBgHover:
     label: 'Button background – hover'
     description: 'Primary button background color on hover/active for dark mode. Leave empty to use the accent hover color.'
@@ -456,6 +514,7 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-btn-color
   theme.dark.btnColor:
     label: 'Button text color'
     description: 'Text (label) color on primary buttons for dark mode. Leave empty to keep white.'
@@ -464,6 +523,7 @@ settings:
     category: conn.theme.dark
 
   # ─── Theme – Navigation typography ────────────────────────────────────────
+  # CSS var (ThemeVarsProcessor): --conn-nav-panel-link-size
   theme.nav.panelLinkSize:
     label: 'Panel nav – L1 font size'
     description: 'Font size for top-level links in the navigation panel (e.g. 1.125rem). Leave empty to keep the built-in default.'
@@ -471,6 +531,7 @@ settings:
     default: ''
     category: conn.navbar.panel
 
+  # CSS var (ThemeVarsProcessor): --conn-nav-panel-sublink-size
   theme.nav.panelSubLinkSize:
     label: 'Panel nav – L2 font size'
     description: 'Font size for second-level links in the navigation panel.'
@@ -478,6 +539,7 @@ settings:
     default: ''
     category: conn.navbar.panel
 
+  # CSS var (ThemeVarsProcessor): --conn-nav-panel-sublink-size-l3
   theme.nav.panelSubLinkSizeL3:
     label: 'Panel nav – L3 font size'
     description: 'Font size for third-level links in the navigation panel.'
