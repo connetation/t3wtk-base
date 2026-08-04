@@ -141,6 +141,11 @@ page {
                 as = footerBarNavigation
                 includeNotInMenu = {$footer.barNavigation.includeNotInMenu}
             }
+
+            60 = Connetation\Base\DataProcessing\ThemeVarsProcessor
+            60 {
+                as = themeVars
+            }
         }
     }
 }
