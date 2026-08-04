@@ -9,6 +9,17 @@ config {
     htmlTag.attributes.class = h-100
 }
 
+# Content in the "Top Content" column (colPos 1) of the conn_topcontent
+# backend layout — styles.content.get (core default) only selects colPos 0.
+lib.contentTop = CONTENT
+lib.contentTop {
+    table = tt_content
+    select {
+        orderBy = sorting
+        where = {#colPos}=1
+    }
+}
+
 page = PAGE
 page {
     typeNum = 0
@@ -72,8 +83,8 @@ page {
             pagets__conn_default = TEXT
             pagets__conn_default.value = Default
 
-            pagets__conn_landingpage = TEXT
-            pagets__conn_landingpage.value = LandingPage
+            pagets__conn_topcontent = TEXT
+            pagets__conn_topcontent.value = TopContent
 
             default = TEXT
             default.value = Default

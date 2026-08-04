@@ -1,5 +1,6 @@
 # Keys are the layout identifiers; TYPO3 stores them as "pagets__<key>" in
 # pages.backend_layout (matching the CASE keys in Base/Page.typoscript).
+
 mod.web_layout.BackendLayouts {
     conn_default {
         title = Default (1 Column)
@@ -7,19 +8,42 @@ mod.web_layout.BackendLayouts {
             backend_layout {
                 colCount = 1
                 rowCount = 1
-                rows { 1 { columns { 1 { name = Main Content; colPos = 0 } } } }
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Main Content
+                                colPos = 0
+                            }
+                        }
+                    }
+                }
             }
         }
     }
-    conn_landingpage {
-        title = Landing Page
+    conn_topcontent {
+        title = Top Content
         config {
             backend_layout {
                 colCount = 1
                 rowCount = 2
                 rows {
-                    1 { columns { 1 { name = Hero Section; colPos = 1 } } }
-                    2 { columns { 1 { name = Main Content; colPos = 0 } } }
+                    1 {
+                        columns {
+                            1 {
+                                name = Top Content
+                                colPos = 1
+                            }
+                        }
+                    }
+                    2 {
+                        columns {
+                            1 {
+                                name = Main Content
+                                colPos = 0
+                            }
+                        }
+                    }
                 }
             }
         }

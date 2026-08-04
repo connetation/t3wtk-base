@@ -3,17 +3,21 @@
     <file source-language="en" target-language="de" datatype="plaintext" original="EXT:conn_base/Resources/Private/Language/locallang_be.xlf">
         <header/>
         <body>
-            <trans-unit id="backend_layout.default">
-                <source>Default (1 column)</source>
-                <target>Standard (1 Spalte)</target>
-            </trans-unit>
-            <trans-unit id="backend_layout.landingpage">
-                <source>Landing Page</source>
-                <target>Landingpage</target>
-            </trans-unit>
             <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
                 <target>Breadcrumb ausblenden</target>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_breadcrumb_position">
+                <source>Breadcrumb Position</source>
+                <target>Breadcrumb-Position</target>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_breadcrumb_position.under">
+                <source>Under Top Content (default)</source>
+                <target>Unter Top Content (Standard)</target>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_breadcrumb_position.top">
+                <source>Top (above Top Content)</source>
+                <target>Oben (über Top Content)</target>
             </trans-unit>
             <trans-unit id="content_width">
                 <source>Content Width</source>

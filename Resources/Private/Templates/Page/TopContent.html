@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:variable name="breadcrumbOnTop">{f:if(condition: '{data.tx_conn_base_breadcrumb_position} == \'top\'', then: 1, else: 0)}</f:variable>
+    <f:variable name="showBreadcrumb">{f:if(condition: '{breadcrumb} && !{data.tx_conn_base_hide_breadcrumb}', then: 1, else: 0)}</f:variable>
+
+    <div class="container">
+        <f:if condition="{breadcrumbOnTop} && {showBreadcrumb}">
+            <f:render partial="Page/Breadcrumb" arguments="{breadcrumb: breadcrumb}" />
+        </f:if>
+
+        <f:cObject typoscriptObjectPath="lib.contentTop" />
+    </div>
+
+    <div class="container">
+        <f:if condition="!{breadcrumbOnTop} && {showBreadcrumb}">
+            <f:render partial="Page/Breadcrumb" arguments="{breadcrumb: breadcrumb}" />
+        </f:if>
+
+        <f:cObject typoscriptObjectPath="styles.content.get" />
+    </div>
+</f:section>
+
+</html>

@@ -3,16 +3,18 @@
     <file source-language="en" datatype="plaintext" original="EXT:conn_base/Resources/Private/Language/locallang_be.xlf">
         <header/>
         <body>
-            <!-- Backend layouts -->
-            <trans-unit id="backend_layout.default">
-                <source>Default (1 column)</source>
-            </trans-unit>
-            <trans-unit id="backend_layout.landingpage">
-                <source>Landing Page</source>
-            </trans-unit>
             <!-- Pages fields -->
             <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_breadcrumb_position">
+                <source>Breadcrumb Position</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_breadcrumb_position.under">
+                <source>Under Top Content (default)</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_conn_base_breadcrumb_position.top">
+                <source>Top (above Top Content)</source>
             </trans-unit>
             <trans-unit id="pages.tx_conn_base_bg_color">
                 <source>Page Background Color</source>
