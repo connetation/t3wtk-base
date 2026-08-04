@@ -98,7 +98,7 @@
     || {site.settings.theme.shadowHover.offsetY}
     || {site.settings.theme.shadowHover.offsetX}
     || {site.settings.theme.shadowHover.spread}">
-:root {
+[data-bs-theme="light"], :root:not([data-bs-theme="dark"]) {
 <f:if condition="{site.settings.theme.light.accent}">    --conn-accent: {site.settings.theme.light.accent};
     --bs-primary: {site.settings.theme.light.accent};
 </f:if><f:if condition="{site.settings.theme.light.accentHover}">    --conn-accent-hover: {site.settings.theme.light.accentHover};
