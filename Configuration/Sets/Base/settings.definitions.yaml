@@ -193,6 +193,14 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # CSS var (ThemeVarsProcessor): --conn-footer-link
+  theme.light.footerLink:
+    label: 'Footer link'
+    description: 'Color of footer links (nav, phone, email) in their default state. Falls back to the general link color when empty — set this explicitly if the footer background does not contrast with the link color (e.g. a dark footer on a light site).'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
   # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
   theme.light.footerLinkHover:
     label: 'Footer link hover'
@@ -390,6 +398,14 @@ settings:
   theme.dark.footerHeaderText:
     label: 'Footer header text'
     description: 'Text color for footer section headers ("Navigation", "Contact", …) for dark mode. Falls back to the footer text color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link
+  theme.dark.footerLink:
+    label: 'Footer link'
+    description: 'Color of footer links (nav, phone, email) in their default state, for dark mode. Falls back to the general link color when empty — set this explicitly if the footer background does not contrast with the link color (e.g. a dark footer on a light site).'
     type: string
     default: ''
     category: conn.theme.dark

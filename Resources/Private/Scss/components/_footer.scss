@@ -21,35 +21,18 @@
         color: var(--conn-footer-header-text, var(--conn-footer-text, var(--conn-text)));
     }
 
-    // The icon is a faint watermark absolutely centered BEHIND the text,
-    // not a flex sibling beside it — a flex layout keeps the text itself
-    // off-center (pushed aside by the icon's own width) even once the row
-    // as a whole is centered. position:relative here just gives the
-    // absolutely-positioned icon something to center against; text-align
-    // still comes from the ancestor column (mobilealign/desktopalign)
-    // since this stays inline-level (inline-block, not block/flex).
-    //
-    // z-index:0 (not just position:relative) is required so this element
-    // establishes its OWN stacking context — otherwise &__address-icon's
-    // z-index:-1 escapes to a much broader ancestor context (e.g. behind
-    // the whole footer's own background) instead of just behind this one
-    // link's own text.
     &__link {
         position: relative;
         z-index: 0;
         display: inline-block;
+        color: var(--conn-footer-link, var(--conn-link));
         transition: color var(--conn-transition);
         &:hover { color: var(--conn-footer-link-hover, var(--conn-accent-hover)) !important; }
 
-        // Overrides only the color of the sliding underline bar that
-        // _links.scss' generic a[href]::before rule already draws —
-        // position/animation stay as defined there.
         &::before {
             background-color: var(--conn-footer-link-hover-underline, var(--conn-accent-hover, var(--conn-link-hover))) !important;
         }
 
-        // >=md the icon moves beside the text instead of behind it — see
-        // &__address-icon's own breakpoint override below.
         @media (min-width: 768px) {
             display: inline-flex;
             align-items: center;
@@ -57,9 +40,6 @@
         }
     }
 
-    // Only the company name should visually react on hover — coloring the
-    // whole multi-line block would be noisy. Not sharing &__link's rule
-    // since that colors everything.
     &__address-link {
         position: relative;
         z-index: 0;
@@ -95,14 +75,6 @@
         display: block;
     }
 
-    // Below md: a faint watermark absolutely centered BEHIND the text
-    // (z-index:-1 — no need to touch the text at all, since within the
-    // same stacking context a negative-z-index positioned element always
-    // paints behind normal-flow siblings, regardless of DOM order).
-    //
-    // >=md: a normal, fully visible icon sitting beside the text instead
-    // — &__link/&__address-link switch to inline-flex above, so this just
-    // has to drop out of absolute positioning to become a flex sibling.
     &__address-icon {
         position: absolute;
         top: 50%;
