@@ -538,31 +538,6 @@ settings:
     default: ''
     category: conn.theme.dark
 
-  # ─── Theme – Navigation typography ────────────────────────────────────────
-  # CSS var (ThemeVarsProcessor): --conn-nav-panel-link-size
-  theme.nav.panelLinkSize:
-    label: 'Panel nav – L1 font size'
-    description: 'Font size for top-level links in the navigation panel (e.g. 1.125rem). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.navbar.panel
-
-  # CSS var (ThemeVarsProcessor): --conn-nav-panel-sublink-size
-  theme.nav.panelSubLinkSize:
-    label: 'Panel nav – L2 font size'
-    description: 'Font size for second-level links in the navigation panel.'
-    type: string
-    default: ''
-    category: conn.navbar.panel
-
-  # CSS var (ThemeVarsProcessor): --conn-nav-panel-sublink-size-l3
-  theme.nav.panelSubLinkSizeL3:
-    label: 'Panel nav – L3 font size'
-    description: 'Font size for third-level links in the navigation panel.'
-    type: string
-    default: ''
-    category: conn.navbar.panel
-
   # ─── Navbar – General ─────────────────────────────────────────────────────
   navbar.style:
     label: 'Navbar style'

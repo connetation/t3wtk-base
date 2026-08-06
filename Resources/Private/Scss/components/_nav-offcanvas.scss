@@ -261,7 +261,7 @@
     justify-content: var(--conn-panel-link-justify, space-between);
     text-align: var(--conn-panel-text-align, left);
     padding: 0.75rem 1rem;
-    font-size: var(--conn-nav-panel-link-size, 1rem);
+    font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.3;
     letter-spacing: -0.01em;
@@ -334,7 +334,7 @@
         justify-content: var(--conn-panel-content-justify, flex-start);
         text-align: var(--conn-panel-text-align, left);
         padding: 0.35rem 1rem 0.35rem var(--conn-subnav-indent, 1.5rem);
-        font-size: var(--conn-nav-panel-sublink-size, 0.875rem);
+        font-size: 0.9375rem;
         font-weight: 400;
         color: var(--conn-nav-text, var(--conn-text-muted)) !important;
         text-decoration: none;
@@ -361,7 +361,7 @@
         padding-top: 0;
         padding-bottom: 0.25rem;
 
-        a { font-size: var(--conn-nav-panel-sublink-size-l3, 0.8125rem); }
+        a { font-size: 0.875rem; }
     }
 
     &--l4 {
@@ -369,7 +369,7 @@
         padding-top: 0;
         padding-bottom: 0.25rem;
 
-        a { font-size: var(--conn-nav-panel-sublink-size-l3, 0.8125rem); }
+        a { font-size: 0.875rem; }
     }
 }
 
