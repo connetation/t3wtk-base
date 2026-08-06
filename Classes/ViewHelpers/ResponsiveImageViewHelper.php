@@ -29,7 +29,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\TagBuilder;
  *   object-fit: cover to center-crop the same (largest) image everywhere.
  *
  * Usage:
- *   <conn:responsiveImage image="{slide.imageFile}" alt="{slide.title}"
+ *   <conn:responsiveImage image="{slide.imageFile}" alt="{slide.title}" title="{slide.imageFile.title}"
  *        widths="640,960,1280,1920,2560,3840" sizes="100vw"
  *        breakpoints="{0: {cropVariant: 'base', maxWidth: 575.98}, 1: {cropVariant: 'sm', maxWidth: 767.98}}"
  *        loading="eager" fetchpriority="high"
@@ -46,6 +46,7 @@ final class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('widths', 'string', 'Comma-separated srcset width ladder in px', false, '480,768,1024,1440,1920');
         $this->registerArgument('sizes', 'string', 'sizes attribute (rendered CSS width per breakpoint)', false, '100vw');
         $this->registerArgument('alt', 'string', 'Alternative text', false, '');
+        $this->registerArgument('title', 'string', 'Title attribute (tooltip); omitted entirely when empty', false, '');
         $this->registerArgument('aspectRatio', 'string', 'Crop every rendition to this ratio, e.g. "16:9" (empty = keep source ratio)', false, '');
         $this->registerArgument('loading', 'string', 'lazy | eager', false, 'lazy');
         $this->registerArgument('fetchpriority', 'string', 'high | low | auto (empty = attribute omitted)', false, '');
@@ -65,6 +66,9 @@ final class ResponsiveImageViewHelper extends AbstractTagBasedViewHelper
         }
 
         $this->tag->addAttribute('alt', (string)$this->arguments['alt']);
+        if ($this->arguments['title'] !== '') {
+            $this->tag->addAttribute('title', (string)$this->arguments['title']);
+        }
         $this->tag->addAttribute('loading', (string)$this->arguments['loading']);
         $this->tag->addAttribute('decoding', 'async');
         if ($this->arguments['fetchpriority'] !== '') {
