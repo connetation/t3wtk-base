@@ -15,3 +15,23 @@ h5, .h5 { font-size: var(--conn-font-size-h5); line-height: var(--conn-line-heig
 h6, .h6 { font-size: var(--conn-font-size-h6); line-height: var(--conn-line-height-tight); }
 
 small, .small { font-size: var(--conn-font-size-sm); }
+
+// ce-headline-{position} — set on header/subheader/eyebrow via header_position
+// (HeaderSwitch.html + Layouts/ContentElements/Default.html); "auto" eyebrow
+// alignment reuses this same class to follow the header instead of a value
+// of its own.
+.ce-headline-left   { text-align: left; }
+.ce-headline-center { text-align: center; }
+.ce-headline-right  { text-align: right; }
+
+// ce-eyebrow — subheader rendered above the header instead of below it
+// (HeaderSwitch.html, toggled by tx_conn_base_subheader_eyebrow).
+.ce-eyebrow {
+    display: block;
+    margin-bottom: var(--conn-space-2xs);
+    font-size: var(--conn-font-size-sm);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--conn-accent);
+}

@@ -3,6 +3,19 @@
 <f:if condition="{data.header_layout} != 100">
     <f:if condition="{data.header} || {data.subheader} || {data.date}">
         <header>
+            <f:if condition="{data.subheader} && {data.tx_conn_base_subheader_eyebrow}">
+                <f:variable name="eyebrowPositionClass"><f:if condition="{data.tx_conn_base_subheader_eyebrow_position} && {data.tx_conn_base_subheader_eyebrow_position} != 'auto'"><f:then>ce-headline-{data.tx_conn_base_subheader_eyebrow_position}</f:then><f:else>{positionClass}</f:else></f:if></f:variable>
+                <f:variable name="eyebrowClass">ce-eyebrow {eyebrowPositionClass}<f:if condition="{data.tx_conn_base_subheader_class}"> {data.tx_conn_base_subheader_class}</f:if></f:variable>
+                <f:variable name="eyebrowStyle"><f:if condition="{data.tx_conn_base_subheader_eyebrow_color}">color: {data.tx_conn_base_subheader_eyebrow_color};</f:if></f:variable>
+                <f:switch expression="{data.tx_conn_base_subheader_layout}">
+                    <f:case value="1"><h1 class="{eyebrowClass}" style="{eyebrowStyle}">{data.subheader}</h1></f:case>
+                    <f:case value="2"><h2 class="{eyebrowClass}" style="{eyebrowStyle}">{data.subheader}</h2></f:case>
+                    <f:case value="3"><h3 class="{eyebrowClass}" style="{eyebrowStyle}">{data.subheader}</h3></f:case>
+                    <f:case value="4"><h4 class="{eyebrowClass}" style="{eyebrowStyle}">{data.subheader}</h4></f:case>
+                    <f:case value="5"><h5 class="{eyebrowClass}" style="{eyebrowStyle}">{data.subheader}</h5></f:case>
+                    <f:defaultCase><p class="{eyebrowClass}" style="{eyebrowStyle}">{data.subheader}</p></f:defaultCase>
+                </f:switch>
+            </f:if>
             <f:if condition="{data.header}">
                 <f:variable name="headerLayout" value="{data.header_layout}" />
                 <f:if condition="!{headerLayout} && {settings.defaultHeaderType}">
@@ -19,7 +32,7 @@
                     <f:defaultCase><h2 class="{headerClass}"><f:link.typolink parameter="{data.header_link}">{data.header}</f:link.typolink></h2></f:defaultCase>
                 </f:switch>
             </f:if>
-            <f:if condition="{data.subheader}">
+            <f:if condition="{data.subheader} && !{data.tx_conn_base_subheader_eyebrow}">
                 <f:variable name="subheaderClass">ce-subheader {positionClass}<f:if condition="{data.tx_conn_base_subheader_class}"> {data.tx_conn_base_subheader_class}</f:if></f:variable>
                 <f:switch expression="{data.tx_conn_base_subheader_layout}">
                     <f:case value="1"><h1 class="{subheaderClass}">{data.subheader}</h1></f:case>

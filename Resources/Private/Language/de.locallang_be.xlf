@@ -135,6 +135,22 @@
                 <source>H5</source>
                 <target>H5</target>
             </trans-unit>
+            <trans-unit id="subheader_eyebrow">
+                <source>Style Subheading as Eyebrow</source>
+                <target>Subheading als Eyebrow darstellen</target>
+            </trans-unit>
+            <trans-unit id="subheader_eyebrow_position">
+                <source>Eyebrow Position</source>
+                <target>Eyebrow-Position</target>
+            </trans-unit>
+            <trans-unit id="subheader_eyebrow_position.auto">
+                <source>Auto (follow header)</source>
+                <target>Automatisch (folgt Header)</target>
+            </trans-unit>
+            <trans-unit id="subheader_eyebrow_color">
+                <source>Eyebrow Color</source>
+                <target>Eyebrow-Farbe</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

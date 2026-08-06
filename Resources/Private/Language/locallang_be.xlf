@@ -130,6 +130,18 @@
             <trans-unit id="header_class.h5">
                 <source>H5</source>
             </trans-unit>
+            <trans-unit id="subheader_eyebrow">
+                <source>Style Subheading as Eyebrow</source>
+            </trans-unit>
+            <trans-unit id="subheader_eyebrow_position">
+                <source>Eyebrow Position</source>
+            </trans-unit>
+            <trans-unit id="subheader_eyebrow_position.auto">
+                <source>Auto (follow header)</source>
+            </trans-unit>
+            <trans-unit id="subheader_eyebrow_color">
+                <source>Eyebrow Color</source>
+            </trans-unit>
             <!-- Alignment select items (shared across every conn_base *Align flexform field) -->
             <trans-unit id="align.left">
                 <source>Left</source>

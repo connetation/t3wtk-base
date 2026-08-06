@@ -186,9 +186,49 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
     ],
 ]);
 
+// Subheader as Eyebrow — lets the subheader text double as a small label
+// rendered above the header instead of below it (see HeaderSwitch.html).
+// Position/color only apply once eyebrow mode is on, hence the displayCond.
+ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'tx_conn_base_subheader_eyebrow' => [
+        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow',
+        'onChange' => 'reload',
+        'config' => [
+            'type'       => 'check',
+            'renderType' => 'checkboxToggle',
+            'items'      => [['label' => '', 'value' => 0]],
+        ],
+    ],
+    'tx_conn_base_subheader_eyebrow_position' => [
+        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_position',
+        'displayCond' => 'FIELD:tx_conn_base_subheader_eyebrow:=:1',
+        'config'      => [
+            'type'       => 'select',
+            'renderType' => 'selectSingle',
+            'default'    => 'auto',
+            'items'      => [
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_position.auto', 'value' => 'auto'],
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.left', 'value' => 'left'],
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.center', 'value' => 'center'],
+                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.right', 'value' => 'right'],
+            ],
+        ],
+    ],
+    'tx_conn_base_subheader_eyebrow_color' => [
+        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_color',
+        'displayCond' => 'FIELD:tx_conn_base_subheader_eyebrow:=:1',
+        'config'      => [
+            'type'    => 'color',
+            'opacity' => true,
+            'default' => '',
+        ],
+    ],
+]);
+
 // header_class fits both 'header' and 'headers' (every CE has a header);
-// subheader_layout/subheader_class only make sense in 'headers' (the only
-// palette with subheader).
+// subheader_layout/subheader_class/eyebrow only make sense in 'headers' (the
+// only palette with subheader).
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_conn_base_header_class', 'after:header_layout');
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_header_class', 'after:header_layout');
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_subheader_layout, tx_conn_base_subheader_class', 'after:subheader');
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', '--linebreak--, tx_conn_base_subheader_eyebrow, --linebreak--, tx_conn_base_subheader_eyebrow_position, tx_conn_base_subheader_eyebrow_color', 'after:tx_conn_base_subheader_class');
