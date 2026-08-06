@@ -1,6 +1,10 @@
 categories:
+  # ═══ STANDARD — global theme/color/system settings, not tied to a page area ═══
+  conn.standard:
+    label: 'Standard'
   conn.theme:
     label: 'Theme & Colors'
+    parent: conn.standard
   conn.theme.color:
     label: 'Color'
     description: 'The base color scheme — used as-is (this is also what light mode renders, since light is the default theme). Override any of these for dark mode only under "Dark-theme coloring".'
@@ -9,8 +13,30 @@ categories:
     label: 'Dark-theme coloring'
     description: 'Per-setting overrides applied only when dark mode is active. Leave a setting empty here to keep using its Color value in dark mode too.'
     parent: conn.theme
+  conn.meta:
+    label: 'Meta & Analytics'
+    parent: conn.standard
+  conn.advanced:
+    label: 'Advanced'
+    parent: conn.standard
+  fsc:
+    label: 'Fluid Styled Content'
+    parent: conn.advanced
+  fsc.templates:
+    label: 'Templates'
+    description: 'Global Fluid override paths shipped by fluid_styled_content. In conn projects these are superseded by the package layering (conn_base → conn_elements → sitepackage) — leave all three empty and override templates in the sitepackage instead.'
+    parent: fsc
+  fsc.content:
+    label: 'Content Elements'
+    description: 'Rendering options for the standard content elements (Text, Text & Media, Images, Insert Records, …).'
+    parent: fsc
+
+  # ═══ HEADER AREA — navbar, theme toggle, branding/logo ═══
+  conn.header:
+    label: 'Header area'
   conn.navbar:
     label: 'Navbar'
+    parent: conn.header
   conn.navbar.top:
     label: 'NavTop'
     parent: conn.navbar
@@ -22,12 +48,14 @@ categories:
     parent: conn.navbar
   conn.themetoggle:
     label: 'Theme toggle'
+    parent: conn.header
   conn.branding:
     label: 'Branding'
-  conn.contact:
-    label: 'Contact Information'
+    parent: conn.header
+
+  # ═══ FOOTER AREA ═══
   conn.footer:
-    label: 'Footer'
+    label: 'Footer area'
   conn.footer.colors:
     label: 'Footer – Colors'
     parent: conn.footer
@@ -43,84 +71,20 @@ categories:
   conn.footer.barNavigation:
     label: 'Footer – Bottom bar navigation'
     parent: conn.footer
+
+  # ═══ Standalone top-level areas (not nested under Footer, even though they
+  # currently only render there — kept independently findable per project
+  # decision, in case they're reused outside the footer later) ═══
+  conn.contact:
+    label: 'Contact Information'
   conn.social:
     label: 'Social Media'
-  conn.meta:
-    label: 'Meta & Analytics'
-  conn.advanced:
-    label: 'Advanced'
-  fsc:
-    label: 'Fluid Styled Content'
-    parent: conn.advanced
-  fsc.templates:
-    label: 'Templates'
-    description: 'Global Fluid override paths shipped by fluid_styled_content. In conn projects these are superseded by the package layering (conn_base → conn_elements → sitepackage) — leave all three empty and override templates in the sitepackage instead.'
-    parent: fsc
-  fsc.content:
-    label: 'Content Elements'
-    description: 'Rendering options for the standard content elements (Text, Text & Media, Images, Insert Records, …).'
-    parent: fsc
 
 settings:
-  # ─── Color (base/default — used directly, dark mode below overrides it) ──
-  # CSS var (ThemeVarsProcessor): --conn-accent-secondary
-  theme.accentSecondary:
-    label: 'Accent secondary'
-    description: 'Secondary accent color used in card hover gradients and highlights (e.g. #06b6d4). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.color
 
-  # Not resolved by ThemeVarsProcessor — this is a feature toggle, not a color/size.
-  # Consumed in Page.typoscript (bodyTagCObject) to append the "link-hover-underline"
-  # body class; the actual CSS lives in conn_base's link-hover-effect partial/SCSS.
-  theme.linkHoverEffect:
-    label: 'Animated underline on link hover'
-    description: 'Grows an underline in from the left under links on hover, using the link/link-hover colors.'
-    type: bool
-    default: false
-    category: conn.theme.color
+  # ══ STANDARD — global theme/color/system settings ═════════════════════════
 
-  # CSS var (ThemeVarsProcessor): --conn-sh-color
-  theme.shadowHover.color:
-    label: 'Card hover shadow – color'
-    description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-sh-blur
-  theme.shadowHover.blur:
-    label: 'Card hover shadow – blur radius'
-    description: 'Blur radius of the hover shadow, e.g. 32px. Leave empty to keep the built-in default (32px).'
-    type: string
-    default: ''
-    category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-sh-y
-  theme.shadowHover.offsetY:
-    label: 'Card hover shadow – vertical offset'
-    description: 'Vertical offset of the hover shadow, e.g. 8px. Leave empty to keep the built-in default (8px).'
-    type: string
-    default: ''
-    category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-sh-x
-  theme.shadowHover.offsetX:
-    label: 'Card hover shadow – horizontal offset'
-    description: 'Horizontal offset of the hover shadow, e.g. 0. Leave empty to keep the built-in default (0).'
-    type: string
-    default: ''
-    category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-sh-spread
-  theme.shadowHover.spread:
-    label: 'Card hover shadow – spread radius'
-    description: 'Spread radius of the hover shadow, e.g. 4px. Leave empty to keep the built-in default (0).'
-    type: string
-    default: ''
-    category: conn.theme.color
-
+  # ─── Color (light / base — used as-is, dark mode below overrides it) ──────
   # CSS var(s) (ThemeVarsProcessor): --conn-accent, --bs-primary
   theme.light.accent:
     label: 'Accent color'
@@ -133,6 +97,30 @@ settings:
   theme.light.accentHover:
     label: 'Accent – hover'
     description: 'Accent color on hover/focus. Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-accent-secondary
+  theme.accentSecondary:
+    label: 'Accent secondary'
+    description: 'Secondary accent color used in card hover gradients and highlights (e.g. #06b6d4). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-accent-soft
+  theme.light.accentSoft:
+    label: 'Accent soft background'
+    description: 'Low-opacity accent fill used for active stat cards, tag badges, and hover backgrounds (e.g. rgba(99, 102, 241, 0.1)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-accent-glow
+  theme.light.accentGlow:
+    label: 'Accent glow'
+    description: 'Medium-opacity accent used for glows and subtle highlights (e.g. rgba(99, 102, 241, 0.2)). Leave empty to keep the built-in default.'
     type: string
     default: ''
     category: conn.theme.color
@@ -152,70 +140,6 @@ settings:
     type: string
     default: ''
     category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-nav-bg
-  theme.light.navBg:
-    label: 'Navbar background'
-    description: 'Navbar and offcanvas panel background color. Overridden by "Dark-theme coloring" below when set.'
-    type: string
-    default: ''
-    category: conn.navbar.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-nav-text
-  theme.light.navText:
-    label: 'Navbar text'
-    description: 'Text color inside the navbar and offcanvas panel. Falls back to the general text color when empty.'
-    type: string
-    default: ''
-    category: conn.navbar.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-bg
-  theme.light.footerBg:
-    label: 'Footer background'
-    description: 'Footer background color. Overridden by "Dark-theme coloring" below when set.'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-text
-  theme.light.footerText:
-    label: 'Footer text'
-    description: 'Text color inside the footer. Falls back to the general text color when empty.'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
-  theme.light.footerHeaderText:
-    label: 'Footer header text'
-    description: 'Text color for footer section headers ("Navigation", "Contact", …). Falls back to the footer text color when empty.'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-link
-  theme.light.footerLink:
-    label: 'Footer link'
-    description: 'Color of footer links (nav, phone, email) in their default state. Falls back to the general link color when empty — set this explicitly if the footer background does not contrast with the link color (e.g. a dark footer on a light site).'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
-  theme.light.footerLinkHover:
-    label: 'Footer link hover'
-    description: 'Hover color for footer links (nav, address, social). Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover-underline
-  theme.light.footerLinkHoverUnderline:
-    label: 'Footer link hover underline'
-    description: 'Color of the sliding underline shown on footer link hover. Falls back to the footer link hover color when empty, then the general accent color.'
-    type: string
-    default: ''
-    category: conn.footer.colors
 
   # CSS var(s) (ThemeVarsProcessor): --conn-text, --bs-body-color
   theme.light.text:
@@ -265,6 +189,16 @@ settings:
     default: ''
     category: conn.theme.color
 
+  # Not resolved by ThemeVarsProcessor — this is a feature toggle, not a color/size.
+  # Consumed in Page.typoscript (bodyTagCObject) to append the "link-hover-underline"
+  # body class; the actual CSS lives in conn_base's link-hover-effect partial/SCSS.
+  theme.linkHoverEffect:
+    label: 'Animated underline on link hover'
+    description: 'Grows an underline in from the left under links on hover, using the link/link-hover colors.'
+    type: bool
+    default: false
+    category: conn.theme.color
+
   # CSS var(s) (ThemeVarsProcessor): --conn-text-muted, --bs-secondary-color
   theme.light.textMuted:
     label: 'Muted text color'
@@ -285,22 +219,6 @@ settings:
   theme.light.borderStrong:
     label: 'Border color – strong'
     description: 'Stronger border color used for hover states, active dropdowns, and focus rings (e.g. rgba(99, 102, 241, 0.28)). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-accent-soft
-  theme.light.accentSoft:
-    label: 'Accent soft background'
-    description: 'Low-opacity accent fill used for active stat cards, tag badges, and hover backgrounds (e.g. rgba(99, 102, 241, 0.1)). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.color
-
-  # CSS var (ThemeVarsProcessor): --conn-accent-glow
-  theme.light.accentGlow:
-    label: 'Accent glow'
-    description: 'Medium-opacity accent used for glows and subtle highlights (e.g. rgba(99, 102, 241, 0.2)). Leave empty to keep the built-in default.'
     type: string
     default: ''
     category: conn.theme.color
@@ -329,7 +247,47 @@ settings:
     default: ''
     category: conn.theme.color
 
-  # ─── Dark-theme coloring (overrides the Color settings above, dark mode only) ──
+  # CSS var (ThemeVarsProcessor): --conn-sh-color
+  theme.shadowHover.color:
+    label: 'Card hover shadow – color'
+    description: 'Shadow color including opacity. Any CSS color with alpha, e.g. rgb(99 102 241 / 22%) or rgba(99,102,241,0.22). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-sh-blur
+  theme.shadowHover.blur:
+    label: 'Card hover shadow – blur radius'
+    description: 'Blur radius of the hover shadow, e.g. 32px. Leave empty to keep the built-in default (32px).'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-sh-y
+  theme.shadowHover.offsetY:
+    label: 'Card hover shadow – vertical offset'
+    description: 'Vertical offset of the hover shadow, e.g. 8px. Leave empty to keep the built-in default (8px).'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-sh-x
+  theme.shadowHover.offsetX:
+    label: 'Card hover shadow – horizontal offset'
+    description: 'Horizontal offset of the hover shadow, e.g. 0. Leave empty to keep the built-in default (0).'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-sh-spread
+  theme.shadowHover.spread:
+    label: 'Card hover shadow – spread radius'
+    description: 'Spread radius of the hover shadow, e.g. 4px. Leave empty to keep the built-in default (0).'
+    type: string
+    default: ''
+    category: conn.theme.color
+
+  # ─── Dark-theme coloring (overrides Color above, dark mode only) ──────────
   # CSS var(s) (ThemeVarsProcessor): --conn-accent, --bs-primary
   theme.dark.accent:
     label: 'Accent color'
@@ -346,6 +304,22 @@ settings:
     default: ''
     category: conn.theme.dark
 
+  # CSS var (ThemeVarsProcessor): --conn-accent-soft
+  theme.dark.accentSoft:
+    label: 'Accent soft background'
+    description: 'Low-opacity accent fill for dark mode (e.g. rgba(99, 102, 241, 0.15)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  # CSS var (ThemeVarsProcessor): --conn-accent-glow
+  theme.dark.accentGlow:
+    label: 'Accent glow'
+    description: 'Medium-opacity accent glow for dark mode (e.g. rgba(99, 102, 241, 0.3)). Leave empty to keep the built-in default.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
   # CSS var(s) (ThemeVarsProcessor): --conn-bg, --bs-body-bg
   theme.dark.bg:
     label: 'Page background'
@@ -358,70 +332,6 @@ settings:
   theme.dark.surface:
     label: 'Surface color'
     description: 'Card / panel surface color for dark mode.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-nav-bg
-  theme.dark.navBg:
-    label: 'Navbar background'
-    description: 'Navbar and offcanvas panel background for dark mode.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-nav-text
-  theme.dark.navText:
-    label: 'Navbar text'
-    description: 'Text color inside the navbar and offcanvas panel for dark mode. Falls back to the general text color when empty.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-bg
-  theme.dark.footerBg:
-    label: 'Footer background'
-    description: 'Footer background color for dark mode.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-text
-  theme.dark.footerText:
-    label: 'Footer text'
-    description: 'Text color inside the footer for dark mode. Falls back to the general text color when empty.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
-  theme.dark.footerHeaderText:
-    label: 'Footer header text'
-    description: 'Text color for footer section headers ("Navigation", "Contact", …) for dark mode. Falls back to the footer text color when empty.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-link
-  theme.dark.footerLink:
-    label: 'Footer link'
-    description: 'Color of footer links (nav, phone, email) in their default state, for dark mode. Falls back to the general link color when empty — set this explicitly if the footer background does not contrast with the link color (e.g. a dark footer on a light site).'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
-  theme.dark.footerLinkHover:
-    label: 'Footer link hover'
-    description: 'Hover color for footer links (nav, address, social) for dark mode. Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover-underline
-  theme.dark.footerLinkHoverUnderline:
-    label: 'Footer link hover underline'
-    description: 'Color of the sliding underline shown on footer link hover for dark mode. Falls back to the footer link hover color when empty, then the general accent color.'
     type: string
     default: ''
     category: conn.theme.dark
@@ -498,22 +408,6 @@ settings:
     default: ''
     category: conn.theme.dark
 
-  # CSS var (ThemeVarsProcessor): --conn-accent-soft
-  theme.dark.accentSoft:
-    label: 'Accent soft background'
-    description: 'Low-opacity accent fill for dark mode (e.g. rgba(99, 102, 241, 0.15)). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
-  # CSS var (ThemeVarsProcessor): --conn-accent-glow
-  theme.dark.accentGlow:
-    label: 'Accent glow'
-    description: 'Medium-opacity accent glow for dark mode (e.g. rgba(99, 102, 241, 0.3)). Leave empty to keep the built-in default.'
-    type: string
-    default: ''
-    category: conn.theme.dark
-
   # CSS var (ThemeVarsProcessor): --conn-btn-bg
   theme.dark.btnBg:
     label: 'Button background'
@@ -537,6 +431,195 @@ settings:
     type: string
     default: ''
     category: conn.theme.dark
+
+  # ─── Meta & Analytics ─────────────────────────────────────────────────────
+  meta.gtmId:
+    label: 'Google Tag Manager ID'
+    description: 'GTM container ID (e.g. GTM-XXXXXXX). Leave empty to disable GTM.'
+    type: string
+    default: ''
+    category: conn.meta
+
+  meta.googleVerification:
+    label: 'Google site verification'
+    description: 'Content value for the google-site-verification meta tag.'
+    type: string
+    default: ''
+    category: conn.meta
+
+  # ─── Advanced – Fluid Styled Content: Templates ───────────────────────────
+  # These settings are OWNED by typo3/fluid-styled-content; they are
+  # re-declared here (definitions merge last-set-wins) only to add proper
+  # labels and descriptions. type/default/enum MUST stay identical to the
+  # originals in EXT:fluid_styled_content .../settings.definitions.yaml.
+  styles.templates.templateRootPath:
+    label: 'Additional template path'
+    description: 'Extra Fluid template path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place template overrides in the sitepackage instead.'
+    type: string
+    default: ''
+    category: fsc.templates
+    readonly: true
+
+  styles.templates.partialRootPath:
+    label: 'Additional partial path'
+    description: 'Extra Fluid partial path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place partial overrides in the sitepackage instead.'
+    type: string
+    default: ''
+    category: fsc.templates
+    readonly: true
+
+  styles.templates.layoutRootPath:
+    label: 'Additional layout path'
+    description: 'Extra Fluid layout path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place layout overrides in the sitepackage instead.'
+    type: string
+    default: ''
+    category: fsc.templates
+    readonly: true
+
+  # ─── Advanced – Fluid Styled Content: Content Elements ────────────────────
+  styles.content.defaultHeaderType:
+    label: 'Default header type'
+    description: 'Heading tag used when an editor leaves the header type on "Default": 1 = <h1> … 5 = <h5>. Keep 2 so <h1> stays reserved for the page title.'
+    type: int
+    default: 2
+    category: fsc.content
+
+  styles.content.shortcut.tables:
+    label: 'Insert Records: allowed tables'
+    description: 'Comma-separated database tables the "Insert Records" (shortcut) element is allowed to render. Normally only tt_content.'
+    type: string
+    default: tt_content
+    category: fsc.content
+
+  styles.content.image.lazyLoading:
+    label: 'Image loading'
+    description: 'loading attribute on content images. lazy = load only when scrolled into view (default, best performance) · eager = load immediately (for above-the-fold images) · auto = browser decides.'
+    type: string
+    enum:
+      - lazy
+      - eager
+      - auto
+    category: fsc.content
+    default: lazy
+
+  styles.content.image.imageDecoding:
+    label: 'Image decoding'
+    description: 'decoding attribute on content images. async = decode off the main thread (smoother scrolling) · sync = decode immediately · empty = omit the attribute (browser default).'
+    type: string
+    enum:
+      - sync
+      - async
+      - auto
+    category: fsc.content
+    default: ''
+
+  styles.content.textmedia.maxW:
+    label: 'Text & Media: max media width'
+    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text. UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width.'
+    type: int
+    default: 600
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.maxWInText:
+    label: 'Text & Media: max media width beside text'
+    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width. Beside text, the editor’s Columns select defines the media/text split instead (2 = 50/50, 3 = 1/3 vs 2/3, …).'
+    type: int
+    default: 300
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.columnSpacing:
+    label: 'Text & Media: column gap'
+    description: 'Horizontal gap in px between media columns when a Text & Media element shows multiple images side by side.'
+    type: int
+    default: 10
+    category: fsc.content
+
+  styles.content.textmedia.rowSpacing:
+    label: 'Text & Media: row gap'
+    description: 'Vertical gap in px between media rows when a Text & Media element shows multiple images in several rows.'
+    type: int
+    default: 10
+    category: fsc.content
+
+  styles.content.textmedia.textMargin:
+    label: 'Text & Media: text gap'
+    description: 'Gap in px between the media area and the text that wraps around it.'
+    type: int
+    default: 10
+    category: fsc.content
+
+  styles.content.textmedia.borderColor:
+    label: 'Image border color'
+    description: 'Border color for images when an editor enables "Border" (Media tab → Image Adjustments palette) in a Text & Media, Text & Images or Images element.'
+    type: color
+    default: '#000000'
+    category: fsc.content
+
+  styles.content.textmedia.borderWidth:
+    label: 'Image border width'
+    description: 'Border width in px for images with the "Border" option (Media tab) enabled.'
+    type: int
+    default: 2
+    category: fsc.content
+
+  styles.content.textmedia.borderPadding:
+    label: 'Image border padding'
+    description: 'Inner spacing in px between the image and its border when the "Border" option (Media tab) is enabled.'
+    type: int
+    default: 0
+    category: fsc.content
+
+  styles.content.textmedia.linkWrap.width:
+    label: 'Click-enlarge: image width'
+    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    type: string
+    default: 800m
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.linkWrap.height:
+    label: 'Click-enlarge: image height'
+    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width). UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    type: string
+    default: 600m
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.linkWrap.newWindow:
+    label: 'Click-enlarge: open in new window'
+    description: 'Open the enlarged image in a new browser window instead of the current tab. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    type: bool
+    default: false
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.linkWrap.lightboxEnabled:
+    label: 'Click-enlarge: use lightbox'
+    description: 'Render "Enlarge on Click" images as lightbox links instead of plain image links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    type: bool
+    default: false
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.linkWrap.lightboxCssClass:
+    label: 'Lightbox: CSS class'
+    description: 'CSS class added to lightbox links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    type: string
+    default: lightbox
+    category: fsc.content
+    readonly: true
+
+  styles.content.textmedia.linkWrap.lightboxRelAttribute:
+    label: 'Lightbox: rel attribute'
+    description: 'rel attribute added to lightbox links, used to group images of one element into a gallery. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    type: string
+    default: 'lightbox[{field:uid}]'
+    category: fsc.content
+    readonly: true
+
+  # ══ HEADER AREA — navbar, theme toggle, branding/logo ═════════════════════
 
   # ─── Navbar – General ─────────────────────────────────────────────────────
   navbar.style:
@@ -580,7 +663,6 @@ settings:
     default: 2
     category: conn.navbar
 
-  # ─── Navbar – Desktop navigation ──────────────────────────────────────────
   navbar.logoPosition:
     label: 'Logo position'
     type: string
@@ -591,6 +673,7 @@ settings:
       center: 'Center'
       right: 'Right'
 
+  # ─── Navbar – NavTop (desktop top bar) ────────────────────────────────────
   navbar.alignment:
     label: 'Navigation item alignment'
     description: 'How navigation items are aligned within the navbar. Applies to nav-top only.'
@@ -624,7 +707,6 @@ settings:
       center: 'Always center'
       right: 'Always right'
 
-  # ─── Navbar – Mobile panel ─────────────────────────────────────────────────
   navbar.offcanvasPosition:
     label: 'Mobile panel – slide from'
     description: 'Slide direction of the mobile panel on NavTop. Has no effect on NavLeft (always left) or NavRight (always right).'
@@ -637,6 +719,7 @@ settings:
       offcanvas-top: 'Top'
       offcanvas-bottom: 'Bottom'
 
+  # ─── Navbar – Panel (NavLeft / NavRight / mobile) ─────────────────────────
   navbar.mobilePanelAlign:
     label: 'Panel – alignment (mobile)'
     description: 'Content alignment inside the panel at mobile / full-screen size.'
@@ -701,7 +784,40 @@ settings:
       'false': 'No backdrop'
       static: 'Static (click outside does not close)'
 
-  # ─── Theme toggle ────────────────────────────────────────────────────────
+  # ─── Navbar – Colors ──────────────────────────────────────────────────────
+  # CSS var (ThemeVarsProcessor): --conn-nav-bg
+  theme.light.navBg:
+    label: 'Navbar background'
+    description: 'Navbar and offcanvas panel background color. Overridden by its dark-mode variant below when set.'
+    type: string
+    default: ''
+    category: conn.navbar.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-nav-bg
+  theme.dark.navBg:
+    label: 'Navbar background (dark)'
+    description: 'Dark-mode variant. Falls back to the light navbar background above when empty.'
+    type: string
+    default: ''
+    category: conn.navbar.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-nav-text
+  theme.light.navText:
+    label: 'Navbar text'
+    description: 'Text color inside the navbar and offcanvas panel. Falls back to the general text color when empty.'
+    type: string
+    default: ''
+    category: conn.navbar.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-nav-text
+  theme.dark.navText:
+    label: 'Navbar text (dark)'
+    description: 'Dark-mode variant. Falls back to the light navbar text above when empty.'
+    type: string
+    default: ''
+    category: conn.navbar.colors
+
+  # ─── Theme toggle ─────────────────────────────────────────────────────────
   themeToggle.enabled:
     label: 'Theme toggle – show button'
     description: 'Show the light/dark theme toggle button. Disable to remove it from the navbar and footer.'
@@ -772,6 +888,8 @@ settings:
     default: 0
     category: conn.branding
 
+  # ══ FOOTER AREA ═══════════════════════════════════════════════════════════
+
   # ─── Footer – General ─────────────────────────────────────────────────────
   footer.layout:
     label: 'Footer layout'
@@ -783,7 +901,76 @@ settings:
       Centered: 'Centered'
       Minimal: 'Minimal (bar only)'
 
-  # ─── Footer – Bottom bar ─────────────────────────────────────────────────
+  footer.tagline:
+    label: 'Footer tagline'
+    description: 'Short text below the brand name in the footer. Ignored when a tagline icon is set.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.taglineIcon:
+    label: 'Footer tagline icon'
+    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, renders instead of the tagline text.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.taglineIconWidth:
+    label: 'Footer tagline icon width (px)'
+    description: 'Optional. Leave empty to scale automatically from the height (or from the image itself if both are empty).'
+    type: int
+    default: 0
+    category: conn.footer
+
+  footer.taglineIconHeight:
+    label: 'Footer tagline icon height (px)'
+    description: 'Optional. Leave empty to scale automatically from the width (or from the image itself if both are empty).'
+    type: int
+    default: 0
+    category: conn.footer
+
+  footer.copyrightName:
+    label: 'Copyright name'
+    description: 'Name used in the © copyright line. Defaults to the site title when empty.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.logo:
+    label: 'Footer logo – light mode'
+    description: 'Separate logo for the footer. Accepts EXT: paths or full URLs. Falls back to the navbar logo when empty.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.logoDark:
+    label: 'Footer logo – dark mode'
+    description: 'Dark-mode variant of the footer logo. Accepts EXT: paths or full URLs. Falls back to the light footer logo when empty.'
+    type: string
+    default: ''
+    category: conn.footer
+
+  footer.logoWidth:
+    label: 'Footer logo width (px)'
+    description: 'Optional. Leave both this and footer logo height empty to use the branding logo size. Set either one to size the footer logo independently of the header (the other dimension then scales automatically).'
+    type: int
+    default: 0
+    category: conn.footer
+
+  footer.logoHeight:
+    label: 'Footer logo height (px)'
+    description: 'Optional. Leave both this and footer logo width empty to use the branding logo size. Set either one to size the footer logo independently of the header (the other dimension then scales automatically).'
+    type: int
+    default: 0
+    category: conn.footer
+
+  footer.showSocial:
+    label: 'Show social media links'
+    type: bool
+    default: false
+    category: conn.footer
+
+  # ─── Footer – Bottom bar ──────────────────────────────────────────────────
   footer.bar.show:
     label: 'Show bottom bar'
     type: bool
@@ -862,7 +1049,104 @@ settings:
       'text-center': 'Center'
       'text-end': 'Right'
 
-  # ─── Footer – Grid columns ───────────────────────────────────────────────
+  # ─── Footer – Colors ──────────────────────────────────────────────────────
+  # CSS var (ThemeVarsProcessor): --conn-footer-bg
+  theme.light.footerBg:
+    label: 'Footer background'
+    description: 'Footer background color. Overridden by its dark-mode variant below when set.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-bg
+  theme.dark.footerBg:
+    label: 'Footer background (dark)'
+    description: 'Dark-mode variant. Falls back to the light footer background above when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-text
+  theme.light.footerText:
+    label: 'Footer text'
+    description: 'Text color inside the footer. Falls back to the general text color when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-text
+  theme.dark.footerText:
+    label: 'Footer text (dark)'
+    description: 'Dark-mode variant. Falls back to the light footer text above when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
+  theme.light.footerHeaderText:
+    label: 'Footer header text'
+    description: 'Text color for footer section headers ("Navigation", "Contact", …). Falls back to the footer text color when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
+  theme.dark.footerHeaderText:
+    label: 'Footer header text (dark)'
+    description: 'Dark-mode variant. Falls back to the light footer header text above when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link
+  theme.light.footerLink:
+    label: 'Footer link'
+    description: 'Color of footer links (nav, phone, email) in their default state. Falls back to the general link color when empty — set this explicitly if the footer background does not contrast with the link color (e.g. a dark footer on a light site).'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link
+  theme.dark.footerLink:
+    label: 'Footer link (dark)'
+    description: 'Dark-mode variant. Falls back to the light footer link above when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
+  theme.light.footerLinkHover:
+    label: 'Footer link hover'
+    description: 'Hover color for footer links (nav, address, social). Falls back to the general accent color when empty — set this explicitly if the footer background does not contrast with the accent color (e.g. a dark footer on a light site).'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover
+  theme.dark.footerLinkHover:
+    label: 'Footer link hover (dark)'
+    description: 'Dark-mode variant. Falls back to the light footer link hover above when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover-underline
+  theme.light.footerLinkHoverUnderline:
+    label: 'Footer link hover underline'
+    description: 'Color of the sliding underline shown on footer link hover. Falls back to the footer link hover color when empty, then the general accent color.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # CSS var (ThemeVarsProcessor): --conn-footer-link-hover-underline
+  theme.dark.footerLinkHoverUnderline:
+    label: 'Footer link hover underline (dark)'
+    description: 'Dark-mode variant. Falls back to the light footer link hover underline above when empty.'
+    type: string
+    default: ''
+    category: conn.footer.colors
+
+  # ─── Footer – Grid columns ────────────────────────────────────────────────
   footer.col1.content:
     label: 'Column 1 – Content'
     type: string
@@ -1515,76 +1799,6 @@ settings:
       'mx-md-auto': 'Center'
       'ms-md-auto': 'Right'
 
-  # ─── Footer – General ─────────────────────────────────────────────────────
-  footer.tagline:
-    label: 'Footer tagline'
-    description: 'Short text below the brand name in the footer. Ignored when a tagline icon is set.'
-    type: string
-    default: ''
-    category: conn.footer
-
-  footer.taglineIcon:
-    label: 'Footer tagline icon'
-    description: 'EXT: path, absolute path (/fileadmin/…), or full URL. When set, renders instead of the tagline text.'
-    type: string
-    default: ''
-    category: conn.footer
-
-  footer.taglineIconWidth:
-    label: 'Footer tagline icon width (px)'
-    description: 'Optional. Leave empty to scale automatically from the height (or from the image itself if both are empty).'
-    type: int
-    default: 0
-    category: conn.footer
-
-  footer.taglineIconHeight:
-    label: 'Footer tagline icon height (px)'
-    description: 'Optional. Leave empty to scale automatically from the width (or from the image itself if both are empty).'
-    type: int
-    default: 0
-    category: conn.footer
-
-  footer.copyrightName:
-    label: 'Copyright name'
-    description: 'Name used in the © copyright line. Defaults to the site title when empty.'
-    type: string
-    default: ''
-    category: conn.footer
-
-  footer.logo:
-    label: 'Footer logo – light mode'
-    description: 'Separate logo for the footer. Accepts EXT: paths or full URLs. Falls back to the navbar logo when empty.'
-    type: string
-    default: ''
-    category: conn.footer
-
-  footer.logoDark:
-    label: 'Footer logo – dark mode'
-    description: 'Dark-mode variant of the footer logo. Accepts EXT: paths or full URLs. Falls back to the light footer logo when empty.'
-    type: string
-    default: ''
-    category: conn.footer
-
-  footer.logoWidth:
-    label: 'Footer logo width (px)'
-    description: 'Optional. Leave both this and footer logo height empty to use the branding logo size. Set either one to size the footer logo independently of the header (the other dimension then scales automatically).'
-    type: int
-    default: 0
-    category: conn.footer
-
-  footer.logoHeight:
-    label: 'Footer logo height (px)'
-    description: 'Optional. Leave both this and footer logo width empty to use the branding logo size. Set either one to size the footer logo independently of the header (the other dimension then scales automatically).'
-    type: int
-    default: 0
-    category: conn.footer
-
-  footer.showSocial:
-    label: 'Show social media links'
-    type: bool
-    default: false
-    category: conn.footer
-
   # ─── Footer – Navigation ──────────────────────────────────────────────────
   footer.navigation.type:
     label: 'Source'
@@ -1640,7 +1854,8 @@ settings:
     default: false
     category: conn.footer.barNavigation
 
-  # ─── Contact Information ──────────────────────────────────────────────────
+  # ══ CONTACT INFORMATION ═══════════════════════════════════════════════════
+
   contact.address.company:
     label: 'Company name'
     type: string
@@ -1711,7 +1926,8 @@ settings:
     default: ''
     category: conn.contact
 
-  # ─── Social Media ─────────────────────────────────────────────────────────
+  # ══ SOCIAL MEDIA ══════════════════════════════════════════════════════════
+
   social.github:
     label: 'GitHub URL'
     type: string
@@ -1845,189 +2061,3 @@ settings:
     type: int
     default: 0
     category: conn.social
-
-  # ─── Meta & Analytics ─────────────────────────────────────────────────────
-  meta.gtmId:
-    label: 'Google Tag Manager ID'
-    description: 'GTM container ID (e.g. GTM-XXXXXXX). Leave empty to disable GTM.'
-    type: string
-    default: ''
-    category: conn.meta
-
-  meta.googleVerification:
-    label: 'Google site verification'
-    description: 'Content value for the google-site-verification meta tag.'
-    type: string
-    default: ''
-    category: conn.meta
-
-  # ─── Fluid Styled Content – re-definitions ────────────────────────────────
-  # These settings are OWNED by typo3/fluid-styled-content; they are
-  # re-declared here (definitions merge last-set-wins) only to add proper
-  # labels and descriptions. type/default/enum MUST stay identical to the
-  # originals in EXT:fluid_styled_content .../settings.definitions.yaml.
-  styles.templates.templateRootPath:
-    label: 'Additional template path'
-    description: 'Extra Fluid template path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place template overrides in the sitepackage instead.'
-    type: string
-    default: ''
-    category: fsc.templates
-    readonly: true
-
-  styles.templates.partialRootPath:
-    label: 'Additional partial path'
-    description: 'Extra Fluid partial path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place partial overrides in the sitepackage instead.'
-    type: string
-    default: ''
-    category: fsc.templates
-    readonly: true
-
-  styles.templates.layoutRootPath:
-    label: 'Additional layout path'
-    description: 'Extra Fluid layout path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place layout overrides in the sitepackage instead.'
-    type: string
-    default: ''
-    category: fsc.templates
-    readonly: true
-
-  styles.content.defaultHeaderType:
-    label: 'Default header type'
-    description: 'Heading tag used when an editor leaves the header type on "Default": 1 = <h1> … 5 = <h5>. Keep 2 so <h1> stays reserved for the page title.'
-    type: int
-    default: 2
-    category: fsc.content
-
-  styles.content.shortcut.tables:
-    label: 'Insert Records: allowed tables'
-    description: 'Comma-separated database tables the "Insert Records" (shortcut) element is allowed to render. Normally only tt_content.'
-    type: string
-    default: tt_content
-    category: fsc.content
-
-  styles.content.image.lazyLoading:
-    label: 'Image loading'
-    description: 'loading attribute on content images. lazy = load only when scrolled into view (default, best performance) · eager = load immediately (for above-the-fold images) · auto = browser decides.'
-    type: string
-    enum:
-      - lazy
-      - eager
-      - auto
-    category: fsc.content
-    default: lazy
-
-  styles.content.image.imageDecoding:
-    label: 'Image decoding'
-    description: 'decoding attribute on content images. async = decode off the main thread (smoother scrolling) · sync = decode immediately · empty = omit the attribute (browser default).'
-    type: string
-    enum:
-      - sync
-      - async
-      - auto
-    category: fsc.content
-    default: ''
-
-  styles.content.textmedia.maxW:
-    label: 'Text & Media: max media width'
-    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text. UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width.'
-    type: int
-    default: 600
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.maxWInText:
-    label: 'Text & Media: max media width beside text'
-    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width. Beside text, the editor’s Columns select defines the media/text split instead (2 = 50/50, 3 = 1/3 vs 2/3, …).'
-    type: int
-    default: 300
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.columnSpacing:
-    label: 'Text & Media: column gap'
-    description: 'Horizontal gap in px between media columns when a Text & Media element shows multiple images side by side.'
-    type: int
-    default: 10
-    category: fsc.content
-
-  styles.content.textmedia.rowSpacing:
-    label: 'Text & Media: row gap'
-    description: 'Vertical gap in px between media rows when a Text & Media element shows multiple images in several rows.'
-    type: int
-    default: 10
-    category: fsc.content
-
-  styles.content.textmedia.textMargin:
-    label: 'Text & Media: text gap'
-    description: 'Gap in px between the media area and the text that wraps around it.'
-    type: int
-    default: 10
-    category: fsc.content
-
-  styles.content.textmedia.borderColor:
-    label: 'Image border color'
-    description: 'Border color for images when an editor enables "Border" (Media tab → Image Adjustments palette) in a Text & Media, Text & Images or Images element.'
-    type: color
-    default: '#000000'
-    category: fsc.content
-
-  styles.content.textmedia.borderWidth:
-    label: 'Image border width'
-    description: 'Border width in px for images with the "Border" option (Media tab) enabled.'
-    type: int
-    default: 2
-    category: fsc.content
-
-  styles.content.textmedia.borderPadding:
-    label: 'Image border padding'
-    description: 'Inner spacing in px between the image and its border when the "Border" option (Media tab) is enabled.'
-    type: int
-    default: 0
-    category: fsc.content
-
-  styles.content.textmedia.linkWrap.width:
-    label: 'Click-enlarge: image width'
-    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
-    type: string
-    default: 800m
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.linkWrap.height:
-    label: 'Click-enlarge: image height'
-    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width). UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
-    type: string
-    default: 600m
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.linkWrap.newWindow:
-    label: 'Click-enlarge: open in new window'
-    description: 'Open the enlarged image in a new browser window instead of the current tab. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
-    type: bool
-    default: false
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.linkWrap.lightboxEnabled:
-    label: 'Click-enlarge: use lightbox'
-    description: 'Render "Enlarge on Click" images as lightbox links instead of plain image links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
-    type: bool
-    default: false
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.linkWrap.lightboxCssClass:
-    label: 'Lightbox: CSS class'
-    description: 'CSS class added to lightbox links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
-    type: string
-    default: lightbox
-    category: fsc.content
-    readonly: true
-
-  styles.content.textmedia.linkWrap.lightboxRelAttribute:
-    label: 'Lightbox: rel attribute'
-    description: 'rel attribute added to lightbox links, used to group images of one element into a gallery. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
-    type: string
-    default: 'lightbox[{field:uid}]'
-    category: fsc.content
-    readonly: true
