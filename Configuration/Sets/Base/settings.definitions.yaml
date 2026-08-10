@@ -1926,6 +1926,13 @@ settings:
     default: ''
     category: conn.contact
 
+  contact.officeHours:
+    label: 'Office hours'
+    description: 'Free-text opening hours, e.g. "Mon–Fri, 9:00–17:00". Shown by the Contact Form and Map & Location content elements when set. Leave empty to hide.'
+    type: string
+    default: ''
+    category: conn.contact
+
   # ══ SOCIAL MEDIA ══════════════════════════════════════════════════════════
 
   social.github:
