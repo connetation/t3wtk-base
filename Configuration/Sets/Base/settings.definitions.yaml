@@ -891,6 +891,23 @@ settings:
   # ══ FOOTER AREA ═══════════════════════════════════════════════════════════
 
   # ─── Footer – General ─────────────────────────────────────────────────────
+  footer.beforeSpacing:
+    label: 'Space before footer'
+    description: 'Gap above the footer. Same scale (and same "Default" value, --conn-space-lg) as a content element''s Appearance → Space Before/After.'
+    type: string
+    default: ''
+    category: conn.footer
+    enum:
+      '': 'Default'
+      none: 'None'
+      extra-extra-small: 'Extra Extra Small'
+      extra-small: 'Extra Small'
+      small: 'Small'
+      medium: 'Medium'
+      large: 'Large'
+      extra-large: 'Extra Large'
+      extra-extra-large: 'Extra Extra Large'
+
   footer.layout:
     label: 'Footer layout'
     type: string

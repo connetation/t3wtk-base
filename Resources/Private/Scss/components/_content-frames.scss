@@ -15,6 +15,8 @@
 //   extra-extra-large = --conn-space-2xl (56–96px fluid)
 // ─────────────────────────────────────────────────────────────────────────────
 
+@use '../theme/tokens';
+
 // ── Frame default spacing (overridden by the classes below) ───────────────────
 .frame {
     margin-top: var(--conn-space-lg);
@@ -22,7 +24,7 @@
 }
 
 // ── Space before ─────────────────────────────────────────────────────────────
-.frame-space-before-default           { margin-top: var(--conn-space-lg); }
+.frame-space-before-default           { margin-top: tokens.$space-before-default; }
 .frame-space-before-none              { margin-top: 0; }
 .frame-space-before-extra-extra-small { margin-top: var(--conn-space-2xs); }
 .frame-space-before-extra-small       { margin-top: var(--conn-space-xs);  }

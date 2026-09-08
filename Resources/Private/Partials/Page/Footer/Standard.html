@@ -25,7 +25,7 @@
 <f:variable name="copyrightName">{f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}</f:variable>
 <f:variable name="currentYear"><f:format.date format="Y" date="now"/></f:variable>
 
-<footer class="footer mt-auto py-5" id="footer">
+<footer class="footer py-5 footer-space-before-{f:if(condition: site.settings.footer.beforeSpacing, then: site.settings.footer.beforeSpacing, else: 'default')}" id="footer">
     <div class="container">
         <div class="row g-4">
 

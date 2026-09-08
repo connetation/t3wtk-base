@@ -25,7 +25,7 @@
 <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 
 <f:if condition="{site.settings.footer.bar.show} && ({site.settings.footer.bar.left} || {site.settings.footer.bar.center} || {site.settings.footer.bar.right})">
-<footer class="footer mt-auto py-3" id="footer">
+<footer class="footer py-3 footer-space-before-{f:if(condition: site.settings.footer.beforeSpacing, then: site.settings.footer.beforeSpacing, else: 'default')}" id="footer">
     <div class="container">
         <div class="row align-items-center g-2">
 

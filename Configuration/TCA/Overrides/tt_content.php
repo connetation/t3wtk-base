@@ -122,6 +122,10 @@ foreach (['space_before_class', 'space_after_class'] as $spaceField) {
     );
 }
 
+// New content elements default to no space-after (core defaults to '' —
+// the framework's own default spacing).
+$GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['default'] = 'none';
+
 // ─── Header/Subheader — relabel header_layout, add class overrides ────────
 // Core's own labels are "Layout 1".."Layout 5", which don't tell editors
 // which heading tag they're actually choosing — relabel to the real tag

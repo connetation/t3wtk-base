@@ -1,3 +1,5 @@
+@use '../theme/tokens';
+
 .footer-logo {
     display: inline-block;
     vertical-align: middle;
@@ -9,6 +11,19 @@
     .footer-logo--light { display: none; }
     .footer-logo--dark  { display: inline-block; }
 }
+
+// ── Space before (site setting: footer.beforeSpacing) — same scale as
+// _content-frames.scss's frame-space-before-*. Both draw the "default"
+// bucket from tokens.$space-before-default (theme/_tokens.scss).
+.footer-space-before-default           { margin-top: tokens.$space-before-default; }
+.footer-space-before-none              { margin-top: 0; }
+.footer-space-before-extra-extra-small { margin-top: var(--conn-space-2xs); }
+.footer-space-before-extra-small       { margin-top: var(--conn-space-xs);  }
+.footer-space-before-small             { margin-top: var(--conn-space-sm);  }
+.footer-space-before-medium            { margin-top: var(--conn-space-md);  }
+.footer-space-before-large             { margin-top: var(--conn-space-lg); }
+.footer-space-before-extra-large       { margin-top: var(--conn-space-xl); }
+.footer-space-before-extra-extra-large { margin-top: var(--conn-space-2xl); }
 
 .footer {
     background-color: var(--conn-footer-bg);

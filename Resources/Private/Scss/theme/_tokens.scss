@@ -9,6 +9,10 @@
 // between the two packages' compiled CSS.
 // ─────────────────────────────────────────────
 
+// Shared "default" bucket for space_before_class-style spacing scales
+// (content element frames, footer) — one declaration both draw from.
+$space-before-default: var(--conn-space-lg);
+
 @mixin conn-design-tokens {
     // --conn-accent follows --bs-primary so overriding --bs-primary in the
     // sitepackage is enough to re-theme navigation, buttons, and all accent uses.
