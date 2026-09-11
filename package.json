@@ -23,6 +23,7 @@
     "stylelint-config-standard-scss": "^13.0.0"
   },
   "dependencies": {
-    "glightbox": "^3.3.1"
+    "glightbox": "^3.3.1",
+    "just-validate": "^4.3.0"
   }
 }

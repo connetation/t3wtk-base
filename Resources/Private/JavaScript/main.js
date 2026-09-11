@@ -5,6 +5,7 @@
 
 import * as bootstrap from 'bootstrap';
 import GLightbox from 'glightbox';
+import JustValidate from 'just-validate';
 
 window.bootstrap = bootstrap;
 
@@ -161,6 +162,83 @@ const initNewsCardReveal = () => {
 };
 
 // ─────────────────────────────────────────────
+// Generic form validation (JustValidate)
+//
+// Fully opt-in and data-driven — no form/field names are hardcoded here, so
+// this works for any current or future form (EXT:form or otherwise) without
+// touching this file. A field is picked up if it carries [required] and/or
+// [data-validate-type]; its error text comes ONLY from its own
+// data-validate-required-message / data-validate-type-message attributes
+// (set via the form's own fluidAdditionalAttributes, using LLL: refs so they
+// translate per site language) — nothing here is hardcoded to one language.
+// See vendor/conn/sitepackage's Resources/Private/Forms/README.md for how to
+// wire a new form/field up to this.
+// ─────────────────────────────────────────────
+const initFormValidation = () => {
+    const FIELD_SELECTOR = '[required], [data-validate-type]';
+    const initializedForms = new WeakSet();
+
+    document.querySelectorAll(FIELD_SELECTOR).forEach((field) => {
+        const form = field.closest('form');
+        if (!form || !form.id || initializedForms.has(form)) return;
+        initializedForms.add(form);
+
+        const validation = new JustValidate(`#${form.id}`, {
+            errorFieldCssClass: 'is-invalid',
+            errorLabelCssClass: 'invalid-feedback',
+            successFieldCssClass: 'is-valid',
+            successLabelCssClass: 'valid-feedback',
+            focusInvalidField: true,
+            submitFormAutomatically: true,
+        });
+
+        form.querySelectorAll(FIELD_SELECTOR).forEach((el) => {
+            if (!el.id) return;
+            const rules = [];
+
+            if (el.hasAttribute('required')) {
+                rules.push({
+                    rule: 'required',
+                    errorMessage: el.dataset.validateRequiredMessage || undefined,
+                });
+            }
+
+            if (el.dataset.validateType === 'email') {
+                rules.push({
+                    rule: 'email',
+                    errorMessage: el.dataset.validateTypeMessage || undefined,
+                });
+            }
+
+            if (!rules.length) return;
+            validation.addField(`#${el.id}`, rules);
+
+            // just-validate only re-checks a field on input/change, so a
+            // required field left empty via Tab/blur wouldn't show an error
+            // until submit. Force a check on blur too.
+            el.addEventListener('blur', () => validation.revalidateField(`#${el.id}`));
+        });
+
+        // just-validate re-submits via HTMLFormElement.submit(), which (unlike
+        // a real button click or requestSubmit()) never includes the clicked
+        // submit button's name/value. TYPO3's form framework relies on that
+        // (e.g. the "__currentPage" button) to know the form is complete, so
+        // without it the POST silently re-renders instead of running the
+        // finishers. Re-inject it as a hidden field before the auto-submit.
+        validation.onSuccess((event) => {
+            const submitter = event.submitter;
+            if (!submitter?.name) return;
+
+            const hidden = document.createElement('input');
+            hidden.type = 'hidden';
+            hidden.name = submitter.name;
+            hidden.value = submitter.value;
+            event.target.appendChild(hidden);
+        });
+    });
+};
+
+// ─────────────────────────────────────────────
 // Init
 // ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -171,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavTopDropdowns();
     initThemeToggleFloat();
     initNewsCardReveal();
+    initFormValidation();
     const lightbox = GLightbox({ selector: '.glightbox', autoplayVideos: false });
 
     lightbox.on('slide_changed', ({ current }) => {
