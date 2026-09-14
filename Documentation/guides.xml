@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides
+    xmlns="https://www.phpdoc.org/guides"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+>
+    <extension class="T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"/>
+</guides>
