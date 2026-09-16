@@ -20,7 +20,7 @@
 <f:variable name="navigationLevels">{site.settings.navbar.navigationLevels}</f:variable>
 <f:render partial="Navigation/Navbar/{navStyle}" arguments="{mainNavigation: mainNavigation, site: site, navigationLevels: navigationLevels}" />
 
-<main class="flex-shrink-0" id="main-content">
+<main class="flex-grow-1 flex-shrink-0 main-space-after-{f:if(condition: site.settings.footer.beforeSpacing, then: site.settings.footer.beforeSpacing, else: 'default')}" id="main-content">
     <f:render section="Main" />
 </main>
 

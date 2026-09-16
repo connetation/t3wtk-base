@@ -35,7 +35,7 @@ page {
         7.data = page:uid
 
         9 = TEXT
-        9.value = " class="d-flex flex-column h-100
+        9.value = " class="d-flex flex-column min-vh-100
 
         15 = TEXT
         15.char = 32

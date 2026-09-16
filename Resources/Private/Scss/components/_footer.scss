@@ -12,19 +12,6 @@
     .footer-logo--dark  { display: inline-block; }
 }
 
-// ── Space before (site setting: footer.beforeSpacing) — same scale as
-// _content-frames.scss's frame-space-before-*. Both draw the "default"
-// bucket from tokens.$space-before-default (theme/_tokens.scss).
-.footer-space-before-default           { margin-top: tokens.$space-before-default; }
-.footer-space-before-none              { margin-top: 0; }
-.footer-space-before-extra-extra-small { margin-top: var(--conn-space-2xs); }
-.footer-space-before-extra-small       { margin-top: var(--conn-space-xs);  }
-.footer-space-before-small             { margin-top: var(--conn-space-sm);  }
-.footer-space-before-medium            { margin-top: var(--conn-space-md);  }
-.footer-space-before-large             { margin-top: var(--conn-space-lg); }
-.footer-space-before-extra-large       { margin-top: var(--conn-space-xl); }
-.footer-space-before-extra-extra-large { margin-top: var(--conn-space-2xl); }
-
 .footer {
     background-color: var(--conn-footer-bg);
     color: var(--conn-footer-text, var(--conn-text));
@@ -150,3 +137,20 @@
     .footer__social-icon--light { display: none; }
     .footer__social-icon--dark  { display: block; }
 }
+
+// ── Space before the footer (site setting: footer.beforeSpacing) ────
+// Applied to #main-content as padding-bottom, not to .footer as
+// margin-top: margin-top on .footer sits outside its own box, exposing
+// body's background (which is site-configurable and rarely matches the
+// footer's own color) in what looks like a stray gap. Padding-bottom on
+// main keeps the space inside main's own painted box instead. Same scale
+// as _content-frames.scss's frame-space-after-* / tokens.$space-before-default.
+.main-space-after-default           { padding-bottom: tokens.$space-before-default; }
+.main-space-after-none              { padding-bottom: 0; }
+.main-space-after-extra-extra-small { padding-bottom: var(--conn-space-2xs); }
+.main-space-after-extra-small       { padding-bottom: var(--conn-space-xs);  }
+.main-space-after-small             { padding-bottom: var(--conn-space-sm);  }
+.main-space-after-medium            { padding-bottom: var(--conn-space-md);  }
+.main-space-after-large             { padding-bottom: var(--conn-space-lg); }
+.main-space-after-extra-large       { padding-bottom: var(--conn-space-xl); }
+.main-space-after-extra-extra-large { padding-bottom: var(--conn-space-2xl); }
