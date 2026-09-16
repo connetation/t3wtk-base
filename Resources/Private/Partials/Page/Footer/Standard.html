@@ -328,7 +328,7 @@
         </f:if>
         <f:if condition="{site.settings.contact.phone}">
             <div class="footer__address-row">
-                <a href="tel:{site.settings.contact.phone}" class="footer__link text-decoration-none">
+                <a href="tel:{conn:sanitizePhoneForDialing(value: site.settings.contact.phone)}" class="footer__link text-decoration-none">
                     <f:if condition="{site.settings.contact.phoneIcon}">
                         <img src="{conn:resolvePath(path: site.settings.contact.phoneIcon)}" alt="" aria-hidden="true" class="footer__address-icon" />
                     </f:if>

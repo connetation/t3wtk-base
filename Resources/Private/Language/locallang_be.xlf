@@ -130,6 +130,9 @@
             <trans-unit id="header_class.h5">
                 <source>H5</source>
             </trans-unit>
+            <trans-unit id="header_class.hidden">
+                <source>Hidden</source>
+            </trans-unit>
             <trans-unit id="subheader_eyebrow">
                 <source>Style Subheading as Eyebrow</source>
             </trans-unit>

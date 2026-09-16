@@ -48,7 +48,7 @@
 // color (own settings and/or CSS vars) — without these, this rule's chained
 // :not() specificity (far higher than a single class) silently wins over
 // e.g. .footer__link's own `color` regardless of source order.
-a:not(.btn):not(.btn-hexagon):not(.nav-link):not(.navbar-brand):not(.dropdown-item):not(.footer__link):not(.footer__address-link):not(.footer__social-link) {
+a:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item):not(.footer__link):not(.footer__address-link):not(.footer__social-link) {
     color: var(--conn-link);
     &:hover, &:focus-visible {
         color: var(--conn-link-hover);

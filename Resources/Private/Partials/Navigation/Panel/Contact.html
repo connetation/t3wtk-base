@@ -4,7 +4,7 @@
 <f:if condition="{site.settings.contact.email} || {site.settings.contact.phone}">
 <div class="conn-panel-contact">
     <f:if condition="{site.settings.contact.phone}">
-        <a href="tel:{site.settings.contact.phone}">
+        <a href="tel:{conn:sanitizePhoneForDialing(value: site.settings.contact.phone)}">
             <f:if condition="{site.settings.contact.phoneIcon}">
                 <img src="{conn:resolvePath(path: site.settings.contact.phoneIcon)}" alt="" aria-hidden="true" class="conn-panel-contact__icon" />
             </f:if>

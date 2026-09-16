@@ -66,7 +66,7 @@ body.link-hover-underline {
     // :not(.stretched-link) — forcing position:relative here would break
     // Bootstrap's stretched-link trick, which needs the <a> itself to stay
     // unpositioned so its ::after overlay resolves against the card, not itself.
-    a[href]:not(.btn):not(.btn-hexagon):not(.nav-link):not(.navbar-brand):not(.dropdown-item):not(.lightbox):not(.stretched-link):not(.ratio a):not(:has(img)) {
+    a[href]:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item):not(.lightbox):not(.stretched-link):not(.ratio a):not(:has(img)) {
         position: relative;
         // Above a .stretched-link's own ::after overlay (z-index: 1), so a
         // regular link nested inside a stretched-link card (e.g. one inside

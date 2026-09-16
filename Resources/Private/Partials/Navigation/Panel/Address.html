@@ -49,7 +49,7 @@
     </div>
     <f:if condition="{site.settings.contact.phone}">
         <div class="conn-panel-address__row">
-            <a href="tel:{site.settings.contact.phone}">
+            <a href="tel:{conn:sanitizePhoneForDialing(value: site.settings.contact.phone)}">
                 <f:if condition="{site.settings.contact.phoneIcon}">
                     <img src="{conn:resolvePath(path: site.settings.contact.phoneIcon)}" alt="" aria-hidden="true" class="conn-panel-address__icon" />
                 </f:if>

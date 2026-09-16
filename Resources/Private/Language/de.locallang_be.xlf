@@ -135,6 +135,10 @@
                 <source>H5</source>
                 <target>H5</target>
             </trans-unit>
+            <trans-unit id="header_class.hidden">
+                <source>Hidden</source>
+                <target>Ausgeblendet</target>
+            </trans-unit>
             <trans-unit id="subheader_eyebrow">
                 <source>Style Subheading as Eyebrow</source>
                 <target>Subheading als Eyebrow darstellen</target>

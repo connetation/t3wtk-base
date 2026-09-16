@@ -152,6 +152,10 @@ $headerClassItems = [
     ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h3', 'value' => 'h3'],
     ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h4', 'value' => 'h4'],
     ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h5', 'value' => 'h5'],
+    // Bootstrap's own visually-hidden utility: keeps the tag/text in the DOM
+    // (document outline, SEO, screen readers) but hides it visually — distinct
+    // from header_layout's "Hidden" (100), which skips rendering it entirely.
+    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.hidden', 'value' => 'visually-hidden'],
 ];
 
 // Subheader previously had no layout choice at all — HeaderSwitch.html always
