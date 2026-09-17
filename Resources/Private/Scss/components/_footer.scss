@@ -15,13 +15,12 @@
 .footer {
     background-color: var(--conn-footer-bg);
     color: var(--conn-footer-text, var(--conn-text));
+    // Multiplier (site setting: footer.fontSizeScale), not an absolute size —
+    // 1em is whatever this element would otherwise inherit, so e.g. 1.1 always
+    // means "10% larger than normal", regardless of the base font-size.
+    font-size: calc(1em * var(--conn-footer-font-size-scale, 1));
 
-    &__brand { font-size: 1.25rem; letter-spacing: -0.02em; }
-
-    &__nav-title,
-    &__address-title {
-        color: var(--conn-footer-header-text, var(--conn-footer-text, var(--conn-text)));
-    }
+    &__brand { font-size: 1.25em; letter-spacing: -0.02em; }
 
     &__link {
         position: relative;

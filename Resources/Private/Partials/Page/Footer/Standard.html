@@ -31,13 +31,13 @@
 
             <!-- Column 1 -->
             <f:if condition="{site.settings.footer.col1.content}">
-                <div class="<f:if condition="{site.settings.footer.col1.size.base}">col-{site.settings.footer.col1.size.base} </f:if><f:if condition="{site.settings.footer.col1.size.sm}">col-sm-{site.settings.footer.col1.size.sm} </f:if><f:if condition="{site.settings.footer.col1.size.md}">col-md-{site.settings.footer.col1.size.md} </f:if><f:if condition="{site.settings.footer.col1.size.lg}">col-lg-{site.settings.footer.col1.size.lg} </f:if><f:if condition="{site.settings.footer.col1.size.xl}">col-xl-{site.settings.footer.col1.size.xl} </f:if><f:if condition="{site.settings.footer.col1.size.xxl}">col-xxl-{site.settings.footer.col1.size.xxl} </f:if>{site.settings.footer.col1.mobilejustify} {site.settings.footer.col1.desktopjustify} {site.settings.footer.col1.mobilealign} {site.settings.footer.col1.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col1.size.base}">col-{site.settings.footer.col1.size.base} </f:if><f:if condition="{site.settings.footer.col1.size.sm}">col-sm-{site.settings.footer.col1.size.sm} </f:if><f:if condition="{site.settings.footer.col1.size.md}">col-md-{site.settings.footer.col1.size.md} </f:if><f:if condition="{site.settings.footer.col1.size.lg}">col-lg-{site.settings.footer.col1.size.lg} </f:if><f:if condition="{site.settings.footer.col1.size.xl}">col-xl-{site.settings.footer.col1.size.xl} </f:if><f:if condition="{site.settings.footer.col1.size.xxl}">col-xxl-{site.settings.footer.col1.size.xxl} </f:if>{site.settings.footer.col1.mobilejustify} {site.settings.footer.col1.desktopjustify} {site.settings.footer.col1.mobilealign} {site.settings.footer.col1.desktopalign} {site.settings.footer.col1.mobilevalign} {site.settings.footer.col1.desktopvalign}">
                     <f:switch expression="{site.settings.footer.col1.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="tagline"><f:render section="Tagline" arguments="{site: site}" /></f:case>
-                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation, showHeader: site.settings.footer.col1.showHeader}" /></f:case>
-                        <f:case value="address"><f:render section="Address" arguments="{site: site, showHeader: site.settings.footer.col1.showHeader}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
                         <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
                     </f:switch>
                 </div>
@@ -45,13 +45,13 @@
 
             <!-- Column 2 -->
             <f:if condition="{site.settings.footer.col2.content}">
-                <div class="<f:if condition="{site.settings.footer.col2.size.base}">col-{site.settings.footer.col2.size.base} </f:if><f:if condition="{site.settings.footer.col2.size.sm}">col-sm-{site.settings.footer.col2.size.sm} </f:if><f:if condition="{site.settings.footer.col2.size.md}">col-md-{site.settings.footer.col2.size.md} </f:if><f:if condition="{site.settings.footer.col2.size.lg}">col-lg-{site.settings.footer.col2.size.lg} </f:if><f:if condition="{site.settings.footer.col2.size.xl}">col-xl-{site.settings.footer.col2.size.xl} </f:if><f:if condition="{site.settings.footer.col2.size.xxl}">col-xxl-{site.settings.footer.col2.size.xxl} </f:if>{site.settings.footer.col2.mobilejustify} {site.settings.footer.col2.desktopjustify} {site.settings.footer.col2.mobilealign} {site.settings.footer.col2.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col2.size.base}">col-{site.settings.footer.col2.size.base} </f:if><f:if condition="{site.settings.footer.col2.size.sm}">col-sm-{site.settings.footer.col2.size.sm} </f:if><f:if condition="{site.settings.footer.col2.size.md}">col-md-{site.settings.footer.col2.size.md} </f:if><f:if condition="{site.settings.footer.col2.size.lg}">col-lg-{site.settings.footer.col2.size.lg} </f:if><f:if condition="{site.settings.footer.col2.size.xl}">col-xl-{site.settings.footer.col2.size.xl} </f:if><f:if condition="{site.settings.footer.col2.size.xxl}">col-xxl-{site.settings.footer.col2.size.xxl} </f:if>{site.settings.footer.col2.mobilejustify} {site.settings.footer.col2.desktopjustify} {site.settings.footer.col2.mobilealign} {site.settings.footer.col2.desktopalign} {site.settings.footer.col2.mobilevalign} {site.settings.footer.col2.desktopvalign}">
                     <f:switch expression="{site.settings.footer.col2.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="tagline"><f:render section="Tagline" arguments="{site: site}" /></f:case>
-                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation, showHeader: site.settings.footer.col2.showHeader}" /></f:case>
-                        <f:case value="address"><f:render section="Address" arguments="{site: site, showHeader: site.settings.footer.col2.showHeader}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
                         <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
                     </f:switch>
                 </div>
@@ -59,13 +59,13 @@
 
             <!-- Column 3 -->
             <f:if condition="{site.settings.footer.col3.content}">
-                <div class="<f:if condition="{site.settings.footer.col3.size.base}">col-{site.settings.footer.col3.size.base} </f:if><f:if condition="{site.settings.footer.col3.size.sm}">col-sm-{site.settings.footer.col3.size.sm} </f:if><f:if condition="{site.settings.footer.col3.size.md}">col-md-{site.settings.footer.col3.size.md} </f:if><f:if condition="{site.settings.footer.col3.size.lg}">col-lg-{site.settings.footer.col3.size.lg} </f:if><f:if condition="{site.settings.footer.col3.size.xl}">col-xl-{site.settings.footer.col3.size.xl} </f:if><f:if condition="{site.settings.footer.col3.size.xxl}">col-xxl-{site.settings.footer.col3.size.xxl} </f:if>{site.settings.footer.col3.mobilejustify} {site.settings.footer.col3.desktopjustify} {site.settings.footer.col3.mobilealign} {site.settings.footer.col3.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col3.size.base}">col-{site.settings.footer.col3.size.base} </f:if><f:if condition="{site.settings.footer.col3.size.sm}">col-sm-{site.settings.footer.col3.size.sm} </f:if><f:if condition="{site.settings.footer.col3.size.md}">col-md-{site.settings.footer.col3.size.md} </f:if><f:if condition="{site.settings.footer.col3.size.lg}">col-lg-{site.settings.footer.col3.size.lg} </f:if><f:if condition="{site.settings.footer.col3.size.xl}">col-xl-{site.settings.footer.col3.size.xl} </f:if><f:if condition="{site.settings.footer.col3.size.xxl}">col-xxl-{site.settings.footer.col3.size.xxl} </f:if>{site.settings.footer.col3.mobilejustify} {site.settings.footer.col3.desktopjustify} {site.settings.footer.col3.mobilealign} {site.settings.footer.col3.desktopalign} {site.settings.footer.col3.mobilevalign} {site.settings.footer.col3.desktopvalign}">
                     <f:switch expression="{site.settings.footer.col3.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="tagline"><f:render section="Tagline" arguments="{site: site}" /></f:case>
-                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation, showHeader: site.settings.footer.col3.showHeader}" /></f:case>
-                        <f:case value="address"><f:render section="Address" arguments="{site: site, showHeader: site.settings.footer.col3.showHeader}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
                         <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
                     </f:switch>
                 </div>
@@ -73,13 +73,13 @@
 
             <!-- Column 4 -->
             <f:if condition="{site.settings.footer.col4.content}">
-                <div class="<f:if condition="{site.settings.footer.col4.size.base}">col-{site.settings.footer.col4.size.base} </f:if><f:if condition="{site.settings.footer.col4.size.sm}">col-sm-{site.settings.footer.col4.size.sm} </f:if><f:if condition="{site.settings.footer.col4.size.md}">col-md-{site.settings.footer.col4.size.md} </f:if><f:if condition="{site.settings.footer.col4.size.lg}">col-lg-{site.settings.footer.col4.size.lg} </f:if><f:if condition="{site.settings.footer.col4.size.xl}">col-xl-{site.settings.footer.col4.size.xl} </f:if><f:if condition="{site.settings.footer.col4.size.xxl}">col-xxl-{site.settings.footer.col4.size.xxl} </f:if>{site.settings.footer.col4.mobilejustify} {site.settings.footer.col4.desktopjustify} {site.settings.footer.col4.mobilealign} {site.settings.footer.col4.desktopalign}">
+                <div class="<f:if condition="{site.settings.footer.col4.size.base}">col-{site.settings.footer.col4.size.base} </f:if><f:if condition="{site.settings.footer.col4.size.sm}">col-sm-{site.settings.footer.col4.size.sm} </f:if><f:if condition="{site.settings.footer.col4.size.md}">col-md-{site.settings.footer.col4.size.md} </f:if><f:if condition="{site.settings.footer.col4.size.lg}">col-lg-{site.settings.footer.col4.size.lg} </f:if><f:if condition="{site.settings.footer.col4.size.xl}">col-xl-{site.settings.footer.col4.size.xl} </f:if><f:if condition="{site.settings.footer.col4.size.xxl}">col-xxl-{site.settings.footer.col4.size.xxl} </f:if>{site.settings.footer.col4.mobilejustify} {site.settings.footer.col4.desktopjustify} {site.settings.footer.col4.mobilealign} {site.settings.footer.col4.desktopalign} {site.settings.footer.col4.mobilevalign} {site.settings.footer.col4.desktopvalign}">
                     <f:switch expression="{site.settings.footer.col4.content}">
                         <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                         <f:case value="tagline"><f:render section="Tagline" arguments="{site: site}" /></f:case>
-                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation, showHeader: site.settings.footer.col4.showHeader}" /></f:case>
-                        <f:case value="address"><f:render section="Address" arguments="{site: site, showHeader: site.settings.footer.col4.showHeader}" /></f:case>
+                        <f:case value="navigation"><f:render section="Navigation" arguments="{footerNavigation: footerNavigation}" /></f:case>
+                        <f:case value="address"><f:render section="Address" arguments="{site: site}" /></f:case>
                         <f:case value="social"><f:render section="SocialColumn" arguments="{site: site}" /></f:case>
                     </f:switch>
                 </div>
@@ -267,7 +267,6 @@
 </f:section>
 
 <f:section name="Navigation">
-    <f:if condition="{showHeader}"><h6 class="footer__nav-title fw-semibold text-uppercase mb-3">Navigation</h6></f:if>
     <ul class="list-unstyled mb-0">
         <f:for each="{footerNavigation}" as="item">
             <li class="mb-1">
@@ -298,7 +297,6 @@
 </f:section>
 
 <f:section name="Address">
-    <f:if condition="{showHeader}"><h6 class="footer__address-title fw-semibold text-uppercase mb-3">Contact</h6></f:if>
     <div class="footer__address-list">
         <f:if condition="{site.settings.contact.address.company} || {site.settings.contact.address.street} || {site.settings.contact.address.city}">
             <div class="footer__address-row">

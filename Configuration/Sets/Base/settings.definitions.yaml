@@ -59,6 +59,9 @@ categories:
   conn.footer.colors:
     label: 'Footer – Colors'
     parent: conn.footer
+  conn.footer.typography:
+    label: 'Footer – Typography'
+    parent: conn.footer
   conn.footer.grid:
     label: 'Footer – Grid'
     parent: conn.footer
@@ -1099,22 +1102,6 @@ settings:
     default: ''
     category: conn.footer.colors
 
-  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
-  theme.light.footerHeaderText:
-    label: 'Footer header text'
-    description: 'Text color for footer section headers ("Navigation", "Contact", …). Falls back to the footer text color when empty.'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
-  # CSS var (ThemeVarsProcessor): --conn-footer-header-text
-  theme.dark.footerHeaderText:
-    label: 'Footer header text (dark)'
-    description: 'Dark-mode variant. Falls back to the light footer header text above when empty.'
-    type: string
-    default: ''
-    category: conn.footer.colors
-
   # CSS var (ThemeVarsProcessor): --conn-footer-link
   theme.light.footerLink:
     label: 'Footer link'
@@ -1163,6 +1150,15 @@ settings:
     default: ''
     category: conn.footer.colors
 
+  # ─── Footer – Typography ───────────────────────────────────────────────────
+  # CSS var (ThemeVarsProcessor): --conn-footer-font-size-scale
+  footer.fontSizeScale:
+    label: 'Footer font-size scale'
+    description: 'Multiplier applied to the footer''s inherited font-size, e.g. 1.1 for 10% larger, 0.75 for 25% smaller. Leave empty for no change (same as 1).'
+    type: string
+    default: ''
+    category: conn.footer.typography
+
   # ─── Footer – Grid columns ────────────────────────────────────────────────
   footer.col1.content:
     label: 'Column 1 – Content'
@@ -1177,13 +1173,6 @@ settings:
       address: 'Address'
       social: 'Social links'
       '': 'Empty'
-
-  footer.col1.showHeader:
-    label: 'Column 1 – Show section header'
-    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
-    type: bool
-    default: true
-    category: conn.footer.grid
 
   footer.col1.size.base:
     label: 'Column 1 – Width (default, all sizes unless overridden, of 12)'
@@ -1327,6 +1316,30 @@ settings:
       'mx-md-auto': 'Center'
       'ms-md-auto': 'Right'
 
+  footer.col1.mobilevalign:
+    label: 'Column 1 – Vertical position (mobile, <768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-start': 'Top'
+      'align-self-center': 'Center'
+      'align-self-end': 'Bottom'
+
+  footer.col1.desktopvalign:
+    label: 'Column 1 – Vertical position (desktop, >=768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-md-start': 'Top'
+      'align-self-md-center': 'Center'
+      'align-self-md-end': 'Bottom'
+
   footer.col2.content:
     label: 'Column 2 – Content'
     type: string
@@ -1340,13 +1353,6 @@ settings:
       address: 'Address'
       social: 'Social links'
       '': 'Empty'
-
-  footer.col2.showHeader:
-    label: 'Column 2 – Show section header'
-    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
-    type: bool
-    default: true
-    category: conn.footer.grid
 
   footer.col2.size.base:
     label: 'Column 2 – Width (default, all sizes unless overridden, of 12)'
@@ -1490,6 +1496,30 @@ settings:
       'mx-md-auto': 'Center'
       'ms-md-auto': 'Right'
 
+  footer.col2.mobilevalign:
+    label: 'Column 2 – Vertical position (mobile, <768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-start': 'Top'
+      'align-self-center': 'Center'
+      'align-self-end': 'Bottom'
+
+  footer.col2.desktopvalign:
+    label: 'Column 2 – Vertical position (desktop, >=768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-md-start': 'Top'
+      'align-self-md-center': 'Center'
+      'align-self-md-end': 'Bottom'
+
   footer.col3.content:
     label: 'Column 3 – Content'
     type: string
@@ -1503,13 +1533,6 @@ settings:
       address: 'Address'
       social: 'Social links'
       '': 'Empty'
-
-  footer.col3.showHeader:
-    label: 'Column 3 – Show section header'
-    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
-    type: bool
-    default: true
-    category: conn.footer.grid
 
   footer.col3.size.base:
     label: 'Column 3 – Width (default, all sizes unless overridden, of 12)'
@@ -1653,6 +1676,30 @@ settings:
       'mx-md-auto': 'Center'
       'ms-md-auto': 'Right'
 
+  footer.col3.mobilevalign:
+    label: 'Column 3 – Vertical position (mobile, <768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-start': 'Top'
+      'align-self-center': 'Center'
+      'align-self-end': 'Bottom'
+
+  footer.col3.desktopvalign:
+    label: 'Column 3 – Vertical position (desktop, >=768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-md-start': 'Top'
+      'align-self-md-center': 'Center'
+      'align-self-md-end': 'Bottom'
+
   footer.col4.content:
     label: 'Column 4 – Content'
     type: string
@@ -1666,13 +1713,6 @@ settings:
       address: 'Address'
       social: 'Social links'
       '': 'Empty'
-
-  footer.col4.showHeader:
-    label: 'Column 4 – Show section header'
-    description: 'Show the "Navigation"/"Contact" heading above this column’s content. Has no effect on Brand/Tagline/Social content.'
-    type: bool
-    default: true
-    category: conn.footer.grid
 
   footer.col4.size.base:
     label: 'Column 4 – Width (default, all sizes unless overridden, of 12)'
@@ -1815,6 +1855,30 @@ settings:
       '': 'Left'
       'mx-md-auto': 'Center'
       'ms-md-auto': 'Right'
+
+  footer.col4.mobilevalign:
+    label: 'Column 4 – Vertical position (mobile, <768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-start': 'Top'
+      'align-self-center': 'Center'
+      'align-self-end': 'Bottom'
+
+  footer.col4.desktopvalign:
+    label: 'Column 4 – Vertical position (desktop, >=768px)'
+    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
+    type: string
+    default: ''
+    category: conn.footer.grid
+    enum:
+      '': 'None (default)'
+      'align-self-md-start': 'Top'
+      'align-self-md-center': 'Center'
+      'align-self-md-end': 'Bottom'
 
   # ─── Footer – Navigation ──────────────────────────────────────────────────
   footer.navigation.type:
