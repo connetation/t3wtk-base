@@ -38,6 +38,7 @@ final class ReorderFramesPalette
 
         $rows[] = 'tx_conn_base_bg_type';
         $rows[] = 'tx_conn_base_bg_color,tx_conn_base_bg_text_color,tx_conn_base_bg_image,tx_conn_base_bg_mode';
+        $rows[] = 'tx_conn_base_bg_padding_before,tx_conn_base_bg_padding_after';
         $rows[] = 'space_before_class,space_after_class';
 
         $tca['tt_content']['palettes']['frames']['showitem'] = implode(',--linebreak--,', $rows);

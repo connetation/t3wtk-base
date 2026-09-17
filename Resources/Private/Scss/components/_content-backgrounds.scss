@@ -11,7 +11,6 @@
 
 .conn-bg {
     position: relative;
-    padding-block: 3rem;
     background-repeat: no-repeat;
 
     &--cover {
@@ -38,3 +37,26 @@
     margin-left: calc((100% - 100vw) / 2);
     margin-right: calc((100% - 100vw) / 2);
 }
+
+// ── Background internal padding (Appearance tab: Padding Before/After) ────
+// Opt-in, default none — separate from Space Before/After, which spaces
+// this element from its neighbours rather than its content from the fill.
+// Same scale as .frame-space-before-*/.frame-space-after-* in
+// _content-frames.scss, but padding-top/bottom instead of margin.
+.conn-bg-padding-before-none              { padding-top: 0; }
+.conn-bg-padding-before-extra-extra-small { padding-top: var(--conn-space-2xs); }
+.conn-bg-padding-before-extra-small       { padding-top: var(--conn-space-xs);  }
+.conn-bg-padding-before-small             { padding-top: var(--conn-space-sm);  }
+.conn-bg-padding-before-medium            { padding-top: var(--conn-space-md);  }
+.conn-bg-padding-before-large             { padding-top: var(--conn-space-lg);  }
+.conn-bg-padding-before-extra-large       { padding-top: var(--conn-space-xl);  }
+.conn-bg-padding-before-extra-extra-large { padding-top: var(--conn-space-2xl); }
+
+.conn-bg-padding-after-none              { padding-bottom: 0; }
+.conn-bg-padding-after-extra-extra-small { padding-bottom: var(--conn-space-2xs); }
+.conn-bg-padding-after-extra-small       { padding-bottom: var(--conn-space-xs);  }
+.conn-bg-padding-after-small             { padding-bottom: var(--conn-space-sm);  }
+.conn-bg-padding-after-medium            { padding-bottom: var(--conn-space-md);  }
+.conn-bg-padding-after-large             { padding-bottom: var(--conn-space-lg);  }
+.conn-bg-padding-after-extra-large       { padding-bottom: var(--conn-space-xl);  }
+.conn-bg-padding-after-extra-extra-large { padding-bottom: var(--conn-space-2xl); }

@@ -126,6 +126,53 @@ foreach (['space_before_class', 'space_after_class'] as $spaceField) {
 // the framework's own default spacing).
 $GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['default'] = 'none';
 
+// ─── Background internal padding — opt-in, default none ───────────────────
+// A background (color or image) used to always force a fixed padding-block
+// inside .conn-bg, regardless of the editor's Space Before/After choice
+// (which only spaces this element from its neighbours, not its own content
+// from the background fill). Replaced with these two explicit fields so
+// editors add breathing room only when they actually want it, using the
+// same spacing scale as Space Before/After (reused here, same rows/labels,
+// just without the '' "Default" option that has no matching CSS rule).
+$paddingItems = array_values(array_filter(
+    $GLOBALS['TCA']['tt_content']['columns']['space_before_class']['config']['items'],
+    static fn (array $item): bool => $item['value'] !== ''
+));
+
+ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'tx_conn_base_bg_padding_before' => [
+        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_padding_before',
+        'displayCond' => [
+            'OR' => [
+                'FIELD:tx_conn_base_bg_type:=:color',
+                'FIELD:tx_conn_base_bg_type:=:image',
+            ],
+        ],
+        'config' => [
+            'type'       => 'select',
+            'renderType' => 'selectSingle',
+            'default'    => 'none',
+            'items'      => $paddingItems,
+        ],
+    ],
+    'tx_conn_base_bg_padding_after' => [
+        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_padding_after',
+        'displayCond' => [
+            'OR' => [
+                'FIELD:tx_conn_base_bg_type:=:color',
+                'FIELD:tx_conn_base_bg_type:=:image',
+            ],
+        ],
+        'config' => [
+            'type'       => 'select',
+            'renderType' => 'selectSingle',
+            'default'    => 'none',
+            'items'      => $paddingItems,
+        ],
+    ],
+]);
+unset($paddingItems);
+
 // ─── Header/Subheader — relabel header_layout, add class overrides ────────
 // Core's own labels are "Layout 1".."Layout 5", which don't tell editors
 // which heading tag they're actually choosing — relabel to the real tag

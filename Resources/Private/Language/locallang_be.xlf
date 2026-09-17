@@ -71,6 +71,12 @@
             <trans-unit id="bg_mode.parallax">
                 <source>Parallax</source>
             </trans-unit>
+            <trans-unit id="bg_padding_before">
+                <source>Padding Before (inside background)</source>
+            </trans-unit>
+            <trans-unit id="bg_padding_after">
+                <source>Padding After (inside background)</source>
+            </trans-unit>
             <!-- Space Before/After (frames palette, all content types) -->
             <trans-unit id="space_class.none">
                 <source>None</source>

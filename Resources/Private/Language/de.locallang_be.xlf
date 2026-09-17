@@ -75,6 +75,14 @@
                 <source>Parallax</source>
                 <target>Parallax</target>
             </trans-unit>
+            <trans-unit id="bg_padding_before">
+                <source>Padding Before (inside background)</source>
+                <target>Abstand davor (innerhalb Hintergrund)</target>
+            </trans-unit>
+            <trans-unit id="bg_padding_after">
+                <source>Padding After (inside background)</source>
+                <target>Abstand danach (innerhalb Hintergrund)</target>
+            </trans-unit>
             <trans-unit id="header_layout.default">
                 <source>Default</source>
                 <target>Standard</target>
