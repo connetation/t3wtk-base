@@ -1,6 +1,6 @@
 {
     "name": "conn/t3kit-base",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Connetation Base for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
