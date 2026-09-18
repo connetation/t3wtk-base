@@ -1324,9 +1324,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-start': 'Top'
-      'align-self-center': 'Center'
-      'align-self-end': 'Bottom'
+      'justify-content-start': 'Top'
+      'justify-content-center': 'Center'
+      'justify-content-end': 'Bottom'
 
   footer.col1.desktopvalign:
     label: 'Column 1 – Vertical position (desktop, >=768px)'
@@ -1336,9 +1336,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-md-start': 'Top'
-      'align-self-md-center': 'Center'
-      'align-self-md-end': 'Bottom'
+      'justify-content-md-start': 'Top'
+      'justify-content-md-center': 'Center'
+      'justify-content-md-end': 'Bottom'
 
   footer.col2.content:
     label: 'Column 2 – Content'
@@ -1504,9 +1504,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-start': 'Top'
-      'align-self-center': 'Center'
-      'align-self-end': 'Bottom'
+      'justify-content-start': 'Top'
+      'justify-content-center': 'Center'
+      'justify-content-end': 'Bottom'
 
   footer.col2.desktopvalign:
     label: 'Column 2 – Vertical position (desktop, >=768px)'
@@ -1516,9 +1516,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-md-start': 'Top'
-      'align-self-md-center': 'Center'
-      'align-self-md-end': 'Bottom'
+      'justify-content-md-start': 'Top'
+      'justify-content-md-center': 'Center'
+      'justify-content-md-end': 'Bottom'
 
   footer.col3.content:
     label: 'Column 3 – Content'
@@ -1684,9 +1684,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-start': 'Top'
-      'align-self-center': 'Center'
-      'align-self-end': 'Bottom'
+      'justify-content-start': 'Top'
+      'justify-content-center': 'Center'
+      'justify-content-end': 'Bottom'
 
   footer.col3.desktopvalign:
     label: 'Column 3 – Vertical position (desktop, >=768px)'
@@ -1696,9 +1696,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-md-start': 'Top'
-      'align-self-md-center': 'Center'
-      'align-self-md-end': 'Bottom'
+      'justify-content-md-start': 'Top'
+      'justify-content-md-center': 'Center'
+      'justify-content-md-end': 'Bottom'
 
   footer.col4.content:
     label: 'Column 4 – Content'
@@ -1864,9 +1864,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-start': 'Top'
-      'align-self-center': 'Center'
-      'align-self-end': 'Bottom'
+      'justify-content-start': 'Top'
+      'justify-content-center': 'Center'
+      'justify-content-end': 'Bottom'
 
   footer.col4.desktopvalign:
     label: 'Column 4 – Vertical position (desktop, >=768px)'
@@ -1876,9 +1876,9 @@ settings:
     category: conn.footer.grid
     enum:
       '': 'None (default)'
-      'align-self-md-start': 'Top'
-      'align-self-md-center': 'Center'
-      'align-self-md-end': 'Bottom'
+      'justify-content-md-start': 'Top'
+      'justify-content-md-center': 'Center'
+      'justify-content-md-end': 'Bottom'
 
   # ─── Footer – Navigation ──────────────────────────────────────────────────
   footer.navigation.type:

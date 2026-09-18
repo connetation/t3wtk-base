@@ -22,6 +22,22 @@
 
     &__brand { font-size: 1.25em; letter-spacing: -0.02em; }
 
+    &__col-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .text-start &__col-inner   { align-items: flex-start; }
+    .text-center &__col-inner  { align-items: center; }
+    .text-end &__col-inner     { align-items: flex-end; }
+
+    @media (min-width: 768px) {
+        .text-md-start &__col-inner  { align-items: flex-start; }
+        .text-md-center &__col-inner { align-items: center; }
+        .text-md-end &__col-inner    { align-items: flex-end; }
+    }
+
     &__link {
         position: relative;
         z-index: 0;
