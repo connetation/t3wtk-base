@@ -24,7 +24,7 @@ categories:
     parent: conn.advanced
   fsc.templates:
     label: 'Templates'
-    description: 'Global Fluid override paths shipped by fluid_styled_content. In conn projects these are superseded by the package layering (conn_base → conn_elements → sitepackage) — leave all three empty and override templates in the sitepackage instead.'
+    description: 'Global Fluid override paths shipped by fluid_styled_content. In conn projects these are superseded by the package layering (conn_t3kit_base → conn_t3kit_elements → sitepackage) — leave all three empty and override templates in the sitepackage instead.'
     parent: fsc
   fsc.content:
     label: 'Content Elements'
@@ -194,7 +194,7 @@ settings:
 
   # Not resolved by ThemeVarsProcessor — this is a feature toggle, not a color/size.
   # Consumed in Page.typoscript (bodyTagCObject) to append the "link-hover-underline"
-  # body class; the actual CSS lives in conn_base's link-hover-effect partial/SCSS.
+  # body class; the actual CSS lives in conn_t3kit_base's link-hover-effect partial/SCSS.
   theme.linkHoverEffect:
     label: 'Animated underline on link hover'
     description: 'Grows an underline in from the left under links on hover, using the link/link-hover colors.'
@@ -457,7 +457,7 @@ settings:
   # originals in EXT:fluid_styled_content .../settings.definitions.yaml.
   styles.templates.templateRootPath:
     label: 'Additional template path'
-    description: 'Extra Fluid template path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place template overrides in the sitepackage instead.'
+    description: 'Extra Fluid template path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_t3kit_base — leave empty and place template overrides in the sitepackage instead.'
     type: string
     default: ''
     category: fsc.templates
@@ -465,7 +465,7 @@ settings:
 
   styles.templates.partialRootPath:
     label: 'Additional partial path'
-    description: 'Extra Fluid partial path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place partial overrides in the sitepackage instead.'
+    description: 'Extra Fluid partial path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_t3kit_base — leave empty and place partial overrides in the sitepackage instead.'
     type: string
     default: ''
     category: fsc.templates
@@ -473,7 +473,7 @@ settings:
 
   styles.templates.layoutRootPath:
     label: 'Additional layout path'
-    description: 'Extra Fluid layout path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_base — leave empty and place layout overrides in the sitepackage instead.'
+    description: 'Extra Fluid layout path for standard content elements, injected at layer 10. UNUSED in conn projects: layer 10 is taken by conn_t3kit_base — leave empty and place layout overrides in the sitepackage instead.'
     type: string
     default: ''
     category: fsc.templates
@@ -518,7 +518,7 @@ settings:
 
   styles.content.textmedia.maxW:
     label: 'Text & Media: max media width'
-    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text. UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width.'
+    description: 'Maximum width in px of the media area in Text & Media elements when the media sits above/below the text. UNUSED in conn projects: conn_t3kit_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width.'
     type: int
     default: 600
     category: fsc.content
@@ -526,7 +526,7 @@ settings:
 
   styles.content.textmedia.maxWInText:
     label: 'Text & Media: max media width beside text'
-    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). UNUSED in conn projects: conn_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width. Beside text, the editor’s Columns select defines the media/text split instead (2 = 50/50, 3 = 1/3 vs 2/3, …).'
+    description: 'Maximum width in px of the media area when text wraps around it (media positioned left/right in text). UNUSED in conn projects: conn_t3kit_base renders galleries as a fluid CSS grid (Media/Gallery partial override) that ignores this pixel budget — columns always share the available content width. Beside text, the editor’s Columns select defines the media/text split instead (2 = 50/50, 3 = 1/3 vs 2/3, …).'
     type: int
     default: 300
     category: fsc.content
@@ -576,7 +576,7 @@ settings:
 
   styles.content.textmedia.linkWrap.width:
     label: 'Click-enlarge: image width'
-    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    description: 'Size of the enlarged image when "Enlarge on Click" is enabled. An "m" suffix means proportional maximum, e.g. 800m = at most 800 px wide, aspect ratio kept. UNUSED in conn projects: conn_t3kit_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_t3kit_base Lib.typoscript), which ignores this value.'
     type: string
     default: 800m
     category: fsc.content
@@ -584,7 +584,7 @@ settings:
 
   styles.content.textmedia.linkWrap.height:
     label: 'Click-enlarge: image height'
-    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width). UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    description: 'Maximum height of the enlarged image. "m" suffix = proportional maximum (see width). UNUSED in conn projects: conn_t3kit_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_t3kit_base Lib.typoscript), which ignores this value.'
     type: string
     default: 600m
     category: fsc.content
@@ -592,7 +592,7 @@ settings:
 
   styles.content.textmedia.linkWrap.newWindow:
     label: 'Click-enlarge: open in new window'
-    description: 'Open the enlarged image in a new browser window instead of the current tab. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    description: 'Open the enlarged image in a new browser window instead of the current tab. UNUSED in conn projects: conn_t3kit_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_t3kit_base Lib.typoscript), which ignores this value.'
     type: bool
     default: false
     category: fsc.content
@@ -600,7 +600,7 @@ settings:
 
   styles.content.textmedia.linkWrap.lightboxEnabled:
     label: 'Click-enlarge: use lightbox'
-    description: 'Render "Enlarge on Click" images as lightbox links instead of plain image links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    description: 'Render "Enlarge on Click" images as lightbox links instead of plain image links. UNUSED in conn projects: conn_t3kit_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_t3kit_base Lib.typoscript), which ignores this value.'
     type: bool
     default: false
     category: fsc.content
@@ -608,7 +608,7 @@ settings:
 
   styles.content.textmedia.linkWrap.lightboxCssClass:
     label: 'Lightbox: CSS class'
-    description: 'CSS class added to lightbox links. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    description: 'CSS class added to lightbox links. UNUSED in conn projects: conn_t3kit_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_t3kit_base Lib.typoscript), which ignores this value.'
     type: string
     default: lightbox
     category: fsc.content
@@ -616,7 +616,7 @@ settings:
 
   styles.content.textmedia.linkWrap.lightboxRelAttribute:
     label: 'Lightbox: rel attribute'
-    description: 'rel attribute added to lightbox links, used to group images of one element into a gallery. UNUSED in conn projects: conn_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_base Lib.typoscript), which ignores this value.'
+    description: 'rel attribute added to lightbox links, used to group images of one element into a gallery. UNUSED in conn projects: conn_t3kit_base replaces the whole click-enlarge/popup mechanism with its built-in GLightbox integration (see conn_t3kit_base Lib.typoscript), which ignores this value.'
     type: string
     default: 'lightbox[{field:uid}]'
     category: fsc.content
@@ -858,7 +858,7 @@ settings:
   # ─── Branding ─────────────────────────────────────────────────────────────
   branding.logo:
     label: 'Logo – light mode'
-    description: 'EXT: path (e.g. EXT:conn_base/Resources/Public/Icons/logo.svg) or full URL (https://…). Leave empty to show the site title as text.'
+    description: 'EXT: path (e.g. EXT:conn_t3kit_base/Resources/Public/Icons/logo.svg) or full URL (https://…). Leave empty to show the site title as text.'
     type: string
     default: ''
     category: conn.branding

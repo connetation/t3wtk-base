@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\ViewHelpers;
+namespace Connetation\T3kitBase\ViewHelpers;
 
-use Connetation\Base\Utility\PhoneUtility;
+use Connetation\T3kitBase\Utility\PhoneUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**

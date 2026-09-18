@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\ViewHelpers;
+namespace Connetation\T3kitBase\ViewHelpers;
 
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileRepository;
@@ -13,7 +13,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  * Resolves the first FAL file attached to a single-file TCA relation field,
  * without requiring an Extbase domain model or a per-CType dataProcessing wire-up.
  *
- * Usage: <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_base_bg_image')}" />
+ * Usage: <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_t3kit_base_bg_image')}" />
  */
 final class FirstFileViewHelper extends AbstractViewHelper
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\ViewHelpers;
+namespace Connetation\T3kitBase\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;

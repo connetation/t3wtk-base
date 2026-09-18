@@ -138,7 +138,7 @@ const initThemeToggleFloat = () => {
 
 // ─────────────────────────────────────────────
 // News/Event card grid — entrance reveal
-// (same stagger fade/slide-in as conn/elements' CardGroup, CSS-driven —
+// (same stagger fade/slide-in as conn/t3kit-elements' CardGroup, CSS-driven —
 // see Scss/components/_news.scss and _events.scss for the keyframes/stagger)
 // ─────────────────────────────────────────────
 const initNewsCardReveal = () => {

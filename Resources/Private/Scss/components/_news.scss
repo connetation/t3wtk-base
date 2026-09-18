@@ -1,11 +1,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // News (georgringer/news) — "Liste" and "Karten" template layouts
 //
-// Both layouts mirror conn/elements' CardGroup (.conn-card-group__card) 1:1 —
+// Both layouts mirror conn/t3kit-elements' CardGroup (.conn-card-group__card) 1:1 —
 // same border/radius/shadow, same accent-bar hover treatment, same entrance
-// stagger — built entirely on conn_base's own --conn-* design tokens
+// stagger — built entirely on conn_t3kit_base's own --conn-* design tokens
 // (Scss/theme/_light.scss, _dark.scss), so they need no dependency on
-// conn/elements itself. `.conn-news-card` (grid) and `.conn-news-list-item`
+// conn/t3kit-elements itself. `.conn-news-card` (grid) and `.conn-news-list-item`
 // (row) share the exact same shell treatment; only the shape differs.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -26,7 +26,7 @@
         border-color var(--conn-transition),
         color var(--conn-transition);
 
-    // Accent top bar on hover (same pattern as conn/elements' cards)
+    // Accent top bar on hover (same pattern as conn/t3kit-elements' cards)
     &::after {
         content: '';
         position: absolute;
@@ -119,7 +119,7 @@
 }
 
 // ── Entrance animation ──────────────────────────────────────────────────────
-// GSAP powers this same stagger-fade-in on conn/elements' CardGroup
+// GSAP powers this same stagger-fade-in on conn/t3kit-elements' CardGroup
 @media (prefers-reduced-motion: no-preference) {
     .conn-news-cards .col,
     .conn-news-cards .conn-news-list-item {

@@ -1,29 +1,29 @@
-lib.contentElement.layoutRootPaths.30  = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-lib.contentElement.partialRootPaths.30 = EXT:conn_base/Resources/Private/Partials/
+lib.contentElement.layoutRootPaths.30  = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+lib.contentElement.partialRootPaths.30 = EXT:conn_t3kit_base/Resources/Private/Partials/
 
-tt_content.text.layoutRootPaths.30      = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.textpic.layoutRootPaths.30   = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.textmedia.layoutRootPaths.30 = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.image.layoutRootPaths.30     = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.header.layoutRootPaths.30    = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.html.layoutRootPaths.30      = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.bullets.layoutRootPaths.30   = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.table.layoutRootPaths.30     = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.uploads.layoutRootPaths.30   = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.shortcut.layoutRootPaths.30  = EXT:conn_base/Resources/Private/Layouts/ContentElements/
-tt_content.div.layoutRootPaths.30       = EXT:conn_base/Resources/Private/Layouts/ContentElements/
+tt_content.text.layoutRootPaths.30      = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.textpic.layoutRootPaths.30   = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.textmedia.layoutRootPaths.30 = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.image.layoutRootPaths.30     = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.header.layoutRootPaths.30    = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.html.layoutRootPaths.30      = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.bullets.layoutRootPaths.30   = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.table.layoutRootPaths.30     = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.uploads.layoutRootPaths.30   = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.shortcut.layoutRootPaths.30  = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
+tt_content.div.layoutRootPaths.30       = EXT:conn_t3kit_base/Resources/Private/Layouts/ContentElements/
 
-tt_content.text.partialRootPaths.30      = EXT:conn_base/Resources/Private/Partials/
-tt_content.textpic.partialRootPaths.30   = EXT:conn_base/Resources/Private/Partials/
-tt_content.textmedia.partialRootPaths.30 = EXT:conn_base/Resources/Private/Partials/
-tt_content.image.partialRootPaths.30     = EXT:conn_base/Resources/Private/Partials/
-tt_content.header.partialRootPaths.30    = EXT:conn_base/Resources/Private/Partials/
-tt_content.html.partialRootPaths.30      = EXT:conn_base/Resources/Private/Partials/
-tt_content.bullets.partialRootPaths.30   = EXT:conn_base/Resources/Private/Partials/
-tt_content.table.partialRootPaths.30     = EXT:conn_base/Resources/Private/Partials/
-tt_content.uploads.partialRootPaths.30   = EXT:conn_base/Resources/Private/Partials/
-tt_content.shortcut.partialRootPaths.30  = EXT:conn_base/Resources/Private/Partials/
-tt_content.div.partialRootPaths.30       = EXT:conn_base/Resources/Private/Partials/
+tt_content.text.partialRootPaths.30      = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.textpic.partialRootPaths.30   = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.textmedia.partialRootPaths.30 = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.image.partialRootPaths.30     = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.header.partialRootPaths.30    = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.html.partialRootPaths.30      = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.bullets.partialRootPaths.30   = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.table.partialRootPaths.30     = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.uploads.partialRootPaths.30   = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.shortcut.partialRootPaths.30  = EXT:conn_t3kit_base/Resources/Private/Partials/
+tt_content.div.partialRootPaths.30       = EXT:conn_t3kit_base/Resources/Private/Partials/
 
 lib.contentElement.layoutRootPaths.100 >
-lib.conn_elements_ce.layoutRootPaths.100 >
+lib.conn_t3kit_elements_ce.layoutRootPaths.100 >

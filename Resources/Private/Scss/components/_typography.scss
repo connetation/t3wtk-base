@@ -25,7 +25,7 @@ small, .small { font-size: var(--conn-font-size-sm); }
 .ce-headline-right  { text-align: right; }
 
 // ce-eyebrow — subheader rendered above the header instead of below it
-// (HeaderSwitch.html, toggled by tx_conn_base_subheader_eyebrow).
+// (HeaderSwitch.html, toggled by tx_conn_t3kit_base_subheader_eyebrow).
 .ce-eyebrow {
     display: block;
     margin-bottom: var(--conn-space-2xs);

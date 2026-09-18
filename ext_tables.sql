@@ -4,5 +4,5 @@
 --
 
 CREATE TABLE pages (
-    tx_conn_base_hide_breadcrumb tinyint(4) DEFAULT '0' NOT NULL
+    tx_conn_t3kit_base_hide_breadcrumb tinyint(4) DEFAULT '0' NOT NULL
 );

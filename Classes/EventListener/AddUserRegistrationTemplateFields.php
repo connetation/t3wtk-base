@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\EventListener;
+namespace Connetation\T3kitBase\EventListener;
 
 use DERHANSEN\SfEventMgt\Hooks\TemplateLayouts;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
@@ -25,7 +25,7 @@ use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
  *   settings array) fall back to falsy/unchecked — matching the desired
  *   default of "show the image if the event has one".
  */
-#[AsEventListener('conn-base/add-userregistration-template-fields')]
+#[AsEventListener('conn-t3kit-base/add-userregistration-template-fields')]
 final class AddUserRegistrationTemplateFields
 {
     public function __invoke(AfterFlexFormDataStructureParsedEvent $event): void

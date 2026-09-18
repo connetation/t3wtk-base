@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────
 // Design-token mixins — single source of truth for
-// values shared by conn/base and conn/elements.
+// values shared by conn/t3kit-base and conn/t3kit-elements.
 //
 // Each package still compiles a full, independent :root
-// block (conn/elements consumes these mixins at compile
+// block (conn/t3kit-elements consumes these mixins at compile
 // time via a sass load-path into this file, see its
 // Components/Shared/_tokens.scss) — no runtime dependency
 // between the two packages' compiled CSS.

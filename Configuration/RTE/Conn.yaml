@@ -4,10 +4,10 @@ imports:
 editor:
     config:
         contentsCss:
-            - 'EXT:conn_base/Resources/Public/Css/main.css'
+            - 'EXT:conn_t3kit_base/Resources/Public/Css/main.css'
 
         importModules:
-            - { module: '@typo3/conn-base/CKEditor/ckeditor5-emoji.js', exports: ['Emoji'] }
+            - { module: '@typo3/conn-t3kit-base/CKEditor/ckeditor5-emoji.js', exports: ['Emoji'] }
 
         # Presence of this key (even empty) is the marker the
         # ResolveEmojiDefinitionsUrl event listener checks for — it fills in

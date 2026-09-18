@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Content element gallery (Text & Images, Text & Media, Images)
 //
-// Pairs with the conn_base override of fsc's Media/Gallery partial. The fluid
+// Pairs with the conn_t3kit_base override of fsc's Media/Gallery partial. The fluid
 // gallery is a Bootstrap row (row-cols-{imagecols}, gutters fed from the
 // columnSpacing/rowSpacing settings via --bs-gutter-*), so the editor's
 // "Columns" select maps 1:1 to Bootstrap column widths: 1 → full width,

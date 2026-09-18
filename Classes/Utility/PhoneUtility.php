@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\Utility;
+namespace Connetation\T3kitBase\Utility;
 
 /**
  * Shared phone-number handling for every `tel:` link across conn/* packages.

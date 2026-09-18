@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\EventListener;
+namespace Connetation\T3kitBase\EventListener;
 
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\SystemResource\Publishing\SystemResourcePublisherInterface;
@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\SystemResource\SystemResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\RteCKEditor\Form\Element\Event\AfterPrepareConfigurationForEditorEvent;
 
-#[AsEventListener('conn-base/resolve-emoji-definitions-url')]
+#[AsEventListener('conn-t3kit-base/resolve-emoji-definitions-url')]
 final class ResolveEmojiDefinitionsUrl
 {
     public function __construct(
@@ -26,7 +26,7 @@ final class ResolveEmojiDefinitionsUrl
         }
 
         $resource = $this->systemResourceFactory->createPublicResource(
-            'EXT:conn_base/Resources/Public/JavaScript/CKEditor/emoji-en.json'
+            'EXT:conn_t3kit_base/Resources/Public/JavaScript/CKEditor/emoji-en.json'
         );
         $relativeUri = (string)$this->resourcePublisher->generateUri($resource, null);
         $configuration['emoji']['definitionsUrl'] = rtrim(GeneralUtility::getIndpEnv('TYPO3_SITE_URL'), '/') . $relativeUri;

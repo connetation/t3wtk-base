@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\Base\EventListener;
+namespace Connetation\T3kitBase\EventListener;
 
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
 /**
  * Adds an "Appearance" sheet to georgringer/news' List/Card plugin (news_pi1)
  */
-#[AsEventListener('conn-base/add-newslist-appearance-fields')]
+#[AsEventListener('conn-t3kit-base/add-newslist-appearance-fields')]
 final class AddNewsListAppearanceFields
 {
     public function __invoke(AfterFlexFormDataStructureParsedEvent $event): void
@@ -24,19 +24,19 @@ final class AddNewsListAppearanceFields
         }
 
         $alignItems = [
-            ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.left', 'value' => 'start'],
-            ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.center', 'value' => 'center'],
-            ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.right', 'value' => 'end'],
+            ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:align.left', 'value' => 'start'],
+            ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:align.center', 'value' => 'center'],
+            ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:align.right', 'value' => 'end'],
         ];
 
         $dataStructure = $event->getDataStructure();
         $dataStructure['sheets']['connAppearance'] = [
             'ROOT' => [
-                'sheetTitle' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.appearance',
+                'sheetTitle' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.appearance',
                 'type' => 'array',
                 'el' => [
                     'settings.appearance.titleAlign' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.titleAlign',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.titleAlign',
                         'config' => [
                             'type' => 'select',
                             'renderType' => 'selectSingle',
@@ -45,7 +45,7 @@ final class AddNewsListAppearanceFields
                         ],
                     ],
                     'settings.appearance.metaAlign' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.metaAlign',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.metaAlign',
                         'config' => [
                             'type' => 'select',
                             'renderType' => 'selectSingle',
@@ -54,7 +54,7 @@ final class AddNewsListAppearanceFields
                         ],
                     ],
                     'settings.appearance.bodyAlign' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.bodyAlign',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.bodyAlign',
                         'config' => [
                             'type' => 'select',
                             'renderType' => 'selectSingle',
@@ -63,7 +63,7 @@ final class AddNewsListAppearanceFields
                         ],
                     ],
                     'settings.appearance.linkAlign' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.linkAlign',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.linkAlign',
                         'config' => [
                             'type' => 'select',
                             'renderType' => 'selectSingle',
@@ -72,20 +72,20 @@ final class AddNewsListAppearanceFields
                         ],
                     ],
                     'settings.appearance.cardStyle' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.cardStyle',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.cardStyle',
                         'config' => [
                             'type' => 'select',
                             'renderType' => 'selectSingle',
                             'items' => [
-                                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:cardStyle.border', 'value' => ''],
-                                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:cardStyle.shadow', 'value' => 'shadow'],
-                                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:cardStyle.flat', 'value' => 'flat'],
+                                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:cardStyle.border', 'value' => ''],
+                                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:cardStyle.shadow', 'value' => 'shadow'],
+                                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:cardStyle.flat', 'value' => 'flat'],
                             ],
                             'default' => '',
                         ],
                     ],
                     'settings.appearance.cardBorderColor' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderColor',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderColor',
                         'config' => [
                             'type' => 'color',
                             'opacity' => true,
@@ -93,7 +93,7 @@ final class AddNewsListAppearanceFields
                         ],
                     ],
                     'settings.appearance.cardBorderRadius' => [
-                        'label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderRadius',
+                        'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderRadius',
                         'config' => [
                             'type' => 'input',
                             'default' => '',

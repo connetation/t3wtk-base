@@ -22,7 +22,7 @@
         border-color var(--conn-transition),
         color var(--conn-transition);
 
-    // Accent top bar on hover (same pattern as conn/elements' cards and conn/news)
+    // Accent top bar on hover (same pattern as conn/t3kit-elements' cards and conn/news)
     &::after {
         content: '';
         position: absolute;

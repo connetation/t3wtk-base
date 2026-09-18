@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" datatype="plaintext" original="EXT:conn_base/Resources/Private/Language/locallang_be.xlf">
+    <file source-language="en" datatype="plaintext" original="EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf">
         <header/>
         <body>
             <!-- Pages fields -->
-            <trans-unit id="pages.tx_conn_base_hide_breadcrumb">
+            <trans-unit id="pages.tx_conn_t3kit_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_breadcrumb_position">
+            <trans-unit id="pages.tx_conn_t3kit_base_breadcrumb_position">
                 <source>Breadcrumb Position</source>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_breadcrumb_position.under">
+            <trans-unit id="pages.tx_conn_t3kit_base_breadcrumb_position.under">
                 <source>Under Top Content (default)</source>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_breadcrumb_position.top">
+            <trans-unit id="pages.tx_conn_t3kit_base_breadcrumb_position.top">
                 <source>Top (above Top Content)</source>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_bg_color">
+            <trans-unit id="pages.tx_conn_t3kit_base_bg_color">
                 <source>Page Background Color</source>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_text_color">
+            <trans-unit id="pages.tx_conn_t3kit_base_text_color">
                 <source>Page Text Color</source>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_base_heading_color">
+            <trans-unit id="pages.tx_conn_t3kit_base_heading_color">
                 <source>Page Heading Color</source>
             </trans-unit>
             <!-- Content Element Background (Appearance tab, all content types) -->
@@ -151,7 +151,7 @@
             <trans-unit id="subheader_eyebrow_color">
                 <source>Eyebrow Color</source>
             </trans-unit>
-            <!-- Alignment select items (shared across every conn_base *Align flexform field) -->
+            <!-- Alignment select items (shared across every conn_t3kit_base *Align flexform field) -->
             <trans-unit id="align.left">
                 <source>Left</source>
             </trans-unit>

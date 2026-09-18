@@ -1,5 +1,5 @@
 plugin.tx_news.view {
-    templateRootPaths.20 = EXT:conn_base/Resources/Private/Templates/News/
-    partialRootPaths.20  = EXT:conn_base/Resources/Private/Partials/News/
-    layoutRootPaths.20   = EXT:conn_base/Resources/Private/Layouts/News/
+    templateRootPaths.20 = EXT:conn_t3kit_base/Resources/Private/Templates/News/
+    partialRootPaths.20  = EXT:conn_t3kit_base/Resources/Private/Partials/News/
+    layoutRootPaths.20   = EXT:conn_t3kit_base/Resources/Private/Layouts/News/
 }

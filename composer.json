@@ -1,5 +1,5 @@
 {
-    "name": "conn/base",
+    "name": "conn/t3kit-base",
     "version": "1.0.0",
     "description": "Connetation Base for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
     "type": "typo3-cms-extension",
@@ -13,12 +13,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Connetation\\Base\\": "Classes/"
+            "Connetation\\T3kitBase\\": "Classes/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "conn_base"
+            "extension-key": "conn_t3kit_base"
         }
     }
 }

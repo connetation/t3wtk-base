@@ -4,5 +4,5 @@ services:
     autoconfigure: true
     public: false
 
-  Connetation\Base\:
+  Connetation\T3kitBase\:
     resource: '../Classes/*'

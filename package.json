@@ -1,5 +1,5 @@
 {
-  "name": "conn-base",
+  "name": "conn-t3kit-base",
   "version": "1.0.0",
   "description": "Connetation Base – TYPO3 LTS 14 build tooling",
   "private": true,

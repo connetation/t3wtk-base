@@ -1,1 +1,1 @@
-@import 'EXT:conn_base/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:conn_t3kit_base/Configuration/TypoScript/setup.typoscript'

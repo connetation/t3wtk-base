@@ -6,27 +6,27 @@ defined('TYPO3') or die();
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-// Content element registrations live in EXT:conn_elements (optional package, required per project).
-// Add conn_base CE overrides here if needed.
+// Content element registrations live in EXT:conn_t3kit_elements (optional package, required per project).
+// Add conn_t3kit_base CE overrides here if needed.
 
 // ─── Section background – global field for ALL content element types ─────
 ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_conn_base_content_width' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width',
+    'tx_conn_t3kit_base_content_width' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:content_width',
         'displayCond' => 'FIELD:frame_class:=:none',
         'config'      => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
             'default'    => '',
             'items'      => [
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.default',   'value' => ''],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.full',      'value' => 'full'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:content_width.fullbleed', 'value' => 'fullbleed'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:content_width.default',   'value' => ''],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:content_width.full',      'value' => 'full'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:content_width.fullbleed', 'value' => 'fullbleed'],
             ],
         ],
     ],
-    'tx_conn_base_bg_type' => [
-        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_type',
+    'tx_conn_t3kit_base_bg_type' => [
+        'label'  => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_type',
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
@@ -37,57 +37,57 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'onChange'   => 'reload',
             'default'    => '',
             'items'      => [
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_type.none',  'value' => ''],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_type.color', 'value' => 'color'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_type.image', 'value' => 'image'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_type.none',  'value' => ''],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_type.color', 'value' => 'color'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_type.image', 'value' => 'image'],
             ],
         ],
     ],
-    'tx_conn_base_bg_color' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_color',
-        'displayCond' => 'FIELD:tx_conn_base_bg_type:=:color',
+    'tx_conn_t3kit_base_bg_color' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_color',
+        'displayCond' => 'FIELD:tx_conn_t3kit_base_bg_type:=:color',
         'config'      => [
             'type'    => 'color',
             'opacity' => true,
             'default' => '',
         ],
     ],
-    'tx_conn_base_bg_text_color' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_text_color',
-        'displayCond' => 'FIELD:tx_conn_base_bg_type:=:color',
+    'tx_conn_t3kit_base_bg_text_color' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_text_color',
+        'displayCond' => 'FIELD:tx_conn_t3kit_base_bg_type:=:color',
         'config'      => [
             'type'    => 'color',
             'opacity' => true,
             'default' => '',
         ],
     ],
-    'tx_conn_base_bg_image' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_image',
-        'displayCond' => 'FIELD:tx_conn_base_bg_type:=:image',
+    'tx_conn_t3kit_base_bg_image' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_image',
+        'displayCond' => 'FIELD:tx_conn_t3kit_base_bg_type:=:image',
         'config'      => [
             'type'     => 'file',
             'allowed'  => 'jpg,jpeg,png,gif,webp',
             'maxitems' => 1,
         ],
     ],
-    'tx_conn_base_bg_mode' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_mode',
-        'displayCond' => 'FIELD:tx_conn_base_bg_type:=:image',
+    'tx_conn_t3kit_base_bg_mode' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_mode',
+        'displayCond' => 'FIELD:tx_conn_t3kit_base_bg_type:=:image',
         'config'      => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
             'default'    => 'cover',
             'items'      => [
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_mode.cover',    'value' => 'cover'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_mode.contain',  'value' => 'contain'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_mode.parallax', 'value' => 'parallax'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_mode.cover',    'value' => 'cover'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_mode.contain',  'value' => 'contain'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_mode.parallax', 'value' => 'parallax'],
             ],
         ],
     ],
 ]);
 
 // The 'frames' palette showitem (grouped rows, incl. this content_width field
-// and any optional conn_elements field like tx_conn_elements_text_animation)
+// and any optional conn_t3kit_elements field like tx_conn_t3kit_elements_text_animation)
 // is assembled from scratch in EventListener\ReorderFramesPalette, which runs
 // on AfterTcaCompilationEvent — after every extension (including optional
 // ones) has already inserted its own fields via addFieldsToPalette. Doing the
@@ -102,21 +102,21 @@ foreach (['space_before_class', 'space_after_class'] as $spaceField) {
     ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
         $spaceField,
-        ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_small', 'value' => 'extra-extra-small'],
+        ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_small', 'value' => 'extra-extra-small'],
         'extra-small',
         'before'
     );
     ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
         $spaceField,
-        ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_large', 'value' => 'extra-extra-large'],
+        ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:space_class.extra_extra_large', 'value' => 'extra-extra-large'],
         'extra-large',
         'after'
     );
     ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
         $spaceField,
-        ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:space_class.none', 'value' => 'none'],
+        ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:space_class.none', 'value' => 'none'],
         'extra-extra-small',
         'before'
     );
@@ -140,12 +140,12 @@ $paddingItems = array_values(array_filter(
 ));
 
 ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_conn_base_bg_padding_before' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_padding_before',
+    'tx_conn_t3kit_base_bg_padding_before' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_padding_before',
         'displayCond' => [
             'OR' => [
-                'FIELD:tx_conn_base_bg_type:=:color',
-                'FIELD:tx_conn_base_bg_type:=:image',
+                'FIELD:tx_conn_t3kit_base_bg_type:=:color',
+                'FIELD:tx_conn_t3kit_base_bg_type:=:image',
             ],
         ],
         'config' => [
@@ -155,12 +155,12 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'items'      => $paddingItems,
         ],
     ],
-    'tx_conn_base_bg_padding_after' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:bg_padding_after',
+    'tx_conn_t3kit_base_bg_padding_after' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:bg_padding_after',
         'displayCond' => [
             'OR' => [
-                'FIELD:tx_conn_base_bg_type:=:color',
-                'FIELD:tx_conn_base_bg_type:=:image',
+                'FIELD:tx_conn_t3kit_base_bg_type:=:color',
+                'FIELD:tx_conn_t3kit_base_bg_type:=:image',
             ],
         ],
         'config' => [
@@ -179,13 +179,13 @@ unset($paddingItems);
 // names. Values are unchanged (0=default, 1-5=h1-h5, 100=hidden), so this
 // is purely a label override, not a data migration.
 $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'] = [
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.default', 'value' => '0'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.h1', 'value' => '1'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.h2', 'value' => '2'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.h3', 'value' => '3'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.h4', 'value' => '4'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.h5', 'value' => '5'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_layout.hidden', 'value' => '100'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.default', 'value' => '0'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.h1', 'value' => '1'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.h2', 'value' => '2'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.h3', 'value' => '3'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.h4', 'value' => '4'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.h5', 'value' => '5'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_layout.hidden', 'value' => '100'],
 ];
 
 // header_class/subheader_class let an editor pick the heading TAG (via
@@ -193,16 +193,16 @@ $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'] = [
 // visual SIZE (a Bootstrap .h1-.h5 utility class) — e.g. an <h3> styled
 // like an .h2. Rendered in HeaderSwitch.html.
 $headerClassItems = [
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.none', 'value' => ''],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h1', 'value' => 'h1'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h2', 'value' => 'h2'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h3', 'value' => 'h3'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h4', 'value' => 'h4'],
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.h5', 'value' => 'h5'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.none', 'value' => ''],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.h1', 'value' => 'h1'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.h2', 'value' => 'h2'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.h3', 'value' => 'h3'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.h4', 'value' => 'h4'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.h5', 'value' => 'h5'],
     // Bootstrap's own visually-hidden utility: keeps the tag/text in the DOM
     // (document outline, SEO, screen readers) but hides it visually — distinct
     // from header_layout's "Hidden" (100), which skips rendering it entirely.
-    ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class.hidden', 'value' => 'visually-hidden'],
+    ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class.hidden', 'value' => 'visually-hidden'],
 ];
 
 // Subheader previously had no layout choice at all — HeaderSwitch.html always
@@ -212,8 +212,8 @@ $headerClassItems = [
 // Slider, ...) must always render a real heading tag, so this one should too.
 // Reuses header_layout's item set/labels (Default/H1-H5/Hidden) for parity.
 ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_conn_base_subheader_layout' => [
-        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_layout',
+    'tx_conn_t3kit_base_subheader_layout' => [
+        'label'  => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:subheader_layout',
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
@@ -221,8 +221,8 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'items'      => $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'],
         ],
     ],
-    'tx_conn_base_header_class' => [
-        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:header_class',
+    'tx_conn_t3kit_base_header_class' => [
+        'label'  => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:header_class',
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
@@ -230,8 +230,8 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'items'      => $headerClassItems,
         ],
     ],
-    'tx_conn_base_subheader_class' => [
-        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_class',
+    'tx_conn_t3kit_base_subheader_class' => [
+        'label'  => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:subheader_class',
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
@@ -245,8 +245,8 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 // rendered above the header instead of below it (see HeaderSwitch.html).
 // Position/color only apply once eyebrow mode is on, hence the displayCond.
 ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'tx_conn_base_subheader_eyebrow' => [
-        'label'  => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow',
+    'tx_conn_t3kit_base_subheader_eyebrow' => [
+        'label'  => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow',
         'onChange' => 'reload',
         'config' => [
             'type'       => 'check',
@@ -254,24 +254,24 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
             'items'      => [['label' => '', 'value' => 0]],
         ],
     ],
-    'tx_conn_base_subheader_eyebrow_position' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_position',
-        'displayCond' => 'FIELD:tx_conn_base_subheader_eyebrow:=:1',
+    'tx_conn_t3kit_base_subheader_eyebrow_position' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_position',
+        'displayCond' => 'FIELD:tx_conn_t3kit_base_subheader_eyebrow:=:1',
         'config'      => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
             'default'    => 'auto',
             'items'      => [
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_position.auto', 'value' => 'auto'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.left', 'value' => 'left'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.center', 'value' => 'center'],
-                ['label' => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:align.right', 'value' => 'right'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_position.auto', 'value' => 'auto'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:align.left', 'value' => 'left'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:align.center', 'value' => 'center'],
+                ['label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:align.right', 'value' => 'right'],
             ],
         ],
     ],
-    'tx_conn_base_subheader_eyebrow_color' => [
-        'label'       => 'LLL:EXT:conn_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_color',
-        'displayCond' => 'FIELD:tx_conn_base_subheader_eyebrow:=:1',
+    'tx_conn_t3kit_base_subheader_eyebrow_color' => [
+        'label'       => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:subheader_eyebrow_color',
+        'displayCond' => 'FIELD:tx_conn_t3kit_base_subheader_eyebrow:=:1',
         'config'      => [
             'type'    => 'color',
             'opacity' => true,
@@ -283,7 +283,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 // header_class fits both 'header' and 'headers' (every CE has a header);
 // subheader_layout/subheader_class/eyebrow only make sense in 'headers' (the
 // only palette with subheader).
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_conn_base_header_class', 'after:header_layout');
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_header_class', 'after:header_layout');
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_base_subheader_layout, tx_conn_base_subheader_class', 'after:subheader');
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', '--linebreak--, tx_conn_base_subheader_eyebrow, --linebreak--, tx_conn_base_subheader_eyebrow_position, tx_conn_base_subheader_eyebrow_color', 'after:tx_conn_base_subheader_class');
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_conn_t3kit_base_header_class', 'after:header_layout');
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_t3kit_base_header_class', 'after:header_layout');
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_t3kit_base_subheader_layout, tx_conn_t3kit_base_subheader_class', 'after:subheader');
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', '--linebreak--, tx_conn_t3kit_base_subheader_eyebrow, --linebreak--, tx_conn_t3kit_base_subheader_eyebrow_position, tx_conn_t3kit_base_subheader_eyebrow_color', 'after:tx_conn_t3kit_base_subheader_class');

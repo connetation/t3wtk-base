@@ -27,18 +27,18 @@ on Bootstrap 5:
   page footer, and social media icon panels
 - PHP data processors and ViewHelpers (``ThemeVarsProcessor``,
   ``ResolvePathViewHelper``, ``ResponsiveImageViewHelper``, and others)
-  under the ``Connetation\Base`` namespace
+  under the ``Connetation\T3kitBase`` namespace
 
 .. _extension-hierarchy:
 
 Extension hierarchy
 ====================
 
-conn/base has no dependency on any other Connetation extension. Other
+conn/t3kit-base has no dependency on any other Connetation extension. Other
 Connetation packages build on top of it::
 
    TYPO3 site
-   ├── conn/sitepackage  (project layer, extends conn/base)
-   │   └── depends on: conn/base
-   ├── conn/base         (this package, reusable foundation)
-   └── conn/elements     (optional component library, added per project)
+   ├── conn/sitepackage  (project layer, extends conn/t3kit-base)
+   │   └── depends on: conn/t3kit-base
+   ├── conn/t3kit-base         (this package, reusable foundation)
+   └── conn/t3kit-elements     (optional component library, added per project)

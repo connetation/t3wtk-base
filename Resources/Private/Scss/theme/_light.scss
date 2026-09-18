@@ -44,7 +44,7 @@
 
 // Bootstrap styles <a> via rgba(--bs-link-color-rgb, opacity) — override directly
 // so site-setting link colors work without needing separate RGB values.
-// Excludes conn_base/conn_elements components with their own dedicated link
+// Excludes conn_t3kit_base/conn_t3kit_elements components with their own dedicated link
 // color (own settings and/or CSS vars) — without these, this rule's chained
 // :not() specificity (far higher than a single class) silently wins over
 // e.g. .footer__link's own `color` regardless of source order.
