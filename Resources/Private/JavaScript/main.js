@@ -217,6 +217,14 @@ const initFormValidation = () => {
             // required field left empty via Tab/blur wouldn't show an error
             // until submit. Force a check on blur too.
             el.addEventListener('blur', () => validation.revalidateField(`#${el.id}`));
+
+            // Drop the static span up front and let just-validate show (and own) the message.
+            const serverError = document.getElementById(`${el.id}-errors`);
+            if (serverError) {
+                serverError.remove();
+                el.removeAttribute('aria-describedby');
+                validation.revalidateField(`#${el.id}`);
+            }
         });
 
         // just-validate re-submits via HTMLFormElement.submit(), which (unlike
