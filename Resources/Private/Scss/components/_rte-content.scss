@@ -4,10 +4,6 @@
 // and on the rendered frontend, since both load this same compiled main.css.
 // ─────────────────────────────────────────────────────────────────────────────
 
-figure.table > table {
-    width: 100%;
-}
-
 blockquote {
     border-left: 4px solid var(--conn-accent, var(--bs-primary));
     padding-left: 1rem;

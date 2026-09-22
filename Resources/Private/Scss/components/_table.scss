@@ -1,0 +1,48 @@
+// ─────────────────────────────────────────────
+// Tables — shared default style for the Table content element
+// (.ce-table, TYPO3 core's fluid_styled_content) and RTE-authored
+// tables (figure.table > table, CKEditor's table plugin).
+// ─────────────────────────────────────────────
+
+.ce-table,
+figure.table > table {
+    width: 100%;
+    margin-bottom: var(--conn-space-sm);
+    font-family: var(--bs-font-sans-serif);
+    font-size: var(--conn-font-size-body);
+    color: var(--conn-text);
+    border-collapse: separate;
+    border-spacing: 0;
+
+    th,
+    td {
+        padding: var(--conn-space-xs) var(--conn-space-sm);
+        text-align: left;
+        color: var(--conn-text);
+        border: 1px solid var(--conn-border);
+
+        > p:first-child { margin-top: 0; }
+        > p:last-child  { margin-bottom: 0; }
+    }
+
+    th {
+        font-weight: 700;
+        color: var(--conn-heading);
+    }
+
+    tbody tr:hover {
+        background-color: var(--conn-surface-hover);
+    }
+
+    & > thead:first-child > tr:first-child,
+    & > tbody:first-child > tr:first-child {
+        > :first-child { border-top-left-radius: var(--conn-radius); }
+        > :last-child  { border-top-right-radius: var(--conn-radius); }
+    }
+
+    & > tfoot:last-child > tr:last-child,
+    & > tbody:last-child > tr:last-child {
+        > :first-child { border-bottom-left-radius: var(--conn-radius); }
+        > :last-child  { border-bottom-right-radius: var(--conn-radius); }
+    }
+}
