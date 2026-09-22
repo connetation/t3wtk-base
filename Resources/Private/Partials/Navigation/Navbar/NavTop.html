@@ -206,11 +206,13 @@
                                 <f:if condition="{navigationLevels} > 1">
                                     <f:then>
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle{f:if(condition: item.active, then: ' active')}"
-                                               href="{item.link}" role="button"
-                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a class="nav-link{f:if(condition: item.active, then: ' active')}"
+                                               href="{item.link}">
                                                 {item.title}
                                             </a>
+                                            <button type="button" class="nav-dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                                    aria-label="{item.title} – Untermenü öffnen"></button>
                                             <ul class="dropdown-menu conn-nav-top__dropdown">
                                                 <f:render partial="Navigation/NavTopItems" arguments="{items: item.children}" />
                                             </ul>
