@@ -104,7 +104,7 @@
                             <f:then>
                                 <li class="conn-nav-offcanvas__item conn-nav-offcanvas__item--has-children">
                                     <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
-                                       href="{item.link}"
+                                       href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>
                                        data-bs-toggle="collapse"
                                        data-bs-target="#navLeftSub{iter.index}"
                                        aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
@@ -120,7 +120,7 @@
                                                         <f:if condition="{navigationLevels} > 2">
                                                             <f:then>
                                                                 <li class="conn-nav-offcanvas__subnav-item--has-children">
-                                                                    <a href="{child.link}"
+                                                                    <a href="{child.link}" <f:if condition="{child.target}">target="{child.target}"</f:if>
                                                                        class="{f:if(condition: child.active, then: 'active')}"
                                                                        data-bs-toggle="collapse"
                                                                        data-bs-target="#navLeftSub{iter.index}c{childIter.index}"
@@ -136,7 +136,7 @@
                                                                                         <f:if condition="{navigationLevels} > 3">
                                                                                             <f:then>
                                                                                                 <li class="conn-nav-offcanvas__subnav-item--has-children">
-                                                                                                    <a href="{grandchild.link}"
+                                                                                                    <a href="{grandchild.link}" <f:if condition="{grandchild.target}">target="{grandchild.target}"</f:if>
                                                                                                        class="{f:if(condition: grandchild.active, then: 'active')}"
                                                                                                        data-bs-toggle="collapse"
                                                                                                        data-bs-target="#navLeftSub{iter.index}c{childIter.index}g{grandIter.index}"
@@ -147,19 +147,19 @@
                                                                                                     <div class="collapse{f:if(condition: grandchild.active, then: ' show')}" id="navLeftSub{iter.index}c{childIter.index}g{grandIter.index}">
                                                                                                         <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l4 list-unstyled m-0">
                                                                                                             <f:for each="{grandchild.children}" as="greatgrandchild">
-                                                                                                                <li><a href="{greatgrandchild.link}" class="{f:if(condition: greatgrandchild.active, then: 'active')}">{greatgrandchild.title}</a></li>
+                                                                                                                <li><a href="{greatgrandchild.link}" <f:if condition="{greatgrandchild.target}">target="{greatgrandchild.target}"</f:if> class="{f:if(condition: greatgrandchild.active, then: 'active')}">{greatgrandchild.title}</a></li>
                                                                                                             </f:for>
                                                                                                         </ul>
                                                                                                     </div>
                                                                                                 </li>
                                                                                             </f:then>
                                                                                             <f:else>
-                                                                                                <li><a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
+                                                                                                <li><a href="{grandchild.link}" <f:if condition="{grandchild.target}">target="{grandchild.target}"</f:if> class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
                                                                                             </f:else>
                                                                                         </f:if>
                                                                                     </f:then>
                                                                                     <f:else>
-                                                                                        <li><a href="{grandchild.link}" class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
+                                                                                        <li><a href="{grandchild.link}" <f:if condition="{grandchild.target}">target="{grandchild.target}"</f:if> class="{f:if(condition: grandchild.active, then: 'active')}">{grandchild.title}</a></li>
                                                                                     </f:else>
                                                                                 </f:if>
                                                                             </f:for>
@@ -169,14 +169,14 @@
                                                             </f:then>
                                                             <f:else>
                                                                 <li>
-                                                                    <a href="{child.link}" class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
+                                                                    <a href="{child.link}" <f:if condition="{child.target}">target="{child.target}"</f:if> class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
                                                                 </li>
                                                             </f:else>
                                                         </f:if>
                                                     </f:then>
                                                     <f:else>
                                                         <li>
-                                                            <a href="{child.link}" class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
+                                                            <a href="{child.link}" <f:if condition="{child.target}">target="{child.target}"</f:if> class="{f:if(condition: child.active, then: 'active')}">{child.title}</a>
                                                         </li>
                                                     </f:else>
                                                 </f:if>
@@ -188,7 +188,7 @@
                             <f:else>
                                 <li class="conn-nav-offcanvas__item">
                                     <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
-                                       href="{item.link}">{item.title}</a>
+                                       href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>>{item.title}</a>
                                 </li>
                             </f:else>
                         </f:if>
@@ -196,7 +196,7 @@
                     <f:else>
                         <li class="conn-nav-offcanvas__item">
                             <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
-                               href="{item.link}">{item.title}</a>
+                               href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>>{item.title}</a>
                         </li>
                     </f:else>
                 </f:if>

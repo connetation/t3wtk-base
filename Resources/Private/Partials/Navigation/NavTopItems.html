@@ -6,7 +6,7 @@
         <f:then>
             <li class="dropdown-submenu">
                 <a class="dropdown-item{f:if(condition: item.active, then: ' active')}"
-                   href="{item.link}">{item.title}</a>
+                   href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>>{item.title}</a>
                 <ul class="dropdown-menu">
                     <f:render partial="Navigation/NavTopItems" arguments="{items: item.children}" />
                 </ul>
@@ -15,7 +15,7 @@
         <f:else>
             <li>
                 <a class="dropdown-item{f:if(condition: item.active, then: ' active')}"
-                   href="{item.link}">{item.title}</a>
+                   href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>>{item.title}</a>
             </li>
         </f:else>
     </f:if>

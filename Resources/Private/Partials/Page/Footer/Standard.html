@@ -225,7 +225,7 @@
     <ul class="list-inline mb-0">
         <f:for each="{footerBarNavigation}" as="item">
             <li class="list-inline-item">
-                <a href="{item.link}" class="footer__link text-decoration-none">{item.title}</a>
+                <a href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if> class="footer__link text-decoration-none">{item.title}</a>
             </li>
         </f:for>
     </ul>
@@ -278,7 +278,7 @@
     <ul class="list-unstyled mb-0">
         <f:for each="{footerNavigation}" as="item">
             <li class="mb-1">
-                <a href="{item.link}" class="footer__link text-decoration-none">
+                <a href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if> class="footer__link text-decoration-none">
                     {item.title}
                 </a>
             </li>

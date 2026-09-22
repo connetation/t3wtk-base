@@ -11,7 +11,7 @@
                     </f:then>
                     <f:else>
                         <li class="breadcrumb-item">
-                            <a href="{item.link}">{item.title}</a>
+                            <a href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>>{item.title}</a>
                         </li>
                     </f:else>
                 </f:if>
