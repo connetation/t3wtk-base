@@ -103,6 +103,16 @@ const initNavTopDropdowns = () => {
         if (trigger) trigger.addEventListener('click', applyAutoAlign);
     });
 
+    nav.querySelectorAll('.conn-nav-top__dropdown').forEach(menu => {
+        menu.closest('.nav-item').addEventListener('mouseenter', () => {
+            menu.classList.remove('dropdown-menu-end');
+            const rect = menu.getBoundingClientRect();
+            if (rect.right > document.documentElement.clientWidth - 8) {
+                menu.classList.add('dropdown-menu-end');
+            }
+        });
+    });
+
     // Flyout submenus: open to the left when there is not enough space on the right.
     // Always reset to right-side first so getBoundingClientRect() measures the
     // right-opening position — otherwise a stale --dropstart class from the
