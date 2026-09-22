@@ -96,15 +96,20 @@
                                 <f:if condition="{navigationLevels} > 1">
                                     <f:then>
                                         <li class="conn-nav-offcanvas__item conn-nav-offcanvas__item--has-children">
+                                            <span class="conn-nav-offcanvas__row">
                                             <a class="conn-nav-offcanvas__link{f:if(condition: item.active, then: ' active')}"
-                                               href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>
-                                               data-bs-toggle="collapse"
-                                               data-bs-target="#navTopMob{iter.index}"
-                                               aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
-                                               aria-controls="navTopMob{iter.index}">
+                                               href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if>>
                                                 {item.title}
-                                                <svg class="conn-nav-offcanvas__caret" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                             </a>
+                                            <button type="button" class="conn-nav-offcanvas__toggle"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#navTopMob{iter.index}"
+                                                    aria-expanded="{f:if(condition: item.active, then: 'true', else: 'false')}"
+                                                    aria-controls="navTopMob{iter.index}"
+                                                    aria-label="{item.title} – Untermenü öffnen/schließen">
+                                                <svg class="conn-nav-offcanvas__caret" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
+                                            </button>
+                                            </span>
                                             <div class="collapse{f:if(condition: item.active, then: ' show')}" id="navTopMob{iter.index}">
                                                 <ul class="conn-nav-offcanvas__subnav list-unstyled m-0">
                                                     <f:for each="{item.children}" as="child" iteration="childIter">
@@ -113,14 +118,19 @@
                                                                 <f:if condition="{navigationLevels} > 2">
                                                                     <f:then>
                                                                         <li class="conn-nav-offcanvas__subnav-item--has-children">
+                                                                            <span class="conn-nav-offcanvas__row">
                                                                             <a href="{child.link}" <f:if condition="{child.target}">target="{child.target}"</f:if>
-                                                                               class="{f:if(condition: child.active, then: 'active')}"
-                                                                               data-bs-toggle="collapse"
-                                                                               data-bs-target="#navTopMob{iter.index}c{childIter.index}"
-                                                                               aria-expanded="{f:if(condition: child.active, then: 'true', else: 'false')}">
+                                                                               class="{f:if(condition: child.active, then: 'active')}">
                                                                                 {child.title}
-                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                                                             </a>
+                                                                            <button type="button" class="conn-nav-offcanvas__toggle"
+                                                                                    data-bs-toggle="collapse"
+                                                                                    data-bs-target="#navTopMob{iter.index}c{childIter.index}"
+                                                                                    aria-expanded="{f:if(condition: child.active, then: 'true', else: 'false')}"
+                                                                                    aria-label="{child.title} – Untermenü öffnen/schließen">
+                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
+                                                                            </button>
+                                                                            </span>
                                                                             <div class="collapse{f:if(condition: child.active, then: ' show')}" id="navTopMob{iter.index}c{childIter.index}">
                                                                                 <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l3 list-unstyled m-0">
                                                                                     <f:for each="{child.children}" as="grandchild" iteration="grandIter">
@@ -129,14 +139,19 @@
                                                                                                 <f:if condition="{navigationLevels} > 3">
                                                                                                     <f:then>
                                                                                                         <li class="conn-nav-offcanvas__subnav-item--has-children">
+                                                                                                            <span class="conn-nav-offcanvas__row">
                                                                                                             <a href="{grandchild.link}" <f:if condition="{grandchild.target}">target="{grandchild.target}"</f:if>
-                                                                                                               class="{f:if(condition: grandchild.active, then: 'active')}"
-                                                                                                               data-bs-toggle="collapse"
-                                                                                                               data-bs-target="#navTopMob{iter.index}c{childIter.index}g{grandIter.index}"
-                                                                                                               aria-expanded="{f:if(condition: grandchild.active, then: 'true', else: 'false')}">
+                                                                                                               class="{f:if(condition: grandchild.active, then: 'active')}">
                                                                                                                 {grandchild.title}
-                                                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
                                                                                                             </a>
+                                                                                                            <button type="button" class="conn-nav-offcanvas__toggle"
+                                                                                                                    data-bs-toggle="collapse"
+                                                                                                                    data-bs-target="#navTopMob{iter.index}c{childIter.index}g{grandIter.index}"
+                                                                                                                    aria-expanded="{f:if(condition: grandchild.active, then: 'true', else: 'false')}"
+                                                                                                                    aria-label="{grandchild.title} – Untermenü öffnen/schließen">
+                                                                                                                <svg class="conn-nav-offcanvas__caret conn-nav-offcanvas__caret--sm" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg>
+                                                                                                            </button>
+                                                                                                            </span>
                                                                                                             <div class="collapse{f:if(condition: grandchild.active, then: ' show')}" id="navTopMob{iter.index}c{childIter.index}g{grandIter.index}">
                                                                                                                 <ul class="conn-nav-offcanvas__subnav conn-nav-offcanvas__subnav--l4 list-unstyled m-0">
                                                                                                                     <f:for each="{grandchild.children}" as="greatgrandchild">

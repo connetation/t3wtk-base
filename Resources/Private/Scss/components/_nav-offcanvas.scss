@@ -104,13 +104,12 @@
         --conn-panel-subnav-l4-ps: 0rem;
         --conn-panel-subnav-l4-pe: 1.625rem;
 
-        .conn-nav-offcanvas__link {
-            &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
+        .conn-nav-offcanvas__row {
+            flex-direction: row-reverse;
         }
         .conn-nav-offcanvas__subnav a {
             padding-left: 1rem;
             padding-right: var(--conn-subnav-indent, 1.5rem);
-            &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
         }
     }
 
@@ -152,13 +151,12 @@
                 --conn-panel-subnav-l4-ps:     1.625rem;
                 --conn-panel-subnav-l4-pe:     0rem;
 
-                .conn-nav-offcanvas__link {
-                    &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-link-justify); }
+                .conn-nav-offcanvas__row {
+                    flex-direction: row;
                 }
                 .conn-nav-offcanvas__subnav a {
                     padding-left: var(--conn-subnav-indent, 1.5rem);
                     padding-right: 1rem;
-                    &[data-bs-toggle] { flex-direction: row; justify-content: space-between; }
                 }
             }
         }
@@ -175,11 +173,8 @@
                 --conn-panel-subnav-l4-ps:     0rem;
                 --conn-panel-subnav-l4-pe:     0rem;
 
-                .conn-nav-offcanvas__link {
-                    &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-link-justify); }
-                }
-                .conn-nav-offcanvas__subnav a {
-                    &[data-bs-toggle] { flex-direction: row; justify-content: var(--conn-panel-content-justify); }
+                .conn-nav-offcanvas__row {
+                    flex-direction: row;
                 }
             }
         }
@@ -196,13 +191,12 @@
                 --conn-panel-subnav-l4-ps:     0rem;
                 --conn-panel-subnav-l4-pe:     1.625rem;
 
-                .conn-nav-offcanvas__link {
-                    &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
+                .conn-nav-offcanvas__row {
+                    flex-direction: row-reverse;
                 }
                 .conn-nav-offcanvas__subnav a {
                     padding-left: 1rem;
                     padding-right: var(--conn-subnav-indent, 1.5rem);
-                    &[data-bs-toggle] { flex-direction: row-reverse; justify-content: space-between; }
                 }
             }
         }
@@ -213,19 +207,30 @@
 // offcanvas-start (left panel) = border-left; no override needed — it is the base.
 // offcanvas-end  (right panel) = flip every border to the right.
 .offcanvas-end.conn-nav-offcanvas__panel {
-    .conn-nav-offcanvas__link {
+    li > .conn-nav-offcanvas__link,
+    .conn-nav-offcanvas__subnav li > a {
         border-left: none;
         border-right: 3px solid transparent;
         &:hover,
         &:focus  { border-right-color: var(--conn-accent); }
         &.active { border-right-color: var(--conn-accent); }
-        &[aria-expanded="true"]:not(.active) { border-right-color: var(--conn-border); }
     }
-    .conn-nav-offcanvas__subnav a {
+    .conn-nav-offcanvas__row {
         border-left: none;
         border-right: 3px solid transparent;
-        &:hover  { border-right-color: var(--conn-accent); }
-        &.active { border-right-color: var(--conn-accent); }
+
+        &:has(a:hover),
+        &:has(a:focus),
+        &:has(button:hover),
+        &:has(button:focus-visible) {
+            border-right-color: var(--conn-accent);
+        }
+
+        &:has(a.active) { border-right-color: var(--conn-accent); }
+
+        &:has(button[aria-expanded="true"]):not(:has(a.active)) {
+            border-right-color: var(--conn-border);
+        }
     }
 }
 
@@ -252,12 +257,65 @@
     padding-top: 0;
 }
 
+// ── Has-children row layout ────────────────────
+// .conn-nav-offcanvas__row wraps just the link + toggle button — kept
+// separate from the <li> (which also holds the .collapse submenu panel as a
+// third, block-level child) so the collapse panel always stacks below via
+// normal block flow, with no flex/animation-state interaction to go wrong.
+// Default order is title-then-caret (caret trailing/right); the --end
+// variants below reverse it.
+// The accent border + hover/active background used to live on the link
+// itself — fine when the link WAS the whole row, but now a has-children row
+// also has a toggle button next to it, and the border/tint needs to reach
+// that too (not stop where the button starts). So it lives here on the row
+// instead, driven by :has() off whichever child (link or toggle) is in the
+// relevant state — generic `a`/`button` (not class-scoped) so this same rule
+// covers both top-level rows and .conn-nav-offcanvas__subnav rows.
+// Leaf items (no toggle, <a> is the whole row) keep their own border+tint
+// directly on the link — see `li > .conn-nav-offcanvas__link` etc. below.
+.conn-nav-offcanvas__row {
+    display: flex;
+    align-items: stretch;
+    border-left: 3px solid transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+
+    &:has(a:hover),
+    &:has(a:focus),
+    &:has(button:hover),
+    &:has(button:focus-visible) {
+        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+        border-left-color: var(--conn-accent);
+    }
+
+    &:has(a.active) {
+        border-left-color: var(--conn-accent);
+        background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
+    }
+
+    // "Expanded" tint (top-level only, matches the original scope — subnav
+    // rows never had this) when the toggle is open but the link itself isn't
+    // the active/current page.
+    &:has(button[aria-expanded="true"]):not(:has(a.active)) {
+        border-left-color: var(--conn-border);
+        background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
+    }
+}
+
+.conn-nav-offcanvas__item--has-children:has(.conn-nav-offcanvas__toggle[aria-expanded="true"]) .conn-nav-offcanvas__link:not(.active) {
+    color: var(--conn-text) !important;
+}
+
 // ── Main link ─────────────────────────────────
 // Color uses !important to win over the high-specificity global
 // a:not(.btn):not(.nav-link)… rule in _light.scss (specificity 0-4-1).
 .conn-nav-offcanvas__link {
     display: flex;
     align-items: center;
+    // Grows to fill the row next to .conn-nav-offcanvas__toggle (has-children
+    // rows only — inert elsewhere since a leaf <li> isn't a flex container);
+    // min-width: 0 lets it shrink below content size so the ellipsis below works.
+    flex: 1 1 auto;
+    min-width: 0;
     justify-content: var(--conn-panel-link-justify, space-between);
     text-align: var(--conn-panel-text-align, left);
     padding: 0.75rem 1rem;
@@ -267,8 +325,7 @@
     letter-spacing: -0.01em;
     color: var(--conn-nav-text, var(--conn-text-muted)) !important;
     text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    transition: color 0.15s ease;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -276,48 +333,70 @@
     &:hover,
     &:focus {
         color: var(--conn-text) !important;
-        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
-        border-left-color: var(--conn-accent);
     }
 
     &.active {
         color: var(--conn-text) !important;
         font-weight: 600;
+    }
+}
+
+// Leaf items — the <a> is the whole clickable row (a direct child of its
+// <li>, no .conn-nav-offcanvas__row wrapper since there's no toggle button),
+// so it carries its own accent border/background directly.
+li > .conn-nav-offcanvas__link {
+    border-left: 3px solid transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+    &:hover,
+    &:focus {
+        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+        border-left-color: var(--conn-accent);
+    }
+
+    &.active {
         border-left-color: var(--conn-accent);
         background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
     }
-
-    &[aria-expanded="true"]:not(.active) {
-        color: var(--conn-text) !important;
-        border-left-color: var(--conn-border);
-        background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
-    }
-
-    &[aria-expanded="true"] .conn-nav-offcanvas__caret { transform: rotate(180deg); }
 }
 
-// ── Subnav caret rotation ─────────────────────
-.conn-nav-offcanvas__subnav a[aria-expanded="true"] .conn-nav-offcanvas__caret {
-    transform: rotate(180deg);
+// ── Dropdown toggle button (caret) ─────────────
+// Separate from .conn-nav-offcanvas__link so a tap on the title follows its
+// href while the caret button expands/collapses the subnav independently.
+.conn-nav-offcanvas__toggle {
+    flex-shrink: 0;
+    // Matching padding alone doesn't guarantee a matching height — the
+    // link's content is a text line (~1.5rem tall), the button's is a 12px
+    // icon, so equal padding still leaves unequal total height. align-self:
+    // stretch forces it to the row's full cross-size regardless (buttons
+    // are historically flaky about inheriting align-items: stretch from
+    // their flex parent without this set explicitly) — that's what actually
+    // closes the gap under the icon where the row's border/tint showed through.
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    &[aria-expanded="true"] .conn-nav-offcanvas__caret { transform: rotate(180deg); }
+
+    &:hover .conn-nav-offcanvas__caret,
+    &:focus-visible .conn-nav-offcanvas__caret,
+    &[aria-expanded="true"] .conn-nav-offcanvas__caret {
+        opacity: 0.75;
+    }
 }
 
 // ── Dropdown caret ────────────────────────────
 .conn-nav-offcanvas__caret {
     flex-shrink: 0;
-    margin-left: 0.5rem;
     opacity: 0.4;
     transition: transform 0.22s ease, opacity 0.15s ease;
-
-    .conn-nav-offcanvas__link:hover &,
-    .conn-nav-offcanvas__link:focus &,
-    .conn-nav-offcanvas__link[aria-expanded="true"] & { opacity: 0.75; }
-
-    .conn-nav-offcanvas__link.active & { opacity: 0.75; }
-
-    .conn-nav-offcanvas__subnav a:hover &,
-    .conn-nav-offcanvas__subnav a:focus &,
-    .conn-nav-offcanvas__subnav a[aria-expanded="true"] &,
-    .conn-nav-offcanvas__subnav a.active & { opacity: 0.75; }
 }
 
 // ── Sub-navigation ────────────────────────────
@@ -328,9 +407,19 @@
 .conn-nav-offcanvas__subnav {
     --conn-subnav-indent: 1.5rem; // L2
 
+    // Smaller than the top-level toggle's — matches the subnav link's own
+    // (also smaller) vertical padding below, same reasoning as there.
+    .conn-nav-offcanvas__toggle {
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
+    }
+
     a {
         display: flex;
         align-items: center;
+        // See .conn-nav-offcanvas__link above — same has-children row split.
+        flex: 1 1 auto;
+        min-width: 0;
         justify-content: var(--conn-panel-content-justify, flex-start);
         text-align: var(--conn-panel-text-align, left);
         padding: 0.35rem 1rem 0.35rem var(--conn-subnav-indent, 1.5rem);
@@ -338,19 +427,34 @@
         font-weight: 400;
         color: var(--conn-nav-text, var(--conn-text-muted)) !important;
         text-decoration: none;
-        border-left: 3px solid transparent;
         border-radius: 0;
-        transition: color 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
+        transition: color 0.12s ease;
 
         &:hover {
             color: var(--conn-text) !important;
-            background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
-            border-left-color: var(--conn-accent);
         }
 
         &.active {
             color: var(--conn-text) !important;
             font-weight: 600;
+        }
+    }
+
+    // Leaf subnav items — same reasoning as `li > .conn-nav-offcanvas__link`
+    // above: no .conn-nav-offcanvas__row wrapper, so the border/tint stays
+    // directly on the <a>. Has-children subnav rows get it from
+    // .conn-nav-offcanvas__row instead (generic a/button :has() rules above
+    // already cover this level too).
+    li > a {
+        border-left: 3px solid transparent;
+        transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+
+        &:hover {
+            background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+            border-left-color: var(--conn-accent);
+        }
+
+        &.active {
             border-left-color: var(--conn-accent);
             background-color: color-mix(in srgb, var(--conn-accent) 10%, transparent);
         }
