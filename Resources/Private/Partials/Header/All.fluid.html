@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{data.header_layout} != 100">
+    <f:variable name="header">{record -> f:render.text(field: 'header', optional: true)}</f:variable>
+    <f:variable name="subheader">{record -> f:render.text(field: 'subheader', optional: true)}</f:variable>
+    <f:if condition="{header} || {subheader} || {data.date}">
+        <header>
+            <f:if condition="{subheader} && {data.tx_conn_t3kit_base_subheader_eyebrow}">
+                <f:variable name="eyebrowPositionClass"><f:if condition="{data.tx_conn_t3kit_base_subheader_eyebrow_position} && {data.tx_conn_t3kit_base_subheader_eyebrow_position} != 'auto'"><f:then>ce-headline-{data.tx_conn_t3kit_base_subheader_eyebrow_position}</f:then><f:else><f:if condition="{data.header_position}">ce-headline-{data.header_position}</f:if></f:else></f:if></f:variable>
+                <f:variable name="eyebrowClass">ce-eyebrow {eyebrowPositionClass}<f:if condition="{data.tx_conn_t3kit_base_subheader_class}"> {data.tx_conn_t3kit_base_subheader_class}</f:if></f:variable>
+                <f:variable name="eyebrowStyle"><f:if condition="{data.tx_conn_t3kit_base_subheader_eyebrow_color}">color: {data.tx_conn_t3kit_base_subheader_eyebrow_color};</f:if></f:variable>
+                <f:switch expression="{data.tx_conn_t3kit_base_subheader_layout}">
+                    <f:case value="1"><h1 class="{eyebrowClass}" style="{eyebrowStyle}">{subheader}</h1></f:case>
+                    <f:case value="2"><h2 class="{eyebrowClass}" style="{eyebrowStyle}">{subheader}</h2></f:case>
+                    <f:case value="3"><h3 class="{eyebrowClass}" style="{eyebrowStyle}">{subheader}</h3></f:case>
+                    <f:case value="4"><h4 class="{eyebrowClass}" style="{eyebrowStyle}">{subheader}</h4></f:case>
+                    <f:case value="5"><h5 class="{eyebrowClass}" style="{eyebrowStyle}">{subheader}</h5></f:case>
+                    <f:defaultCase><p class="{eyebrowClass}" style="{eyebrowStyle}">{subheader}</p></f:defaultCase>
+                </f:switch>
+            </f:if>
+
+            <f:render partial="Header/Header" arguments="{
+                header: header,
+                layout: data.header_layout,
+                positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}',
+                link: data.header_link,
+                default: settings.defaultHeaderType}" />
+
+            <f:if condition="!({subheader} && {data.tx_conn_t3kit_base_subheader_eyebrow})">
+                <f:render partial="Header/SubHeader" arguments="{
+                    subheader: subheader,
+                    layout: data.header_layout,
+                    positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}',
+                    default: settings.defaultHeaderType}" />
+            </f:if>
+
+            <f:render partial="Header/Date" arguments="{
+                date: data.date,
+                positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}'}" />
+        </header>
+    </f:if>
+</f:if>
+</html>
