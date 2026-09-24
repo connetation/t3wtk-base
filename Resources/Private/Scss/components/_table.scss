@@ -4,10 +4,59 @@
 // tables (figure.table > table, CKEditor's table plugin).
 // ─────────────────────────────────────────────
 
+// Scroll wrapper: the table keeps width: 100% and shrinks its columns as
+// far as the content allows; only once it can't fit anymore (min-content
+// wider than the container) the wrapper scrolls horizontally instead of
+// the table overflowing the page. .ce-table-responsive is added by the
+// Table template override, CKEditor already wraps tables in figure.table.
+.ce-table-responsive,
+figure.table {
+    // Scrollbar look — override these per site to restyle.
+    --conn-table-scrollbar-size:        0.5rem;
+    --conn-table-scrollbar-thumb:       var(--conn-accent);
+    --conn-table-scrollbar-thumb-hover: var(--conn-accent-hover);
+    --conn-table-scrollbar-track:       color-mix(in srgb, var(--conn-accent-secondary) 15%, transparent);
+
+    display: block;
+    max-width: 100%;
+    margin: 0 0 var(--conn-space-sm);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    // Keep the table clear of the scrollbar.
+    padding-bottom: var(--conn-space-xs);
+
+    // Firefox only: scrollbar-color would disable the ::-webkit-scrollbar
+    // styling below in Chromium, so keep it out of browsers that have it.
+    @supports not selector(::-webkit-scrollbar) {
+        scrollbar-width: thin;
+        scrollbar-color: var(--conn-table-scrollbar-thumb) var(--conn-table-scrollbar-track);
+    }
+
+    &::-webkit-scrollbar {
+        height: var(--conn-table-scrollbar-size);
+    }
+
+    &::-webkit-scrollbar-track {
+        margin-inline: var(--conn-radius);
+        background: var(--conn-table-scrollbar-track);
+        border-radius: 999px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--conn-table-scrollbar-thumb);
+        border-radius: 999px;
+
+        &:hover { background: var(--conn-table-scrollbar-thumb-hover); }
+    }
+}
+
 .ce-table,
 figure.table > table {
     width: 100%;
-    margin-bottom: var(--conn-space-sm);
+    // Spacing lives on the wrapper; a margin here would add space inside
+    // the scroll area above the scrollbar.
+    margin: 0;
     font-family: var(--bs-font-sans-serif);
     font-size: var(--conn-font-size-body);
     color: var(--conn-text);
