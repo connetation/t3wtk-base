@@ -125,14 +125,15 @@
     &__social-link {
         display: inline-block;
         padding: 0.2rem 0.6rem;
-        color: var(--conn-footer-text, var(--conn-text));
+        color: var(--conn-footer-link, var(--conn-link));
         border-radius: 50rem;
         text-decoration: none;
         opacity: 1;
-        transition: opacity var(--conn-transition);
+        transition: opacity var(--conn-transition), color var(--conn-transition);
 
         &:hover {
             opacity: 0.75;
+            color: var(--conn-footer-link-hover, var(--conn-accent-hover)) !important;
         }
 
         &--icon {
