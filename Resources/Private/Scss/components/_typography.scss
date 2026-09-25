@@ -9,12 +9,27 @@ body {
 
 h1, .h1 { font-size: var(--conn-font-size-h1); line-height: var(--conn-line-height-tight); }
 h2, .h2 { font-size: var(--conn-font-size-h2); line-height: var(--conn-line-height-tight); }
-h3, .h3 { font-size: var(--conn-font-size-h3); line-height: var(--conn-line-height-tight); }
-h4, .h4 { font-size: var(--conn-font-size-h4); line-height: var(--conn-line-height-tight); }
+h3, .h3 { font-size: var(--conn-font-size-h3); line-height: var(--conn-line-height-snug); }
+h4, .h4 { font-size: var(--conn-font-size-h4); line-height: var(--conn-line-height-snug); }
 h5, .h5 { font-size: var(--conn-font-size-h5); line-height: var(--conn-line-height-tight); }
 h6, .h6 { font-size: var(--conn-font-size-h6); line-height: var(--conn-line-height-tight); }
 
 small, .small { font-size: var(--conn-font-size-sm); }
+
+.lead { line-height: var(--conn-line-height-snug); }
+
+// ── Heading spacing ──
+h2:where(:not(.h1, .h3, .h4, .h5, .h6)), .h2,
+h3:where(:not(.h1, .h2, .h4, .h5, .h6)), .h3 { margin-bottom: var(--conn-space-sm); }
+
+header > :where(h1, h2, h3, h4, h5, h6, p):not(:last-child, .ce-eyebrow) { margin-bottom: var(--conn-space-xs); }
+
+// ── RTE flow headings ──
+:is(.ce-bodytext, .news-text-wrap, .conn-text-column) {
+    > :not(header, h1, h2, h3, h4, h5, h6) + :is(h2, .h2) { margin-top: var(--conn-space-xl); }
+    > :not(header, h1, h2, h3, h4, h5, h6) + :is(h3, .h3) { margin-top: var(--conn-space-lg); }
+    > :not(header, h1, h2, h3, h4, h5, h6) + :is(h4, .h4, h5, .h5, h6, .h6) { margin-top: var(--conn-space-md); }
+}
 
 // ce-headline-{position} — set on header/subheader/eyebrow via header_position
 // (HeaderSwitch.html + Layouts/ContentElements/Default.html); "auto" eyebrow

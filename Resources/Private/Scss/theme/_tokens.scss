@@ -48,8 +48,9 @@ $space-before-default: var(--conn-space-lg);
     --conn-font-size-h2:   clamp(1.625rem,  1.37rem + 1.14vw, 2.25rem);
     --conn-font-size-h1:   clamp(2rem,      1.39rem + 2.73vw, 3.5rem);
 
-    --conn-line-height-tight:  1.1;
-    --conn-line-height-normal: 1.6;
+    --conn-line-height-tight:  1.2;
+    --conn-line-height-snug:   1.3;
+    --conn-line-height-normal: 1.5;
 
     // ── Layout ──
     --conn-content-max: 1080px;

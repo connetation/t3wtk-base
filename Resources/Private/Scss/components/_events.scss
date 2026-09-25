@@ -99,7 +99,7 @@
 .conn-event-card__body {
     font-size: 0.875rem;
     color: var(--conn-text-muted);
-    line-height: 1.6;
+    line-height: var(--conn-line-height-normal);
 
     p:last-child { margin-bottom: 0; }
 }
