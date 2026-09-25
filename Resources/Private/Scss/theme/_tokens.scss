@@ -29,14 +29,14 @@ $space-before-default: var(--conn-space-lg);
     --conn-sh-blur:   32px;
     --conn-sh-spread: 0;
 
-    // ── Spacing scale — 8px base, fluid from md up (360px–1240px viewport) ──
+    // ── Spacing scale — 4px grid (4·8·12·16·24·32·48·64·96), fluid between adjacent steps (360px–1240px viewport) ──
     --conn-space-2xs: 0.25rem;
     --conn-space-xs:  0.5rem;
-    --conn-space-sm:  1rem;
-    --conn-space-md:  clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
-    --conn-space-lg:  clamp(1.75rem, 1.44rem + 1.36vw, 2.5rem);
-    --conn-space-xl:  clamp(2.5rem,  1.89rem + 2.73vw, 4rem);
-    --conn-space-2xl: clamp(3.5rem,  2.48rem + 4.55vw, 6rem);
+    --conn-space-sm:  clamp(0.75rem, 0.65rem + 0.45vw, 1rem);
+    --conn-space-md:  clamp(1rem,    0.8rem  + 0.91vw, 1.5rem);
+    --conn-space-lg:  clamp(1.5rem,  1.3rem  + 0.91vw, 2rem);
+    --conn-space-xl:  clamp(3rem,    2.59rem + 1.82vw, 4rem);
+    --conn-space-2xl: clamp(4rem,    3.18rem + 3.64vw, 6rem);
 
     // ── Type scale — 18px body anchor, ~1.25 ratio, fluid (360px–1240px viewport) ──
     --conn-font-size-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);

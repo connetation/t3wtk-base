@@ -5,14 +5,14 @@
 // and space_after_class from the Appearance tab. This file maps those classes
 // to Bootstrap-equivalent spacing and decoration so they have visual effect.
 //
-// Frame spacing scale matches the --conn-space-* tokens (theme/_light.scss):
+// Frame spacing scale matches the --conn-space-* tokens (theme/_tokens.scss):
 //   extra-extra-small = --conn-space-2xs (4px)
 //   extra-small       = --conn-space-xs  (8px)
-//   small             = --conn-space-sm  (16px)
-//   medium            = --conn-space-md  (20–24px fluid)
-//   large             = --conn-space-lg  (28–40px fluid) — matches the default
-//   extra-large       = --conn-space-xl  (40–64px fluid)
-//   extra-extra-large = --conn-space-2xl (56–96px fluid)
+//   small             = --conn-space-sm  (12–16px fluid)
+//   medium            = --conn-space-md  (16–24px fluid)
+//   large             = --conn-space-lg  (24–32px fluid) — matches the default
+//   extra-large       = --conn-space-xl  (48–64px fluid)
+//   extra-extra-large = --conn-space-2xl (64–96px fluid)
 // ─────────────────────────────────────────────────────────────────────────────
 
 @use '../theme/tokens';
