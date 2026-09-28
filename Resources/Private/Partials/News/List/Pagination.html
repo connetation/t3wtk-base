@@ -1,0 +1,49 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment>
+    Based on EXT:news Styles/Twb5/Partials/List/Pagination.html. Difference: links to page 1
+    carry no currentPage argument (and drop it from the query string), so page 1 is always the
+    plain list URL (e.g. /news/) instead of a duplicate /news/1/. Pair with a route enhancer
+    page aspect starting at 2 (StaticRangeMapper start: '2') so /news/1/ doesn't resolve at all.
+</f:comment>
+<f:if condition="{pagination.allPageNumbers -> f:count()} > 1">
+    <ul class="f3-widget-paginator pagination">
+        <f:if condition="{pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
+            <li class="previous page-item">
+                <a href="{f:render(section: 'pageUri', arguments: {page: pagination.previousPageNumber, actionName: actionName}) -> f:spaceless()}" class="page-link" title="{f:translate(key:'pagination.previous')}">
+                    {f:translate(key:'widget.pagination.previous', extensionName: 'fluid')}
+                </a>
+            </li>
+        </f:if>
+        <f:if condition="{pagination.hasLessPages}">
+            <li class="page-item">…</li>
+        </f:if>
+        <f:for each="{pagination.allPageNumbers}" as="page">
+            <f:if condition="{page} == {paginator.currentPageNumber}">
+                <f:then>
+                    <li class="page-item active"><span class="page-link">{page}</span></li>
+                </f:then>
+                <f:else>
+                    <li class="page-item">
+                        <a href="{f:render(section: 'pageUri', arguments: {page: page, actionName: actionName}) -> f:spaceless()}" class="page-link">{page}</a>
+                    </li>
+                </f:else>
+            </f:if>
+        </f:for>
+        <f:if condition="{pagination.hasMorePages}">
+            <li class="page-item">…</li>
+        </f:if>
+        <f:if condition="{pagination.nextPageNumber} && {pagination.nextPageNumber} <= {pagination.lastPageNumber}">
+            <li class="page-item next">
+                <a href="{f:render(section: 'pageUri', arguments: {page: pagination.nextPageNumber, actionName: actionName}) -> f:spaceless()}" class="page-link" title="{f:translate(key:'pagination.next')}">
+                    {f:translate(key:'widget.pagination.next', extensionName: 'fluid')}
+                </a>
+            </li>
+        </f:if>
+    </ul>
+</f:if>
+
+<f:section name="pageUri"><f:if condition="{page} == 1"><f:then>{f:uri.page(addQueryString: 'untrusted', argumentsToBeExcludedFromQueryString: {0: 'tx_news_pi1[currentPage]', 1: 'tx_news_pi1[action]', 2: 'tx_news_pi1[controller]'})}</f:then><f:else>{f:uri.action(action: actionName, arguments: {currentPage: page}, addQueryString: 'untrusted')}</f:else></f:if></f:section>
+
+</html>

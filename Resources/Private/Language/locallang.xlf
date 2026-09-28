@@ -3,6 +3,9 @@
     <file source-language="en" datatype="plaintext" original="EXT:conn_t3kit_base/Resources/Private/Language/locallang.xlf">
         <header/>
         <body>
+            <trans-unit id="pagination.pageTitle">
+                <source>%1$s – Page %2$d</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

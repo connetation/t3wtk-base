@@ -13,5 +13,14 @@ return [
                 'typo3/cms-frontend/base-redirect-resolver',
             ],
         ],
+        'connetation/t3kit-base/news-first-page-redirect' => [
+            'target' => \Connetation\T3kitBase\Middleware\NewsFirstPageRedirectMiddleware::class,
+            'after' => [
+                'typo3/cms-frontend/page-resolver',
+            ],
+            'before' => [
+                'typo3/cms-frontend/page-argument-validator',
+            ],
+        ],
     ],
 ];

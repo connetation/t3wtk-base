@@ -9,3 +9,10 @@ services:
 
   Connetation\T3kitBase\Middleware\BrandingIconsMiddleware:
     public: true
+
+  Connetation\T3kitBase\PageTitle\NewsPaginationPageTitleProvider:
+    public: true
+    shared: false
+
+  Connetation\T3kitBase\Middleware\NewsFirstPageRedirectMiddleware:
+    public: true
