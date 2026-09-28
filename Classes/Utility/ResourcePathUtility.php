@@ -56,7 +56,9 @@ final class ResourcePathUtility
 
     /**
      * Absolute filesystem path of a local file, or null for URLs and missing files.
-     * Non-EXT paths are only resolved inside the public directory.
+     * Non-EXT paths are only resolved inside the public directory: ".." segments are
+     * rejected instead of comparing realpath()s, because deployments commonly symlink
+     * public/fileadmin to a shared directory outside the public path.
      */
     public static function localFile(string $path): ?string
     {
@@ -69,12 +71,13 @@ final class ResourcePathUtility
             return $absolute !== '' && is_file($absolute) ? $absolute : null;
         }
 
-        $publicPath = Environment::getPublicPath();
-        $absolute = realpath($publicPath . '/' . ltrim($path, '/'));
-        if ($absolute === false || !is_file($absolute) || !str_starts_with($absolute, $publicPath . '/')) {
+        $relative = ltrim($path, '/');
+        if (in_array('..', explode('/', str_replace('\\', '/', $relative)), true)) {
             return null;
         }
-        return $absolute;
+
+        $absolute = Environment::getPublicPath() . '/' . $relative;
+        return is_file($absolute) ? $absolute : null;
     }
 
     /**
