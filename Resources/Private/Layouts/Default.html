@@ -1,11 +1,4 @@
 
-<script>
-    (function() {
-        const stored = localStorage.getItem('conn-theme');
-        if (stored) document.documentElement.setAttribute('data-bs-theme', stored);
-    })();
-</script>
-
 <f:render partial="Page/ThemeVars" arguments="{themeVars: themeVars}" />
 
 <f:if condition="{site.settings.meta.gtmId}">

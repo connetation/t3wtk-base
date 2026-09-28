@@ -180,6 +180,12 @@ page.10.dataProcessing.50 {
 }
 [global]
 
+# Apply the stored theme in <head>, before <body> is styled — otherwise the
+# body paints light first and fades to dark via the global theme transition.
+# conn-theme-preload suppresses transitions until main.js removes it.
+page.headerData.5 = TEXT
+page.headerData.5.value = <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('conn-theme')}catch(e){}if(t)d.setAttribute('data-bs-theme',t);d.classList.add('conn-theme-preload')})();</script>
+
 # theme-color per scheme, only when the corresponding site setting is set
 ["{$theme.light.bg}" != ""]
 page.headerData.20 = TEXT

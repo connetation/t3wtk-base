@@ -32,6 +32,11 @@ const ConnTheme = (() => {
     const init = () => {
         apply(getPreferred());
 
+        // Re-enable transitions after the first paint in the final theme
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            document.documentElement.classList.remove('conn-theme-preload');
+        }));
+
         document.querySelectorAll('.theme-toggle').forEach(btn => {
             btn.addEventListener('click', toggle);
         });

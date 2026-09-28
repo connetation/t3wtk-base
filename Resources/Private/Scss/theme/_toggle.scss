@@ -34,6 +34,15 @@
                 color var(--conn-transition);
 }
 
+// No transitions on initial page load (class set in <head>, removed by main.js)
+// so the stored theme is painted directly instead of fading in from light.
+.conn-theme-preload,
+.conn-theme-preload *,
+.conn-theme-preload *::before,
+.conn-theme-preload *::after {
+    transition: none !important;
+}
+
 // Exclude transforms from the global transition to prevent animation jank
 .hover-lift,
 img {
