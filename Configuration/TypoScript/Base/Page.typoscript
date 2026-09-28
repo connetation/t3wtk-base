@@ -196,3 +196,13 @@ page.headerData.20.value = <meta name="theme-color" content="{$theme.light.bg}" 
 page.headerData.21 = TEXT
 page.headerData.21.value = <meta name="theme-color" content="{$theme.dark.bg}" media="(prefers-color-scheme: dark)">
 [global]
+
+# Favicon / apple-touch-icon / manifest links from the branding.* site settings.
+# Renders nothing when none are set. The matching root URLs (/favicon.ico,
+# /apple-touch-icon.png, /site.webmanifest) are answered by BrandingIconsMiddleware.
+page.headerData.25 = FLUIDTEMPLATE
+page.headerData.25 {
+    file = EXT:conn_t3kit_base/Resources/Private/Templates/Page/Head/Favicon.html
+    dataProcessing.10 = Connetation\T3kitBase\DataProcessing\BrandingIconsProcessor
+    dataProcessing.10.as = brandingIcons
+}

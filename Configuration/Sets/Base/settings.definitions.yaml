@@ -891,6 +891,44 @@ settings:
     default: 0
     category: conn.branding
 
+  # Favicon set — all paths: EXT: path, fileadmin path or full URL. Each one is optional;
+  # set all of them for full coverage. Rendered by BrandingIconsProcessor, root URLs
+  # (/favicon.ico, /apple-touch-icon.png, /site.webmanifest) served by BrandingIconsMiddleware.
+  branding.favicon:
+    label: 'Favicon (SVG)'
+    description: 'Main browser tab icon for modern browsers. SVG recommended — for dark mode, put a @media (prefers-color-scheme: dark) rule inside the SVG. A PNG also works.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.faviconIco:
+    label: 'Favicon fallback (ICO)'
+    description: '32×32 favicon.ico for older browsers, RSS readers and crawlers. Also served at /favicon.ico. If empty, /favicon.ico serves the Favicon setting when it is not an SVG.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.appleTouchIcon:
+    label: 'Apple touch icon'
+    description: 'Home-screen icon for iOS/iPadOS. 180×180 px PNG, no transparency. Also served at /apple-touch-icon.png.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.manifestIcon192:
+    label: 'App icon 192×192 (Android)'
+    description: '192×192 px PNG for the Android home screen. Setting this or the 512 icon enables /site.webmanifest.'
+    type: string
+    default: ''
+    category: conn.branding
+
+  branding.manifestIcon512:
+    label: 'App icon 512×512 (Android)'
+    description: '512×512 px PNG for the Android home screen and splash screen.'
+    type: string
+    default: ''
+    category: conn.branding
+
   # ══ FOOTER AREA ═══════════════════════════════════════════════════════════
 
   # ─── Footer – General ─────────────────────────────────────────────────────

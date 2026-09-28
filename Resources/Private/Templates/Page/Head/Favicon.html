@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:comment>
+    Rendered into <head> via page.headerData.25 (Configuration/TypoScript/Base/Page.typoscript).
+    {brandingIcons} comes from BrandingIconsProcessor (branding.* site settings), already in the right order.
+</f:comment>
+<f:for each="{brandingIcons}" as="link">
+<link rel="{link.rel}" href="{link.href}"<f:if condition="{link.type}"> type="{link.type}"</f:if><f:if condition="{link.sizes}"> sizes="{link.sizes}"</f:if>>
+</f:for>
+
+</html>

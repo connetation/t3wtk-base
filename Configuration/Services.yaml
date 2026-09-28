@@ -6,3 +6,6 @@ services:
 
   Connetation\T3kitBase\:
     resource: '../Classes/*'
+
+  Connetation\T3kitBase\Middleware\BrandingIconsMiddleware:
+    public: true
