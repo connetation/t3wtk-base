@@ -11,7 +11,7 @@
 
 // Shared "default" bucket for space_before_class-style spacing scales
 // (content element frames, footer) — one declaration both draw from.
-$space-before-default: var(--conn-space-lg);
+$space-before-default: var(--conn-space-2xl);
 
 @mixin conn-design-tokens {
     // --conn-accent follows --bs-primary so overriding --bs-primary in the
@@ -33,10 +33,10 @@ $space-before-default: var(--conn-space-lg);
     --conn-space-2xs: 0.25rem;
     --conn-space-xs:  0.5rem;
     --conn-space-sm:  clamp(0.75rem, 0.65rem + 0.45vw, 1rem);
-    --conn-space-md:  clamp(1rem,    0.8rem  + 0.91vw, 1.5rem);
-    --conn-space-lg:  clamp(1.5rem,  1.3rem  + 0.91vw, 2rem);
-    --conn-space-xl:  clamp(3rem,    2.59rem + 1.82vw, 4rem);
-    --conn-space-2xl: clamp(4rem,    3.18rem + 3.64vw, 6rem);
+    --conn-space-md:  clamp(1rem,    0.8rem  + 0.91vw, 2rem);
+    --conn-space-lg:  clamp(1.5rem,  1.3rem  + 0.91vw, 3rem);
+    --conn-space-xl:  clamp(3rem,    2.59rem + 1.82vw, 5rem);
+    --conn-space-2xl: clamp(4rem,    3.18rem + 3.64vw, 6.5rem);
 
     // ── Type scale — 18px body anchor, ~1.25 ratio, fluid (360px–1240px viewport) ──
     --conn-font-size-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
