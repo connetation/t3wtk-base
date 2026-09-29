@@ -1,0 +1,70 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Override of EXT:form's Field/Field.fluid.html. Only change: the container carries the
+    validation error messages set in the form editor (properties.validationErrorMessages) as
+    data-validate-required-message / data-validate-type-message, so the client-side validation
+    in main.js (initFormValidation) shows them instead of just-validate's English defaults.
+    Without a message there, EXT:form's translated default is used.
+    Attributes set on the field itself (fluidAdditionalAttributes) still take precedence.
+</f:comment>
+<f:variable name="requiredMessage" value="" />
+<f:variable name="typeMessage" value="" />
+<f:for each="{element.properties.validationErrorMessages}" as="validationErrorMessage">
+    <f:comment>NotEmpty validator (1221560718 = empty string, 1221560910 = null, 1347992400/1347992453 = empty array/object)</f:comment>
+    <f:if condition="!{requiredMessage} && ({validationErrorMessage.code} == 1221560718 || {validationErrorMessage.code} == 1221560910 || {validationErrorMessage.code} == 1347992400 || {validationErrorMessage.code} == 1347992453)">
+        <f:variable name="requiredMessage" value="{validationErrorMessage.message}" />
+    </f:if>
+    <f:comment>EmailAddress validator</f:comment>
+    <f:if condition="!{typeMessage} && {validationErrorMessage.code} == 1221559976">
+        <f:variable name="typeMessage" value="{validationErrorMessage.message}" />
+    </f:if>
+</f:for>
+<f:comment>No message set in the form editor: use EXT:form's default in the site language instead of just-validate's English one.</f:comment>
+<f:if condition="!{requiredMessage}">
+    <f:variable name="requiredMessage" value="{f:translate(key: 'LLL:EXT:form/Resources/Private/Language/locallang.xlf:validation.error.1221560718')}" />
+</f:if>
+<f:if condition="!{typeMessage}">
+    <f:variable name="typeMessage" value="{f:translate(key: 'LLL:EXT:form/Resources/Private/Language/locallang.xlf:validation.error.1221559976')}" />
+</f:if>
+<f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+    <f:if condition="{renderFieldset} == 1">
+        <f:then>
+            <fieldset data-validate-required-message="{requiredMessage}" data-validate-type-message="{typeMessage}" class="{element.properties.fieldsetClassAttribute}{f:if(condition: '{validationResults.errors.0}', then: ' {element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}')}">
+                <legend class="{f:if(condition: '{doNotShowLabel} == 1', then: ' {element.rootForm.renderingOptions.fieldProperties.visuallyHiddenClassAttribute}')}">{formvh:translateElementProperty(element: element, property: 'label')}
+                    <f:if condition="{element.required}">
+                        <f:render partial="Field/Required" arguments="{element: element}"/>
+                    </f:if>
+                </legend>
+                <f:render section="Element" arguments="{_all}"/>
+            </fieldset>
+        </f:then>
+        <f:else>
+            <div data-validate-required-message="{requiredMessage}" data-validate-type-message="{typeMessage}" class="{element.properties.containerClassAttribute}{f:if(condition: '{validationResults.errors.0}', then: ' {element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}')}">
+                <f:if condition="{doNotShowLabel} != 1">
+                    <label class="{element.properties.labelClassAttribute}{f:if(condition: '{doNotShowLabel} == 1', then: ' {element.rootForm.renderingOptions.fieldProperties.visuallyHiddenClassAttribute}')}" for="{element.uniqueIdentifier}">{formvh:translateElementProperty(element: element, property: 'label')}
+                        <f:if condition="{element.required}">
+                            <f:render partial="Field/Required" arguments="{element: element}"/>
+                        </f:if>
+                    </label>
+                </f:if>
+                <f:render section="Element" arguments="{_all}"/>
+            </div>
+        </f:else>
+    </f:if>
+</f:form.validationResults>
+
+<f:section name="Element">
+    <f:format.raw>{elementContent}</f:format.raw>
+    <f:if condition="{validationResults.flattenedErrors} && {renderFieldset} != 1">
+        <span id="{element.uniqueIdentifier}-errors" class="{element.rootForm.renderingOptions.fieldProperties.errorMsgClassAttribute}" role="alert">
+            <f:for each="{validationResults.errors}" as="error">
+                <f:format.htmlspecialchars>{formvh:translateElementError(element: element, error: error)}</f:format.htmlspecialchars>
+                <br/>
+            </f:for>
+        </span>
+    </f:if>
+    <f:if condition="{element.properties.elementDescription}">
+        <span id="{element.uniqueIdentifier}-desc" class="{element.rootForm.renderingOptions.fieldProperties.descriptionClassAttribute}">{formvh:translateElementProperty(element: element, property: 'elementDescription')}</span>
+    </f:if>
+</f:section>
+</html>

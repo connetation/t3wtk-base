@@ -1,0 +1,12 @@
+name: conn/t3kit-base-form-set
+label: 't3kit Base'
+priority: 50
+prototypes:
+  standard:
+    formElementsDefinition:
+      Form:
+        renderingOptions:
+          partialRootPaths:
+            # Field/Field.fluid.html: exposes the validation error messages set in the
+            # form editor to the client-side validation in main.js (initFormValidation).
+            30: 'EXT:conn_t3kit_base/Resources/Private/Extensions/Form/Partials/'

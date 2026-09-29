@@ -182,15 +182,20 @@ const initNewsCardReveal = () => {
 // Fully opt-in and data-driven — no form/field names are hardcoded here, so
 // this works for any current or future form (EXT:form or otherwise) without
 // touching this file. A field is picked up if it carries [required] and/or
-// [data-validate-type]; its error text comes ONLY from its own
+// [data-validate-type] (or is type="email"); its error text comes from its own
 // data-validate-required-message / data-validate-type-message attributes
 // (set via the form's own fluidAdditionalAttributes, using LLL: refs so they
 // translate per site language) — nothing here is hardcoded to one language.
+// If the field has none, the same attributes on its EXT:form container are
+// used: Extensions/Form/Partials/Field/Field.fluid.html fills them from the
+// error messages set in the form editor (validationErrorMessages).
 // See vendor/conn/sitepackage's Resources/Private/Forms/README.md for how to
 // wire a new form/field up to this.
 // ─────────────────────────────────────────────
+const toKebabCase = (camelCase) => camelCase.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`);
+
 const initFormValidation = () => {
-    const FIELD_SELECTOR = '[required], [data-validate-type]';
+    const FIELD_SELECTOR = '[required], [data-validate-type], input[type="email"]';
     const initializedForms = new WeakSet();
 
     document.querySelectorAll(FIELD_SELECTOR).forEach((field) => {
@@ -211,17 +216,22 @@ const initFormValidation = () => {
             if (!el.id) return;
             const rules = [];
 
+            const message = (name) =>
+                el.dataset[name] || el.closest(`[data-${toKebabCase(name)}]`)?.dataset[name] || undefined;
+
             if (el.hasAttribute('required')) {
                 rules.push({
                     rule: 'required',
-                    errorMessage: el.dataset.validateRequiredMessage || undefined,
+                    errorMessage: message('validateRequiredMessage'),
                 });
             }
 
-            if (el.dataset.validateType === 'email') {
+            // type="email" too: just-validate sets novalidate on the form, which
+            // switches off the browser's own check for EXT:form's Email element.
+            if (el.dataset.validateType === 'email' || el.type === 'email') {
                 rules.push({
                     rule: 'email',
-                    errorMessage: el.dataset.validateTypeMessage || undefined,
+                    errorMessage: message('validateTypeMessage'),
                 });
             }
 
@@ -233,12 +243,16 @@ const initFormValidation = () => {
             // until submit. Force a check on blur too.
             el.addEventListener('blur', () => validation.revalidateField(`#${el.id}`));
 
-            // Drop the static span up front and let just-validate show (and own) the message.
+            // Let just-validate show (and own) the message for rules it knows. If it
+            // finds the field valid, the server error comes from a validator it
+            // doesn't cover (e.g. StringLength), so keep the server's message.
             const serverError = document.getElementById(`${el.id}-errors`);
             if (serverError) {
-                serverError.remove();
-                el.removeAttribute('aria-describedby');
-                validation.revalidateField(`#${el.id}`);
+                validation.revalidateField(`#${el.id}`).then((isValid) => {
+                    if (isValid) return;
+                    serverError.remove();
+                    el.removeAttribute('aria-describedby');
+                });
             }
         });
 
