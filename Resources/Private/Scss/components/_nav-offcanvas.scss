@@ -264,6 +264,10 @@
 // normal block flow, with no flex/animation-state interaction to go wrong.
 // Default order is title-then-caret (caret trailing/right); the --end
 // variants below reverse it.
+// Hover/active/expanded text keeps --conn-nav-text when set (theme.*.navText) — the
+// page text color is unreadable on a dark panel. The hover tint derives from the
+// text color (currentColor) so it's visible on light and dark panels alike.
+//
 // The accent border + hover/active background used to live on the link
 // itself — fine when the link WAS the whole row, but now a has-children row
 // also has a toggle button next to it, and the border/tint needs to reach
@@ -283,7 +287,7 @@
     &:has(a:focus),
     &:has(button:hover),
     &:has(button:focus-visible) {
-        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+        background-color: var(--conn-surface-hover, color-mix(in srgb, currentColor 8%, transparent));
         border-left-color: var(--conn-accent);
     }
 
@@ -302,7 +306,7 @@
 }
 
 .conn-nav-offcanvas__item--has-children:has(.conn-nav-offcanvas__toggle[aria-expanded="true"]) .conn-nav-offcanvas__link:not(.active) {
-    color: var(--conn-text) !important;
+    color: var(--conn-nav-text, var(--conn-text)) !important;
 }
 
 // ── Main link ─────────────────────────────────
@@ -332,11 +336,11 @@
 
     &:hover,
     &:focus {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
     }
 
     &.active {
-        color: var(--conn-text) !important;
+        color: var(--conn-nav-text, var(--conn-text)) !important;
         font-weight: 600;
     }
 }
@@ -350,7 +354,7 @@ li > .conn-nav-offcanvas__link {
 
     &:hover,
     &:focus {
-        background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+        background-color: var(--conn-surface-hover, color-mix(in srgb, currentColor 8%, transparent));
         border-left-color: var(--conn-accent);
     }
 
@@ -431,11 +435,11 @@ li > .conn-nav-offcanvas__link {
         transition: color 0.12s ease;
 
         &:hover {
-            color: var(--conn-text) !important;
+            color: var(--conn-nav-text, var(--conn-text)) !important;
         }
 
         &.active {
-            color: var(--conn-text) !important;
+            color: var(--conn-nav-text, var(--conn-text)) !important;
             font-weight: 600;
         }
     }
@@ -450,7 +454,7 @@ li > .conn-nav-offcanvas__link {
         transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 
         &:hover {
-            background-color: var(--conn-surface-hover, rgba(0, 0, 0, 0.04));
+            background-color: var(--conn-surface-hover, color-mix(in srgb, currentColor 8%, transparent));
             border-left-color: var(--conn-accent);
         }
 
