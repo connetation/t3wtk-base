@@ -9,18 +9,23 @@
 //   extra-extra-small = --conn-space-2xs (4px)
 //   extra-small       = --conn-space-xs  (8px)
 //   small             = --conn-space-sm  (12–16px fluid)
-//   medium            = --conn-space-md  (16–24px fluid)
-//   large             = --conn-space-lg  (24–32px fluid) — matches the default
-//   extra-large       = --conn-space-xl  (48–64px fluid)
-//   extra-extra-large = --conn-space-2xl (64–96px fluid)
+//   medium            = --conn-space-md  (16–32px fluid)
+//   large             = --conn-space-lg  (24–48px fluid)
+//   extra-large       = --conn-space-xl  (48–80px fluid)
+//   extra-extra-large = --conn-space-2xl (64–104px fluid)
+// "Default" space before = tokens.$space-before-default (also used above the footer).
 // ─────────────────────────────────────────────────────────────────────────────
 
 @use '../theme/tokens';
 
 // ── Frame default spacing (overridden by the classes below) ───────────────────
+// A frame with "Space before: Default" gets no space class at all, so this rule is
+// the default — it must use the same token as .frame-space-before-default.
+// Bottom is 0: the gap between elements comes from the next element's space before
+// (and the space above the footer from main's padding), so nothing adds up.
 .frame {
-    margin-top: var(--conn-space-lg);
-    margin-bottom: var(--conn-space-lg);
+    margin-top: tokens.$space-before-default;
+    margin-bottom: 0;
 }
 
 // ── Space before ─────────────────────────────────────────────────────────────
