@@ -1,0 +1,63 @@
+# ── Sunset ─────────────────────────────────────────────────────────────────
+# Theme settings only — logos stay project-specific (branding.*, footer.logo*).
+
+# Light: warm paper
+theme.light.accent: '#e11d48'
+theme.light.accentHover: '#be123c'
+theme.accentSecondary: '#f97316'
+theme.light.accentSoft: 'rgba(225, 29, 72, 0.08)'
+theme.light.accentGlow: 'rgba(225, 29, 72, 0.2)'
+theme.light.bg: '#fff8f3'
+theme.light.surface: '#ffffff'
+theme.light.text: '#2d1b1e'
+theme.light.heading: '#1a0b0e'
+theme.light.emphasis: '#1a0b0e'
+theme.light.textMuted: '#7c6268'
+theme.light.link: '#be123c'
+theme.light.linkHover.text: '#9f1239'
+theme.light.border: 'rgba(225, 29, 72, 0.12)'
+theme.light.borderStrong: 'rgba(225, 29, 72, 0.28)'
+theme.light.btnBg: '#e11d48'
+theme.light.btnBgHover: '#be123c'
+theme.light.btnColor: '#ffffff'
+theme.light.navBg: '#fff8f3'
+theme.light.footerBg: '#fff1e8'
+# Dark
+theme.dark.accent: '#fb7185'
+theme.dark.accentHover: '#fda4af'
+theme.dark.accentSoft: 'rgba(251, 113, 133, 0.14)'
+theme.dark.accentGlow: 'rgba(251, 113, 133, 0.28)'
+theme.dark.bg: '#1a0d10'
+theme.dark.surface: '#26141a'
+theme.dark.text: '#fbe4e6'
+theme.dark.heading: '#fff1f2'
+theme.dark.emphasis: '#fff1f2'
+theme.dark.textMuted: '#c4a1a7'
+theme.dark.link: '#fda4af'
+theme.dark.linkHover.text: '#fecdd3'
+theme.dark.border: 'rgba(255, 255, 255, 0.08)'
+theme.dark.borderStrong: 'rgba(255, 255, 255, 0.16)'
+theme.dark.btnBg: '#f43f5e'
+theme.dark.btnBgHover: '#fb7185'
+theme.dark.btnColor: '#ffffff'
+theme.dark.navBg: '#1a0d10'
+theme.dark.footerBg: '#12080a'
+theme.linkHoverEffect: true
+themeToggle.enabled: true
+themeToggle.position: bottom-right
+
+# Navigation: horizontal, centered menu, classic list dropdowns
+# (navbar.logoPosition: center would overlap a centered menu — the logo is absolutely centered)
+navbar.style: NavTop
+navbar.position: sticky-top
+navbar.logoPosition: left
+navbar.alignment: center
+navbar.navigationLevels: 2
+navbar.topDropdownStyle: list
+
+# Footer: minimal single row
+footer.layout: Minimal
+footer.showSocial: true
+footer.bar.left: brand
+footer.bar.center: navigation
+footer.bar.right: social

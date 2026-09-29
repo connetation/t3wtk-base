@@ -10,6 +10,7 @@ conn/t3kit-base/                         # TYPO3 extension (conn/t3kit-base, ext
 │   └── DataProcessing/            # PHP data processors
 ├── Configuration/
 │   ├── Sets/Base/                 # TYPO3 v14 Site Sets (TypoScript, constants, settings)
+│   ├── Sets/Theme*/               # Theme Sets: conn/t3kit-theme-{indigo,forest,sunset,midnight}
 │   ├── TCA/Overrides/             # tt_content & pages TCA extensions
 │   ├── TypoScript/                # Page object & content element TypoScript
 │   └── TsConfig/                  # Backend layouts
@@ -76,6 +77,63 @@ Bootstrap 5 is fully bundled into `main.js` and compiled into `main.css` via SCS
 - **Backend layouts**: Default, Landing Page
 - **Custom page fields**: subtitle, header image, hide breadcrumb
 - **PHP namespace**: `Connetation\T3kitBase`
+
+## Themes
+
+Four ready-made themes ship as Site Sets. Each sets the light **and** dark
+palette, the navigation layout and the footer layout — nothing else (no logo,
+no content):
+
+| Set | Colors | Navigation | Footer |
+|---|---|---|---|
+| `conn/t3kit-theme-indigo` | Indigo / violet | Horizontal, right aligned, grid dropdowns | Brand row, then 3 columns |
+| `conn/t3kit-theme-forest` | Emerald / teal | Off-canvas panel from the right | Centered, dark green |
+| `conn/t3kit-theme-sunset` | Rose / orange, warm paper | Horizontal, centered, list dropdowns | Minimal, one row |
+| `conn/t3kit-theme-midnight` | Cyan / violet, dark navbar + footer | Off-canvas panel from the left | 3 columns, dark |
+
+### Using a theme
+
+Add **one** theme Set to the site next to your sitepackage — in Site
+Management → Sites → Sets, or in `config/sites/<site>/config.yaml`:
+
+```yaml
+dependencies:
+  - conn/t3kit-sitepackage
+  - conn/t3kit-elements
+  - conn/t3kit-theme-midnight
+```
+
+Switching themes = replacing that one line (flush caches afterwards). Then set
+the project's own logo (`branding.logo`, `branding.logoDark`, `footer.logo`,
+…) in the site settings. Forest's footer and Midnight's navbar/footer are
+dark in light mode too — use a light logo variant there.
+
+### Order and precedence
+
+The position of a Set in the site's list (or in the backend picker) does
+**not** matter. TYPO3 orders Sets by their `dependencies`, and a Set's
+settings override the Sets it depends on:
+
+1. `conn/t3kit-base` defaults
+2. overridden by the theme Set (it depends on `conn/t3kit-base`)
+3. overridden by the site's own `config/sites/<site>/settings.yaml` — always last
+
+Consequences:
+
+- **Change a single value** of a theme (e.g. `theme.light.accent`): put it in
+  the site's `settings.yaml`. It wins over the theme.
+- **Don't set theme keys** (colors, `navbar.*`, `footer.layout`, `footer.col*`)
+  in another Set that doesn't depend on the theme, e.g. your sitepackage's Set.
+  Two Sets without a dependency between them have no defined order, so either
+  one could win.
+- **Build your own variant**: create a Set that depends on the theme
+  (`dependencies: [conn/t3kit-theme-midnight]`) and override what you need —
+  it is guaranteed to win over the theme. Or copy
+  `Configuration/Sets/Theme*/` as a starting point; all keys are defined in
+  `Configuration/Sets/Base/settings.definitions.yaml`.
+
+Visitors always start in light mode and switch with the theme toggle
+(`themeToggle.enabled`, set by every theme).
 
 ## Extension hierarchy
 

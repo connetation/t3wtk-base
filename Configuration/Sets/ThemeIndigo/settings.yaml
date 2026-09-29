@@ -1,0 +1,57 @@
+# ── Indigo ─────────────────────────────────────────────────────────────────
+# Theme settings only — logos stay project-specific (branding.*, footer.logo*).
+# Close to the conn/t3kit-base defaults (which are indigo-tinted): only accents are set.
+
+theme.light.accent: '#6366f1'
+theme.light.accentHover: '#4f46e5'
+theme.accentSecondary: '#a855f7'
+theme.light.link: '#4f46e5'
+theme.light.btnBg: '#6366f1'
+theme.light.btnBgHover: '#4f46e5'
+theme.light.btnColor: '#ffffff'
+theme.dark.accent: '#818cf8'
+theme.dark.accentHover: '#a5b4fc'
+theme.dark.link: '#a5b4fc'
+theme.dark.btnBg: '#6366f1'
+theme.dark.btnBgHover: '#818cf8'
+theme.dark.btnColor: '#ffffff'
+theme.linkHoverEffect: true
+themeToggle.enabled: true
+themeToggle.position: bottom-right
+
+# Navigation: horizontal, right aligned, grid dropdowns
+navbar.style: NavTop
+navbar.position: sticky-top
+navbar.alignment: end
+navbar.logoPosition: left
+navbar.navigationLevels: 2
+navbar.topDropdownStyle: grid
+navbar.panelTopContent: contact
+
+# Footer: brand + tagline as a full-width row, then 3 columns
+footer.layout: Standard
+footer.showSocial: true
+footer.col1.content: brand
+footer.col1.size.base: '12'
+footer.col1.size.md: '12'
+footer.col1.size.lg: '12'
+footer.col2.content: navigation
+footer.col3.content: address
+footer.col4.content: social
+footer.col2.size.base: '12'
+footer.col2.size.md: '4'
+footer.col2.size.lg: '4'
+footer.col3.size.base: '12'
+footer.col3.size.md: '4'
+footer.col3.size.lg: '4'
+footer.col4.size.base: '12'
+footer.col4.size.md: '4'
+footer.col4.size.lg: '4'
+# Footer column alignment: brand row + address centered, navigation left, social right and at the bottom
+footer.col1.desktopalign: text-md-center
+footer.col2.desktopalign: text-md-start
+footer.col3.desktopalign: text-md-center
+footer.col4.desktopalign: text-md-end
+footer.col4.desktopvalign: justify-content-md-end
+footer.bar.left: copyright
+footer.bar.right: navigation

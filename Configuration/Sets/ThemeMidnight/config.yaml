@@ -1,0 +1,7 @@
+name: conn/t3kit-theme-midnight
+label: 'Theme: Midnight'
+# Cyan / violet accent · dark navbar and footer · off-canvas menu from the left · 3-column footer.
+# Select at most one theme per site. Theme values override conn/t3kit-base's defaults;
+# the site's own settings.yaml overrides the theme (e.g. to change a single color).
+dependencies:
+  - conn/t3kit-base

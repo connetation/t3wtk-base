@@ -1,0 +1,81 @@
+# ── Midnight ───────────────────────────────────────────────────────────────
+# Theme settings only — logos stay project-specific (branding.*, footer.logo*).
+# Navbar and footer are dark in light mode too: use a light logo variant for branding.logo and footer.logo.
+
+# Light
+theme.light.accent: '#0891b2'
+theme.light.accentHover: '#0e7490'
+theme.accentSecondary: '#8b5cf6'
+theme.light.accentSoft: 'rgba(8, 145, 178, 0.1)'
+theme.light.accentGlow: 'rgba(8, 145, 178, 0.22)'
+theme.light.bg: '#f4f7fa'
+theme.light.surface: '#ffffff'
+theme.light.text: '#1e293b'
+theme.light.heading: '#0f172a'
+theme.light.emphasis: '#0f172a'
+theme.light.textMuted: '#64748b'
+theme.light.link: '#0e7490'
+theme.light.linkHover.text: '#155e75'
+theme.light.border: 'rgba(15, 23, 42, 0.1)'
+theme.light.borderStrong: 'rgba(15, 23, 42, 0.22)'
+theme.light.btnBg: '#0891b2'
+theme.light.btnBgHover: '#0e7490'
+theme.light.btnColor: '#ffffff'
+theme.light.navBg: '#0f172a'
+theme.light.navText: '#e2e8f0'
+theme.light.footerBg: '#0f172a'
+theme.light.footerText: '#94a3b8'
+theme.light.footerLink: '#e2e8f0'
+theme.light.footerLinkHover: '#22d3ee'
+# Dark
+theme.dark.accent: '#22d3ee'
+theme.dark.accentHover: '#67e8f9'
+theme.dark.accentSoft: 'rgba(34, 211, 238, 0.14)'
+theme.dark.accentGlow: 'rgba(34, 211, 238, 0.3)'
+theme.dark.bg: '#020617'
+theme.dark.surface: '#0f172a'
+theme.dark.text: '#cbd5e1'
+theme.dark.heading: '#f8fafc'
+theme.dark.emphasis: '#f8fafc'
+theme.dark.textMuted: '#94a3b8'
+theme.dark.link: '#67e8f9'
+theme.dark.linkHover.text: '#a5f3fc'
+theme.dark.border: 'rgba(255, 255, 255, 0.08)'
+theme.dark.borderStrong: 'rgba(255, 255, 255, 0.16)'
+theme.dark.btnBg: '#06b6d4'
+theme.dark.btnBgHover: '#22d3ee'
+theme.dark.btnColor: '#022c33'
+theme.dark.navBg: '#0f172a'
+theme.dark.navText: '#e2e8f0'
+theme.dark.footerBg: '#000814'
+theme.dark.footerText: '#94a3b8'
+theme.dark.footerLink: '#e2e8f0'
+theme.dark.footerLinkHover: '#22d3ee'
+theme.linkHoverEffect: true
+themeToggle.enabled: true
+themeToggle.position: bottom-right
+
+# Navigation: off-canvas panel from the left
+navbar.style: NavLeft
+navbar.position: sticky-top
+navbar.logoPosition: left
+navbar.navigationLevels: 2
+navbar.panelTopContent: contact
+navbar.panelBottomContent: social
+
+# Footer: standard with 3 columns + bar
+footer.layout: Standard
+footer.showSocial: true
+footer.col1.content: brand
+footer.col2.content: navigation
+footer.col3.content: address
+footer.col4.content: ''
+footer.col1.size.lg: '6'
+footer.col2.size.lg: '3'
+footer.col3.size.lg: '3'
+# Footer column alignment: navigation left, address right
+footer.col2.desktopalign: text-md-start
+footer.col3.desktopalign: text-md-end
+footer.bar.left: copyright
+footer.bar.center: navigation
+footer.bar.right: social

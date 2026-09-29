@@ -1,0 +1,66 @@
+# ── Forest ─────────────────────────────────────────────────────────────────
+# Theme settings only — logos stay project-specific (branding.*, footer.logo*).
+# Footer is dark green in both modes: use a light logo variant for footer.logo.
+
+# Light
+theme.light.accent: '#059669'
+theme.light.accentHover: '#047857'
+theme.accentSecondary: '#0d9488'
+theme.light.accentSoft: 'rgba(5, 150, 105, 0.1)'
+theme.light.accentGlow: 'rgba(5, 150, 105, 0.22)'
+theme.light.bg: '#f3f8f5'
+theme.light.surface: '#ffffff'
+theme.light.text: '#1c2b25'
+theme.light.heading: '#0b1a14'
+theme.light.emphasis: '#0b1a14'
+theme.light.textMuted: '#5f7169'
+theme.light.link: '#047857'
+theme.light.linkHover.text: '#065f46'
+theme.light.border: 'rgba(5, 150, 105, 0.14)'
+theme.light.borderStrong: 'rgba(5, 150, 105, 0.3)'
+theme.light.btnBg: '#059669'
+theme.light.btnBgHover: '#047857'
+theme.light.btnColor: '#ffffff'
+theme.light.navBg: '#ffffff'
+theme.light.footerBg: '#0f2a21'
+theme.light.footerText: '#cfe3da'
+theme.light.footerLink: '#6ee7b7'
+theme.light.footerLinkHover: '#ffffff'
+# Dark
+theme.dark.accent: '#34d399'
+theme.dark.accentHover: '#6ee7b7'
+theme.dark.accentSoft: 'rgba(52, 211, 153, 0.14)'
+theme.dark.accentGlow: 'rgba(52, 211, 153, 0.28)'
+theme.dark.bg: '#07130f'
+theme.dark.surface: '#0e211a'
+theme.dark.text: '#d5eee4'
+theme.dark.heading: '#f0fdf7'
+theme.dark.emphasis: '#f0fdf7'
+theme.dark.textMuted: '#88a89b'
+theme.dark.link: '#6ee7b7'
+theme.dark.linkHover.text: '#a7f3d0'
+theme.dark.border: 'rgba(255, 255, 255, 0.08)'
+theme.dark.borderStrong: 'rgba(255, 255, 255, 0.16)'
+theme.dark.btnBg: '#10b981'
+theme.dark.btnBgHover: '#34d399'
+theme.dark.btnColor: '#04130d'
+theme.dark.navBg: '#0e211a'
+theme.dark.footerBg: '#04100c'
+theme.dark.footerText: '#a7c4b8'
+theme.dark.footerLink: '#6ee7b7'
+theme.dark.footerLinkHover: '#ffffff'
+theme.linkHoverEffect: true
+themeToggle.enabled: true
+themeToggle.position: bottom-left
+
+# Navigation: off-canvas panel from the right (burger on all screen sizes)
+navbar.style: NavRight
+navbar.position: sticky-top
+navbar.logoPosition: left
+navbar.navigationLevels: 2
+navbar.panelTopContent: contact
+navbar.panelBottomContent: social
+
+# Footer: centered brand, tagline and social icons
+footer.layout: Centered
+footer.showSocial: true
