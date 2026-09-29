@@ -55,6 +55,8 @@ a:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item):not(.footer__l
     }
 }
 
+// Respect theme.light.navText (e.g. Midnight's dark navbar) — without it the
+// brand text stays near-black even when the navbar background is dark.
 .navbar-brand {
-    --bs-navbar-brand-color: #0a0a0a;
+    --bs-navbar-brand-color: var(--conn-nav-text, #0a0a0a);
 }

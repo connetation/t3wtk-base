@@ -29,6 +29,6 @@
     --bs-danger:               var(--conn-danger);
 
     .navbar-brand {
-        --bs-navbar-brand-color: #fafafa;
+        --bs-navbar-brand-color: var(--conn-nav-text, #fafafa);
     }
 }
