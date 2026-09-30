@@ -13,6 +13,10 @@ categories:
     label: 'Dark-theme coloring'
     description: 'Per-setting overrides applied only when dark mode is active. Leave a setting empty here to keep using its Color value in dark mode too.'
     parent: conn.theme
+  conn.theme.buttons:
+    label: 'Button colors'
+    description: 'Colors for the Bootstrap button variants that have no theme design of their own (success, danger, warning, info, light, dark — filled and outline). Leave a setting empty to keep the Bootstrap 5 default. Primary and secondary buttons follow the accent/surface colors above.'
+    parent: conn.theme
   conn.meta:
     label: 'Meta & Analytics'
     parent: conn.standard
@@ -434,6 +438,200 @@ settings:
     type: string
     default: ''
     category: conn.theme.dark
+
+  # ─── Button colors (Bootstrap variants) ───────────────────────────────────
+
+  # Override rules (ThemeVarsProcessor): .btn-success, .btn-outline-success
+  theme.light.btnSuccessBg:
+    label: 'Success button – color'
+    description: 'Background of filled and border/text of outline "success" buttons. Hover/active shades are derived automatically. Leave empty to keep the Bootstrap default (#198754).'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-success, .btn-outline-success
+  theme.light.btnSuccessColor:
+    label: 'Success button – text color'
+    description: 'Label color on filled "success" buttons (and on outline ones while hovered). Leave empty to keep the Bootstrap default.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-success, .btn-outline-success
+  theme.dark.btnSuccessBg:
+    label: 'Success button – color (dark)'
+    description: 'Dark-mode variant. Falls back to the success button color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-success, .btn-outline-success
+  theme.dark.btnSuccessColor:
+    label: 'Success button – text color (dark)'
+    description: 'Dark-mode variant. Falls back to the success button text color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-danger, .btn-outline-danger
+  theme.light.btnDangerBg:
+    label: 'Danger button – color'
+    description: 'Background of filled and border/text of outline "danger" buttons. Hover/active shades are derived automatically. Leave empty to keep the Bootstrap default (#dc3545).'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-danger, .btn-outline-danger
+  theme.light.btnDangerColor:
+    label: 'Danger button – text color'
+    description: 'Label color on filled "danger" buttons (and on outline ones while hovered). Leave empty to keep the Bootstrap default.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-danger, .btn-outline-danger
+  theme.dark.btnDangerBg:
+    label: 'Danger button – color (dark)'
+    description: 'Dark-mode variant. Falls back to the danger button color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-danger, .btn-outline-danger
+  theme.dark.btnDangerColor:
+    label: 'Danger button – text color (dark)'
+    description: 'Dark-mode variant. Falls back to the danger button text color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-warning, .btn-outline-warning
+  theme.light.btnWarningBg:
+    label: 'Warning button – color'
+    description: 'Background of filled and border/text of outline "warning" buttons. Hover/active shades are derived automatically. Leave empty to keep the Bootstrap default (#ffc107).'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-warning, .btn-outline-warning
+  theme.light.btnWarningColor:
+    label: 'Warning button – text color'
+    description: 'Label color on filled "warning" buttons (and on outline ones while hovered). Leave empty to keep the Bootstrap default.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-warning, .btn-outline-warning
+  theme.dark.btnWarningBg:
+    label: 'Warning button – color (dark)'
+    description: 'Dark-mode variant. Falls back to the warning button color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-warning, .btn-outline-warning
+  theme.dark.btnWarningColor:
+    label: 'Warning button – text color (dark)'
+    description: 'Dark-mode variant. Falls back to the warning button text color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-info, .btn-outline-info
+  theme.light.btnInfoBg:
+    label: 'Info button – color'
+    description: 'Background of filled and border/text of outline "info" buttons. Hover/active shades are derived automatically. Leave empty to keep the Bootstrap default (#0dcaf0).'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-info, .btn-outline-info
+  theme.light.btnInfoColor:
+    label: 'Info button – text color'
+    description: 'Label color on filled "info" buttons (and on outline ones while hovered). Leave empty to keep the Bootstrap default.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-info, .btn-outline-info
+  theme.dark.btnInfoBg:
+    label: 'Info button – color (dark)'
+    description: 'Dark-mode variant. Falls back to the info button color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-info, .btn-outline-info
+  theme.dark.btnInfoColor:
+    label: 'Info button – text color (dark)'
+    description: 'Dark-mode variant. Falls back to the info button text color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-light, .btn-outline-light
+  theme.light.btnLightBg:
+    label: 'Light button – color'
+    description: 'Background of filled and border/text of outline "light" buttons. Hover/active shades are derived automatically. Leave empty to keep the Bootstrap default (#f8f9fa).'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-light, .btn-outline-light
+  theme.light.btnLightColor:
+    label: 'Light button – text color'
+    description: 'Label color on filled "light" buttons (and on outline ones while hovered). Leave empty to keep the Bootstrap default.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-light, .btn-outline-light
+  theme.dark.btnLightBg:
+    label: 'Light button – color (dark)'
+    description: 'Dark-mode variant. Falls back to the light button color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-light, .btn-outline-light
+  theme.dark.btnLightColor:
+    label: 'Light button – text color (dark)'
+    description: 'Dark-mode variant. Falls back to the light button text color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-dark, .btn-outline-dark
+  theme.light.btnDarkBg:
+    label: 'Dark button – color'
+    description: 'Background of filled and border/text of outline "dark" buttons. Hover/active shades are derived automatically. Leave empty to keep the Bootstrap default (#212529).'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): .btn-dark, .btn-outline-dark
+  theme.light.btnDarkColor:
+    label: 'Dark button – text color'
+    description: 'Label color on filled "dark" buttons (and on outline ones while hovered). Leave empty to keep the Bootstrap default.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-dark, .btn-outline-dark
+  theme.dark.btnDarkBg:
+    label: 'Dark button – color (dark)'
+    description: 'Dark-mode variant. Falls back to the dark button color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
+
+  # Override rules (ThemeVarsProcessor): [data-bs-theme="dark"] .btn-dark, .btn-outline-dark
+  theme.dark.btnDarkColor:
+    label: 'Dark button – text color (dark)'
+    description: 'Dark-mode variant. Falls back to the dark button text color above when empty.'
+    type: string
+    default: ''
+    category: conn.theme.buttons
 
   # ─── Meta & Analytics ─────────────────────────────────────────────────────
   meta.gtmId:

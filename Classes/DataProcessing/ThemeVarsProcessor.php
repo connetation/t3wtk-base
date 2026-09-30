@@ -83,6 +83,11 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         'theme.shadowHover.color' => ['--conn-sh-color'],
     ];
 
+    // Bootstrap button variants without a conn design of their own. Their
+    // theme.{light,dark}.btn<Variant>Bg / btn<Variant>Color settings only emit
+    // override rules when set — otherwise Bootstrap's compiled defaults apply.
+    private const BUTTON_VARIANTS = ['success', 'danger', 'warning', 'info', 'light', 'dark'];
+
     // Per-page tx_conn_t3kit_base_*_color fields (pages table, not site settings)
     private const PAGE_OVERRIDE = [
         'tx_conn_t3kit_base_bg_color' => ['--conn-bg', 'background-color'],
@@ -105,7 +110,11 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         $pageMain = $this->resolveRecord($cObj->data, self::PAGE_OVERRIDE);
 
         $processedData[$targetVar] = [
-            'css' => $this->buildCss($light, $dark, $pageMain),
+            'css' => $this->buildCss($light, $dark, $pageMain)
+                // Light rules apply in both modes; dark rules win in dark mode
+                // (same specificity, emitted later).
+                . $this->buildButtonCss(':root', $settings, 'light')
+                . $this->buildButtonCss('[data-bs-theme="dark"]', $settings, 'dark'),
         ];
 
         return $processedData;
@@ -125,6 +134,77 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         $css .= $this->rule('[data-bs-theme="dark"] #main-content', $pageMain);
 
         return $css;
+    }
+
+    /**
+     * Overrides the --bs-btn-* vars of .btn-<variant> and .btn-outline-<variant>
+     * for every variant that has a background and/or text color set. Hover and
+     * active shades are derived from the background (15% / 20% darker, like
+     * Bootstrap's own shade-color defaults).
+     */
+    private function buildButtonCss(string $scope, ?SiteSettings $settings, string $mode): string
+    {
+        if ($settings === null) {
+            return '';
+        }
+
+        $css = '';
+        foreach (self::BUTTON_VARIANTS as $variant) {
+            $key = 'theme.' . $mode . '.btn' . ucfirst($variant);
+            $bg = $this->stringSetting($settings, $key . 'Bg');
+            $color = $this->stringSetting($settings, $key . 'Color');
+
+            $filled = [];
+            $outline = [];
+            if ($bg !== '') {
+                $hover = sprintf('color-mix(in srgb, %s 85%%, #000)', $bg);
+                $active = sprintf('color-mix(in srgb, %s 80%%, #000)', $bg);
+                $filled = [
+                    '--bs-btn-bg' => $bg,
+                    '--bs-btn-border-color' => $bg,
+                    '--bs-btn-hover-bg' => $hover,
+                    '--bs-btn-hover-border-color' => $hover,
+                    '--bs-btn-active-bg' => $active,
+                    '--bs-btn-active-border-color' => $active,
+                    '--bs-btn-disabled-bg' => $bg,
+                    '--bs-btn-disabled-border-color' => $bg,
+                ];
+                $outline = [
+                    '--bs-btn-color' => $bg,
+                    '--bs-btn-border-color' => $bg,
+                    '--bs-btn-hover-bg' => $bg,
+                    '--bs-btn-hover-border-color' => $bg,
+                    '--bs-btn-active-bg' => $bg,
+                    '--bs-btn-active-border-color' => $bg,
+                    '--bs-btn-disabled-color' => $bg,
+                    '--bs-btn-disabled-border-color' => $bg,
+                ];
+            }
+            if ($color !== '') {
+                $filled += [
+                    '--bs-btn-color' => $color,
+                    '--bs-btn-hover-color' => $color,
+                    '--bs-btn-active-color' => $color,
+                    '--bs-btn-disabled-color' => $color,
+                ];
+                $outline += [
+                    '--bs-btn-hover-color' => $color,
+                    '--bs-btn-active-color' => $color,
+                ];
+            }
+
+            $css .= $this->rule(sprintf('%s .btn-%s', $scope, $variant), $filled);
+            $css .= $this->rule(sprintf('%s .btn-outline-%s', $scope, $variant), $outline);
+        }
+
+        return $css;
+    }
+
+    private function stringSetting(SiteSettings $settings, string $path): string
+    {
+        $value = $settings->get($path, '');
+
+        return \is_string($value) ? trim($value) : '';
     }
 
     /** Empty declarations produce no output at all — not even an empty {} block. */
