@@ -192,6 +192,25 @@
             <trans-unit id="flexform.cardBorderColor">
                 <source>Border color</source>
             </trans-unit>
+            <!-- Per-element "Border radius" options (Classes/Utility/RadiusOptions.php) -->
+            <trans-unit id="radius.option.theme">
+                <source>Theme default (site "Corner radius" setting)</source>
+            </trans-unit>
+            <trans-unit id="radius.option.none">
+                <source>None (square)</source>
+            </trans-unit>
+            <trans-unit id="radius.option.small">
+                <source>Small (4 px, fixed)</source>
+            </trans-unit>
+            <trans-unit id="radius.option.medium">
+                <source>Medium (12 px, fixed)</source>
+            </trans-unit>
+            <trans-unit id="radius.option.large">
+                <source>Large (24 px, fixed)</source>
+            </trans-unit>
+            <trans-unit id="radius.option.pill">
+                <source>Pill (fully rounded, fixed)</source>
+            </trans-unit>
             <trans-unit id="flexform.cardBorderRadius">
                 <source>Border radius</source>
             </trans-unit>

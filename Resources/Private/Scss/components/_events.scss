@@ -1,3 +1,5 @@
+@use '../theme/tokens';
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Events (derhansen/sf_event_mgt) — "Liste" and "Karten" template layouts
 //
@@ -123,4 +125,10 @@
         animation: conn-news-fade-in 0.4s ease-out both;
         animation-delay: calc(var(--i, 0) * 70ms);
     }
+}
+
+// "Border radius" option of the list plugin (settings.appearance.cardBorderRadius
+// → data-radius on the list wrapper) — sets the cards' --conn-card-radius.
+.conn-event-cards {
+    @include tokens.conn-radius-option(--conn-card-radius);
 }

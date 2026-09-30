@@ -24,16 +24,29 @@ $space-before-default: var(--conn-space-2xl);
     @return calc(#{$size} * var(--conn-radius-scale, 1));
 }
 
-// Per-element "Border radius" options (Alert, Map, galleries, …). "medium"
-// follows the theme; the others are FIXED sizes that deliberately ignore
-// the site-wide scale — that is what makes them an override.
+// Per-element "Border radius" options (Alert, Map, galleries, cards, …).
+// "theme" follows the site-wide scale (the default); all others are FIXED
+// sizes that deliberately ignore it — choosing one overrides the site setting
+// for that element only. The backend choices for these keys are
+// Classes/Utility/RadiusOptions.php (VALUES) — keep both in step.
 $conn-radius-options: (
+    theme:  var(--conn-radius),
     none:   0,
     small:  0.25rem,
-    medium: var(--conn-radius),
+    medium: 0.75rem,
     large:  1.5rem,
     pill:   50rem,
 );
+
+// The only way an element maps its data-radius="<option>" attribute to a
+// size: sets $property (the element's own radius custom property) on the
+// element carrying the attribute. Use inside the element's root rule:
+//     .conn-x { --conn-x-radius: var(--conn-radius); @include base.conn-radius-option(--conn-x-radius); }
+@mixin conn-radius-option($property) {
+    @each $name, $radius in $conn-radius-options {
+        &[data-radius="#{$name}"] { #{$property}: #{$radius}; }
+    }
+}
 
 @mixin conn-design-tokens {
     // --conn-accent follows --bs-primary so overriding --bs-primary in the

@@ -1,3 +1,5 @@
+@use '../theme/tokens';
+
 // ─────────────────────────────────────────────────────────────────────────────
 // News (georgringer/news) — "Liste" and "Karten" template layouts
 //
@@ -136,4 +138,10 @@
 @keyframes conn-news-fade-in {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+// "Border radius" option of the list plugin (settings.appearance.cardBorderRadius
+// → data-radius on the list wrapper) — sets the cards' --conn-card-radius.
+.conn-news-cards {
+    @include tokens.conn-radius-option(--conn-card-radius);
 }

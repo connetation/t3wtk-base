@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Connetation\T3kitBase\EventListener;
 
+use Connetation\T3kitBase\Utility\RadiusOptions;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
 
@@ -95,9 +96,10 @@ final class AddNewsListAppearanceFields
                     'settings.appearance.cardBorderRadius' => [
                         'label' => 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:flexform.cardBorderRadius',
                         'config' => [
-                            'type' => 'input',
-                            'default' => '',
-                            'placeholder' => 'e.g. 12px',
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => RadiusOptions::THEME_DEFAULT,
+                            'itemsProcFunc' => RadiusOptions::class . '->addItems',
                         ],
                     ],
                 ],
