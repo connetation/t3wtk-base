@@ -20,7 +20,7 @@ small, .small { font-size: var(--conn-font-size-sm); }
 
 // ── Heading spacing ──
 h2:where(:not(.h1, .h3, .h4, .h5, .h6)), .h2,
-h3:where(:not(.h1, .h2, .h4, .h5, .h6)), .h3 { margin-bottom: var(--conn-space-sm); }
+h3:where(:not(.h1, .h2, .h4, .h5, .h6)), .h3 { margin-bottom: var(--conn-space-md); }
 
 header > :where(h1, h2, h3, h4, h5, h6, p):not(:last-child, .ce-eyebrow) { margin-bottom: var(--conn-space-xs); }
 
