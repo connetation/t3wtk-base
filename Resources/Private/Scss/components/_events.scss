@@ -93,7 +93,7 @@
     font-weight: 700;
     letter-spacing: 0.05em;
     padding: 0.25em 0.65em;
-    border-radius: 50rem;
+    border-radius: var(--conn-radius-pill);
 }
 
 .conn-event-card__body {

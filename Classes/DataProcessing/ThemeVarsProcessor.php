@@ -88,6 +88,16 @@ final class ThemeVarsProcessor implements DataProcessorInterface
     // override rules when set — otherwise Bootstrap's compiled defaults apply.
     private const BUTTON_VARIANTS = ['success', 'danger', 'warning', 'info', 'light', 'dark'];
 
+    // Site setting theme.radius => --conn-radius-scale, the multiplier of every
+    // --conn-radius* / --bs-border-radius* token (Scss/theme/_tokens.scss).
+    // "default" (scale 1) emits nothing — the tokens' var() fallback already is 1.
+    private const RADIUS_SCALES = [
+        'none' => '0',
+        'small' => '0.5',
+        'large' => '1.5',
+        'xlarge' => '2',
+    ];
+
     // Per-page tx_conn_t3kit_base_*_color fields (pages table, not site settings)
     private const PAGE_OVERRIDE = [
         'tx_conn_t3kit_base_bg_color' => ['--conn-bg', 'background-color'],
@@ -110,7 +120,8 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         $pageMain = $this->resolveRecord($cObj->data, self::PAGE_OVERRIDE);
 
         $processedData[$targetVar] = [
-            'css' => $this->buildCss($light, $dark, $pageMain)
+            'css' => $this->buildRadiusCss($settings)
+                . $this->buildCss($light, $dark, $pageMain)
                 // Light rules apply in both modes; dark rules win in dark mode
                 // (same specificity, emitted later).
                 . $this->buildButtonCss(':root', $settings, 'light')
@@ -198,6 +209,20 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         }
 
         return $css;
+    }
+
+    /**
+     * Only on :root — the tokens are declared there, and a custom property is
+     * resolved where it is declared, so the scale must be set on the same element.
+     */
+    private function buildRadiusCss(?SiteSettings $settings): string
+    {
+        if ($settings === null) {
+            return '';
+        }
+        $scale = self::RADIUS_SCALES[$this->stringSetting($settings, 'theme.radius')] ?? null;
+
+        return $scale === null ? '' : $this->rule(':root', ['--conn-radius-scale' => $scale]);
     }
 
     private function stringSetting(SiteSettings $settings, string $path): string

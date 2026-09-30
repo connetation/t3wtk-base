@@ -13,6 +13,10 @@ categories:
     label: 'Dark-theme coloring'
     description: 'Per-setting overrides applied only when dark mode is active. Leave a setting empty here to keep using its Color value in dark mode too.'
     parent: conn.theme
+  conn.theme.shape:
+    label: 'Shape'
+    description: 'Corner rounding shared by every element and Bootstrap component. Elements with a "Border radius" option of their own can still override it.'
+    parent: conn.theme
   conn.theme.buttons:
     label: 'Button colors'
     description: 'Colors for the Bootstrap button variants that have no theme design of their own (success, danger, warning, info, light, dark — filled and outline). Leave a setting empty to keep the Bootstrap 5 default. Primary and secondary buttons follow the accent/surface colors above.'
@@ -293,6 +297,21 @@ settings:
     type: string
     default: ''
     category: conn.theme.color
+
+  # CSS var (ThemeVarsProcessor): --conn-radius-scale — multiplies every
+  # --conn-radius* and --bs-border-radius* token (theme/_tokens.scss).
+  theme.radius:
+    label: 'Corner radius'
+    description: 'Rounding of cards, images, galleries, panels, badges and Bootstrap components (buttons, inputs, dropdowns, modals, …). "None" gives square corners everywhere. Circles (avatars, dots, round icon buttons) stay round. An element''s own "Border radius" option, other than "Theme default", overrides this.'
+    type: string
+    default: default
+    enum:
+      none: 'None (square corners)'
+      small: 'Small'
+      default: 'Default'
+      large: 'Large'
+      xlarge: 'Extra large'
+    category: conn.theme.shape
 
   # ─── Dark-theme coloring (overrides Color above, dark mode only) ──────────
   # CSS var(s) (ThemeVarsProcessor): --conn-accent, --bs-primary

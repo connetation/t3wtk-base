@@ -4,7 +4,7 @@
 @use 'tokens';
 
 .theme-toggle {
-    border-radius: 50rem;
+    border-radius: var(--conn-radius-pill);
     padding: 0.25rem 0.6rem;
     transition: var(--conn-transition);
 

@@ -126,7 +126,7 @@
         display: inline-block;
         padding: 0.2rem 0.6rem;
         color: var(--conn-footer-link, var(--conn-link));
-        border-radius: 50rem;
+        border-radius: var(--conn-radius-pill);
         text-decoration: none;
         opacity: 1;
         transition: opacity var(--conn-transition), color var(--conn-transition);

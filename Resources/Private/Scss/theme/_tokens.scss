@@ -13,13 +13,40 @@
 // (content element frames, footer) — one declaration both draw from.
 $space-before-default: var(--conn-space-2xl);
 
+// ── Corner radius ─────────────────────────────
+// Every theme radius — the --conn-radius* tokens below AND Bootstrap's
+// --bs-border-radius* (main.scss) — is its default size times
+// --conn-radius-scale, which only ThemeVarsProcessor sets (site setting
+// theme.radius: 0 = square corners everywhere, 1 = the defaults here).
+// It is deliberately never declared in compiled CSS, only read with a
+// fallback, so no package's :root block can reset the site's choice.
+@function conn-radius($size) {
+    @return calc(#{$size} * var(--conn-radius-scale, 1));
+}
+
+// Per-element "Border radius" options (Alert, Map, galleries, …). "medium"
+// follows the theme; the others are FIXED sizes that deliberately ignore
+// the site-wide scale — that is what makes them an override.
+$conn-radius-options: (
+    none:   0,
+    small:  0.25rem,
+    medium: var(--conn-radius),
+    large:  1.5rem,
+    pill:   50rem,
+);
+
 @mixin conn-design-tokens {
     // --conn-accent follows --bs-primary so overriding --bs-primary in the
     // sitepackage is enough to re-theme navigation, buttons, and all accent uses.
     // Override --conn-accent directly to decouple the accent from BS primary.
     --conn-accent:       var(--bs-primary, #6366f1);
     --conn-accent-hover: #4f52d4;
-    --conn-radius:       0.75rem;
+    // Radius scale (see conn-radius() above). --conn-radius is the default
+    // for cards, panels and images; -sm/-lg/-pill for smaller/larger shapes.
+    --conn-radius-sm:    #{conn-radius(0.25rem)};
+    --conn-radius:       #{conn-radius(0.75rem)};
+    --conn-radius-lg:    #{conn-radius(1.5rem)};
+    --conn-radius-pill:  #{conn-radius(50rem)};
     --conn-card-radius:  var(--conn-radius);
     --conn-transition:   0.2s ease-in-out;
 

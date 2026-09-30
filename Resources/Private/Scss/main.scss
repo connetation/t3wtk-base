@@ -3,6 +3,7 @@
 // TYPO3 LTS 14 | Bootstrap 5
 // ─────────────────────────────────────────────
 @use 'sass:meta';
+@use 'theme/tokens' as tokens;
 
 // 1. Bootstrap with variable overrides
 @use 'bootstrap/scss/bootstrap' with (
@@ -21,10 +22,20 @@
     $line-height-base:       1.5,
     $headings-font-weight:   700,
 
-    // Border radius
-    $border-radius:    0.5rem,
-    $border-radius-lg: 0.75rem,
-    $border-radius-xl: 1rem,
+    // Border radius — every size is scaled by the site's "Corner radius"
+    // setting (tokens.conn-radius(), --conn-radius-scale). Bootstrap 5.3
+    // components read these through var(--bs-border-radius*), so buttons,
+    // cards, inputs, dropdowns, modals, … all follow it. The two below
+    // them are plain Sass values in Bootstrap and need scaling explicitly.
+    $border-radius:      tokens.conn-radius(0.5rem),
+    $border-radius-sm:   tokens.conn-radius(0.25rem),
+    $border-radius-lg:   tokens.conn-radius(0.75rem),
+    $border-radius-xl:   tokens.conn-radius(1rem),
+    $border-radius-xxl:  tokens.conn-radius(2rem),
+    $border-radius-pill: tokens.conn-radius(50rem),
+    $form-check-input-border-radius: tokens.conn-radius(0.25em),
+    $form-range-track-border-radius: tokens.conn-radius(1rem),
+    $form-range-thumb-border-radius: tokens.conn-radius(1rem),
 
     // Shadows
     $box-shadow:    (0 0.5rem 1rem rgb(0 0 0 / 8%)),
