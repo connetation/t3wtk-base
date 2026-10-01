@@ -1,0 +1,101 @@
+# ── Flat ───────────────────────────────────────────────────────────────────
+# Theme settings only — logos stay project-specific (branding.*, footer.logo*).
+# Footer is near-black in light mode too: use a light logo variant for footer.logo.
+# Flat look: no corner rounding, no hover shadows; depth comes from solid surface
+# fills and borders. Circles (avatars, dots, round icon buttons) stay round.
+
+# Shape
+theme.radius: none
+theme.shadowHover.color: transparent
+theme.shadowHover.blur: '0'
+theme.shadowHover.offsetY: '0'
+theme.shadowHover.offsetX: '0'
+theme.shadowHover.spread: '0'
+
+# Light
+theme.light.accent: '#2563eb'
+theme.light.accentHover: '#1d4ed8'
+theme.accentSecondary: '#f59e0b'
+theme.light.accentSoft: 'rgba(37, 99, 235, 0.08)'
+# Focus rings (form fields, pagination): solid enough to read as a flat outline
+theme.light.accentGlow: 'rgba(37, 99, 235, 0.35)'
+theme.light.bg: '#ffffff'
+theme.light.surface: '#f4f4f5'
+theme.light.text: '#27272a'
+theme.light.heading: '#09090b'
+theme.light.emphasis: '#09090b'
+theme.light.textMuted: '#52525b'
+theme.light.link: '#1d4ed8'
+theme.light.linkHover.text: '#1e40af'
+theme.light.border: 'rgba(9, 9, 11, 0.12)'
+theme.light.borderStrong: 'rgba(9, 9, 11, 0.6)'
+theme.light.btnBg: '#2563eb'
+theme.light.btnBgHover: '#1d4ed8'
+theme.light.btnColor: '#ffffff'
+theme.light.navBg: '#ffffff'
+theme.light.navText: '#09090b'
+theme.light.footerBg: '#09090b'
+theme.light.footerText: '#a1a1aa'
+theme.light.footerLink: '#fafafa'
+theme.light.footerLinkHover: '#60a5fa'
+# Dark
+theme.dark.accent: '#60a5fa'
+theme.dark.accentHover: '#93c5fd'
+theme.dark.accentSoft: 'rgba(96, 165, 250, 0.12)'
+theme.dark.accentGlow: 'rgba(96, 165, 250, 0.4)'
+theme.dark.bg: '#09090b'
+theme.dark.surface: '#18181b'
+theme.dark.text: '#d4d4d8'
+theme.dark.heading: '#fafafa'
+theme.dark.emphasis: '#fafafa'
+theme.dark.textMuted: '#a1a1aa'
+theme.dark.link: '#60a5fa'
+theme.dark.linkHover.text: '#93c5fd'
+theme.dark.border: 'rgba(255, 255, 255, 0.1)'
+theme.dark.borderStrong: 'rgba(255, 255, 255, 0.6)'
+theme.dark.btnBg: '#2563eb'
+theme.dark.btnBgHover: '#1d4ed8'
+theme.dark.btnColor: '#ffffff'
+theme.dark.navBg: '#09090b'
+theme.dark.navText: '#fafafa'
+theme.dark.footerBg: '#000000'
+theme.dark.footerText: '#a1a1aa'
+theme.dark.footerLink: '#fafafa'
+theme.dark.footerLinkHover: '#60a5fa'
+theme.linkHoverEffect: true
+themeToggle.enabled: true
+themeToggle.position: bottom-right
+
+# Navigation: horizontal, right aligned, classic list dropdowns
+navbar.style: NavTop
+navbar.position: sticky-top
+navbar.logoPosition: left
+navbar.alignment: end
+navbar.navigationLevels: 2
+navbar.topDropdownStyle: list
+
+# Footer: 4 equal columns + bar
+footer.layout: Standard
+footer.showSocial: true
+footer.col1.content: brand
+footer.col2.content: navigation
+footer.col3.content: address
+footer.col4.content: social
+footer.col1.size.base: '12'
+footer.col1.size.md: '6'
+footer.col1.size.lg: '3'
+footer.col2.size.base: '12'
+footer.col2.size.md: '6'
+footer.col2.size.lg: '3'
+footer.col3.size.base: '12'
+footer.col3.size.md: '6'
+footer.col3.size.lg: '3'
+footer.col4.size.base: '12'
+footer.col4.size.md: '6'
+footer.col4.size.lg: '3'
+footer.col1.desktopalign: text-md-start
+footer.col2.desktopalign: text-md-start
+footer.col3.desktopalign: text-md-start
+footer.col4.desktopalign: text-md-start
+footer.bar.left: copyright
+footer.bar.right: navigation

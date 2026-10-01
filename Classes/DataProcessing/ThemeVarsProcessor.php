@@ -80,7 +80,12 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         'theme.dark.btnBg' => ['--conn-btn-bg'],
         'theme.dark.btnBgHover' => ['--conn-btn-bg-hover'],
         'theme.dark.btnColor' => ['--conn-btn-color'],
+        // Mode-independent settings: the light rule doesn't match in dark mode
         'theme.shadowHover.color' => ['--conn-sh-color'],
+        'theme.shadowHover.offsetX' => ['--conn-sh-x'],
+        'theme.shadowHover.offsetY' => ['--conn-sh-y'],
+        'theme.shadowHover.blur' => ['--conn-sh-blur'],
+        'theme.shadowHover.spread' => ['--conn-sh-spread'],
     ];
 
     // Bootstrap button variants without a conn design of their own. Their

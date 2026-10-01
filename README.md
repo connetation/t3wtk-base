@@ -10,7 +10,7 @@ conn/t3kit-base/                         # TYPO3 extension (conn/t3kit-base, ext
 │   └── DataProcessing/            # PHP data processors
 ├── Configuration/
 │   ├── Sets/Base/                 # TYPO3 v14 Site Sets (TypoScript, constants, settings)
-│   ├── Sets/Theme*/               # Theme Sets: conn/t3kit-theme-{indigo,forest,sunset,midnight}
+│   ├── Sets/Theme*/               # Theme Sets: conn/t3kit-theme-{indigo,forest,sunset,midnight,flat}
 │   ├── TCA/Overrides/             # tt_content & pages TCA extensions
 │   ├── TypoScript/                # Page object & content element TypoScript
 │   └── TsConfig/                  # Backend layouts
@@ -90,6 +90,7 @@ no content):
 | `conn/t3kit-theme-forest` | Emerald / teal | Off-canvas panel from the right | Centered, dark green |
 | `conn/t3kit-theme-sunset` | Rose / orange, warm paper | Horizontal, centered, list dropdowns | Minimal, one row |
 | `conn/t3kit-theme-midnight` | Cyan / violet, dark navbar + footer | Off-canvas panel from the left | 3 columns, dark |
+| `conn/t3kit-theme-flat` | Zinc / blue, flat: square corners, no shadows | Horizontal, right aligned, list dropdowns | 4 columns, dark |
 
 ### Using a theme
 
@@ -105,7 +106,7 @@ dependencies:
 
 Switching themes = replacing that one line (flush caches afterwards). Then set
 the project's own logo (`branding.logo`, `branding.logoDark`, `footer.logo`,
-…) in the site settings. Forest's footer and Midnight's navbar/footer are
+…) in the site settings. Forest's and Flat's footer and Midnight's navbar/footer are
 dark in light mode too — use a light logo variant there.
 
 ### Order and precedence
