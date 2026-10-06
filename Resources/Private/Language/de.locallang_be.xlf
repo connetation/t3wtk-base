@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf">
         <header/>
         <body>
-            <trans-unit id="pages.tx_conn_t3kit_base_hide_breadcrumb">
+            <trans-unit id="pages.tx_conn_t3wtk_base_hide_breadcrumb">
                 <source>Hide Breadcrumb</source>
                 <target>Breadcrumb ausblenden</target>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_t3kit_base_breadcrumb_position">
+            <trans-unit id="pages.tx_conn_t3wtk_base_breadcrumb_position">
                 <source>Breadcrumb Position</source>
                 <target>Breadcrumb-Position</target>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_t3kit_base_breadcrumb_position.under">
+            <trans-unit id="pages.tx_conn_t3wtk_base_breadcrumb_position.under">
                 <source>Under Top Content (default)</source>
                 <target>Unter Top Content (Standard)</target>
             </trans-unit>
-            <trans-unit id="pages.tx_conn_t3kit_base_breadcrumb_position.top">
+            <trans-unit id="pages.tx_conn_t3wtk_base_breadcrumb_position.top">
                 <source>Top (above Top Content)</source>
                 <target>Oben (über Top Content)</target>
             </trans-unit>

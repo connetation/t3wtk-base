@@ -1,4 +1,4 @@
-name: conn/t3kit-base
+name: connetation/t3wtk-base
 label: 'Base'
 dependencies:
   - typo3/fluid-styled-content

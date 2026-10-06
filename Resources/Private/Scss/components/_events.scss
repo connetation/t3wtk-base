@@ -4,7 +4,7 @@
 // Events (derhansen/sf_event_mgt) — "Liste" and "Karten" template layouts
 //
 // from-scratch skin — but that mirrors 
-// conn/news' .conn-news-card / .conn-news-list-item (see _news.scss)
+// connetation/news' .conn-news-card / .conn-news-list-item (see _news.scss)
 // ─────────────────────────────────────────────────────────────────────────────
 
 .conn-event-card,
@@ -24,7 +24,7 @@
         border-color var(--conn-transition),
         color var(--conn-transition);
 
-    // Accent top bar on hover (same pattern as conn/t3kit-elements' cards and conn/news)
+    // Accent top bar on hover (same pattern as connetation/t3wtk-elements' cards and connetation/news)
     &::after {
         content: '';
         position: absolute;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Utility;
+namespace Connetation\T3wtkBase\Utility;
 
 /**
  * The one list of per-element "Border radius" choices for every conn/* package.
@@ -24,9 +24,9 @@ final class RadiusOptions
 
     public const VALUES = ['theme', 'none', 'small', 'medium', 'large', 'pill'];
 
-    private const LLL = 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang_be.xlf:radius.option.';
+    private const LLL = 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:radius.option.';
 
-    /** itemsProcFunc: Connetation\T3kitBase\Utility\RadiusOptions->addItems */
+    /** itemsProcFunc: Connetation\T3wtkBase\Utility\RadiusOptions->addItems */
     public function addItems(array &$parameters): void
     {
         foreach (self::VALUES as $value) {

@@ -153,7 +153,7 @@ const initThemeToggleFloat = () => {
 
 // ─────────────────────────────────────────────
 // News/Event card grid — entrance reveal
-// (same stagger fade/slide-in as conn/t3kit-elements' CardGroup, CSS-driven —
+// (same stagger fade/slide-in as connetation/t3wtk-elements' CardGroup, CSS-driven —
 // see Scss/components/_news.scss and _events.scss for the keyframes/stagger)
 // ─────────────────────────────────────────────
 const initNewsCardReveal = () => {
@@ -189,7 +189,7 @@ const initNewsCardReveal = () => {
 // If the field has none, the same attributes on its EXT:form container are
 // used: Extensions/Form/Partials/Field/Field.fluid.html fills them from the
 // error messages set in the form editor (validationErrorMessages).
-// See vendor/conn/sitepackage's Resources/Private/Forms/README.md for how to
+// See vendor/connetation/t3wtk-sitepackage's Resources/Private/Forms/README.md for how to
 // wire a new form/field up to this.
 // ─────────────────────────────────────────────
 const toKebabCase = (camelCase) => camelCase.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`);

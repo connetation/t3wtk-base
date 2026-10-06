@@ -40,7 +40,7 @@ header > :where(h1, h2, h3, h4, h5, h6, p):not(:last-child, .ce-eyebrow) { margi
 .ce-headline-right  { text-align: right; }
 
 // ce-eyebrow — subheader rendered above the header instead of below it
-// (HeaderSwitch.html, toggled by tx_conn_t3kit_base_subheader_eyebrow).
+// (HeaderSwitch.html, toggled by tx_conn_t3wtk_base_subheader_eyebrow).
 .ce-eyebrow {
     display: block;
     margin-bottom: var(--conn-space-2xs);

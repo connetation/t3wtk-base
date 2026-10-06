@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\ViewHelpers;
+namespace Connetation\T3wtkBase\ViewHelpers;
 
 use TYPO3\CMS\Core\Imaging\ImageManipulation\Area;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;

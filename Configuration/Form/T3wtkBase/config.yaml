@@ -1,5 +1,5 @@
-name: conn/t3kit-base-form-set
-label: 't3kit Base'
+name: connetation/t3wtk-base-form-set
+label: 'Connetation TYPO3 Web Toolkit: Base'
 priority: 50
 prototypes:
   standard:
@@ -9,4 +9,4 @@ prototypes:
           partialRootPaths:
             # Field/Field.fluid.html: exposes the validation error messages set in the
             # form editor to the client-side validation in main.js (initFormValidation).
-            30: 'EXT:conn_t3kit_base/Resources/Private/Extensions/Form/Partials/'
+            30: 'EXT:conn_t3wtk_base/Resources/Private/Extensions/Form/Partials/'

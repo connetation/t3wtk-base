@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\EventListener;
+namespace Connetation\T3wtkBase\EventListener;
 
 use GeorgRinger\News\Event\NewsListPostPaginationEvent;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
@@ -16,7 +16,7 @@ use TYPO3\CMS\Frontend\Controller\ErrorController;
  * return 200 with the same content — duplicate pages crawlers find and report.
  * Only active when EXT:news is installed (the event is never dispatched otherwise).
  */
-#[AsEventListener('conn-t3kit-base/news-pagination-page-not-found', event: NewsListPostPaginationEvent::class)]
+#[AsEventListener('conn-t3wtk-base/news-pagination-page-not-found', event: NewsListPostPaginationEvent::class)]
 final class NewsPaginationPageNotFound
 {
     public function __construct(

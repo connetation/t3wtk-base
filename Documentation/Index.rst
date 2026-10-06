@@ -7,10 +7,10 @@ Connetation Base
 =================
 
 :Extension key:
-   conn_t3kit_base
+   conn_t3wtk_base
 
 :Package name:
-   conn/t3kit-base
+   connetation/t3wtk-base
 
 :Version:
    |release|

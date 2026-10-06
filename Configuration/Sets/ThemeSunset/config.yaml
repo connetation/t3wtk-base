@@ -1,7 +1,7 @@
-name: conn/t3kit-theme-sunset
+name: connetation/t3wtk-theme-sunset
 label: 'Theme: Sunset'
 # Rose / orange accent on warm paper · horizontal centered menu · minimal footer.
-# Select at most one theme per site. Theme values override conn/t3kit-base's defaults;
+# Select at most one theme per site. Theme values override connetation/t3wtk-base's defaults;
 # the site's own settings.yaml overrides the theme (e.g. to change a single color).
 dependencies:
-  - conn/t3kit-base
+  - connetation/t3wtk-base

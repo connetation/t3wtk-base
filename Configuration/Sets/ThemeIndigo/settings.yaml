@@ -1,6 +1,6 @@
 # ── Indigo ─────────────────────────────────────────────────────────────────
 # Theme settings only — logos stay project-specific (branding.*, footer.logo*).
-# Close to the conn/t3kit-base defaults (which are indigo-tinted): only accents are set.
+# Close to the connetation/t3wtk-base defaults (which are indigo-tinted): only accents are set.
 
 theme.light.accent: '#6366f1'
 theme.light.accentHover: '#4f46e5'

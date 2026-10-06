@@ -1,7 +1,7 @@
-name: conn/news
+name: connetation/news
 label: 'News'
 dependencies:
-  - conn/t3kit-base
+  - connetation/t3wtk-base
 optionalDependencies:
   - georgringer/news
   - georgringer/news-twb5

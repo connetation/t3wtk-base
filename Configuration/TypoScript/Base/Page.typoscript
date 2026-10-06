@@ -63,12 +63,12 @@ page {
     }
 
     includeCSS {
-        bootstrap = EXT:conn_t3kit_base/Resources/Public/Css/main.css
+        bootstrap = EXT:conn_t3wtk_base/Resources/Public/Css/main.css
         bootstrap.media = all
     }
 
     includeJSFooter {
-        app = EXT:conn_t3kit_base/Resources/Public/Js/main.js
+        app = EXT:conn_t3wtk_base/Resources/Public/Js/main.js
         app.defer = 1
     }
 
@@ -91,13 +91,13 @@ page {
         }
 
         templateRootPaths {
-            0 = EXT:conn_t3kit_base/Resources/Private/Templates/Page/
+            0 = EXT:conn_t3wtk_base/Resources/Private/Templates/Page/
         }
         partialRootPaths {
-            0 = EXT:conn_t3kit_base/Resources/Private/Partials/
+            0 = EXT:conn_t3wtk_base/Resources/Private/Partials/
         }
         layoutRootPaths {
-            0 = EXT:conn_t3kit_base/Resources/Private/Layouts/
+            0 = EXT:conn_t3wtk_base/Resources/Private/Layouts/
         }
 
         dataProcessing {
@@ -142,7 +142,7 @@ page {
                 includeNotInMenu = {$footer.barNavigation.includeNotInMenu}
             }
 
-            60 = Connetation\T3kitBase\DataProcessing\ThemeVarsProcessor
+            60 = Connetation\T3wtkBase\DataProcessing\ThemeVarsProcessor
             60 {
                 as = themeVars
             }
@@ -202,7 +202,7 @@ page.headerData.21.value = <meta name="theme-color" content="{$theme.dark.bg}" m
 # /apple-touch-icon.png, /site.webmanifest) are answered by BrandingIconsMiddleware.
 page.headerData.25 = FLUIDTEMPLATE
 page.headerData.25 {
-    file = EXT:conn_t3kit_base/Resources/Private/Templates/Page/Head/Favicon.html
-    dataProcessing.10 = Connetation\T3kitBase\DataProcessing\BrandingIconsProcessor
+    file = EXT:conn_t3wtk_base/Resources/Private/Templates/Page/Head/Favicon.html
+    dataProcessing.10 = Connetation\T3wtkBase\DataProcessing\BrandingIconsProcessor
     dataProcessing.10.as = brandingIcons
 }

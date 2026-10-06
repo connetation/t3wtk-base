@@ -5,8 +5,8 @@ return [
         'backend',
     ],
     'imports' => [
-        '@typo3/conn-t3kit-base/' => [
-            'path' => 'EXT:conn_t3kit_base/Resources/Public/JavaScript/',
+        '@typo3/conn-t3wtk-base/' => [
+            'path' => 'EXT:conn_t3wtk_base/Resources/Public/JavaScript/',
         ],
         '@ckeditor/ckeditor5-core/dist/index.js' => 'EXT:rte_ckeditor/Resources/Public/Contrib/@ckeditor/ckeditor5-core.js',
         '@ckeditor/ckeditor5-utils/dist/index.js' => 'EXT:rte_ckeditor/Resources/Public/Contrib/@ckeditor/ckeditor5-utils.js',

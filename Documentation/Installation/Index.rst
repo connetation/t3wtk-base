@@ -8,7 +8,7 @@ Installation
 
 Install via Composer::
 
-   composer require conn/t3kit-base
+   composer require connetation/t3wtk-base
 
 If you consume this package from a private Composer repository, add it to
 your project's ``composer.json`` first::
@@ -18,7 +18,7 @@ your project's ``composer.json`` first::
            { "type": "composer", "url": "<your-composer-repository-url>" }
        ],
        "require": {
-           "conn/t3kit-base": "^1.0"
+           "connetation/t3wtk-base": "^1.0"
        }
    }
 
@@ -28,14 +28,14 @@ Activating the Site Set
 ========================
 
 In your TYPO3 site configuration (:file:`config/sites/<site>/config.yaml`),
-add ``conn/t3kit-base`` as a Set dependency, either directly or via a project
+add ``connetation/t3wtk-base`` as a Set dependency, either directly or via a project
 sitepackage that depends on it::
 
    dependencies:
-     - conn/t3kit-base
+     - connetation/t3wtk-base
 
 TYPO3 loads Site Sets in dependency order, so a project sitepackage that
-declares ``conn/t3kit-base`` as a dependency does not need any further wiring.
+declares ``connetation/t3wtk-base`` as a dependency does not need any further wiring.
 
 .. _installation-assets:
 
@@ -48,7 +48,7 @@ deployed as-is — no build step is required on the server.
 
 To rebuild the assets locally::
 
-   cd vendor/conn/t3kit-base
+   cd vendor/connetation/t3wtk-base
    npm install
    npm run build    # production build (CSS + JS)
    npm run dev      # watch mode

@@ -54,7 +54,7 @@
 // Extend the fluid_styled_content border ("Border" checkbox, Media tab) to
 // video thumbnails. Core CSS only targets img/iframe; the thumb is a div, so
 // the border settings arrive as CSS custom properties emitted by the
-// conn_t3kit_base Media/Gallery partial (same values as .ce-border img).
+// conn_t3wtk_base Media/Gallery partial (same values as .ce-border img).
 .ce-gallery.ce-border {
     .video-thumb {
         border: var(--conn-ce-border-w, 2px) solid var(--conn-ce-border-color, #000);

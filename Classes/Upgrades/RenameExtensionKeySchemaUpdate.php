@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Upgrades;
+namespace Connetation\T3wtkBase\Upgrades;
 
 use TYPO3\CMS\Core\Attribute\UpgradeWizard;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
 
 /**
- * The extension key changed from "conn_base" to "conn_t3kit_base", which moves every
+ * The extension key changed from "conn_base" to "conn_t3wtk_base", which moves every
  * "tx_conn_base_*" column this package owns — on both tt_content and pages — to
- * "tx_conn_t3kit_base_*". This wizard migrates the physical columns in place so existing
+ * "tx_conn_t3wtk_base_*". This wizard migrates the physical columns in place so existing
  * content/page settings (backgrounds, header/subheader styling, breadcrumb settings, …)
  * keep working.
  *
@@ -35,11 +35,11 @@ use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
  * foreign key — a column rename alone leaves it pointing at a name that no longer exists,
  * silently breaking every content element's background image.
  */
-#[UpgradeWizard('connT3kitBaseRenameExtensionKeySchema')]
+#[UpgradeWizard('connT3wtkBaseRenameExtensionKeySchema')]
 readonly class RenameExtensionKeySchemaUpdate implements UpgradeWizardInterface
 {
     private const OLD_PREFIX = 'tx_conn_base_';
-    private const NEW_PREFIX = 'tx_conn_t3kit_base_';
+    private const NEW_PREFIX = 'tx_conn_t3wtk_base_';
 
     private const TT_CONTENT_COLUMN_SUFFIXES = [
         'content_width',
@@ -69,15 +69,15 @@ readonly class RenameExtensionKeySchemaUpdate implements UpgradeWizardInterface
 
     public function getTitle(): string
     {
-        return 'EXT:conn_t3kit_base: Rename "tx_conn_base_*" columns to "tx_conn_t3kit_base_*"';
+        return 'EXT:conn_t3wtk_base: Rename "tx_conn_base_*" columns to "tx_conn_t3wtk_base_*"';
     }
 
     public function getDescription(): string
     {
         return sprintf(
-            'The extension key changed from "conn_base" to "conn_t3kit_base". This migrates the '
+            'The extension key changed from "conn_base" to "conn_t3wtk_base". This migrates the '
             . '%d "tx_conn_base_*" columns on tt_content and %d on pages to their '
-            . '"tx_conn_t3kit_base_*" equivalent, preserving all data — including merging in '
+            . '"tx_conn_t3wtk_base_*" equivalent, preserving all data — including merging in '
             . 'columns a prior schema sync may already have created empty under the new name — '
             . 'and repairs sys_file_reference for the background-image field.',
             count(self::TT_CONTENT_COLUMN_SUFFIXES),

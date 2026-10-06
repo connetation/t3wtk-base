@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Utility;
+namespace Connetation\T3wtkBase\Utility;
 
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

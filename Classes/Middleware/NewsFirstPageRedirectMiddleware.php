@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Middleware;
+namespace Connetation\T3wtkBase\Middleware;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -61,6 +61,6 @@ final class NewsFirstPageRedirectMiddleware implements MiddlewareInterface
 
         return $this->responseFactory->createResponse(301)
             ->withHeader('Location', $target)
-            ->withHeader('X-Redirect-By', 'conn_t3kit_base news first page');
+            ->withHeader('X-Redirect-By', 'conn_t3wtk_base news first page');
     }
 }

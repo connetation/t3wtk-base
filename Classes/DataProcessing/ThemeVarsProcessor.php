@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\DataProcessing;
+namespace Connetation\T3wtkBase\DataProcessing;
 
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteSettings;
@@ -10,7 +10,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
 /**
- * Resolves site settings (plus the per-page tx_conn_t3kit_base_*_color fields)
+ * Resolves site settings (plus the per-page tx_conn_t3wtk_base_*_color fields)
  * into the complete <style> body text for Partials/Page/ThemeVars.html —
  * that template has no CSS syntax of its own, it only prints {themeVars.css}
  * if it's non-empty.
@@ -103,11 +103,11 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         'xlarge' => '2',
     ];
 
-    // Per-page tx_conn_t3kit_base_*_color fields (pages table, not site settings)
+    // Per-page tx_conn_t3wtk_base_*_color fields (pages table, not site settings)
     private const PAGE_OVERRIDE = [
-        'tx_conn_t3kit_base_bg_color' => ['--conn-bg', 'background-color'],
-        'tx_conn_t3kit_base_text_color' => ['--conn-text', '--bs-body-color', 'color'],
-        'tx_conn_t3kit_base_heading_color' => ['--conn-heading', '--bs-heading-color'],
+        'tx_conn_t3wtk_base_bg_color' => ['--conn-bg', 'background-color'],
+        'tx_conn_t3wtk_base_text_color' => ['--conn-text', '--bs-body-color', 'color'],
+        'tx_conn_t3wtk_base_heading_color' => ['--conn-heading', '--bs-heading-color'],
     ];
 
     public function process(

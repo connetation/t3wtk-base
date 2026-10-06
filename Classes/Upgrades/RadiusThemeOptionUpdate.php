@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Upgrades;
+namespace Connetation\T3wtkBase\Upgrades;
 
-use Connetation\T3kitBase\Utility\RadiusOptions;
+use Connetation\T3wtkBase\Utility\RadiusOptions;
 use TYPO3\CMS\Core\Attribute\UpgradeWizard;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Registry;
 use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
 
 /**
@@ -21,22 +22,29 @@ use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
  *
  * Only rewrites the radius fields (other FlexForm fields also use "medium",
  * e.g. gap or scrim strength), in tt_content.pi_flexform (news/events list
- * plugins) and every tx_conn_t3kit_*_settings FlexForm column of conn/* elements.
+ * plugins) and every tx_conn_t3wtk_*_settings FlexForm column of conn/* elements.
+ *
+ * Sites that already ran this wizard under its pre-t3wtk class name (TYPO3 tracks done
+ * wizards by class name) must not run it again — see LEGACY_CLASS_NAME.
  */
-#[UpgradeWizard('connT3kitBaseRadiusThemeOption')]
+#[UpgradeWizard('connT3wtkBaseRadiusThemeOption')]
 readonly class RadiusThemeOptionUpdate implements UpgradeWizardInterface
 {
     private const TABLE = 'tt_content';
+
+    /** Class name before the t3kit => t3wtk rename; its done-flag counts as ours. */
+    private const LEGACY_CLASS_NAME = 'Connetation\\T3kitBase\\Upgrades\\RadiusThemeOptionUpdate';
 
     private const PATTERN = '#(<field index="settings\.(?:borderRadius|cardBorderRadius|appearance\.cardBorderRadius)">\s*<value index="vDEF">)medium(</value>)#';
 
     public function __construct(
         private ConnectionPool $connectionPool,
+        private Registry $registry,
     ) {}
 
     public function getTitle(): string
     {
-        return 'EXT:conn_t3kit_base: "Border radius" option "Medium" → "Theme default"';
+        return 'EXT:conn_t3wtk_base: "Border radius" option "Medium" → "Theme default"';
     }
 
     public function getDescription(): string
@@ -53,6 +61,10 @@ readonly class RadiusThemeOptionUpdate implements UpgradeWizardInterface
 
     public function updateNecessary(): bool
     {
+        if ($this->registry->get('installUpdate', self::LEGACY_CLASS_NAME)) {
+            return false;
+        }
+
         return $this->findUpdates() !== [];
     }
 
@@ -109,7 +121,7 @@ readonly class RadiusThemeOptionUpdate implements UpgradeWizardInterface
         $columns = [];
         foreach ($table->getColumns() as $column) {
             $name = $column->getName();
-            if ($name === 'pi_flexform' || preg_match('/^tx_conn_t3kit_[a-z0-9_]+_settings$/', $name)) {
+            if ($name === 'pi_flexform' || preg_match('/^tx_conn_t3wtk_[a-z0-9_]+_settings$/', $name)) {
                 $columns[] = $name;
             }
         }

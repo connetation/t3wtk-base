@@ -5,12 +5,12 @@ Bootstrap 5 base extension with light/dark theme. Provides the reusable foundati
 ## Structure
 
 ```
-conn/t3kit-base/                         # TYPO3 extension (conn/t3kit-base, ext key: conn_t3kit_base)
+connetation/t3wtk-base/                         # TYPO3 extension (connetation/t3wtk-base, ext key: conn_t3wtk_base)
 ├── Classes/
 │   └── DataProcessing/            # PHP data processors
 ├── Configuration/
 │   ├── Sets/Base/                 # TYPO3 v14 Site Sets (TypoScript, constants, settings)
-│   ├── Sets/Theme*/               # Theme Sets: conn/t3kit-theme-{indigo,forest,sunset,midnight,flat}
+│   ├── Sets/Theme*/               # Theme Sets: connetation/t3wtk-theme-{indigo,forest,sunset,midnight,flat}
 │   ├── TCA/Overrides/             # tt_content & pages TCA extensions
 │   ├── TypoScript/                # Page object & content element TypoScript
 │   └── TsConfig/                  # Backend layouts
@@ -40,7 +40,7 @@ conn/t3kit-base/                         # TYPO3 extension (conn/t3kit-base, ext
     { "type": "composer", "url": "https://composer-v2.connetation.at/" }
 ],
 "require": {
-    "conn/t3kit-base": "^1.0"
+    "connetation/t3wtk-base": "^1.0"
 }
 ```
 
@@ -48,11 +48,11 @@ In your TYPO3 site config (`config/sites/<site>/config.yaml`):
 
 ```yaml
 dependencies:
-  - conn/sitepackage
-  - conn/t3kit-elements   # optional component library
+  - connetation/t3wtk-sitepackage
+  - connetation/t3wtk-elements   # optional component library
 ```
 
-`conn/sitepackage` should declare `conn/t3kit-base` in its Set dependencies — TYPO3 loads them in order.
+`connetation/t3wtk-sitepackage` should declare `connetation/t3wtk-base` in its Set dependencies — TYPO3 loads them in order.
 
 ## Build Assets
 
@@ -61,7 +61,7 @@ Build output (`Resources/Public/Css/main.css` and `Resources/Public/Js/main.js`)
 To rebuild locally:
 
 ```bash
-cd vendor/conn/t3kit-base  # or your local development copy
+cd vendor/connetation/t3wtk-base  # or your local development copy
 npm install
 npm run build    # production build (CSS + JS)
 npm run dev      # watch mode
@@ -76,7 +76,7 @@ Bootstrap 5 is fully bundled into `main.js` and compiled into `main.css` via SCS
 - **Light / Dark theme** — CSS custom properties, `data-bs-theme`, persisted in `localStorage` under key `conn-theme`, respects OS `prefers-color-scheme`
 - **Backend layouts**: Default, Landing Page
 - **Custom page fields**: subtitle, header image, hide breadcrumb
-- **PHP namespace**: `Connetation\T3kitBase`
+- **PHP namespace**: `Connetation\T3wtkBase`
 
 ## Themes
 
@@ -86,11 +86,11 @@ no content):
 
 | Set | Colors | Navigation | Footer |
 |---|---|---|---|
-| `conn/t3kit-theme-indigo` | Indigo / violet | Horizontal, right aligned, grid dropdowns | Brand row, then 3 columns |
-| `conn/t3kit-theme-forest` | Emerald / teal | Off-canvas panel from the right | Centered, dark green |
-| `conn/t3kit-theme-sunset` | Rose / orange, warm paper | Horizontal, centered, list dropdowns | Minimal, one row |
-| `conn/t3kit-theme-midnight` | Cyan / violet, dark navbar + footer | Off-canvas panel from the left | 3 columns, dark |
-| `conn/t3kit-theme-flat` | Zinc / blue, flat: square corners, no shadows | Horizontal, right aligned, list dropdowns | 4 columns, dark |
+| `connetation/t3wtk-theme-indigo` | Indigo / violet | Horizontal, right aligned, grid dropdowns | Brand row, then 3 columns |
+| `connetation/t3wtk-theme-forest` | Emerald / teal | Off-canvas panel from the right | Centered, dark green |
+| `connetation/t3wtk-theme-sunset` | Rose / orange, warm paper | Horizontal, centered, list dropdowns | Minimal, one row |
+| `connetation/t3wtk-theme-midnight` | Cyan / violet, dark navbar + footer | Off-canvas panel from the left | 3 columns, dark |
+| `connetation/t3wtk-theme-flat` | Zinc / blue, flat: square corners, no shadows | Horizontal, right aligned, list dropdowns | 4 columns, dark |
 
 ### Using a theme
 
@@ -99,9 +99,9 @@ Management → Sites → Sets, or in `config/sites/<site>/config.yaml`:
 
 ```yaml
 dependencies:
-  - conn/t3kit-sitepackage
-  - conn/t3kit-elements
-  - conn/t3kit-theme-midnight
+  - connetation/t3wtk-sitepackage
+  - connetation/t3wtk-elements
+  - connetation/t3wtk-theme-midnight
 ```
 
 Switching themes = replacing that one line (flush caches afterwards). Then set
@@ -115,8 +115,8 @@ The position of a Set in the site's list (or in the backend picker) does
 **not** matter. TYPO3 orders Sets by their `dependencies`, and a Set's
 settings override the Sets it depends on:
 
-1. `conn/t3kit-base` defaults
-2. overridden by the theme Set (it depends on `conn/t3kit-base`)
+1. `connetation/t3wtk-base` defaults
+2. overridden by the theme Set (it depends on `connetation/t3wtk-base`)
 3. overridden by the site's own `config/sites/<site>/settings.yaml` — always last
 
 Consequences:
@@ -128,7 +128,7 @@ Consequences:
   Two Sets without a dependency between them have no defined order, so either
   one could win.
 - **Build your own variant**: create a Set that depends on the theme
-  (`dependencies: [conn/t3kit-theme-midnight]`) and override what you need —
+  (`dependencies: [connetation/t3wtk-theme-midnight]`) and override what you need —
   it is guaranteed to win over the theme. Or copy
   `Configuration/Sets/Theme*/` as a starting point; all keys are defined in
   `Configuration/Sets/Base/settings.definitions.yaml`.
@@ -140,8 +140,8 @@ Visitors always start in light mode and switch with the theme toggle
 
 ```
 TYPO3 site
-├── conn/sitepackage  (project layer — extends conn/t3kit-base)
-│   └── depends on: conn/t3kit-base
-├── conn/t3kit-base         (this package — reusable foundation)
-└── conn/t3kit-elements     (optional component library — added per project)
+├── connetation/t3wtk-sitepackage  (project layer — extends connetation/t3wtk-base)
+│   └── depends on: connetation/t3wtk-base
+├── connetation/t3wtk-base         (this package — reusable foundation)
+└── connetation/t3wtk-elements     (optional component library — added per project)
 ```

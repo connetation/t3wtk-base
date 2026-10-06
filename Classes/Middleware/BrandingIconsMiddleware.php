@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Middleware;
+namespace Connetation\T3wtkBase\Middleware;
 
-use Connetation\T3kitBase\Utility\ResourcePathUtility;
+use Connetation\T3wtkBase\Utility\ResourcePathUtility;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -4,15 +4,15 @@ services:
     autoconfigure: true
     public: false
 
-  Connetation\T3kitBase\:
+  Connetation\T3wtkBase\:
     resource: '../Classes/*'
 
-  Connetation\T3kitBase\Middleware\BrandingIconsMiddleware:
+  Connetation\T3wtkBase\Middleware\BrandingIconsMiddleware:
     public: true
 
-  Connetation\T3kitBase\PageTitle\NewsPaginationPageTitleProvider:
+  Connetation\T3wtkBase\PageTitle\NewsPaginationPageTitleProvider:
     public: true
     shared: false
 
-  Connetation\T3kitBase\Middleware\NewsFirstPageRedirectMiddleware:
+  Connetation\T3wtkBase\Middleware\NewsFirstPageRedirectMiddleware:
     public: true

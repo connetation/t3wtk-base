@@ -1,9 +1,16 @@
 {
-    "name": "conn/t3kit-base",
-    "version": "2.0.1",
+    "name": "connetation/t3wtk-base",
+    "version": "3.0.0",
     "description": "Connetation Base for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Connetation Web Engineering GmbH",
+            "email": "office@connetation.at",
+            "homepage": "https://www.connetation.at/"
+        }
+    ],
     "require": {
         "typo3/cms-core": "^14.0",
         "typo3/cms-fluid": "^14.0",
@@ -11,14 +18,17 @@
         "typo3/cms-extbase": "^14.0",
         "typo3/cms-fluid-styled-content": "^14.0"
     },
+    "replace": {
+        "conn/t3kit-base": "self.version"
+    },
     "autoload": {
         "psr-4": {
-            "Connetation\\T3kitBase\\": "Classes/"
+            "Connetation\\T3wtkBase\\": "Classes/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "conn_t3kit_base"
+            "extension-key": "conn_t3wtk_base"
         }
     }
 }

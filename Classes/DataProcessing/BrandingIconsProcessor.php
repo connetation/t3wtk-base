@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\DataProcessing;
+namespace Connetation\T3wtkBase\DataProcessing;
 
-use Connetation\T3kitBase\Middleware\BrandingIconsMiddleware;
-use Connetation\T3kitBase\Utility\ResourcePathUtility;
+use Connetation\T3wtkBase\Middleware\BrandingIconsMiddleware;
+use Connetation\T3wtkBase\Utility\ResourcePathUtility;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;

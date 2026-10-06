@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-      xmlns:conn="http://typo3.org/ns/Connetation/T3kitBase/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/T3wtkBase/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <f:variable name="positionClass"><f:if condition="{data.header_position}">ce-headline-{data.header_position}</f:if></f:variable>
@@ -14,40 +14,40 @@
 </f:variable>
 
 <f:variable name="bgFile" value="0" />
-<f:if condition="{data.tx_conn_t3kit_base_bg_type} == 'image'">
-    <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_t3kit_base_bg_image')}" />
+<f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'image'">
+    <f:variable name="bgFile" value="{conn:firstFile(uid: data.uid, field: 'tx_conn_t3wtk_base_bg_image')}" />
 </f:if>
 
 <f:variable name="hasBg" value="0" />
-<f:if condition="{data.tx_conn_t3kit_base_bg_type} == 'color'">
-    <f:if condition="{data.tx_conn_t3kit_base_bg_color}"><f:variable name="hasBg" value="1" /></f:if>
+<f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'color'">
+    <f:if condition="{data.tx_conn_t3wtk_base_bg_color}"><f:variable name="hasBg" value="1" /></f:if>
 </f:if>
-<f:if condition="{data.tx_conn_t3kit_base_bg_type} == 'image'">
+<f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'image'">
     <f:if condition="{bgFile}"><f:variable name="hasBg" value="1" /></f:if>
 </f:if>
 
-<f:variable name="bgPaddingBefore"><f:if condition="{data.tx_conn_t3kit_base_bg_padding_before}"><f:then>{data.tx_conn_t3kit_base_bg_padding_before}</f:then><f:else>none</f:else></f:if></f:variable>
-<f:variable name="bgPaddingAfter"><f:if condition="{data.tx_conn_t3kit_base_bg_padding_after}"><f:then>{data.tx_conn_t3kit_base_bg_padding_after}</f:then><f:else>none</f:else></f:if></f:variable>
+<f:variable name="bgPaddingBefore"><f:if condition="{data.tx_conn_t3wtk_base_bg_padding_before}"><f:then>{data.tx_conn_t3wtk_base_bg_padding_before}</f:then><f:else>none</f:else></f:if></f:variable>
+<f:variable name="bgPaddingAfter"><f:if condition="{data.tx_conn_t3wtk_base_bg_padding_after}"><f:then>{data.tx_conn_t3wtk_base_bg_padding_after}</f:then><f:else>none</f:else></f:if></f:variable>
 
 <f:variable name="bgClass"></f:variable>
 <f:variable name="bgStyle"></f:variable>
 <f:if condition="{hasBg}">
     <f:variable name="bgClass"> conn-bg conn-bg-padding-before-{bgPaddingBefore} conn-bg-padding-after-{bgPaddingAfter}</f:variable>
-    <f:if condition="{data.tx_conn_t3kit_base_bg_type} == 'color'">
-        <f:variable name="bgStyle">background-color: {data.tx_conn_t3kit_base_bg_color};</f:variable>
-        <f:if condition="{data.tx_conn_t3kit_base_bg_text_color}">
-            <f:variable name="bgStyle">{bgStyle} color: {data.tx_conn_t3kit_base_bg_text_color}; --bs-heading-color: {data.tx_conn_t3kit_base_bg_text_color}; --bs-body-color: {data.tx_conn_t3kit_base_bg_text_color}; --conn-heading: {data.tx_conn_t3kit_base_bg_text_color}; --conn-text: {data.tx_conn_t3kit_base_bg_text_color};</f:variable>
+    <f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'color'">
+        <f:variable name="bgStyle">background-color: {data.tx_conn_t3wtk_base_bg_color};</f:variable>
+        <f:if condition="{data.tx_conn_t3wtk_base_bg_text_color}">
+            <f:variable name="bgStyle">{bgStyle} color: {data.tx_conn_t3wtk_base_bg_text_color}; --bs-heading-color: {data.tx_conn_t3wtk_base_bg_text_color}; --bs-body-color: {data.tx_conn_t3wtk_base_bg_text_color}; --conn-heading: {data.tx_conn_t3wtk_base_bg_text_color}; --conn-text: {data.tx_conn_t3wtk_base_bg_text_color};</f:variable>
         </f:if>
     </f:if>
-    <f:if condition="{data.tx_conn_t3kit_base_bg_type} == 'image'">
-        <f:variable name="bgClass">{bgClass} conn-bg--{data.tx_conn_t3kit_base_bg_mode}</f:variable>
+    <f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'image'">
+        <f:variable name="bgClass">{bgClass} conn-bg--{data.tx_conn_t3wtk_base_bg_mode}</f:variable>
         <f:variable name="bgStyle">background-image: url('<f:uri.image image="{bgFile}" maxWidth="1920" />');</f:variable>
     </f:if>
 </f:if>
 
 <f:variable name="isFullWidth" value="0" />
 <f:if condition="{data.frame_class} == 'none'">
-    <f:if condition="{data.tx_conn_t3kit_base_content_width} == 'full' || {data.tx_conn_t3kit_base_content_width} == 'fullbleed'">
+    <f:if condition="{data.tx_conn_t3wtk_base_content_width} == 'full' || {data.tx_conn_t3wtk_base_content_width} == 'fullbleed'">
         <f:variable name="isFullWidth" value="1" />
     </f:if>
 </f:if>
@@ -83,7 +83,7 @@
                 <div class="conn-fullbleed{bgClass}"{f:if(condition: animationSettings, then: '{animationSettings -> f:format.raw()}')} style="{bgStyle}">
                     <f:if condition="{isFullWidth}">
                         <f:then>
-                            <f:if condition="{data.tx_conn_t3kit_base_content_width} == 'fullbleed'">
+                            <f:if condition="{data.tx_conn_t3wtk_base_content_width} == 'fullbleed'">
                                 <f:then>
                                     {headerAndMain -> f:format.raw()}
                                 </f:then>

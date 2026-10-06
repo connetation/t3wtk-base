@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\PageTitle;
+namespace Connetation\T3wtkBase\PageTitle;
 
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\PageTitle\AbstractPageTitleProvider;
@@ -18,7 +18,7 @@ use TYPO3\CMS\Frontend\Page\PageInformation;
  */
 final class NewsPaginationPageTitleProvider extends AbstractPageTitleProvider
 {
-    private const LABEL = 'LLL:EXT:conn_t3kit_base/Resources/Private/Language/locallang.xlf:pagination.pageTitle';
+    private const LABEL = 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang.xlf:pagination.pageTitle';
 
     public function __construct(
         private readonly LanguageServiceFactory $languageServiceFactory,

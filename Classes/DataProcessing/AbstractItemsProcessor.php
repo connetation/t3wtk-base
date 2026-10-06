@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\DataProcessing;
+namespace Connetation\T3wtkBase\DataProcessing;
 
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\ParameterType;
@@ -17,7 +17,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
 /**
- * Shared flow for item-list content-element data processors (conn_t3kit_elements,
+ * Shared flow for item-list content-element data processors (conn_t3wtk_elements,
  * conn_wiki, conn_dashboard, …):
  *
  *  1. read the tt_content uid,
@@ -80,7 +80,7 @@ abstract class AbstractItemsProcessor implements DataProcessorInterface
      * defaultHeaderType, media/lightbox config, …). The FlexForm component settings are
      * merged ON TOP of these — assigning them alone would overwrite Fluid's reserved
      * `settings` variable and blank all TypoScript settings for the whole element,
-     * including the shared conn_t3kit_base layout and header partial.
+     * including the shared conn_t3wtk_base layout and header partial.
      */
     protected function getTypoScriptSettings(array $contentObjectConfiguration): array
     {

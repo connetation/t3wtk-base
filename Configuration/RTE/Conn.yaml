@@ -10,7 +10,7 @@ imports:
 editor:
     config:
         contentsCss:
-            - 'EXT:conn_t3kit_base/Resources/Public/Css/main.css'
+            - 'EXT:conn_t3wtk_base/Resources/Public/Css/main.css'
 
         style:
             definitions:
@@ -205,8 +205,8 @@ editor:
             - { module: '@ckeditor/ckeditor5-highlight', exports: ['Highlight'] }
             - { module: '@ckeditor/ckeditor5-list', exports: ['ListProperties'] }
             - { module: '@ckeditor/ckeditor5-fullscreen', exports: ['Fullscreen'] }
-            - { module: '@typo3/conn-t3kit-base/CKEditor/ckeditor5-emoji.js', exports: ['Emoji'] }
-            - { module: '@typo3/conn-t3kit-base/CKEditor/exclusive-styles.js', exports: ['ExclusiveStyles'] }
+            - { module: '@typo3/conn-t3wtk-base/CKEditor/ckeditor5-emoji.js', exports: ['Emoji'] }
+            - { module: '@typo3/conn-t3wtk-base/CKEditor/exclusive-styles.js', exports: ['ExclusiveStyles'] }
 
         # Presence of this key (even empty) is the marker the
         # ResolveEmojiDefinitionsUrl event listener checks for — it fills in

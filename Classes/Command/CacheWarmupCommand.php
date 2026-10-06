@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Connetation\T3kitBase\Command;
+namespace Connetation\T3wtkBase\Command;
 
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -108,7 +108,7 @@ final class CacheWarmupCommand extends Command
                     $response = $this->requestFactory->request($url, 'GET', [
                         'timeout' => $timeout,
                         'verify' => $verify,
-                        'headers' => ['User-Agent' => 'conn-t3kit-base-cache-warmup'],
+                        'headers' => ['User-Agent' => 'conn-t3wtk-base-cache-warmup'],
                         'http_errors' => false,
                     ]);
                     $status = $response->getStatusCode();
@@ -175,7 +175,7 @@ final class CacheWarmupCommand extends Command
             $response = $this->requestFactory->request($url, 'GET', [
                 'timeout' => $timeout,
                 'verify' => $verify,
-                'headers' => ['User-Agent' => 'conn-t3kit-base-cache-warmup'],
+                'headers' => ['User-Agent' => 'conn-t3wtk-base-cache-warmup'],
                 'http_errors' => false,
             ]);
             if ($response->getStatusCode() !== 200) {

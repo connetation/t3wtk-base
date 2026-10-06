@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 return [
     'frontend' => [
-        'connetation/t3kit-base/branding-icons' => [
-            'target' => \Connetation\T3kitBase\Middleware\BrandingIconsMiddleware::class,
+        'connetation/t3wtk-base/branding-icons' => [
+            'target' => \Connetation\T3wtkBase\Middleware\BrandingIconsMiddleware::class,
             'after' => [
                 'typo3/cms-frontend/site',
             ],
@@ -13,8 +13,8 @@ return [
                 'typo3/cms-frontend/base-redirect-resolver',
             ],
         ],
-        'connetation/t3kit-base/news-first-page-redirect' => [
-            'target' => \Connetation\T3kitBase\Middleware\NewsFirstPageRedirectMiddleware::class,
+        'connetation/t3wtk-base/news-first-page-redirect' => [
+            'target' => \Connetation\T3wtkBase\Middleware\NewsFirstPageRedirectMiddleware::class,
             'after' => [
                 'typo3/cms-frontend/page-resolver',
             ],

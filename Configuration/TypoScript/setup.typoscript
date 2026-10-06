@@ -5,6 +5,6 @@
 
 # fluid_styled_content TypoScript is provided by the typo3/fluid-styled-content
 # and typo3/fluid-styled-content-css Set dependencies (see Sets/Base/config.yaml).
-@import 'EXT:conn_t3kit_base/Configuration/TypoScript/Base/Page.typoscript'
-@import 'EXT:conn_t3kit_base/Configuration/TypoScript/Base/Lib.typoscript'
-@import 'EXT:conn_t3kit_base/Configuration/TypoScript/ContentElementBackgrounds.typoscript'
+@import 'EXT:conn_t3wtk_base/Configuration/TypoScript/Base/Page.typoscript'
+@import 'EXT:conn_t3wtk_base/Configuration/TypoScript/Base/Lib.typoscript'
+@import 'EXT:conn_t3wtk_base/Configuration/TypoScript/ContentElementBackgrounds.typoscript'

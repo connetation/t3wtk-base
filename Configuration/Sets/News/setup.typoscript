@@ -1,12 +1,12 @@
 plugin.tx_news.view {
-    templateRootPaths.20 = EXT:conn_t3kit_base/Resources/Private/Templates/News/
-    partialRootPaths.20  = EXT:conn_t3kit_base/Resources/Private/Partials/News/
-    layoutRootPaths.20   = EXT:conn_t3kit_base/Resources/Private/Layouts/News/
+    templateRootPaths.20 = EXT:conn_t3wtk_base/Resources/Private/Templates/News/
+    partialRootPaths.20  = EXT:conn_t3wtk_base/Resources/Private/Partials/News/
+    layoutRootPaths.20   = EXT:conn_t3wtk_base/Resources/Private/Layouts/News/
 }
 
 # "News – Seite 2" titles on paginated list pages (page 1 keeps the plain title).
 # Highest priority; the provider returns '' on every other page so the usual ones win.
 config.pageTitleProviders.connNewsPagination {
-    provider = Connetation\T3kitBase\PageTitle\NewsPaginationPageTitleProvider
+    provider = Connetation\T3wtkBase\PageTitle\NewsPaginationPageTitleProvider
     before = news,csSeo,seo,record
 }

@@ -1,6 +1,6 @@
-# Page TSconfig scoped to sites using the conn/t3kit-base Set
+# Page TSconfig scoped to sites using the connetation/t3wtk-base Set
 # (previously injected globally via ext_tables.php).
 
-@import 'EXT:conn_t3kit_base/Configuration/TsConfig/Page/BackendLayouts.tsconfig'
+@import 'EXT:conn_t3wtk_base/Configuration/TsConfig/Page/BackendLayouts.tsconfig'
 
 RTE.default.preset = connBase
