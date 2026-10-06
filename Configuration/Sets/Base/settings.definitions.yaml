@@ -2393,14 +2393,14 @@ settings:
 
   social.iconWidth:
     label: 'Icon width (px)'
-    description: 'Applies to all social icons. Optional — leave empty to scale automatically from the height (or from each image itself if both are empty).'
+    description: 'Applies to all social icons. Optional — leave empty to scale automatically from the height (or from each image itself if both are empty). SVGs need a viewBox and either an intrinsic width/height or one of these settings.'
     type: int
     default: 0
     category: conn.social
 
   social.iconHeight:
     label: 'Icon height (px)'
-    description: 'Applies to all social icons. Optional — leave empty to scale automatically from the width (or from each image itself if both are empty).'
+    description: 'Applies to all social icons. Optional — leave empty to scale automatically from the width (or from each image itself if both are empty). SVGs need a viewBox and either an intrinsic width/height or one of these settings.'
     type: int
     default: 0
     category: conn.social
