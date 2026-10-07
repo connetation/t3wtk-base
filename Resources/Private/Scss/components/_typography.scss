@@ -55,15 +55,16 @@ header > :where(h1, h2, h3, h4, h5, h6, p):not(:last-child, .ce-eyebrow) { margi
 }
 
 // ── Text font-size scale (site setting theme.textFontSizeScale) ───────────
-// Body text of the standard text elements; headings have their own scale
-// (below).
+// Body text of the standard text elements, based on the theme's
+// --conn-font-size-body (not the inherited size); headings have their own
+// scale (below).
 .frame-type-text,
 .frame-type-textmedia,
 .frame-type-textpic,
 .frame-type-bullets,
 .frame-type-table,
 .frame-type-uploads {
-    font-size: calc(1em * var(--conn-text-font-size-scale, 1));
+    font-size: calc(var(--conn-font-size-body) * var(--conn-text-font-size-scale, 1));
 }
 
 // ── Heading font-size scale (site setting theme.headingFontSizeScale) ─────

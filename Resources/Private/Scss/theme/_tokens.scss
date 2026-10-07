@@ -215,10 +215,12 @@ $conn-radius-options: (
     }
 }
 
-// Include on a card-like element's root: scales inherited text (card text
-// scale) and the headings inside it (card heading scale).
+// Include on a card-like element's root: body-size text (card text scale,
+// based on the theme's --conn-font-size-body — not on the inherited size, so
+// the result doesn't depend on where the element sits) and the headings
+// inside it (card heading scale).
 @mixin card-text-scale {
-    font-size: calc(1em * var(--conn-card-font-size-scale, 1));
+    font-size: card-fs(var(--conn-font-size-body));
 
     @include scaled-headings(meta.get-function('card-heading-fs'));
     :where(small, .small) { font-size: card-fs(var(--conn-font-size-sm)); }
