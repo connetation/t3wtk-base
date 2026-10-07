@@ -1,3 +1,5 @@
+@use 'sass:meta';
+@use '../theme/tokens';
 // ─────────────────────────────────────────────
 // Typography — fluid type scale (see theme/_light.scss for tokens)
 // ─────────────────────────────────────────────
@@ -48,5 +50,34 @@ header > :where(h1, h2, h3, h4, h5, h6, p):not(:last-child, .ce-eyebrow) { margi
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--conn-accent);
+    // Site setting theme.light/dark.eyebrow; accent when unset.
+    color: var(--conn-eyebrow-color, var(--conn-accent));
 }
+
+// ── Text font-size scale (site setting theme.textFontSizeScale) ───────────
+// Body text of the standard text elements; headings have their own scale
+// (below).
+.frame-type-text,
+.frame-type-textmedia,
+.frame-type-textpic,
+.frame-type-bullets,
+.frame-type-table,
+.frame-type-uploads {
+    font-size: calc(1em * var(--conn-text-font-size-scale, 1));
+}
+
+// ── Heading font-size scale (site setting theme.headingFontSizeScale) ─────
+// Content element headers (header, subheader, eyebrow — Partials/Header) and
+// headings inside rich text. Card titles: theme.cardHeadingFontSizeScale.
+.frame header,
+.frame .ce-bodytext {
+    @include tokens.scaled-headings(meta.get-function('heading-fs', $module: 'tokens'));
+}
+
+.frame header {
+    // Subheader rendered as <p> (and anything else without a heading size)
+    font-size: tokens.heading-fs(var(--conn-font-size-body));
+
+    :where(.ce-eyebrow) { font-size: tokens.heading-fs(var(--conn-font-size-sm)); }
+}
+

@@ -35,6 +35,7 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         'theme.light.heading' => ['--conn-heading', '--bs-heading-color'],
         'theme.light.emphasis' => ['--conn-emphasis', '--bs-emphasis-color'],
         'theme.light.textMuted' => ['--conn-text-muted', '--bs-secondary-color'],
+        'theme.light.eyebrow' => ['--conn-eyebrow-color'],
         'theme.light.link' => ['--conn-link', '--bs-link-color'],
         'theme.light.linkHover.text' => ['--conn-link-hover', '--bs-link-hover-color'],
         'theme.light.linkHover.underline' => ['--conn-link-hover-underline'],
@@ -70,6 +71,7 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         'theme.dark.heading' => ['--conn-heading', '--bs-heading-color'],
         'theme.dark.emphasis' => ['--conn-emphasis', '--bs-emphasis-color'],
         'theme.dark.textMuted' => ['--conn-text-muted', '--bs-secondary-color'],
+        'theme.dark.eyebrow' => ['--conn-eyebrow-color'],
         'theme.dark.link' => ['--conn-link', '--bs-link-color'],
         'theme.dark.linkHover.text' => ['--conn-link-hover', '--bs-link-hover-color'],
         'theme.dark.linkHover.underline' => ['--conn-link-hover-underline'],
@@ -126,6 +128,7 @@ final class ThemeVarsProcessor implements DataProcessorInterface
 
         $processedData[$targetVar] = [
             'css' => $this->buildRadiusCss($settings)
+                . $this->buildFontScaleCss($settings)
                 . $this->buildNavbarShrinkCss($settings)
                 . $this->buildCss($light, $dark, $pageMain)
                 // Light rules apply in both modes; dark rules win in dark mode
@@ -240,6 +243,33 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         $height = (int)$settings->get('navbar.shrinkLogoHeight', 40);
 
         return $height > 0 ? $this->rule(':root', ['--conn-navbar-logo-height-shrunk' => $height . 'px']) : '';
+    }
+
+    /**
+     * theme.*FontSizeScale → --conn-*-font-size-scale (used via theme/_tokens.scss).
+     * Only plain numbers from 0.5 to 3 are output — anything else keeps the
+     * default (1).
+     */
+    private function buildFontScaleCss(?SiteSettings $settings): string
+    {
+        if ($settings === null) {
+            return '';
+        }
+        $declarations = [];
+        $scales = [
+            'theme.textFontSizeScale'        => '--conn-text-font-size-scale',
+            'theme.headingFontSizeScale'     => '--conn-heading-font-size-scale',
+            'theme.cardFontSizeScale'        => '--conn-card-font-size-scale',
+            'theme.cardHeadingFontSizeScale' => '--conn-card-heading-font-size-scale',
+        ];
+        foreach ($scales as $path => $property) {
+            $value = str_replace(',', '.', $this->stringSetting($settings, $path));
+            if (is_numeric($value) && (float)$value >= 0.5 && (float)$value <= 3) {
+                $declarations[$property] = (string)(float)$value;
+            }
+        }
+
+        return $this->rule(':root', $declarations);
     }
 
     private function stringSetting(SiteSettings $settings, string $path): string

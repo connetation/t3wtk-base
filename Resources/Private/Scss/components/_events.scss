@@ -9,6 +9,9 @@
 
 .conn-event-card,
 .conn-event-list-item {
+    // Card font-size scale (theme.cardFontSizeScale)
+    @include tokens.card-text-scale;
+
     cursor: pointer;
     background: var(--conn-surface) !important;
     border: 1px solid var(--conn-card-border-color, var(--conn-accent)) !important;
@@ -91,7 +94,7 @@
     background: var(--conn-accent-soft);
     color: var(--conn-accent);
     border: 1px solid var(--conn-border-strong);
-    font-size: 0.6875rem;
+    font-size: tokens.card-fs(0.6875rem);
     font-weight: 700;
     letter-spacing: 0.05em;
     padding: 0.25em 0.65em;
@@ -99,7 +102,7 @@
 }
 
 .conn-event-card__body {
-    font-size: 0.875rem;
+    font-size: tokens.card-fs(0.875rem);
     color: var(--conn-text-muted);
     line-height: var(--conn-line-height-normal);
 

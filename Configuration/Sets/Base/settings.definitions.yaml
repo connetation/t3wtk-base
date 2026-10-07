@@ -17,6 +17,10 @@ categories:
     label: 'Shape'
     description: 'Corner rounding shared by every element and Bootstrap component. Elements with a "Border radius" option of their own can still override it.'
     parent: conn.theme
+  conn.theme.typography:
+    label: 'Typography'
+    description: 'Font-size multipliers, separately for text and headings — in normal content and in cards. E.g. 1.1 = 10% larger, 0.9 = 10% smaller (allowed: 0.5 to 3). Leave empty for no change (same as 1).'
+    parent: conn.theme
   conn.theme.buttons:
     label: 'Button colors'
     description: 'Colors for the Bootstrap button variants that have no theme design of their own (success, danger, warning, info, light, dark — filled and outline). Leave a setting empty to keep the Bootstrap 5 default. Primary and secondary buttons follow the accent/surface colors above.'
@@ -210,6 +214,14 @@ settings:
     default: false
     category: conn.theme.color
 
+  # CSS var (ThemeVarsProcessor): --conn-eyebrow-color
+  theme.light.eyebrow:
+    label: 'Eyebrow color'
+    description: 'Color of eyebrows — the small uppercase label above a header (content elements, cards, sliders). Leave empty to use the accent color. An element''s own eyebrow/subtitle color still takes priority.'
+    type: string
+    default: ''
+    category: conn.theme.color
+
   # CSS var(s) (ThemeVarsProcessor): --conn-text-muted, --bs-secondary-color
   theme.light.textMuted:
     label: 'Muted text color'
@@ -313,6 +325,38 @@ settings:
       xlarge: 'Extra large'
     category: conn.theme.shape
 
+  # ─── Typography – font-size scales ────────────────────────────────────────
+  # CSS vars (ThemeVarsProcessor): --conn-text-font-size-scale,
+  # --conn-heading-font-size-scale, --conn-card-font-size-scale,
+  # --conn-card-heading-font-size-scale — multipliers, see theme/_tokens.scss.
+  theme.textFontSizeScale:
+    label: 'Text – font-size scale'
+    description: 'Body text of the standard text elements (Text, Text & Media, Text & Images, Bullet list, Table, File links). E.g. 1.1 = 10% larger. Leave empty for no change.'
+    type: string
+    default: ''
+    category: conn.theme.typography
+
+  theme.headingFontSizeScale:
+    label: 'Headings – font-size scale'
+    description: 'Headers, subheaders and eyebrows of all content elements, plus headings inside text (e.g. an H2 in the rich-text editor). Card titles have their own setting below. E.g. 0.9 = 10% smaller. Leave empty for no change.'
+    type: string
+    default: ''
+    category: conn.theme.typography
+
+  theme.cardFontSizeScale:
+    label: 'Cards – text font-size scale'
+    description: 'Text in cards and card-like elements (card groups, subpage cards, flip cards, people, pricing, features, stats, process steps, timeline, testimonials, sliders, news and event cards, …) — descriptions, links, badges, numbers. E.g. 0.9 = 10% smaller. Leave empty for no change.'
+    type: string
+    default: ''
+    category: conn.theme.typography
+
+  theme.cardHeadingFontSizeScale:
+    label: 'Cards – heading font-size scale'
+    description: 'Titles, subtitles and eyebrows inside cards and card-like elements (same elements as above). E.g. 1.1 = 10% larger. Leave empty for no change.'
+    type: string
+    default: ''
+    category: conn.theme.typography
+
   # ─── Dark-theme coloring (overrides Color above, dark mode only) ──────────
   # CSS var(s) (ThemeVarsProcessor): --conn-accent, --bs-primary
   theme.dark.accent:
@@ -406,6 +450,14 @@ settings:
   theme.dark.linkHover.underline:
     label: 'Link – hover underline color'
     description: 'Color of the animated underline effect (see "Animated underline on link hover") for dark mode. Falls back to the link hover color when empty.'
+    type: string
+    default: ''
+    category: conn.theme.dark
+
+  # CSS var(s) (ThemeVarsProcessor): --conn-text-muted, --bs-secondary-color
+  theme.dark.eyebrow:
+    label: 'Eyebrow color'
+    description: 'Eyebrow color for dark mode. Leave empty to use the dark-mode accent color.'
     type: string
     default: ''
     category: conn.theme.dark
