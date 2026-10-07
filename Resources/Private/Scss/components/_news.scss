@@ -108,7 +108,8 @@
 }
 
 .conn-news-card__body {
-    font-size: tokens.card-fs(0.875rem);
+    // Body text size like every other card (theme body size × card scale).
+    font-size: tokens.card-fs(var(--conn-font-size-body));
     color: var(--conn-text-muted);
     line-height: var(--conn-line-height-normal);
 
