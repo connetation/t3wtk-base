@@ -262,6 +262,66 @@
                 <source>Reset (inherit)</source>
                 <target>Zurücksetzen (übernehmen)</target>
             </trans-unit>
+            <trans-unit id="flexform.titleTag">
+                <source>Title tag (heading level for SEO)</source>
+                <target>Titel-Tag (Überschriftenebene für SEO)</target>
+            </trans-unit>
+            <trans-unit id="flexform.titleSize">
+                <source>Title size (look)</source>
+                <target>Titelgröße (Darstellung)</target>
+            </trans-unit>
+            <trans-unit id="heading_tag.h2">
+                <source>H2</source>
+                <target>H2</target>
+            </trans-unit>
+            <trans-unit id="heading_tag.h3">
+                <source>H3 (default)</source>
+                <target>H3 (Standard)</target>
+            </trans-unit>
+            <trans-unit id="heading_tag.h4">
+                <source>H4</source>
+                <target>H4</target>
+            </trans-unit>
+            <trans-unit id="heading_tag.h5">
+                <source>H5</source>
+                <target>H5</target>
+            </trans-unit>
+            <trans-unit id="heading_tag.h6">
+                <source>H6</source>
+                <target>H6</target>
+            </trans-unit>
+            <trans-unit id="heading_tag.p">
+                <source>Paragraph (no heading)</source>
+                <target>Absatz (keine Überschrift)</target>
+            </trans-unit>
+            <trans-unit id="heading_size.none">
+                <source>Tag default</source>
+                <target>Wie Tag</target>
+            </trans-unit>
+            <trans-unit id="heading_size.h1">
+                <source>Like H1</source>
+                <target>Wie H1</target>
+            </trans-unit>
+            <trans-unit id="heading_size.h2">
+                <source>Like H2</source>
+                <target>Wie H2</target>
+            </trans-unit>
+            <trans-unit id="heading_size.h3">
+                <source>Like H3</source>
+                <target>Wie H3</target>
+            </trans-unit>
+            <trans-unit id="heading_size.h4">
+                <source>Like H4 (default)</source>
+                <target>Wie H4 (Standard)</target>
+            </trans-unit>
+            <trans-unit id="heading_size.h5">
+                <source>Like H5</source>
+                <target>Wie H5</target>
+            </trans-unit>
+            <trans-unit id="heading_size.h6">
+                <source>Like H6</source>
+                <target>Wie H6</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -289,6 +289,51 @@
             <trans-unit id="responsive_range.reset">
                 <source>Reset (inherit)</source>
             </trans-unit>
+            <trans-unit id="flexform.titleTag">
+                <source>Title tag (heading level for SEO)</source>
+            </trans-unit>
+            <trans-unit id="flexform.titleSize">
+                <source>Title size (look)</source>
+            </trans-unit>
+            <trans-unit id="heading_tag.h2">
+                <source>H2</source>
+            </trans-unit>
+            <trans-unit id="heading_tag.h3">
+                <source>H3 (default)</source>
+            </trans-unit>
+            <trans-unit id="heading_tag.h4">
+                <source>H4</source>
+            </trans-unit>
+            <trans-unit id="heading_tag.h5">
+                <source>H5</source>
+            </trans-unit>
+            <trans-unit id="heading_tag.h6">
+                <source>H6</source>
+            </trans-unit>
+            <trans-unit id="heading_tag.p">
+                <source>Paragraph (no heading)</source>
+            </trans-unit>
+            <trans-unit id="heading_size.none">
+                <source>Tag default</source>
+            </trans-unit>
+            <trans-unit id="heading_size.h1">
+                <source>Like H1</source>
+            </trans-unit>
+            <trans-unit id="heading_size.h2">
+                <source>Like H2</source>
+            </trans-unit>
+            <trans-unit id="heading_size.h3">
+                <source>Like H3</source>
+            </trans-unit>
+            <trans-unit id="heading_size.h4">
+                <source>Like H4 (default)</source>
+            </trans-unit>
+            <trans-unit id="heading_size.h5">
+                <source>Like H5</source>
+            </trans-unit>
+            <trans-unit id="heading_size.h6">
+                <source>Like H6</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

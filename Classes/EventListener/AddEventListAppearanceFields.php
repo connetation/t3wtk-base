@@ -46,6 +46,40 @@ final class AddEventListAppearanceFields
                             'default' => 'start',
                         ],
                     ],
+                    // Title tag (SEO level) and visual size — rendered with conn:heading.
+                    'settings.appearance.titleTag' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:flexform.titleTag',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => 'h3',
+                            'items' => [
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_tag.h2', 'value' => 'h2'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_tag.h3', 'value' => 'h3'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_tag.h4', 'value' => 'h4'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_tag.h5', 'value' => 'h5'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_tag.h6', 'value' => 'h6'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_tag.p', 'value' => 'p'],
+                            ],
+                        ],
+                    ],
+                    'settings.appearance.titleSize' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:flexform.titleSize',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => 'h4',
+                            'items' => [
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.none', 'value' => 'none'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.h1', 'value' => 'h1'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.h2', 'value' => 'h2'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.h3', 'value' => 'h3'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.h4', 'value' => 'h4'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.h5', 'value' => 'h5'],
+                                ['label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:heading_size.h6', 'value' => 'h6'],
+                            ],
+                        ],
+                    ],
                     // Card font weights — Bootstrap fw-* utilities (FontWeightOptions);
                     // list cards keep their bold title by default.
                     'settings.appearance.titleWeight' => [

@@ -1,4 +1,5 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:conn="http://typo3.org/ns/Connetation/T3wtkBase/ViewHelpers" data-namespace-typo3-fluid="true">
 <article class="row g-0 conn-event-list-item" style="--i: {iterator.index}">
 
     <div class="col-4 col-sm-3">
@@ -33,7 +34,7 @@
     <div class="col-8 col-sm-9 d-flex">
         <div class="p-3 d-flex flex-column flex-fill">
             <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="h6 {f:if(condition: settings.appearance.titleWeight, then: settings.appearance.titleWeight, else: 'fw-bold')} mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}">
+                <conn:heading tag="{settings.appearance.titleTag}" size="{f:if(condition: settings.appearance.titleSize, then: settings.appearance.titleSize, else: 'h4')}" class="{f:if(condition: settings.appearance.titleWeight, then: settings.appearance.titleWeight, else: 'fw-bold')} mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}">
                     <f:if condition="{settings.detailPid} == ''">
                         <f:then>
                             <f:link.action action="detail" controller="Event" extensionName="SfEventMgt" arguments="{event : event}" class="stretched-link text-decoration-none text-reset">{event.title}</f:link.action>
@@ -42,7 +43,7 @@
                             <f:link.action action="detail" arguments="{event : event}" pageUid="{settings.detailPid}" class="stretched-link text-decoration-none text-reset">{event.title}</f:link.action>
                         </f:else>
                     </f:if>
-                </h3>
+                </conn:heading>
                 <f:if condition="{event.currentPrice} == 0">
                     <f:then>
                         <span class="badge conn-event-card__badge flex-shrink-0"><f:translate domain="sf_event_mgt.messages" key="event.freeofcharge" /></span>
