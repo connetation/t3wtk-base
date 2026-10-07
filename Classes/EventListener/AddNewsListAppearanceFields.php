@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Connetation\T3wtkBase\EventListener;
 
+use Connetation\T3wtkBase\Utility\FontWeightOptions;
 use Connetation\T3wtkBase\Utility\RadiusOptions;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
@@ -43,6 +44,26 @@ final class AddNewsListAppearanceFields
                             'renderType' => 'selectSingle',
                             'items' => $alignItems,
                             'default' => 'start',
+                        ],
+                    ],
+                    // Card font weights — Bootstrap fw-* utilities (FontWeightOptions);
+                    // list cards keep their bold title by default.
+                    'settings.appearance.titleWeight' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:flexform.titleWeight',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => 'fw-bold',
+                            'itemsProcFunc' => FontWeightOptions::class . '->addItems',
+                        ],
+                    ],
+                    'settings.appearance.textWeight' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:flexform.textWeight',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => 'fw-normal',
+                            'itemsProcFunc' => FontWeightOptions::class . '->addItems',
                         ],
                     ],
                     'settings.appearance.metaAlign' => [

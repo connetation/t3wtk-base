@@ -259,4 +259,18 @@ abstract class AbstractItemsProcessor implements DataProcessorInterface
     {
         return preg_match('/^#[0-9a-fA-F]{3,8}$/', $hex) ? $hex : $default;
     }
+
+    /**
+     * Bootstrap text-* class for an alignment that may be 'auto' (a card's
+     * subtitle/eyebrow): its own start/center/end, or — for 'auto'/unset —
+     * $autoAlign (usually the card's title alignment, like tt_content's
+     * eyebrow following header_position). '' when neither is set: the
+     * card's own alignment applies.
+     */
+    protected function resolveAlignClass(mixed $position, string $autoAlign = ''): string
+    {
+        $align = \in_array($position, ['start', 'center', 'end'], true) ? $position : $autoAlign;
+
+        return \in_array($align, ['start', 'center', 'end'], true) ? 'text-' . $align : '';
+    }
 }

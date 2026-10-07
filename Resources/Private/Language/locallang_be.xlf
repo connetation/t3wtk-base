@@ -214,6 +214,40 @@
             <trans-unit id="flexform.cardBorderRadius">
                 <source>Border radius</source>
             </trans-unit>
+            <!-- Card font weights (Classes/Utility/FontWeightOptions.php) -->
+            <trans-unit id="font_weight.option.fw-lighter">
+                <source>Lighter (relative to parent)</source>
+            </trans-unit>
+            <trans-unit id="font_weight.option.fw-light">
+                <source>Light (300)</source>
+            </trans-unit>
+            <trans-unit id="font_weight.option.fw-normal">
+                <source>Normal (400)</source>
+            </trans-unit>
+            <trans-unit id="font_weight.option.fw-medium">
+                <source>Medium (500)</source>
+            </trans-unit>
+            <trans-unit id="font_weight.option.fw-semibold">
+                <source>Semibold (600)</source>
+            </trans-unit>
+            <trans-unit id="font_weight.option.fw-bold">
+                <source>Bold (700)</source>
+            </trans-unit>
+            <trans-unit id="font_weight.option.fw-bolder">
+                <source>Bolder (relative to parent)</source>
+            </trans-unit>
+            <trans-unit id="flexform.sheet.typography">
+                <source>Typography</source>
+            </trans-unit>
+            <trans-unit id="flexform.titleWeight">
+                <source>Title font weight</source>
+            </trans-unit>
+            <trans-unit id="flexform.subtitleWeight">
+                <source>Subtitle font weight (not used when the subtitle is shown as eyebrow)</source>
+            </trans-unit>
+            <trans-unit id="flexform.textWeight">
+                <source>Text font weight</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

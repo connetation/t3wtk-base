@@ -31,7 +31,7 @@
 
         <div class="card-body p-3 d-flex flex-column">
             <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h6 fw-bold mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}">
+                <h3 class="card-title h6 {f:if(condition: settings.appearance.titleWeight, then: settings.appearance.titleWeight, else: 'fw-bold')} mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}">
                     <f:if condition="{settings.detailPid} == ''">
                         <f:then>
                             <f:link.action action="detail" controller="Event" extensionName="SfEventMgt" arguments="{event : event}" class="stretched-link text-decoration-none text-reset">{event.title}</f:link.action>
@@ -59,7 +59,7 @@
             </p>
 
             <f:if condition="{event.teaser}">
-                <div class="conn-event-card__body small flex-grow-1 text-{f:if(condition: settings.appearance.bodyAlign, then: settings.appearance.bodyAlign, else: 'start')}">
+                <div class="conn-event-card__body small {f:if(condition: settings.appearance.textWeight, then: settings.appearance.textWeight, else: 'fw-normal')} flex-grow-1 text-{f:if(condition: settings.appearance.bodyAlign, then: settings.appearance.bodyAlign, else: 'start')}">
                     {event.teaser}
                 </div>
             </f:if>

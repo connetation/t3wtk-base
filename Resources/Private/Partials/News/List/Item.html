@@ -39,7 +39,7 @@
         <div class="col-8 col-sm-9 d-flex">
             <div class="p-3 d-flex flex-column flex-fill">
                 <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h3 class="h6 fw-bold mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}" itemprop="headline">
+                    <h3 class="h6 {f:if(condition: settings.appearance.titleWeight, then: settings.appearance.titleWeight, else: 'fw-bold')} mb-0 me-2 flex-grow-1 text-{f:if(condition: settings.appearance.titleAlign, then: settings.appearance.titleAlign, else: 'start')}" itemprop="headline">
                         <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" itemprop="url" class="stretched-link text-decoration-none text-reset">
                             {newsItem.title}
                         </n:link>
@@ -59,7 +59,7 @@
                     </f:if>
                 </p>
 
-                <div class="conn-news-card__body small flex-grow-1 text-{f:if(condition: settings.appearance.bodyAlign, then: settings.appearance.bodyAlign, else: 'start')}" itemprop="description">
+                <div class="conn-news-card__body small {f:if(condition: settings.appearance.textWeight, then: settings.appearance.textWeight, else: 'fw-normal')} flex-grow-1 text-{f:if(condition: settings.appearance.bodyAlign, then: settings.appearance.bodyAlign, else: 'start')}" itemprop="description">
                     <n:removeMediaTags>
                         <f:if condition="{newsItem.teaser}">
                             <f:then>
