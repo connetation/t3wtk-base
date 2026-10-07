@@ -72,12 +72,35 @@ const initSmoothScroll = () => {
 };
 
 // ─────────────────────────────────────────────
-// Navbar shrink on scroll
+// Navbar scroll state + shrink on scroll
+// navbar--scrolled: page is scrolled at all (styling hook).
+// navbar--shrunk (site setting navbar.shrinkOnScroll): set while scrolling
+// down past navbar.scrollRange, removed as soon as the user scrolls up or
+// is back within the range.
 // ─────────────────────────────────────────────
 const initNavbar = () => {
     const nav = document.getElementById('mainNav');
     if (!nav) return;
-    const onScroll = () => nav.classList.toggle('navbar--scrolled', window.scrollY > 50);
+
+    const shrink = document.body.classList.contains('navbar-shrink-on-scroll');
+    const range = parseInt(document.body.dataset.navScrollRange, 10) || 100;
+    const TOLERANCE = 5; // px — ignore tiny scroll jitter (trackpads, momentum)
+    let lastY = window.scrollY;
+
+    const onScroll = () => {
+        const y = window.scrollY;
+        nav.classList.toggle('navbar--scrolled', y > 50);
+        if (!shrink) return;
+
+        if (y <= range) {
+            nav.classList.remove('navbar--shrunk');
+            lastY = y;
+            return;
+        }
+        if (Math.abs(y - lastY) < TOLERANCE) return;
+        nav.classList.toggle('navbar--shrunk', y > lastY);
+        lastY = y;
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 };

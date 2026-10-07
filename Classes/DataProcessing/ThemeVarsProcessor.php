@@ -126,6 +126,7 @@ final class ThemeVarsProcessor implements DataProcessorInterface
 
         $processedData[$targetVar] = [
             'css' => $this->buildRadiusCss($settings)
+                . $this->buildNavbarShrinkCss($settings)
                 . $this->buildCss($light, $dark, $pageMain)
                 // Light rules apply in both modes; dark rules win in dark mode
                 // (same specificity, emitted later).
@@ -228,6 +229,17 @@ final class ThemeVarsProcessor implements DataProcessorInterface
         $scale = self::RADIUS_SCALES[$this->stringSetting($settings, 'theme.radius')] ?? null;
 
         return $scale === null ? '' : $this->rule(':root', ['--conn-radius-scale' => $scale]);
+    }
+
+    /** navbar.shrinkOnScroll: logo height of the shrunk header (_navigation.scss). */
+    private function buildNavbarShrinkCss(?SiteSettings $settings): string
+    {
+        if ($settings === null || !(bool)$settings->get('navbar.shrinkOnScroll', false)) {
+            return '';
+        }
+        $height = (int)$settings->get('navbar.shrinkLogoHeight', 40);
+
+        return $height > 0 ? $this->rule(':root', ['--conn-navbar-logo-height-shrunk' => $height . 'px']) : '';
     }
 
     private function stringSetting(SiteSettings $settings, string $path): string

@@ -39,6 +39,33 @@ body:has(.navbar.fixed-bottom) .footer { padding-bottom: var(--conn-navbar-heigh
     }
 }
 
+// ── Shrink on scroll (site setting navbar.shrinkOnScroll) ──
+// main.js toggles .navbar--shrunk; the shrunk logo height comes from
+// navbar.shrinkLogoHeight via ThemeVarsProcessor. Body padding for fixed-top
+// keeps the full height, so content doesn't jump while the header shrinks.
+.navbar-shrink-on-scroll .navbar {
+    transition: padding 0.25s ease;
+
+    .navbar-logo { transition: height 0.25s ease; }
+
+    &.navbar--shrunk {
+        --bs-navbar-padding-y: 0.25rem;
+        padding-top: var(--bs-navbar-padding-y);
+        padding-bottom: var(--bs-navbar-padding-y);
+
+        .navbar-brand { padding-top: 0; padding-bottom: 0; }
+        .navbar-logo {
+            height: var(--conn-navbar-logo-height-shrunk, 40px);
+            width: auto;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-shrink-on-scroll .navbar,
+    .navbar-shrink-on-scroll .navbar .navbar-logo { transition: none; }
+}
+
 // ── Navbar base ────────────────────────────────
 .navbar {
     background-color: var(--conn-nav-bg) !important;

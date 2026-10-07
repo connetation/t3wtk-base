@@ -863,6 +863,27 @@ settings:
       fixed-bottom: 'Fixed bottom'
       '': 'Static'
 
+  navbar.shrinkOnScroll:
+    label: 'Shrink header on scroll'
+    description: 'Scrolling down past the scroll range makes the header smaller (logo + padding); scrolling up returns it to its normal height.'
+    type: bool
+    default: false
+    category: conn.navbar
+
+  navbar.scrollRange:
+    label: 'Scroll range (px)'
+    description: 'How far the page scrolls before the header shrinks. Navigations that close open menus on scroll use the same distance.'
+    type: int
+    default: 100
+    category: conn.navbar
+
+  navbar.shrinkLogoHeight:
+    label: 'Logo height when shrunk (px)'
+    description: 'Only used with "Shrink header on scroll".'
+    type: int
+    default: 40
+    category: conn.navbar
+
   navbar.mobileBreakpoint:
     label: 'Panel breakpoint'
     description: 'For NavTop: screen width at which the nav switches from hamburger to inline. For NavLeft / NavRight: screen width at which the panel becomes a fixed-width sidebar instead of full-screen.'

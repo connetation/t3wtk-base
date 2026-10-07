@@ -51,6 +51,18 @@ page {
         30.value = link-hover-underline
         30.if.isTrue = {$theme.linkHoverEffect}
 
+        35 = TEXT
+        35.char = 32
+
+        36 = TEXT
+        36.value = navbar-shrink-on-scroll
+        36.if.isTrue = {$navbar.shrinkOnScroll}
+
+        # Read by main.js (shrink on scroll) and by navigations that close
+        # open menus after scrolling this far.
+        38 = TEXT
+        38.value = " data-nav-scroll-range="{$navbar.scrollRange}
+
         40 = TEXT
         40.value = ">
     }
