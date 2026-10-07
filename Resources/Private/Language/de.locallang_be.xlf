@@ -208,6 +208,60 @@
                 <source>Text font weight</source>
                 <target>Schriftstärke Text</target>
             </trans-unit>
+            <!-- Per-device values: Desktop / Tablet / Mobile (Utility/Devices.php) — FormEngine field
+                 connResponsiveRange and site setting type connResponsive -->
+            <trans-unit id="responsive_range.desktop">
+                <source>Desktop</source>
+                <target>Desktop</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.tablet">
+                <source>Tablet</source>
+                <target>Tablet</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.mobile">
+                <source>Mobile</source>
+                <target>Mobil</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.desktop">
+                <source>Same as Desktop</source>
+                <target>Wie Desktop</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.tablet">
+                <source>Same as Tablet</source>
+                <target>Wie Tablet</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.auto">
+                <source>Auto</source>
+                <target>Auto</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.auto">
+                <source>Auto — adjusts to the screen size</source>
+                <target>Auto — passt sich der Bildschirmgröße an</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.range.from">
+                <source>%d px screen width and wider</source>
+                <target>ab %d px Bildschirmbreite</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.range.between">
+                <source>%d–%d px screen width</source>
+                <target>%d–%d px Bildschirmbreite</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.range.below">
+                <source>screen width below %d px</source>
+                <target>Bildschirmbreite unter %d px</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.mobile">
+                <source>Same as Tablet</source>
+                <target>Wie Tablet</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.choose">
+                <source>Same as larger device</source>
+                <target>Wie größeres Gerät</target>
+            </trans-unit>
+            <trans-unit id="responsive_range.reset">
+                <source>Reset (inherit)</source>
+                <target>Zurücksetzen (übernehmen)</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

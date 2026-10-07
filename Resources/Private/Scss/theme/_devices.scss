@@ -1,0 +1,44 @@
+// ─────────────────────────────────────────────
+// Device breakpoints for every per-device value (content element fields with
+// renderType connResponsiveRange, site settings of type connResponsive —
+// stored as "desktop,tablet,mobile").
+// Reference: Classes/Utility/Devices.php — keep these values in step with it
+// (TS counterpart: Resources/Private/JavaScript/devices.ts). Shared by all
+// conn/* packages: @use 'theme/devices' (load path) or a relative path.
+//   Mobile  < 768px · Tablet 768–1199px · Desktop ≥ 1200px
+// ─────────────────────────────────────────────
+$tablet-min:  768px;
+$desktop-min: 1200px;
+
+// @include device(mobile | tablet | desktop | below-desktop) { … }
+@mixin device($device) {
+    @if $device == mobile {
+        @media (max-width: $tablet-min - 0.02px) { @content; }
+    } @else if $device == tablet {
+        @media (min-width: $tablet-min) and (max-width: $desktop-min - 0.02px) { @content; }
+    } @else if $device == desktop {
+        @media (min-width: $desktop-min) { @content; }
+    } @else if $device == below-desktop {
+        @media (max-width: $desktop-min - 0.02px) { @content; }
+    } @else {
+        @error "Unknown device `#{$device}` — use mobile, tablet, desktop or below-desktop.";
+    }
+}
+
+// Per-device column counts for CSS-grid elements. The template adds
+// .has-cols-tablet / .has-cols-mobile plus <var>-tablet / <var>-mobile only
+// for values the editor actually set; unset devices keep the element's own
+// (automatic) grid rules.
+@mixin device-columns($grid, $var) {
+    @include device(tablet) {
+        &.has-cols-tablet #{$grid} {
+            grid-template-columns: repeat(var(#{$var}-tablet), minmax(0, 1fr));
+        }
+    }
+
+    @include device(mobile) {
+        &.has-cols-mobile #{$grid} {
+            grid-template-columns: repeat(var(#{$var}-mobile), minmax(0, 1fr));
+        }
+    }
+}

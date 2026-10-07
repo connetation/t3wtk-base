@@ -31,8 +31,8 @@
 
             <!-- Column 1 -->
             <f:if condition="{site.settings.footer.col1.content}">
-                <div class="<f:if condition="{site.settings.footer.col1.size.base}">col-{site.settings.footer.col1.size.base} </f:if><f:if condition="{site.settings.footer.col1.size.sm}">col-sm-{site.settings.footer.col1.size.sm} </f:if><f:if condition="{site.settings.footer.col1.size.md}">col-md-{site.settings.footer.col1.size.md} </f:if><f:if condition="{site.settings.footer.col1.size.lg}">col-lg-{site.settings.footer.col1.size.lg} </f:if><f:if condition="{site.settings.footer.col1.size.xl}">col-xl-{site.settings.footer.col1.size.xl} </f:if><f:if condition="{site.settings.footer.col1.size.xxl}">col-xxl-{site.settings.footer.col1.size.xxl} </f:if>{site.settings.footer.col1.mobilejustify} {site.settings.footer.col1.desktopjustify} {site.settings.footer.col1.mobilealign} {site.settings.footer.col1.desktopalign}">
-                    <div class="footer__col-inner {site.settings.footer.col1.mobilevalign} {site.settings.footer.col1.desktopvalign}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.col1.width, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.col1.align, map: {start: 'text[bp]-start mx[bp]-0', center: 'text[bp]-center mx[bp]-auto', end: 'text[bp]-end ms[bp]-auto me[bp]-0'})}">
+                    <div class="footer__col-inner {conn:responsiveClasses(value: site.settings.footer.col1.valign, pattern: 'justify-content[bp]-[value]')}">
                         <f:switch expression="{site.settings.footer.col1.content}">
                             <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                             <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
@@ -47,8 +47,8 @@
 
             <!-- Column 2 -->
             <f:if condition="{site.settings.footer.col2.content}">
-                <div class="<f:if condition="{site.settings.footer.col2.size.base}">col-{site.settings.footer.col2.size.base} </f:if><f:if condition="{site.settings.footer.col2.size.sm}">col-sm-{site.settings.footer.col2.size.sm} </f:if><f:if condition="{site.settings.footer.col2.size.md}">col-md-{site.settings.footer.col2.size.md} </f:if><f:if condition="{site.settings.footer.col2.size.lg}">col-lg-{site.settings.footer.col2.size.lg} </f:if><f:if condition="{site.settings.footer.col2.size.xl}">col-xl-{site.settings.footer.col2.size.xl} </f:if><f:if condition="{site.settings.footer.col2.size.xxl}">col-xxl-{site.settings.footer.col2.size.xxl} </f:if>{site.settings.footer.col2.mobilejustify} {site.settings.footer.col2.desktopjustify} {site.settings.footer.col2.mobilealign} {site.settings.footer.col2.desktopalign}">
-                    <div class="footer__col-inner {site.settings.footer.col2.mobilevalign} {site.settings.footer.col2.desktopvalign}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.col2.width, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.col2.align, map: {start: 'text[bp]-start mx[bp]-0', center: 'text[bp]-center mx[bp]-auto', end: 'text[bp]-end ms[bp]-auto me[bp]-0'})}">
+                    <div class="footer__col-inner {conn:responsiveClasses(value: site.settings.footer.col2.valign, pattern: 'justify-content[bp]-[value]')}">
                         <f:switch expression="{site.settings.footer.col2.content}">
                             <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                             <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
@@ -63,8 +63,8 @@
 
             <!-- Column 3 -->
             <f:if condition="{site.settings.footer.col3.content}">
-                <div class="<f:if condition="{site.settings.footer.col3.size.base}">col-{site.settings.footer.col3.size.base} </f:if><f:if condition="{site.settings.footer.col3.size.sm}">col-sm-{site.settings.footer.col3.size.sm} </f:if><f:if condition="{site.settings.footer.col3.size.md}">col-md-{site.settings.footer.col3.size.md} </f:if><f:if condition="{site.settings.footer.col3.size.lg}">col-lg-{site.settings.footer.col3.size.lg} </f:if><f:if condition="{site.settings.footer.col3.size.xl}">col-xl-{site.settings.footer.col3.size.xl} </f:if><f:if condition="{site.settings.footer.col3.size.xxl}">col-xxl-{site.settings.footer.col3.size.xxl} </f:if>{site.settings.footer.col3.mobilejustify} {site.settings.footer.col3.desktopjustify} {site.settings.footer.col3.mobilealign} {site.settings.footer.col3.desktopalign}">
-                    <div class="footer__col-inner {site.settings.footer.col3.mobilevalign} {site.settings.footer.col3.desktopvalign}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.col3.width, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.col3.align, map: {start: 'text[bp]-start mx[bp]-0', center: 'text[bp]-center mx[bp]-auto', end: 'text[bp]-end ms[bp]-auto me[bp]-0'})}">
+                    <div class="footer__col-inner {conn:responsiveClasses(value: site.settings.footer.col3.valign, pattern: 'justify-content[bp]-[value]')}">
                         <f:switch expression="{site.settings.footer.col3.content}">
                             <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                             <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
@@ -79,8 +79,8 @@
 
             <!-- Column 4 -->
             <f:if condition="{site.settings.footer.col4.content}">
-                <div class="<f:if condition="{site.settings.footer.col4.size.base}">col-{site.settings.footer.col4.size.base} </f:if><f:if condition="{site.settings.footer.col4.size.sm}">col-sm-{site.settings.footer.col4.size.sm} </f:if><f:if condition="{site.settings.footer.col4.size.md}">col-md-{site.settings.footer.col4.size.md} </f:if><f:if condition="{site.settings.footer.col4.size.lg}">col-lg-{site.settings.footer.col4.size.lg} </f:if><f:if condition="{site.settings.footer.col4.size.xl}">col-xl-{site.settings.footer.col4.size.xl} </f:if><f:if condition="{site.settings.footer.col4.size.xxl}">col-xxl-{site.settings.footer.col4.size.xxl} </f:if>{site.settings.footer.col4.mobilejustify} {site.settings.footer.col4.desktopjustify} {site.settings.footer.col4.mobilealign} {site.settings.footer.col4.desktopalign}">
-                    <div class="footer__col-inner {site.settings.footer.col4.mobilevalign} {site.settings.footer.col4.desktopvalign}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.col4.width, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.col4.align, map: {start: 'text[bp]-start mx[bp]-0', center: 'text[bp]-center mx[bp]-auto', end: 'text[bp]-end ms[bp]-auto me[bp]-0'})}">
+                    <div class="footer__col-inner {conn:responsiveClasses(value: site.settings.footer.col4.valign, pattern: 'justify-content[bp]-[value]')}">
                         <f:switch expression="{site.settings.footer.col4.content}">
                             <f:case value="brandOnly"><f:render section="BrandOnly" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
                             <f:case value="brand"><f:render section="Brand" arguments="{site: site, lightSrc: lightSrc, darkSrc: darkSrc, logoAlt: logoAlt, logoWidth: logoWidth, logoHeight: logoHeight}" /></f:case>
@@ -95,13 +95,13 @@
 
         </div>
 
-        <f:if condition="{site.settings.footer.bar.show} && ({site.settings.footer.bar.left} || {site.settings.footer.bar.center} || {site.settings.footer.bar.right})">
+        <f:if condition="{site.settings.footer.bar.show} && ({site.settings.footer.bar.col1.content} || {site.settings.footer.bar.col2.content} || {site.settings.footer.bar.col3.content})">
             <hr class="mt-4" />
             <div class="row align-items-center g-2">
 
-                <f:if condition="{site.settings.footer.bar.left}">
-                    <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start">
-                        <f:switch expression="{site.settings.footer.bar.left}">
+                <f:if condition="{site.settings.footer.bar.col1.content}">
+                    <div class="{conn:responsiveClasses(value: site.settings.footer.bar.col1.width, map: {auto: 'col[bp]'}, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.bar.col1.align, pattern: 'text[bp]-[value]')}">
+                        <f:switch expression="{site.settings.footer.bar.col1.content}">
                             <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                             <f:case value="social">
                                 <div class="footer__social d-flex flex-wrap gap-2">
@@ -116,9 +116,9 @@
                     </div>
                 </f:if>
 
-                <f:if condition="{site.settings.footer.bar.center}">
-                    <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center">
-                        <f:switch expression="{site.settings.footer.bar.center}">
+                <f:if condition="{site.settings.footer.bar.col2.content}">
+                    <div class="{conn:responsiveClasses(value: site.settings.footer.bar.col2.width, map: {auto: 'col[bp]'}, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.bar.col2.align, pattern: 'text[bp]-[value]')}">
+                        <f:switch expression="{site.settings.footer.bar.col2.content}">
                             <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                             <f:case value="social">
                                 <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-center">
@@ -133,9 +133,9 @@
                     </div>
                 </f:if>
 
-                <f:if condition="{site.settings.footer.bar.right}">
-                    <div class="col-12 col-md {site.settings.footer.bar.rightMobileAlign} text-md-end">
-                        <f:switch expression="{site.settings.footer.bar.right}">
+                <f:if condition="{site.settings.footer.bar.col3.content}">
+                    <div class="{conn:responsiveClasses(value: site.settings.footer.bar.col3.width, map: {auto: 'col[bp]'}, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.bar.col3.align, pattern: 'text[bp]-[value]')}">
+                        <f:switch expression="{site.settings.footer.bar.col3.content}">
                             <f:case value="copyright"><span class="">&copy; {currentYear} {copyrightName}</span></f:case>
                             <f:case value="social">
                                 <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">

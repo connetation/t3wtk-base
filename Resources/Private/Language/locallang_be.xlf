@@ -248,6 +248,47 @@
             <trans-unit id="flexform.textWeight">
                 <source>Text font weight</source>
             </trans-unit>
+            <!-- Per-device values: Desktop / Tablet / Mobile (Utility/Devices.php) — FormEngine field
+                 connResponsiveRange and site setting type connResponsive -->
+            <trans-unit id="responsive_range.desktop">
+                <source>Desktop</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.tablet">
+                <source>Tablet</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.mobile">
+                <source>Mobile</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.desktop">
+                <source>Same as Desktop</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.tablet">
+                <source>Same as Tablet</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.auto">
+                <source>Auto</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.auto">
+                <source>Auto — adjusts to the screen size</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.range.from">
+                <source>%d px screen width and wider</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.range.between">
+                <source>%d–%d px screen width</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.range.below">
+                <source>screen width below %d px</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.inherit.mobile">
+                <source>Same as Tablet</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.choose">
+                <source>Same as larger device</source>
+            </trans-unit>
+            <trans-unit id="responsive_range.reset">
+                <source>Reset (inherit)</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

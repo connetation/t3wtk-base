@@ -1014,7 +1014,7 @@ settings:
 
   # ─── Navbar – Panel (NavLeft / NavRight / mobile) ─────────────────────────
   navbar.mobilePanelAlign:
-    label: 'Panel – alignment (mobile)'
+    label: 'Panel – alignment (full-screen panel)'
     description: 'Content alignment inside the panel at mobile / full-screen size.'
     type: string
     default: 'start'
@@ -1025,7 +1025,7 @@ settings:
       end: 'Right'
 
   navbar.desktopPanelAlign:
-    label: 'Panel – alignment (desktop)'
+    label: 'Panel – alignment (sidebar, from the panel breakpoint)'
     description: 'Content alignment inside the panel once it becomes a sidebar at the panel breakpoint. Leave empty to use the same alignment as mobile.'
     type: string
     default: ''
@@ -1318,6 +1318,72 @@ settings:
     default: false
     category: conn.footer
 
+  footer.bar.col1.width:
+    label: 'Bottom bar – Column 1 – Width (of 12)'
+    description: '"Auto" shares the row equally with the other visible bottom bar columns; a number is a fixed share of the 12 grid columns. 12 = full width.'
+    type: connResponsive
+    default: 'auto,,12'
+    category: conn.footer.bar
+    options:
+      choices:
+        auto: 'Auto (share the row)'
+        '1': '1'
+        '2': '2'
+        '3': '3'
+        '4': '4'
+        '5': '5'
+        '6': '6'
+        '7': '7'
+        '8': '8'
+        '9': '9'
+        '10': '10'
+        '11': '11'
+        '12': '12 (full)'
+
+  footer.bar.col2.width:
+    label: 'Bottom bar – Column 2 – Width (of 12)'
+    description: '"Auto" shares the row equally with the other visible bottom bar columns; a number is a fixed share of the 12 grid columns. 12 = full width.'
+    type: connResponsive
+    default: 'auto,,12'
+    category: conn.footer.bar
+    options:
+      choices:
+        auto: 'Auto (share the row)'
+        '1': '1'
+        '2': '2'
+        '3': '3'
+        '4': '4'
+        '5': '5'
+        '6': '6'
+        '7': '7'
+        '8': '8'
+        '9': '9'
+        '10': '10'
+        '11': '11'
+        '12': '12 (full)'
+
+  footer.bar.col3.width:
+    label: 'Bottom bar – Column 3 – Width (of 12)'
+    description: '"Auto" shares the row equally with the other visible bottom bar columns; a number is a fixed share of the 12 grid columns. 12 = full width.'
+    type: connResponsive
+    default: 'auto,,12'
+    category: conn.footer.bar
+    options:
+      choices:
+        auto: 'Auto (share the row)'
+        '1': '1'
+        '2': '2'
+        '3': '3'
+        '4': '4'
+        '5': '5'
+        '6': '6'
+        '7': '7'
+        '8': '8'
+        '9': '9'
+        '10': '10'
+        '11': '11'
+        '12': '12 (full)'
+
   # ─── Footer – Bottom bar ──────────────────────────────────────────────────
   footer.bar.show:
     label: 'Show bottom bar'
@@ -1325,8 +1391,8 @@ settings:
     default: true
     category: conn.footer.bar
 
-  footer.bar.left:
-    label: 'Bottom bar – Left slot'
+  footer.bar.col1.content:
+    label: 'Bottom bar – Column 1 – Content'
     type: string
     default: 'copyright'
     category: conn.footer.bar
@@ -1339,8 +1405,8 @@ settings:
       tagline: 'Tagline'
       '': 'Empty'
 
-  footer.bar.center:
-    label: 'Bottom bar – Center slot'
+  footer.bar.col2.content:
+    label: 'Bottom bar – Column 2 – Content'
     type: string
     default: ''
     category: conn.footer.bar
@@ -1353,8 +1419,8 @@ settings:
       tagline: 'Tagline'
       '': 'Empty'
 
-  footer.bar.right:
-    label: 'Bottom bar – Right slot'
+  footer.bar.col3.content:
+    label: 'Bottom bar – Column 3 – Content'
     type: string
     default: 'social'
     category: conn.footer.bar
@@ -1367,35 +1433,41 @@ settings:
       tagline: 'Tagline'
       '': 'Empty'
 
-  footer.bar.leftMobileAlign:
-    label: 'Bottom bar – Left slot text alignment (mobile, <768px)'
-    type: string
-    default: ''
+  # Per device (type connResponsive): Desktop / Tablet / Mobile.
+  footer.bar.col1.align:
+    label: 'Bottom bar – Column 1 – Alignment'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.bar
-    enum:
-      '': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
-  footer.bar.centerMobileAlign:
-    label: 'Bottom bar – Center slot text alignment (mobile, <768px)'
-    type: string
-    default: 'text-center'
+  # Per device (type connResponsive): Desktop / Tablet / Mobile.
+  footer.bar.col2.align:
+    label: 'Bottom bar – Column 2 – Alignment'
+    type: connResponsive
+    default: 'center,,start'
     category: conn.footer.bar
-    enum:
-      '': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
-  footer.bar.rightMobileAlign:
-    label: 'Bottom bar – Right slot text alignment (mobile, <768px)'
-    type: string
-    default: ''
+  # Per device (type connResponsive): Desktop / Tablet / Mobile.
+  footer.bar.col3.align:
+    label: 'Bottom bar – Column 3 – Alignment'
+    type: connResponsive
+    default: 'end,,start'
     category: conn.footer.bar
-    enum:
-      '': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
   # ─── Footer – Colors ──────────────────────────────────────────────────────
   # CSS var (ThemeVarsProcessor): --conn-footer-bg
@@ -1502,171 +1574,42 @@ settings:
       social: 'Social links'
       '': 'Empty'
 
-  footer.col1.size.base:
-    label: 'Column 1 – Width (default, all sizes unless overridden, of 12)'
-    type: string
-    default: '12'
+  # Per device (type connResponsive — Desktop / Tablet / Mobile tabs, stored as
+  # "desktop,tablet,mobile"; an empty tablet/mobile value = same as the larger device).
+  footer.col1.width:
+    label: 'Column 1 – Width (of 12)'
+    description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
+    type: connResponsive
+    default: '4,6,12'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      min: 1
+      max: 12
+      step: 1
 
-  footer.col1.size.sm:
-    label: 'Column 1 – Width (small, ≥576px, of 12)'
-    type: string
-    default: ''
+  footer.col1.align:
+    label: 'Column 1 – Alignment'
+    description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
-  footer.col1.size.md:
-    label: 'Column 1 – Width (medium, ≥768px, of 12)'
-    type: string
-    default: '6'
+  footer.col1.valign:
+    label: 'Column 1 – Vertical position'
+    description: 'Position of this column''s content when other columns make the row taller.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col1.size.lg:
-    label: 'Column 1 – Width (large, ≥992px, of 12)'
-    type: string
-    default: '4'
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col1.size.xl:
-    label: 'Column 1 – Width (x-large, ≥1200px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col1.size.xxl:
-    label: 'Column 1 – Width (xx-large, ≥1400px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col1.mobilealign:
-    label: 'Column 1 – Text alignment (mobile, <768px)'
-    type: string
-    default: 'text-start'
-    category: conn.footer.grid
-    enum:
-      'text-start': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
-
-  footer.col1.mobilejustify:
-    label: 'Column 1 – Position in row (mobile, <768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-auto': 'Center'
-      'ms-auto': 'Right'
-
-  footer.col1.desktopalign:
-    label: 'Column 1 – Text alignment (desktop, >=768px)'
-    type: string
-    default: 'text-md-start'
-    category: conn.footer.grid
-    enum:
-      'text-md-start': 'Left'
-      'text-md-center': 'Center'
-      'text-md-end': 'Right'
-
-  footer.col1.desktopjustify:
-    label: 'Column 1 – Position in row (desktop, >=768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-md-auto': 'Center'
-      'ms-md-auto': 'Right'
-
-  footer.col1.mobilevalign:
-    label: 'Column 1 – Vertical position (mobile, <768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-start': 'Top'
-      'justify-content-center': 'Center'
-      'justify-content-end': 'Bottom'
-
-  footer.col1.desktopvalign:
-    label: 'Column 1 – Vertical position (desktop, >=768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-md-start': 'Top'
-      'justify-content-md-center': 'Center'
-      'justify-content-md-end': 'Bottom'
+    options:
+      choices:
+        start: 'Top (default)'
+        center: 'Center'
+        end: 'Bottom'
 
   footer.col2.content:
     label: 'Column 2 – Content'
@@ -1682,171 +1625,42 @@ settings:
       social: 'Social links'
       '': 'Empty'
 
-  footer.col2.size.base:
-    label: 'Column 2 – Width (default, all sizes unless overridden, of 12)'
-    type: string
-    default: '12'
+  # Per device (type connResponsive — Desktop / Tablet / Mobile tabs, stored as
+  # "desktop,tablet,mobile"; an empty tablet/mobile value = same as the larger device).
+  footer.col2.width:
+    label: 'Column 2 – Width (of 12)'
+    description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
+    type: connResponsive
+    default: '4,6,12'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      min: 1
+      max: 12
+      step: 1
 
-  footer.col2.size.sm:
-    label: 'Column 2 – Width (small, ≥576px, of 12)'
-    type: string
-    default: ''
+  footer.col2.align:
+    label: 'Column 2 – Alignment'
+    description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
-  footer.col2.size.md:
-    label: 'Column 2 – Width (medium, ≥768px, of 12)'
-    type: string
-    default: '6'
+  footer.col2.valign:
+    label: 'Column 2 – Vertical position'
+    description: 'Position of this column''s content when other columns make the row taller.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col2.size.lg:
-    label: 'Column 2 – Width (large, ≥992px, of 12)'
-    type: string
-    default: '4'
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col2.size.xl:
-    label: 'Column 2 – Width (x-large, ≥1200px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col2.size.xxl:
-    label: 'Column 2 – Width (xx-large, ≥1400px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col2.mobilealign:
-    label: 'Column 2 – Text alignment (mobile, <768px)'
-    type: string
-    default: 'text-start'
-    category: conn.footer.grid
-    enum:
-      'text-start': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
-
-  footer.col2.mobilejustify:
-    label: 'Column 2 – Position in row (mobile, <768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-auto': 'Center'
-      'ms-auto': 'Right'
-
-  footer.col2.desktopalign:
-    label: 'Column 2 – Text alignment (desktop, >=768px)'
-    type: string
-    default: 'text-md-start'
-    category: conn.footer.grid
-    enum:
-      'text-md-start': 'Left'
-      'text-md-center': 'Center'
-      'text-md-end': 'Right'
-
-  footer.col2.desktopjustify:
-    label: 'Column 2 – Position in row (desktop, >=768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-md-auto': 'Center'
-      'ms-md-auto': 'Right'
-
-  footer.col2.mobilevalign:
-    label: 'Column 2 – Vertical position (mobile, <768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-start': 'Top'
-      'justify-content-center': 'Center'
-      'justify-content-end': 'Bottom'
-
-  footer.col2.desktopvalign:
-    label: 'Column 2 – Vertical position (desktop, >=768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-md-start': 'Top'
-      'justify-content-md-center': 'Center'
-      'justify-content-md-end': 'Bottom'
+    options:
+      choices:
+        start: 'Top (default)'
+        center: 'Center'
+        end: 'Bottom'
 
   footer.col3.content:
     label: 'Column 3 – Content'
@@ -1862,171 +1676,42 @@ settings:
       social: 'Social links'
       '': 'Empty'
 
-  footer.col3.size.base:
-    label: 'Column 3 – Width (default, all sizes unless overridden, of 12)'
-    type: string
-    default: '12'
+  # Per device (type connResponsive — Desktop / Tablet / Mobile tabs, stored as
+  # "desktop,tablet,mobile"; an empty tablet/mobile value = same as the larger device).
+  footer.col3.width:
+    label: 'Column 3 – Width (of 12)'
+    description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
+    type: connResponsive
+    default: '4,6,12'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      min: 1
+      max: 12
+      step: 1
 
-  footer.col3.size.sm:
-    label: 'Column 3 – Width (small, ≥576px, of 12)'
-    type: string
-    default: ''
+  footer.col3.align:
+    label: 'Column 3 – Alignment'
+    description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
-  footer.col3.size.md:
-    label: 'Column 3 – Width (medium, ≥768px, of 12)'
-    type: string
-    default: '6'
+  footer.col3.valign:
+    label: 'Column 3 – Vertical position'
+    description: 'Position of this column''s content when other columns make the row taller.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col3.size.lg:
-    label: 'Column 3 – Width (large, ≥992px, of 12)'
-    type: string
-    default: '4'
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col3.size.xl:
-    label: 'Column 3 – Width (x-large, ≥1200px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col3.size.xxl:
-    label: 'Column 3 – Width (xx-large, ≥1400px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col3.mobilealign:
-    label: 'Column 3 – Text alignment (mobile, <768px)'
-    type: string
-    default: 'text-start'
-    category: conn.footer.grid
-    enum:
-      'text-start': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
-
-  footer.col3.mobilejustify:
-    label: 'Column 3 – Position in row (mobile, <768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-auto': 'Center'
-      'ms-auto': 'Right'
-
-  footer.col3.desktopalign:
-    label: 'Column 3 – Text alignment (desktop, >=768px)'
-    type: string
-    default: 'text-md-start'
-    category: conn.footer.grid
-    enum:
-      'text-md-start': 'Left'
-      'text-md-center': 'Center'
-      'text-md-end': 'Right'
-
-  footer.col3.desktopjustify:
-    label: 'Column 3 – Position in row (desktop, >=768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-md-auto': 'Center'
-      'ms-md-auto': 'Right'
-
-  footer.col3.mobilevalign:
-    label: 'Column 3 – Vertical position (mobile, <768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-start': 'Top'
-      'justify-content-center': 'Center'
-      'justify-content-end': 'Bottom'
-
-  footer.col3.desktopvalign:
-    label: 'Column 3 – Vertical position (desktop, >=768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-md-start': 'Top'
-      'justify-content-md-center': 'Center'
-      'justify-content-md-end': 'Bottom'
+    options:
+      choices:
+        start: 'Top (default)'
+        center: 'Center'
+        end: 'Bottom'
 
   footer.col4.content:
     label: 'Column 4 – Content'
@@ -2042,171 +1727,42 @@ settings:
       social: 'Social links'
       '': 'Empty'
 
-  footer.col4.size.base:
-    label: 'Column 4 – Width (default, all sizes unless overridden, of 12)'
-    type: string
-    default: '12'
+  # Per device (type connResponsive — Desktop / Tablet / Mobile tabs, stored as
+  # "desktop,tablet,mobile"; an empty tablet/mobile value = same as the larger device).
+  footer.col4.width:
+    label: 'Column 4 – Width (of 12)'
+    description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
+    type: connResponsive
+    default: '3,6,12'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      min: 1
+      max: 12
+      step: 1
 
-  footer.col4.size.sm:
-    label: 'Column 4 – Width (small, ≥576px, of 12)'
-    type: string
-    default: ''
+  footer.col4.align:
+    label: 'Column 4 – Alignment'
+    description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
+    options:
+      choices:
+        start: 'Left'
+        center: 'Center'
+        end: 'Right'
 
-  footer.col4.size.md:
-    label: 'Column 4 – Width (medium, ≥768px, of 12)'
-    type: string
-    default: '6'
+  footer.col4.valign:
+    label: 'Column 4 – Vertical position'
+    description: 'Position of this column''s content when other columns make the row taller.'
+    type: connResponsive
+    default: 'start'
     category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col4.size.lg:
-    label: 'Column 4 – Width (large, ≥992px, of 12)'
-    type: string
-    default: '3'
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col4.size.xl:
-    label: 'Column 4 – Width (x-large, ≥1200px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col4.size.xxl:
-    label: 'Column 4 – Width (xx-large, ≥1400px, of 12)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Inherit'
-      '2': '2'
-      '3': '3'
-      '4': '4'
-      '5': '5'
-      '6': '6'
-      '7': '7'
-      '8': '8'
-      '9': '9'
-      '12': '12 (full)'
-
-  footer.col4.mobilealign:
-    label: 'Column 4 – Text alignment (mobile, <768px)'
-    type: string
-    default: 'text-start'
-    category: conn.footer.grid
-    enum:
-      'text-start': 'Left'
-      'text-center': 'Center'
-      'text-end': 'Right'
-
-  footer.col4.mobilejustify:
-    label: 'Column 4 – Position in row (mobile, <768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-auto': 'Center'
-      'ms-auto': 'Right'
-
-  footer.col4.desktopalign:
-    label: 'Column 4 – Text alignment (desktop, >=768px)'
-    type: string
-    default: 'text-md-start'
-    category: conn.footer.grid
-    enum:
-      'text-md-start': 'Left'
-      'text-md-center': 'Center'
-      'text-md-end': 'Right'
-
-  footer.col4.desktopjustify:
-    label: 'Column 4 – Position in row (desktop, >=768px)'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'Left'
-      'mx-md-auto': 'Center'
-      'ms-md-auto': 'Right'
-
-  footer.col4.mobilevalign:
-    label: 'Column 4 – Vertical position (mobile, <768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-start': 'Top'
-      'justify-content-center': 'Center'
-      'justify-content-end': 'Bottom'
-
-  footer.col4.desktopvalign:
-    label: 'Column 4 – Vertical position (desktop, >=768px)'
-    description: 'Position of this column''s content within the row when other columns make it taller. "None" keeps the default (stretched to the row''s full height).'
-    type: string
-    default: ''
-    category: conn.footer.grid
-    enum:
-      '': 'None (default)'
-      'justify-content-md-start': 'Top'
-      'justify-content-md-center': 'Center'
-      'justify-content-md-end': 'Bottom'
+    options:
+      choices:
+        start: 'Top (default)'
+        center: 'Center'
+        end: 'Bottom'
 
   # ─── Footer – Navigation ──────────────────────────────────────────────────
   footer.navigation.type:

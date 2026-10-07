@@ -24,14 +24,14 @@
 </f:if>
 <f:variable name="logoAlt">{f:if(condition: '{site.settings.branding.logoAlt}', then: '{site.settings.branding.logoAlt}', else: '{site.configuration.websiteTitle}')}</f:variable>
 
-<f:if condition="{site.settings.footer.bar.show} && ({site.settings.footer.bar.left} || {site.settings.footer.bar.center} || {site.settings.footer.bar.right})">
+<f:if condition="{site.settings.footer.bar.show} && ({site.settings.footer.bar.col1.content} || {site.settings.footer.bar.col2.content} || {site.settings.footer.bar.col3.content})">
 <footer class="footer py-3" id="footer">
     <div class="container">
         <div class="row align-items-center g-2">
 
-            <f:if condition="{site.settings.footer.bar.left}">
-                <div class="col-12 col-md {site.settings.footer.bar.leftMobileAlign} text-md-start">
-                    <f:switch expression="{site.settings.footer.bar.left}">
+            <f:if condition="{site.settings.footer.bar.col1.content}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.bar.col1.width, map: {auto: 'col[bp]'}, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.bar.col1.align, pattern: 'text[bp]-[value]')}">
+                    <f:switch expression="{site.settings.footer.bar.col1.content}">
                         <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                         <f:case value="social">
                             <div class="footer__social d-flex flex-wrap gap-2">
@@ -46,9 +46,9 @@
                 </div>
             </f:if>
 
-            <f:if condition="{site.settings.footer.bar.center}">
-                <div class="col-12 col-md {site.settings.footer.bar.centerMobileAlign} text-md-center">
-                    <f:switch expression="{site.settings.footer.bar.center}">
+            <f:if condition="{site.settings.footer.bar.col2.content}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.bar.col2.width, map: {auto: 'col[bp]'}, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.bar.col2.align, pattern: 'text[bp]-[value]')}">
+                    <f:switch expression="{site.settings.footer.bar.col2.content}">
                         <f:case value="copyright">&copy; {currentYear} {copyrightName}</f:case>
                         <f:case value="social">
                             <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-center">
@@ -63,9 +63,9 @@
                 </div>
             </f:if>
 
-            <f:if condition="{site.settings.footer.bar.right}">
-                <div class="col-12 col-md {site.settings.footer.bar.rightMobileAlign} text-md-end">
-                    <f:switch expression="{site.settings.footer.bar.right}">
+            <f:if condition="{site.settings.footer.bar.col3.content}">
+                <div class="{conn:responsiveClasses(value: site.settings.footer.bar.col3.width, map: {auto: 'col[bp]'}, pattern: 'col[bp]-[value]')} {conn:responsiveClasses(value: site.settings.footer.bar.col3.align, pattern: 'text[bp]-[value]')}">
+                    <f:switch expression="{site.settings.footer.bar.col3.content}">
                         <f:case value="copyright"><span class="">&copy; {currentYear} {copyrightName}</span></f:case>
                         <f:case value="social">
                             <div class="footer__social d-flex flex-wrap gap-2 justify-content-md-end">
