@@ -322,6 +322,14 @@
                 <source>Like H6</source>
                 <target>Wie H6</target>
             </trans-unit>
+            <trans-unit id="media_radius">
+                <source>Border radius (images and videos)</source>
+                <target>Eckenradius (Bilder und Videos)</target>
+            </trans-unit>
+            <trans-unit id="media_radius.description">
+                <source>Corner radius of the images and videos. "Theme default" follows the site setting Theme & Colors → Shape → Corner radius.</source>
+                <target>Eckenradius der Bilder und Videos. „Theme-Standard“ folgt der Site-Einstellung Theme & Farben → Form → Eckenradius.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

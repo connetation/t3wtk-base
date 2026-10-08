@@ -1,3 +1,4 @@
+@use '../theme/tokens';
 // ─────────────────────────────────────────────────────────────────────────────
 // Content element gallery (Text & Images, Text & Media, Images)
 //
@@ -14,6 +15,22 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 .ce-gallery.conn-gallery {
+    // Corner radius of images and videos — the element's "Border radius"
+    // (tx_conn_t3wtk_base_media_radius → data-radius); empty/unset = theme.
+    --conn-media-radius: var(--conn-radius);
+    @include tokens.conn-radius-option(--conn-media-radius);
+
+    img.image-embed-item,
+    video,
+    iframe,
+    .video-thumb {
+        border-radius: var(--conn-media-radius);
+    }
+
+    .video-thumb {
+        overflow: hidden;
+    }
+
     // fsc default styles set figure { display: table } (shrink-wrap) and
     // figcaption { display: table-caption } — undo for column cells.
     figure {

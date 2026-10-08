@@ -5,6 +5,7 @@ declare(strict_types=1);
 defined('TYPO3') or die();
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use Connetation\T3wtkBase\Utility\RadiusOptions;
 
 // Content element registrations live in EXT:conn_t3wtk_elements (optional package, required per project).
 // Add conn_t3wtk_base CE overrides here if needed.
@@ -283,6 +284,28 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 // header_class fits both 'header' and 'headers' (every CE has a header);
 // subheader_layout/subheader_class/eyebrow only make sense in 'headers' (the
 // only palette with subheader).
+// ─── Media radius — Text & Media / Text & Images / Images ─────────────────
+// Corner radius of the gallery's images and videos; "Theme default" follows
+// the site's Corner radius setting (theme.radius), like every element's own
+// "Border radius" option. Lives in core's mediaAdjustments palette (image
+// width/height/border), which only these image elements use.
+ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'tx_conn_t3wtk_base_media_radius' => [
+        'exclude' => true,
+        'label'   => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:media_radius',
+        'description' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:media_radius.description',
+        'config'  => [
+            'type'          => 'select',
+            'renderType'    => 'selectSingle',
+            'default'       => RadiusOptions::THEME_DEFAULT,
+            'itemsProcFunc' => RadiusOptions::class . '->addItems',
+            // Options come from itemsProcFunc only — without a length TYPO3 would create a longtext column.
+            'dbFieldLength' => 20,
+        ],
+    ],
+]);
+ExtensionManagementUtility::addFieldsToPalette('tt_content', 'mediaAdjustments', 'tx_conn_t3wtk_base_media_radius', 'after:imageborder');
+
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_conn_t3wtk_base_header_class', 'after:header_layout');
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_t3wtk_base_header_class', 'after:header_layout');
 ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_conn_t3wtk_base_subheader_layout, tx_conn_t3wtk_base_subheader_class', 'after:subheader');

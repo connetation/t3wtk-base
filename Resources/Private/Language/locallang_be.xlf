@@ -334,6 +334,12 @@
             <trans-unit id="heading_size.h6">
                 <source>Like H6</source>
             </trans-unit>
+            <trans-unit id="media_radius">
+                <source>Border radius (images and videos)</source>
+            </trans-unit>
+            <trans-unit id="media_radius.description">
+                <source>Corner radius of the images and videos. "Theme default" follows the site setting Theme & Colors → Shape → Corner radius.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

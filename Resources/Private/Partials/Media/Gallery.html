@@ -24,7 +24,7 @@
 
     <f:if condition="{data.imagewidth} || {data.imageheight}">
         <f:then>
-            <div class="ce-gallery conn-gallery conn-gallery--fixed{f:if(condition: data.imageborder, then: ' ce-border')}"
+            <div class="ce-gallery conn-gallery conn-gallery--fixed{f:if(condition: data.imageborder, then: ' ce-border')}" data-radius="{data.tx_conn_t3wtk_base_media_radius}"
                  data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
                  style="--conn-gallery-cols: {cols}; --conn-gallery-gap: {rowSpacing}px {columnSpacing}px;{borderVars}">
                 <f:for each="{gallery.rows}" as="row">
@@ -37,7 +37,7 @@
             </div>
         </f:then>
         <f:else>
-            <div class="ce-gallery conn-gallery row row-cols-{rowColsMobile} row-cols-md-{rowColsDesktop}{f:if(condition: data.imageborder, then: ' ce-border')}"
+            <div class="ce-gallery conn-gallery row row-cols-{rowColsMobile} row-cols-md-{rowColsDesktop}{f:if(condition: data.imageborder, then: ' ce-border')}" data-radius="{data.tx_conn_t3wtk_base_media_radius}"
                  data-ce-columns="{cols}" data-ce-images="{gallery.count.files}"
                  style="--conn-gallery-cols: {cols}; --bs-gutter-x: {columnSpacing}px; --bs-gutter-y: {rowSpacing}px;{borderVars}">
                 <f:for each="{gallery.rows}" as="row">

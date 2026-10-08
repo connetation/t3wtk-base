@@ -9,3 +9,9 @@ blockquote {
     padding-left: 1rem;
     color: var(--bs-secondary-color);
 }
+
+// Images placed in rich text follow the theme's corner radius
+// (site setting theme.radius), like images in the image gallery.
+.ce-bodytext img {
+    border-radius: var(--conn-radius);
+}
