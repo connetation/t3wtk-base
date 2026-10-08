@@ -35,14 +35,11 @@ connetation/t3wtk-base/                         # TYPO3 extension (connetation/t
 
 ## Installation
 
-```json
-"repositories": [
-    { "type": "composer", "url": "https://composer-v2.connetation.at/" }
-],
-"require": {
-    "connetation/t3wtk-base": "^1.0"
-}
+```bash
+composer require connetation/t3wtk-base
 ```
+
+Classic (non-Composer) installations can install the extension `conn_t3wtk_base` from the [TYPO3 Extension Repository](https://extensions.typo3.org/extension/conn_t3wtk_base).
 
 In your TYPO3 site config (`config/sites/<site>/config.yaml`):
 

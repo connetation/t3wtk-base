@@ -1,9 +1,13 @@
 {
     "name": "connetation/t3wtk-base",
-    "version": "3.0.0",
     "description": "Connetation Base for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
+    "homepage": "https://github.com/connetation/t3wtk-base",
+    "support": {
+        "issues": "https://github.com/connetation/t3wtk-base/issues",
+        "source": "https://github.com/connetation/t3wtk-base"
+    },
     "authors": [
         {
             "name": "Connetation Web Engineering GmbH",
