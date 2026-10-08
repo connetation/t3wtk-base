@@ -28,6 +28,14 @@ Connetation Base
 
 ----
 
+.. tip::
+
+   **Quickstart:** the fastest way to start a new TYPO3 14 project with
+   ``connetation/t3wtk-base``, ``connetation/t3wtk-elements`` and
+   ``connetation/t3wtk-sitepackage`` is
+   `t3wtk-quickstart-shell <https://github.com/connetation/t3wtk-quickstart-shell>`__ — a ready-to-use DDEV project
+   template. Clone it and run ``ddev setup-project``.
+
 Connetation Base is a Bootstrap 5 base extension for TYPO3 LTS 14, providing
 the reusable foundation for Connetation TYPO3 projects: page templates,
 TypoScript, TCA extensions, SCSS design tokens, and PHP data
