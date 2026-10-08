@@ -338,7 +338,7 @@
                 <source>Border radius (images and videos)</source>
             </trans-unit>
             <trans-unit id="media_radius.description">
-                <source>Corner radius of the images and videos. "Theme default" follows the site setting Theme & Colors → Shape → Corner radius.</source>
+                <source>Corner radius of the images and videos. "Theme default" follows the site setting Theme &amp; Colors → Shape → Corner radius.</source>
             </trans-unit>
         </body>
     </file>

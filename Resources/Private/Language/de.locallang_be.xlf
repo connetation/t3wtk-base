@@ -327,8 +327,8 @@
                 <target>Eckenradius (Bilder und Videos)</target>
             </trans-unit>
             <trans-unit id="media_radius.description">
-                <source>Corner radius of the images and videos. "Theme default" follows the site setting Theme & Colors → Shape → Corner radius.</source>
-                <target>Eckenradius der Bilder und Videos. „Theme-Standard“ folgt der Site-Einstellung Theme & Farben → Form → Eckenradius.</target>
+                <source>Corner radius of the images and videos. "Theme default" follows the site setting Theme &amp; Colors → Shape → Corner radius.</source>
+                <target>Eckenradius der Bilder und Videos. „Theme-Standard“ folgt der Site-Einstellung Theme &amp; Farben → Form → Eckenradius.</target>
             </trans-unit>
         </body>
     </file>
