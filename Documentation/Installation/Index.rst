@@ -10,17 +10,9 @@ Install via Composer::
 
    composer require connetation/t3wtk-base
 
-If you consume this package from a private Composer repository, add it to
-your project's ``composer.json`` first::
-
-   {
-       "repositories": [
-           { "type": "composer", "url": "<your-composer-repository-url>" }
-       ],
-       "require": {
-           "connetation/t3wtk-base": "^1.0"
-       }
-   }
+Classic mode (non-Composer) installations can install the extension
+``conn_t3wtk_base`` from the
+`TYPO3 Extension Repository <https://extensions.typo3.org/extension/conn_t3wtk_base>`__.
 
 .. _installation-site-set:
 

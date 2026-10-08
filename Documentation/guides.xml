@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guides
     xmlns="https://www.phpdoc.org/guides"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.phpdoc.org/guides vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+    links-are-relative="true"
 >
-    <extension class="T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"/>
+    <extension
+        class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+        project-home="https://extensions.typo3.org/extension/conn_t3wtk_base"
+        project-contact="mailto:office@connetation.at"
+        project-repository="https://github.com/connetation/t3wtk-base"
+        project-issues="https://github.com/connetation/t3wtk-base/issues"
+        edit-on-github-branch="main"
+        edit-on-github="connetation/t3wtk-base"
+        typo3-core-preferred="stable"
+        interlink-shortcode="connetation/t3wtk-base"
+    />
+    <project
+        title="Connetation Base"
+        release="main"
+        copyright="since 2026 by Connetation Web Engineering GmbH"
+    />
 </guides>

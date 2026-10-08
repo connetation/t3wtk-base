@@ -1,0 +1,2 @@
+..  This file is included at the top of every page.
+..  Add global substitutions or roles here.
