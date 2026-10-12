@@ -160,6 +160,16 @@
 
         <hr />
 
+        <f:if condition="{footerBarNavigation}">
+            <ul class="list-inline mb-2">
+                <f:for each="{footerBarNavigation}" as="item">
+                    <li class="list-inline-item">
+                        <a href="{item.link}" <f:if condition="{item.target}">target="{item.target}"</f:if> class="footer__link text-decoration-none">{item.title}</a>
+                    </li>
+                </f:for>
+            </ul>
+        </f:if>
+
         <p class="mb-0">
             &copy; {currentYear}
             {f:if(condition: '{site.settings.footer.copyrightName}', then: '{site.settings.footer.copyrightName}', else: '{site.configuration.websiteTitle}')}

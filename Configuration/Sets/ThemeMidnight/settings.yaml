@@ -76,6 +76,6 @@ footer.col3.size.lg: '3'
 # Footer column alignment: navigation left, address right
 footer.col2.desktopalign: text-md-start
 footer.col3.desktopalign: text-md-end
-footer.bar.left: copyright
-footer.bar.center: navigation
-footer.bar.right: social
+footer.bar.col1.content: copyright
+footer.bar.col2.content: navigation
+footer.bar.col3.content: social

@@ -1408,7 +1408,7 @@ settings:
   footer.bar.col2.content:
     label: 'Bottom bar – Column 2 – Content'
     type: string
-    default: ''
+    default: 'navigation'
     category: conn.footer.bar
     enum:
       copyright: 'Copyright'

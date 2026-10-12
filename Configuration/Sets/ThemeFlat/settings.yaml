@@ -97,5 +97,6 @@ footer.col1.desktopalign: text-md-start
 footer.col2.desktopalign: text-md-start
 footer.col3.desktopalign: text-md-start
 footer.col4.desktopalign: text-md-start
-footer.bar.left: copyright
-footer.bar.right: navigation
+footer.bar.col1.content: copyright
+footer.bar.col2.content: ''
+footer.bar.col3.content: navigation

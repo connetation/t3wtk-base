@@ -58,6 +58,6 @@ navbar.topDropdownStyle: list
 # Footer: minimal single row
 footer.layout: Minimal
 footer.showSocial: true
-footer.bar.left: brand
-footer.bar.center: navigation
-footer.bar.right: social
+footer.bar.col1.content: brand
+footer.bar.col2.content: navigation
+footer.bar.col3.content: social

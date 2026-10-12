@@ -53,5 +53,6 @@ footer.col2.desktopalign: text-md-start
 footer.col3.desktopalign: text-md-center
 footer.col4.desktopalign: text-md-end
 footer.col4.desktopvalign: justify-content-md-end
-footer.bar.left: copyright
-footer.bar.right: navigation
+footer.bar.col1.content: copyright
+footer.bar.col2.content: ''
+footer.bar.col3.content: navigation
