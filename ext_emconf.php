@@ -7,7 +7,7 @@
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -21,12 +21,12 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Connetation TYPO3 Web Toolkit: Base',
-    'description' => 'TYPO3 LTS 14 base extension with Bootstrap 5, light/dark theme, templates and default configuration',
+    'description' => 'Design system and foundation of the Connetation TYPO3 Web Toolkit (T3WTK) for TYPO3 14 LTS: page templates, navigation, footer, light/dark mode and 250+ site settings. Themeable without writing code. Built on Site Sets and Bootstrap 5.',
     'category' => 'templates',
     'author' => 'Connetation Web Engineering GmbH',
     'author_email' => 'office@connetation.at',
     'state' => 'stable',
-    'version' => '3.1.2',
+    'version' => '3.1.3',
     'constraints' => [
         'depends' => [
             'typo3'                => '14.0.0-14.99.99',

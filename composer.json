@@ -1,6 +1,7 @@
 {
     "name": "connetation/t3wtk-base",
-    "description": "Connetation Base for TYPO3 LTS 14 with Bootstrap 5, light/dark theme",
+    "description": "Design system and foundation of the Connetation TYPO3 Web Toolkit (T3WTK) for TYPO3 14 LTS: page templates, navigation, footer, light/dark mode and 250+ site settings. Themeable without writing code. Built on Site Sets and Bootstrap 5.",
+    "keywords": ["TYPO3", "TYPO3 CMS", "extension", "t3wtk", "toolkit", "sitepackage", "theme", "design system", "content elements", "bootstrap", "site sets", "dark mode"],
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
     "homepage": "https://github.com/connetation/t3wtk-base",
