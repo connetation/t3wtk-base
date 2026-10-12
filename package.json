@@ -17,10 +17,10 @@
   "devDependencies": {
     "@ckeditor/ckeditor5-emoji": "47.6.0",
     "bootstrap": "^5.3.3",
-    "esbuild": "^0.21.0",
+    "esbuild": "^0.28.2",
     "sass": "^1.77.0",
-    "stylelint": "^16.0.0",
-    "stylelint-config-standard-scss": "^13.0.0"
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard-scss": "^13.1.0"
   },
   "dependencies": {
     "glightbox": "^3.3.1",
