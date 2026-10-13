@@ -1,3 +1,5 @@
+> **🚀 Quickstart:** the fastest way to start a new TYPO3 14 project with `connetation/t3wtk-base`, `connetation/t3wtk-elements` and `connetation/t3wtk-sitepackage` is **[t3wtk-quickstart-shell](https://github.com/connetation/t3wtk-quickstart-shell)** — a ready-to-use DDEV project template. Clone it and run `ddev setup-project`.
+
 # T3WTK – Connetation TYPO3 Web Toolkit
 
 From an empty TYPO3 installation to a complete, themeable website in hours instead of weeks.
@@ -65,8 +67,6 @@ GitHub Issues and Discussions.
 ## This package: `connetation/t3wtk-base`
 
 Design system and foundation of the Connetation TYPO3 Web Toolkit (T3WTK) for TYPO3 14 LTS: page templates, navigation, footer, light/dark mode and 250+ site settings. Themeable without writing code. Built on Site Sets and Bootstrap 5.
-
-> **🚀 Quickstart:** the fastest way to start a new TYPO3 14 project with `connetation/t3wtk-base`, `connetation/t3wtk-elements` and `connetation/t3wtk-sitepackage` is **[t3wtk-quickstart-shell](https://github.com/connetation/t3wtk-quickstart-shell)** — a ready-to-use DDEV project template. Clone it and run `ddev setup-project`.
 
 Bootstrap 5 base extension with light/dark theme. Provides the reusable foundation for all Connetation TYPO3 projects — templates, TypoScript, TCA, SCSS, and PHP classes.
 
