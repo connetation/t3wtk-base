@@ -335,7 +335,9 @@ legend {
 // ── Buttons — outline-primary ─────────────────
 
 .btn-outline-primary {
-    --bs-btn-color:              var(--conn-btn-bg);
+    // Text in the (darker) link color: the button/accent color is below WCAG AA
+    // as text on light backgrounds in most themes. Border stays the button color.
+    --bs-btn-color:              var(--conn-link, var(--conn-btn-bg));
     --bs-btn-border-color:       var(--conn-btn-bg);
     --bs-btn-hover-color:        var(--conn-btn-color);
     --bs-btn-hover-bg:           var(--conn-btn-bg-hover);

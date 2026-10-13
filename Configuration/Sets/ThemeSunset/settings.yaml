@@ -14,6 +14,8 @@ theme.light.heading: '#1a0b0e'
 theme.light.emphasis: '#1a0b0e'
 theme.light.textMuted: '#7c6268'
 theme.light.link: '#be123c'
+# Eyebrows are small text: the accent is below WCAG AA (4.5:1) on the page background
+theme.light.eyebrow: '#be123c'
 theme.light.linkHover.text: '#9f1239'
 theme.light.border: 'rgba(225, 29, 72, 0.12)'
 theme.light.borderStrong: 'rgba(225, 29, 72, 0.28)'
