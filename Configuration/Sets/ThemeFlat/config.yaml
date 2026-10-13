@@ -1,6 +1,6 @@
 name: connetation/t3wtk-theme-flat
 label: 'Theme: Flat'
-# Zinc / blue, flat: square corners, no shadows, solid surfaces · horizontal menu · 4-column dark footer.
+# Zinc / blue, flat: square corners, no shadows, solid surfaces · horizontal menu · dark footer: brand row + 3 columns.
 # Select at most one theme per site. Theme values override connetation/t3wtk-base's defaults;
 # the site's own settings.yaml overrides the theme (e.g. to change a single color).
 dependencies:

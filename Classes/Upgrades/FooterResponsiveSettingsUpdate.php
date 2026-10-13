@@ -59,11 +59,6 @@ final readonly class FooterResponsiveSettingsUpdate implements UpgradeWizardInte
      */
     private const BAR_SLOTS = ['left' => [1, 'start'], 'center' => [2, 'center'], 'right' => [3, 'end']];
 
-    /** Bottom bar alignment defaults per column (settings.definitions.yaml) — values equal to them aren't written. */
-    private const BAR_ALIGN_DEFAULTS = [1 => 'start', 2 => 'center,,start', 3 => 'end,,start'];
-
-    /** New defaults (settings.definitions.yaml) — values equal to them aren't written. */
-    private const NEW_DEFAULTS = ['width' => '4,6,12', 'align' => 'start', 'valign' => 'start'];
 
     public function __construct(
         private SiteFinder $siteFinder,
@@ -163,11 +158,10 @@ final readonly class FooterResponsiveSettingsUpdate implements UpgradeWizardInte
             foreach (self::LEGACY_SUFFIXES as $suffix) {
                 unset($settings[$prefix . $suffix]);
             }
+            // Always written: the current defaults (settings.definitions.yaml) follow a
+            // different layout, so leaving a value out would change what rendered.
             foreach ($new as $name => $value) {
-                $default = $name === 'width' && $column === 4 ? '3,6,12' : self::NEW_DEFAULTS[$name];
-                if ($value !== $default) {
-                    $settings[$prefix . $name] = $value;
-                }
+                $settings[$prefix . $name] = $value;
             }
         }
 
@@ -193,7 +187,7 @@ final readonly class FooterResponsiveSettingsUpdate implements UpgradeWizardInte
             if (array_key_exists($legacyKey, $settings)) {
                 $value = $this->compact($fixed, $fixed, $this->position(trim((string)$settings[$legacyKey])));
                 unset($settings[$legacyKey]);
-                if (!array_key_exists($prefix . 'align', $settings) && $value !== self::BAR_ALIGN_DEFAULTS[$column]) {
+                if (!array_key_exists($prefix . 'align', $settings)) {
                     $settings[$prefix . 'align'] = $value;
                 }
             }

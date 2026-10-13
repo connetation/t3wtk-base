@@ -70,12 +70,20 @@ footer.col1.content: brand
 footer.col2.content: navigation
 footer.col3.content: address
 footer.col4.content: ''
-footer.col1.size.lg: '6'
-footer.col2.size.lg: '3'
-footer.col3.size.lg: '3'
-# Footer column alignment: navigation left, address right
-footer.col2.desktopalign: text-md-start
-footer.col3.desktopalign: text-md-end
+footer.col1.width: '4,6,12'
+footer.col2.width: '4,6,12'
+footer.col3.width: '4,6,12'
+# Alignment: brand left, navigation centered, address right (tablet: navigation is the right column of the first row)
+footer.col2.align: 'center,end,start'
+footer.col3.align: 'end,start'
+footer.col1.align: start
+footer.col1.valign: start
+footer.col2.valign: start
+footer.col3.valign: start
 footer.bar.col1.content: copyright
 footer.bar.col2.content: navigation
 footer.bar.col3.content: social
+# Bottom bar alignment pinned (the t3wtk-base defaults follow a different layout)
+footer.bar.col1.align: start
+footer.bar.col2.align: 'center,,start'
+footer.bar.col3.align: 'end,,start'

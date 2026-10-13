@@ -61,3 +61,7 @@ footer.showSocial: true
 footer.bar.col1.content: brand
 footer.bar.col2.content: navigation
 footer.bar.col3.content: social
+# Bottom bar alignment pinned (the t3wtk-base defaults follow a different layout)
+footer.bar.col1.align: start
+footer.bar.col2.align: 'center,,start'
+footer.bar.col3.align: 'end,,start'

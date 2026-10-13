@@ -32,27 +32,26 @@ navbar.panelTopContent: contact
 footer.layout: Standard
 footer.showSocial: true
 footer.col1.content: brand
-footer.col1.size.base: '12'
-footer.col1.size.md: '12'
-footer.col1.size.lg: '12'
 footer.col2.content: navigation
 footer.col3.content: address
 footer.col4.content: social
-footer.col2.size.base: '12'
-footer.col2.size.md: '4'
-footer.col2.size.lg: '4'
-footer.col3.size.base: '12'
-footer.col3.size.md: '4'
-footer.col3.size.lg: '4'
-footer.col4.size.base: '12'
-footer.col4.size.md: '4'
-footer.col4.size.lg: '4'
-# Footer column alignment: brand row + address centered, navigation left, social right and at the bottom
-footer.col1.desktopalign: text-md-center
-footer.col2.desktopalign: text-md-start
-footer.col3.desktopalign: text-md-center
-footer.col4.desktopalign: text-md-end
-footer.col4.desktopvalign: justify-content-md-end
+footer.col1.width: '12'
+footer.col2.width: '4,,12'
+footer.col3.width: '4,,12'
+footer.col4.width: '4,,12'
+# Alignment: brand row centered, then navigation left, address centered, social right and at the bottom
+footer.col1.align: 'center,,start'
+footer.col2.align: start
+footer.col3.align: 'center,,start'
+footer.col4.align: 'end,,start'
+footer.col4.valign: 'end,,start'
+footer.col1.valign: start
+footer.col2.valign: start
+footer.col3.valign: start
 footer.bar.col1.content: copyright
 footer.bar.col2.content: ''
 footer.bar.col3.content: navigation
+# Bottom bar alignment pinned (the t3wtk-base defaults follow a different layout)
+footer.bar.col1.align: start
+footer.bar.col2.align: 'center,,start'
+footer.bar.col3.align: 'end,,start'

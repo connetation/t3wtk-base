@@ -155,7 +155,7 @@ no content):
 | `connetation/t3wtk-theme-forest` | Emerald / teal | Off-canvas panel from the right | Centered, dark green |
 | `connetation/t3wtk-theme-sunset` | Rose / orange, warm paper | Horizontal, centered, list dropdowns | Minimal, one row |
 | `connetation/t3wtk-theme-midnight` | Cyan / violet, dark navbar + footer | Off-canvas panel from the left | 3 columns, dark |
-| `connetation/t3wtk-theme-flat` | Zinc / blue, flat: square corners, no shadows | Horizontal, right aligned, list dropdowns | 4 columns, dark |
+| `connetation/t3wtk-theme-flat` | Zinc / blue, flat: square corners, no shadows | Horizontal, right aligned, list dropdowns | Brand row + 3 columns, dark |
 
 #### Using a theme
 

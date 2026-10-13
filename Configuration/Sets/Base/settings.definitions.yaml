@@ -1394,7 +1394,7 @@ settings:
   footer.bar.col1.content:
     label: 'Bottom bar – Column 1 – Content'
     type: string
-    default: 'copyright'
+    default: 'tagline'
     category: conn.footer.bar
     enum:
       copyright: 'Copyright'
@@ -1422,7 +1422,7 @@ settings:
   footer.bar.col3.content:
     label: 'Bottom bar – Column 3 – Content'
     type: string
-    default: 'social'
+    default: 'copyright'
     category: conn.footer.bar
     enum:
       copyright: 'Copyright'
@@ -1437,7 +1437,7 @@ settings:
   footer.bar.col1.align:
     label: 'Bottom bar – Column 1 – Alignment'
     type: connResponsive
-    default: 'start'
+    default: 'start,,center'
     category: conn.footer.bar
     options:
       choices:
@@ -1449,7 +1449,7 @@ settings:
   footer.bar.col2.align:
     label: 'Bottom bar – Column 2 – Alignment'
     type: connResponsive
-    default: 'center,,start'
+    default: 'center'
     category: conn.footer.bar
     options:
       choices:
@@ -1461,7 +1461,7 @@ settings:
   footer.bar.col3.align:
     label: 'Bottom bar – Column 3 – Alignment'
     type: connResponsive
-    default: 'end,,start'
+    default: 'end,,center'
     category: conn.footer.bar
     options:
       choices:
@@ -1563,7 +1563,7 @@ settings:
   footer.col1.content:
     label: 'Column 1 – Content'
     type: string
-    default: 'brand'
+    default: 'brandOnly'
     category: conn.footer.grid
     enum:
       brandOnly: 'Brand'
@@ -1580,7 +1580,7 @@ settings:
     label: 'Column 1 – Width (of 12)'
     description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
     type: connResponsive
-    default: '4,6,12'
+    default: '12'
     category: conn.footer.grid
     options:
       min: 1
@@ -1591,7 +1591,7 @@ settings:
     label: 'Column 1 – Alignment'
     description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
     type: connResponsive
-    default: 'start'
+    default: 'center'
     category: conn.footer.grid
     options:
       choices:
@@ -1614,7 +1614,7 @@ settings:
   footer.col2.content:
     label: 'Column 2 – Content'
     type: string
-    default: 'navigation'
+    default: 'address'
     category: conn.footer.grid
     enum:
       brandOnly: 'Brand'
@@ -1631,7 +1631,7 @@ settings:
     label: 'Column 2 – Width (of 12)'
     description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
     type: connResponsive
-    default: '4,6,12'
+    default: '4,,12'
     category: conn.footer.grid
     options:
       min: 1
@@ -1642,7 +1642,7 @@ settings:
     label: 'Column 2 – Alignment'
     description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
     type: connResponsive
-    default: 'start'
+    default: 'start,,center'
     category: conn.footer.grid
     options:
       choices:
@@ -1665,7 +1665,7 @@ settings:
   footer.col3.content:
     label: 'Column 3 – Content'
     type: string
-    default: 'address'
+    default: 'navigation'
     category: conn.footer.grid
     enum:
       brandOnly: 'Brand'
@@ -1682,7 +1682,7 @@ settings:
     label: 'Column 3 – Width (of 12)'
     description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
     type: connResponsive
-    default: '4,6,12'
+    default: '4,,12'
     category: conn.footer.grid
     options:
       min: 1
@@ -1693,7 +1693,7 @@ settings:
     label: 'Column 3 – Alignment'
     description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
     type: connResponsive
-    default: 'start'
+    default: 'center'
     category: conn.footer.grid
     options:
       choices:
@@ -1705,7 +1705,7 @@ settings:
     label: 'Column 3 – Vertical position'
     description: 'Position of this column''s content when other columns make the row taller.'
     type: connResponsive
-    default: 'start'
+    default: 'end,,start'
     category: conn.footer.grid
     options:
       choices:
@@ -1716,7 +1716,7 @@ settings:
   footer.col4.content:
     label: 'Column 4 – Content'
     type: string
-    default: ''
+    default: 'social'
     category: conn.footer.grid
     enum:
       brandOnly: 'Brand'
@@ -1733,7 +1733,7 @@ settings:
     label: 'Column 4 – Width (of 12)'
     description: 'How many of the 12 grid columns this column spans, per device. 12 = full width.'
     type: connResponsive
-    default: '3,6,12'
+    default: '4,,12'
     category: conn.footer.grid
     options:
       min: 1
@@ -1744,7 +1744,7 @@ settings:
     label: 'Column 4 – Alignment'
     description: 'Aligns the column''s content (text, logo, links) and — when the column is narrower than the row — the column itself.'
     type: connResponsive
-    default: 'start'
+    default: 'end,,center'
     category: conn.footer.grid
     options:
       choices:
@@ -1756,7 +1756,7 @@ settings:
     label: 'Column 4 – Vertical position'
     description: 'Position of this column''s content when other columns make the row taller.'
     type: connResponsive
-    default: 'start'
+    default: 'center,,start'
     category: conn.footer.grid
     options:
       choices:

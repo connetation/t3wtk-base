@@ -57,6 +57,13 @@
         .text-md-end &__col-inner    { align-items: flex-end; }
     }
 
+    // Desktop alignment (Devices::DESKTOP_INFIX = xl), when it differs from tablet
+    @media (min-width: 1200px) {
+        .text-xl-start &__col-inner  { align-items: flex-start; }
+        .text-xl-center &__col-inner { align-items: center; }
+        .text-xl-end &__col-inner    { align-items: flex-end; }
+    }
+
     &__link {
         position: relative;
         z-index: 0;
