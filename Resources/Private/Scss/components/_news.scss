@@ -110,6 +110,11 @@
     }
 }
 
+// ── List layout wrapper ─────────────────────────────────────────────────────
+.conn-news-cards > .list-group-item {
+    background: transparent;
+}
+
 // ── Shared card/list-item sub-parts ─────────────────────────────────────────
 .conn-news-card__placeholder {
     background: var(--conn-surface-alt) !important;

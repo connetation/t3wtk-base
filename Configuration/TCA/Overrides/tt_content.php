@@ -74,7 +74,12 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
     ],
     'tx_conn_t3wtk_base_bg_text_color' => [
         'label'       => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:bg_text_color',
-        'displayCond' => 'FIELD:tx_conn_t3wtk_base_bg_type:=:color',
+        'displayCond' => [
+            'OR' => [
+                'FIELD:tx_conn_t3wtk_base_bg_type:=:color',
+                'FIELD:tx_conn_t3wtk_base_bg_type:=:image',
+            ],
+        ],
         'config'      => [
             'type'    => 'color',
             'opacity' => true,
@@ -146,12 +151,12 @@ foreach (['space_before_class', 'space_after_class'] as $spaceField) {
 // the framework's own default spacing).
 $GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['default'] = 'none';
 
-// ─── Background internal padding — opt-in, default none ───────────────────
+// ─── Background internal padding — default extra large ────────────────────
 // A background (color or image) used to always force a fixed padding-block
 // inside .conn-bg, regardless of the editor's Space Before/After choice
 // (which only spaces this element from its neighbours, not its own content
 // from the background fill). Replaced with these two explicit fields so
-// editors add breathing room only when they actually want it, using the
+// editors can adjust the breathing room per element, using the
 // same spacing scale as Space Before/After (reused here, same rows/labels,
 // just without the '' "Default" option that has no matching CSS rule).
 $paddingItems = array_values(array_filter(
@@ -171,7 +176,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
-            'default'    => 'none',
+            'default'    => 'extra-large',
             'items'      => $paddingItems,
         ],
     ],
@@ -186,7 +191,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
         'config' => [
             'type'       => 'select',
             'renderType' => 'selectSingle',
-            'default'    => 'none',
+            'default'    => 'extra-large',
             'items'      => $paddingItems,
         ],
     ],

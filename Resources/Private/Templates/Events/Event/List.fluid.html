@@ -25,7 +25,7 @@
         <f:then>
             <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
                 <f:then>
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards{cardStyleClass}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards{cardStyleClass}{f:if(condition: settings.appearance.cardAlign, then: ' justify-content-{settings.appearance.cardAlign}')}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
                         <f:for each="{pagination.paginator.paginatedItems}" as="event" iteration="iterator">
                             <f:render partial="Event/Card" arguments="{_all}"/>
                         </f:for>
@@ -44,7 +44,7 @@
         <f:else>
             <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
                 <f:then>
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards{cardStyleClass}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-event-cards{cardStyleClass}{f:if(condition: settings.appearance.cardAlign, then: ' justify-content-{settings.appearance.cardAlign}')}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
                         <f:for each="{events}" as="event" iteration="iterator">
                             <f:render partial="Event/Card" arguments="{_all}"/>
                         </f:for>

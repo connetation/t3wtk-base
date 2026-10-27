@@ -61,3 +61,34 @@ $desktop-min: 1200px;
         }
     }
 }
+
+// ── Card alignment (CardAlignOptions) ─────────
+@mixin card-align-wrap($cols, $gap) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        flex: 0 0 calc((100% - (#{$cols} - 1) * #{$gap}) / #{$cols});
+        min-width: 0;
+    }
+}
+
+@mixin card-align($grid, $var, $default-cols, $gap: 1.5rem) {
+    &[data-card-align="center"],
+    &[data-card-align="end"] {
+        @include device(desktop) {
+            #{$grid} { @include card-align-wrap(var(#{$var}, #{$default-cols}), $gap); }
+        }
+
+        @include device(tablet) {
+            &.has-cols-tablet #{$grid} { @include card-align-wrap(var(#{$var}-tablet), $gap); }
+        }
+
+        @include device(mobile) {
+            &.has-cols-mobile #{$grid} { @include card-align-wrap(var(#{$var}-mobile), $gap); }
+        }
+    }
+
+    &[data-card-align="center"] #{$grid} { justify-content: center; }
+    &[data-card-align="end"] #{$grid} { justify-content: flex-end; }
+}

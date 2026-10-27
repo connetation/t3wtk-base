@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace Connetation\T3wtkBase\EventListener;
 
+use Connetation\T3wtkBase\Utility\CardAlignOptions;
 use Connetation\T3wtkBase\Utility\FontWeightOptions;
 use Connetation\T3wtkBase\Utility\RadiusOptions;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
@@ -174,6 +175,16 @@ final class AddNewsListAppearanceFields
                             'renderType' => 'selectSingle',
                             'default' => RadiusOptions::THEME_DEFAULT,
                             'itemsProcFunc' => RadiusOptions::class . '->addItems',
+                        ],
+                    ],
+                    'settings.appearance.cardAlign' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_align',
+                        'description' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_align.description',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => CardAlignOptions::DEFAULT,
+                            'itemsProcFunc' => CardAlignOptions::class . '->addItems',
                         ],
                     ],
                 ],

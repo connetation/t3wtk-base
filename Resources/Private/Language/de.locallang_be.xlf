@@ -163,6 +163,27 @@
                 <source>Eyebrow Color</source>
                 <target>Eyebrow-Farbe</target>
             </trans-unit>
+            <!-- Card alignment of an incomplete row (Classes/Utility/CardAlignOptions.php) -->
+            <trans-unit id="card_align">
+                <source>Card alignment</source>
+                <target>Kartenausrichtung</target>
+            </trans-unit>
+            <trans-unit id="card_align.description">
+                <source>Where the cards of a row that isn't full are placed, e.g. 5 cards at 3 per row: 3 on top, 2 below.</source>
+                <target>Ausrichtung der Karten einer nicht vollen Reihe, z. B. 5 Karten bei 3 pro Reihe: 3 oben, 2 darunter.</target>
+            </trans-unit>
+            <trans-unit id="card_align.option.start">
+                <source>Start (left)</source>
+                <target>Anfang (links)</target>
+            </trans-unit>
+            <trans-unit id="card_align.option.center">
+                <source>Center</source>
+                <target>Mittig</target>
+            </trans-unit>
+            <trans-unit id="card_align.option.end">
+                <source>End (right)</source>
+                <target>Ende (rechts)</target>
+            </trans-unit>
             <!-- Card font weights (Classes/Utility/FontWeightOptions.php) -->
             <trans-unit id="font_weight.option.fw-lighter">
                 <source>Lighter (relative to parent)</source>

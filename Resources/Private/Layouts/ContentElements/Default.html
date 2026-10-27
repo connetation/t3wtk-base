@@ -35,13 +35,13 @@
     <f:variable name="bgClass"> conn-bg conn-bg-padding-before-{bgPaddingBefore} conn-bg-padding-after-{bgPaddingAfter}</f:variable>
     <f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'color'">
         <f:variable name="bgStyle">background-color: {data.tx_conn_t3wtk_base_bg_color};</f:variable>
-        <f:if condition="{data.tx_conn_t3wtk_base_bg_text_color}">
-            <f:variable name="bgStyle">{bgStyle} color: {data.tx_conn_t3wtk_base_bg_text_color}; --bs-heading-color: {data.tx_conn_t3wtk_base_bg_text_color}; --bs-body-color: {data.tx_conn_t3wtk_base_bg_text_color}; --conn-heading: {data.tx_conn_t3wtk_base_bg_text_color}; --conn-text: {data.tx_conn_t3wtk_base_bg_text_color};</f:variable>
-        </f:if>
     </f:if>
     <f:if condition="{data.tx_conn_t3wtk_base_bg_type} == 'image'">
         <f:variable name="bgClass">{bgClass} conn-bg--{data.tx_conn_t3wtk_base_bg_mode}</f:variable>
         <f:variable name="bgStyle">background-image: url('<f:uri.image image="{bgFile}" maxWidth="1920" />');</f:variable>
+    </f:if>
+    <f:if condition="{data.tx_conn_t3wtk_base_bg_text_color}">
+        <f:variable name="bgStyle">{bgStyle} color: {data.tx_conn_t3wtk_base_bg_text_color}; --bs-heading-color: {data.tx_conn_t3wtk_base_bg_text_color}; --bs-body-color: {data.tx_conn_t3wtk_base_bg_text_color}; --conn-heading: {data.tx_conn_t3wtk_base_bg_text_color}; --conn-text: {data.tx_conn_t3wtk_base_bg_text_color};</f:variable>
     </f:if>
 </f:if>
 
