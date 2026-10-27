@@ -155,11 +155,32 @@ editor:
                 - 'default'
                 - 'Arial, sans-serif'
 
+        # Relative sizes (em) scale with the surrounding text, e.g. a smaller
+        # "RX" inside a fluid H1 stays proportional on every screen size.
+        # Fixed sizes (numbers = px) stay the same on every screen size.
         fontSize:
             options:
                 - 'default'
+                - { title: '50 %', model: '0.5em', view: { name: 'span', styles: { font-size: '0.5em' } } }
+                - { title: '60 %', model: '0.6em', view: { name: 'span', styles: { font-size: '0.6em' } } }
+                - { title: '70 %', model: '0.7em', view: { name: 'span', styles: { font-size: '0.7em' } } }
+                - { title: '80 %', model: '0.8em', view: { name: 'span', styles: { font-size: '0.8em' } } }
+                - { title: '90 %', model: '0.9em', view: { name: 'span', styles: { font-size: '0.9em' } } }
+                - { title: '110 %', model: '1.1em', view: { name: 'span', styles: { font-size: '1.1em' } } }
+                - { title: '120 %', model: '1.2em', view: { name: 'span', styles: { font-size: '1.2em' } } }
+                - { title: '130 %', model: '1.3em', view: { name: 'span', styles: { font-size: '1.3em' } } }
+                - { title: '140 %', model: '1.4em', view: { name: 'span', styles: { font-size: '1.4em' } } }
+                - { title: '150 %', model: '1.5em', view: { name: 'span', styles: { font-size: '1.5em' } } }
+                - 12
+                - 14
+                - 16
                 - 18
                 - 21
+                - 24
+                - 28
+                - 32
+                - 48
+                - 60
 
         list:
             properties:
