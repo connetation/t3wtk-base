@@ -30,17 +30,25 @@ use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent;
 
 /**
- * Adds an "Appearance" sheet to georgringer/news' List/Card plugin (news_pi1)
+ * Adds an "Appearance" sheet to every georgringer/news plugin that renders a
+ * list of news (all of them share Partials/News/List/Items.html)
  */
 #[AsEventListener('conn-t3wtk-base/add-newslist-appearance-fields')]
 final class AddNewsListAppearanceFields
 {
+    private const LIST_PLUGINS = [
+        'news_pi1',
+        'news_newsliststicky',
+        'news_newsselectedlist',
+        'news_newssearchresult',
+    ];
+
     public function __invoke(AfterFlexFormDataStructureParsedEvent $event): void
     {
         $identifier = $event->getIdentifier();
         if (($identifier['tableName'] ?? '') !== 'tt_content'
             || ($identifier['fieldName'] ?? '') !== 'pi_flexform'
-            || ($identifier['dataStructureKey'] ?? '') !== 'news_pi1'
+            || !\in_array($identifier['dataStructureKey'] ?? '', self::LIST_PLUGINS, true)
         ) {
             return;
         }

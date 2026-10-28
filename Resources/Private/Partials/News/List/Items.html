@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<!--
+    Card grid ("Karten", templateLayout 2/3/4) or list of news items, with the
+    plugin's Appearance settings. Shared by every news list template
+    (List, SelectedList, SearchResult) so they all look and behave the same.
+    Arguments: items (the news to render), settings
+-->
+<f:variable name="cardStyleClass">{f:if(condition: settings.appearance.cardStyle, then: ' conn-news-cards--{settings.appearance.cardStyle}')}</f:variable>
+<f:variable name="cardStyleVars">{f:if(condition: "{settings.appearance.cardBorderColor} != ''", then: '--conn-card-border-color:{settings.appearance.cardBorderColor};')}</f:variable>
+<f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
+    <f:then>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards{cardStyleClass}{f:if(condition: settings.appearance.cardAlign, then: ' justify-content-{settings.appearance.cardAlign}')}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
+            <f:for each="{items}" as="newsItem" iteration="iterator">
+                <f:render partial="List/Card" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+            </f:for>
+        </div>
+    </f:then>
+    <f:else>
+        <ul class="list-group mb-3 conn-news-cards{cardStyleClass}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
+            <f:for each="{items}" as="newsItem" iteration="iterator">
+                <f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+            </f:for>
+        </ul>
+    </f:else>
+</f:if>
+</html>
