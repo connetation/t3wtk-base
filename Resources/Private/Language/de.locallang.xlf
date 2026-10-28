@@ -7,6 +7,10 @@
                 <source>%1$s – Page %2$d</source>
                 <target>%1$s – Seite %2$d</target>
             </trans-unit>
+            <trans-unit id="pagination.page">
+                <source>Page</source>
+                <target>Seite</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

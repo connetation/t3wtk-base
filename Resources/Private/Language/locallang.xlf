@@ -6,6 +6,9 @@
             <trans-unit id="pagination.pageTitle">
                 <source>%1$s – Page %2$d</source>
             </trans-unit>
+            <trans-unit id="pagination.page">
+                <source>Page</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

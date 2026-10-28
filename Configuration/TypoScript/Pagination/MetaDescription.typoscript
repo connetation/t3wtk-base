@@ -1,0 +1,21 @@
+# Page number in the meta description of paginated news and event list pages:
+# "… – Seite 2" / "… – Page 2" ("Page" translated per site language via pagination.page).
+# Imported by both the News and the Events set; reads the page of whichever plugin is
+# paginated. replace = 1 overrides the description from the page record; nothing is
+# rendered on page 1 and on every other page (EXT:seo / cs_seo / news / events stay untouched).
+page.meta.description {
+    field = description
+    required = 1
+    append = COA
+    append {
+        10 = TEXT
+        10.data = LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang.xlf:pagination.page
+        10.noTrimWrap = | – | |
+        20 = TEXT
+        20.data = GP:tx_news_pi1|currentPage // GP:tx_sfeventmgt_pieventlist|currentPage
+        20.intval = 1
+    }
+    if.value = 1
+    if.isGreaterThan.data = GP:tx_news_pi1|currentPage // GP:tx_sfeventmgt_pieventlist|currentPage
+    replace = 1
+}

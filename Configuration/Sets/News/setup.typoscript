@@ -10,3 +10,5 @@ config.pageTitleProviders.connNewsPagination {
     provider = Connetation\T3wtkBase\PageTitle\NewsPaginationPageTitleProvider
     before = news,csSeo,seo,record
 }
+
+@import 'EXT:conn_t3wtk_base/Configuration/TypoScript/Pagination/MetaDescription.typoscript'

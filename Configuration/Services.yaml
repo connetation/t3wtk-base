@@ -14,6 +14,10 @@ services:
     public: true
     shared: false
 
+  Connetation\T3wtkBase\PageTitle\EventPaginationPageTitleProvider:
+    public: true
+    shared: false
+
   Connetation\T3wtkBase\Middleware\NewsFirstPageRedirectMiddleware:
     public: true
 
