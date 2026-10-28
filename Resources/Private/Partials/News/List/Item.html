@@ -74,7 +74,9 @@
                 </div>
 
                 <div class="mt-2 text-{f:if(condition: settings.appearance.linkAlign, then: settings.appearance.linkAlign, else: 'start')}">
-                    <n:link newsItem="{newsItem}" settings="{settings}" class="btn btn-sm btn-outline-primary conn-news-card__visit-link" title="{newsItem.title}">
+                    <f:variable name="linkClass">btn btn-sm btn-outline-primary</f:variable>
+                    <f:if condition="{settings.appearance.linkStyle}"><f:variable name="linkClass">{settings.appearance.linkStyle} btn-sm</f:variable></f:if>
+                    <n:link newsItem="{newsItem}" settings="{settings}" class="{linkClass} conn-news-card__visit-link" title="{newsItem.title}">
                         <f:translate key="more-link" extensionName="News"/>
                     </n:link>
                 </div>

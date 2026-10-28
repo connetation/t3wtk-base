@@ -1,0 +1,83 @@
+/*
+ * This file is part of the Connetation TYPO3 Web Toolkit - T3WTK.
+ *
+ * Copyright (c) Connetation Web Engineering GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// ── Card design (CardDesignOptions): image / color in background ─────────────
+.conn-card-design--image,
+.conn-card-design--color {
+    .conn-card-design__card {
+        --conn-card-design-fg: var(--conn-card-design-text, #fff);
+        --conn-text: var(--conn-card-design-fg);
+        --conn-text-muted: var(--conn-card-design-fg);
+        --conn-heading: var(--conn-card-design-fg);
+        --bs-body-color: var(--conn-card-design-fg);
+        --bs-heading-color: var(--conn-card-design-fg);
+        --bs-secondary-color: var(--conn-card-design-fg);
+        --bs-card-color: var(--conn-card-design-fg);
+        --bs-card-bg: transparent;
+
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: var(--conn-card-design-min-height, 18rem);
+        background: var(--conn-card-design-bg, var(--conn-accent)) !important;
+        color: var(--conn-card-design-fg);
+    }
+
+    .conn-card-design__placeholder {
+        display: none !important;
+    }
+}
+
+.conn-card-design--color .conn-card-design__media {
+    display: none !important;
+}
+
+.conn-card-design--image .conn-card-design__media {
+    position: absolute !important;
+    inset: 0;
+    z-index: -1;
+    margin: 0;
+    border-radius: 0 !important;
+
+    &::before {
+        display: none;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--conn-card-design-overlay, rgb(0 0 0 / 45%));
+        pointer-events: none;
+    }
+
+    a,
+    picture,
+    img {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

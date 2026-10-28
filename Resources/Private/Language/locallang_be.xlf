@@ -230,6 +230,44 @@
             <trans-unit id="card_align.option.end">
                 <source>End (right)</source>
             </trans-unit>
+            <!-- Card design (Classes/Utility/CardDesignOptions.php) -->
+            <trans-unit id="card_design">
+                <source>Card design</source>
+            </trans-unit>
+            <trans-unit id="card_design.option.standard">
+                <source>Standard (image above text)</source>
+            </trans-unit>
+            <trans-unit id="card_design.option.image">
+                <source>Image in background</source>
+            </trans-unit>
+            <trans-unit id="card_design.option.color">
+                <source>Color in background</source>
+            </trans-unit>
+            <trans-unit id="card_design.background_color">
+                <source>Background color</source>
+            </trans-unit>
+            <trans-unit id="card_design.background_color.description">
+                <source>Used for "Color in background" and for cards without an image.</source>
+            </trans-unit>
+            <trans-unit id="card_design.overlay_color">
+                <source>Image overlay</source>
+            </trans-unit>
+            <trans-unit id="card_design.overlay_color.description">
+                <source>Color laid over the image so the text stays readable. Set the strength with the opacity.</source>
+            </trans-unit>
+            <trans-unit id="card_design.text_color">
+                <source>Text color</source>
+            </trans-unit>
+            <!-- Link style (Classes/Service/ButtonStyleItemsProcFunc.php) -->
+            <trans-unit id="link_style">
+                <source>Link style</source>
+            </trans-unit>
+            <trans-unit id="link_style.description">
+                <source>The same buttons as in the editor (RTE) and link browser.</source>
+            </trans-unit>
+            <trans-unit id="link_style.default">
+                <source>Element default</source>
+            </trans-unit>
             <!-- Card font weights (Classes/Utility/FontWeightOptions.php) -->
             <trans-unit id="font_weight.option.fw-lighter">
                 <source>Lighter (relative to parent)</source>

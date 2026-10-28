@@ -8,9 +8,17 @@
 -->
 <f:variable name="cardStyleClass">{f:if(condition: settings.appearance.cardStyle, then: ' conn-news-cards--{settings.appearance.cardStyle}')}</f:variable>
 <f:variable name="cardStyleVars">{f:if(condition: "{settings.appearance.cardBorderColor} != ''", then: '--conn-card-border-color:{settings.appearance.cardBorderColor};')}</f:variable>
+<f:variable name="cardDesign">standard</f:variable>
+<f:variable name="cardDesignVars"></f:variable>
+<f:if condition="{settings.appearance.cardDesign} == 'image' || {settings.appearance.cardDesign} == 'color'">
+    <f:variable name="cardDesign">{settings.appearance.cardDesign}</f:variable>
+    <f:if condition="{settings.appearance.cardBackgroundColor}"><f:variable name="cardDesignVars">{cardDesignVars}--conn-card-design-bg:{settings.appearance.cardBackgroundColor};</f:variable></f:if>
+    <f:if condition="{settings.appearance.cardOverlayColor}"><f:variable name="cardDesignVars">{cardDesignVars}--conn-card-design-overlay:{settings.appearance.cardOverlayColor};</f:variable></f:if>
+    <f:if condition="{settings.appearance.cardTextColor}"><f:variable name="cardDesignVars">{cardDesignVars}--conn-card-design-text:{settings.appearance.cardTextColor};</f:variable></f:if>
+</f:if>
 <f:if condition="{settings.templateLayout} == 2 || {settings.templateLayout} == 3 || {settings.templateLayout} == 4">
     <f:then>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards{cardStyleClass}{f:if(condition: settings.appearance.cardAlign, then: ' justify-content-{settings.appearance.cardAlign}')}" style="{cardStyleVars}" data-radius="{settings.appearance.cardBorderRadius}">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-{settings.templateLayout} g-4 conn-news-cards{cardStyleClass} conn-card-design conn-card-design--{cardDesign}{f:if(condition: settings.appearance.cardAlign, then: ' justify-content-{settings.appearance.cardAlign}')}" style="{cardStyleVars}{cardDesignVars}" data-radius="{settings.appearance.cardBorderRadius}">
             <f:for each="{items}" as="newsItem" iteration="iterator">
                 <f:render partial="List/Card" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
             </f:for>

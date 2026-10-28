@@ -4,11 +4,11 @@
       data-namespace-typo3-fluid="true">
 <n:excludeDisplayedNews newsItem="{newsItem}" />
 <div class="col" style="--i: {iterator.index}">
-    <article class="card h-100 conn-news-card">
+    <article class="card h-100 conn-news-card conn-card-design__card">
 
         <f:if condition="{newsItem.mediaPreviews}">
             <f:then>
-                <div class="ratio ratio-16x9 overflow-hidden">
+                <div class="ratio ratio-16x9 overflow-hidden conn-card-design__media">
                     <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
                         <f:media class="object-fit-cover w-100 h-100" file="{newsItem.mediaPreviews.0}" title="{newsItem.mediaPreviews.0.originalResource.title}" alt="{newsItem.mediaPreviews.0.originalResource.alternative}" loading="{settings.list.media.image.lazyLoading}" />
                     </n:link>
@@ -17,14 +17,14 @@
             <f:else>
                 <f:if condition="{settings.displayDummyIfNoMedia}">
                     <f:then>
-                        <div class="ratio ratio-16x9 overflow-hidden">
+                        <div class="ratio ratio-16x9 overflow-hidden conn-card-design__media">
                             <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
                                 <f:image class="object-fit-cover w-100 h-100" src="{settings.list.media.dummyImage}" title="" alt="" loading="{settings.list.media.image.lazyLoading}" />
                             </n:link>
                         </div>
                     </f:then>
                     <f:else>
-                        <div class="conn-news-card__placeholder ratio ratio-16x9 d-flex align-items-center justify-content-center">
+                        <div class="conn-news-card__placeholder conn-card-design__placeholder ratio ratio-16x9 d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="opacity-25" viewBox="0 0 16 16">
                                 <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                 <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
@@ -72,7 +72,9 @@
         </div>
 
         <div class="card-footer bg-transparent border-top-0 pb-3 px-3 pt-0 text-{f:if(condition: settings.appearance.linkAlign, then: settings.appearance.linkAlign, else: 'start')}">
-            <n:link newsItem="{newsItem}" settings="{settings}" class="btn btn-sm btn-outline-primary conn-news-card__visit-link" title="{newsItem.title}">
+            <f:variable name="linkClass">btn btn-sm btn-outline-primary</f:variable>
+            <f:if condition="{settings.appearance.linkStyle}"><f:variable name="linkClass">{settings.appearance.linkStyle} btn-sm</f:variable></f:if>
+            <n:link newsItem="{newsItem}" settings="{settings}" class="{linkClass} conn-news-card__visit-link" title="{newsItem.title}">
                 <f:translate key="more-link" extensionName="News"/>
             </n:link>
         </div>

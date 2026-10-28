@@ -23,7 +23,9 @@ declare(strict_types=1);
 
 namespace Connetation\T3wtkBase\EventListener;
 
+use Connetation\T3wtkBase\Service\ButtonStyleItemsProcFunc;
 use Connetation\T3wtkBase\Utility\CardAlignOptions;
+use Connetation\T3wtkBase\Utility\CardDesignOptions;
 use Connetation\T3wtkBase\Utility\FontWeightOptions;
 use Connetation\T3wtkBase\Utility\RadiusOptions;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
@@ -193,6 +195,55 @@ final class AddNewsListAppearanceFields
                             'renderType' => 'selectSingle',
                             'default' => CardAlignOptions::DEFAULT,
                             'itemsProcFunc' => CardAlignOptions::class . '->addItems',
+                        ],
+                    ],
+                    'settings.appearance.cardDesign' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_design',
+                        'onChange' => 'reload',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => CardDesignOptions::DEFAULT,
+                            'itemsProcFunc' => CardDesignOptions::class . '->addItems',
+                        ],
+                    ],
+                    'settings.appearance.cardBackgroundColor' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_design.background_color',
+                        'description' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_design.background_color.description',
+                        'displayCond' => 'FIELD:settings.appearance.cardDesign:IN:image,color',
+                        'config' => [
+                            'type' => 'color',
+                            'opacity' => true,
+                            'default' => '',
+                        ],
+                    ],
+                    'settings.appearance.cardOverlayColor' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_design.overlay_color',
+                        'description' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_design.overlay_color.description',
+                        'displayCond' => 'FIELD:settings.appearance.cardDesign:=:image',
+                        'config' => [
+                            'type' => 'color',
+                            'opacity' => true,
+                            'default' => '',
+                        ],
+                    ],
+                    'settings.appearance.cardTextColor' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:card_design.text_color',
+                        'displayCond' => 'FIELD:settings.appearance.cardDesign:IN:image,color',
+                        'config' => [
+                            'type' => 'color',
+                            'opacity' => true,
+                            'default' => '',
+                        ],
+                    ],
+                    'settings.appearance.linkStyle' => [
+                        'label' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:link_style',
+                        'description' => 'LLL:EXT:conn_t3wtk_base/Resources/Private/Language/locallang_be.xlf:link_style.description',
+                        'config' => [
+                            'type' => 'select',
+                            'renderType' => 'selectSingle',
+                            'default' => '',
+                            'itemsProcFunc' => ButtonStyleItemsProcFunc::class . '->addItemsWithDefault',
                         ],
                     ],
                 ],

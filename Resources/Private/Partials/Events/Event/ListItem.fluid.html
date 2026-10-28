@@ -70,7 +70,9 @@
             <div class="mt-2 d-flex align-items-center gap-3 justify-content-{f:if(condition: settings.appearance.linkAlign, then: settings.appearance.linkAlign, else: 'start')}">
                 <f:if condition="{event.registrationPossible}">
                     <f:if condition="{settings.registrationPid} !=''">
-                        <f:link.action action="registration" arguments="{event : event}" class="btn btn-sm btn-outline-primary conn-event-card__visit-link" pageUid="{settings.registrationPid}">
+                        <f:variable name="linkClass">btn btn-sm btn-outline-primary</f:variable>
+                        <f:if condition="{settings.appearance.linkStyle}"><f:variable name="linkClass">{settings.appearance.linkStyle} btn-sm</f:variable></f:if>
+                        <f:link.action action="registration" arguments="{event : event}" class="{linkClass} conn-event-card__visit-link" pageUid="{settings.registrationPid}">
                             <f:translate domain="sf_event_mgt.messages" key="event.registration" />
                         </f:link.action>
                     </f:if>

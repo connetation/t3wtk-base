@@ -16,3 +16,7 @@ services:
 
   Connetation\T3wtkBase\Middleware\NewsFirstPageRedirectMiddleware:
     public: true
+
+  # itemsProcFunc targets are instantiated via GeneralUtility::makeInstance().
+  Connetation\T3wtkBase\Service\ButtonStyleItemsProcFunc:
+    public: true
