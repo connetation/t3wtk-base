@@ -21,7 +21,7 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Connetation TYPO3 Web Toolkit: Base',
-    'description' => 'Design system and foundation of the Connetation TYPO3 Web Toolkit (T3WTK) for TYPO3 14 LTS: page templates, navigation, footer, light/dark mode and 250+ site settings. Themeable without writing code. Built on Site Sets and Bootstrap 5.',
+    'description' => 'Design system and foundation of the Connetation TYPO3 Web Toolkit (T3WTK) for TYPO3 14 LTS, themeable without writing code: page templates, navigation, footer, light/dark mode and 250+ site settings. Built on Site Sets and Bootstrap 5.',
     'category' => 'templates',
     'author' => 'Connetation Web Engineering GmbH',
     'author_email' => 'office@connetation.at',
