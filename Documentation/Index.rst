@@ -36,7 +36,16 @@ Connetation Base
    `t3wtk-quickstart-shell <https://github.com/connetation/t3wtk-quickstart-shell>`__ — a ready-to-use DDEV project
    template. Clone it and run ``ddev setup-project``.
 
-Connetation Base is a Bootstrap 5 base extension for TYPO3 LTS 14, providing
+.. tip::
+
+   **Want to explore first?** Visit the live demo at
+   https://demosite.connetation.at or install
+   ``connetation/t3wtk-demosite``, which creates a complete demo page tree
+   with sample content and six color themes.
+
+Connetation Base is the design system and foundation of the Connetation
+TYPO3 Web Toolkit (T3WTK), themeable without writing code via 250+ site
+settings. It is a Bootstrap 5 base extension for TYPO3 LTS 14, providing
 the reusable foundation for Connetation TYPO3 projects: page templates,
 TypoScript, TCA extensions, SCSS design tokens, and PHP data
 processors/ViewHelpers, with built-in light/dark theme support.
